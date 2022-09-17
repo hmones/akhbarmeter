@@ -6,13 +6,16 @@
 
     <title>AkhbarMeter</title>
 
-    <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Styles -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
 </head>
 <body>
-@include('partials.navigation')
+<div class="flex flex-col h-screen justify-between">
+    @include('partials.navigation')
+    <main class="mb-auto">
+        @yield('content')
+    </main>
+    @include('partials.footer')
+</div>
 </body>
 </html>
