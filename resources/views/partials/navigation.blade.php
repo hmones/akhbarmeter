@@ -1,5 +1,5 @@
 <section id="topMenu" class="hidden md:block bg-gray-900">
-    <nav class="relative container mx-auto bg-gray-900 py-2 px-6 text-white">
+    <nav class="relative container mx-auto bg-gray-900 py-2 text-white">
         <div class="flex items-center justify-between">
             <div class="flex space-x-10">
                 <a href="#">Advertisement</a>
@@ -24,7 +24,7 @@
     </nav>
 </section>
 <section id="mainMenu" class="border-b-2">
-    <nav class="relative container mx-auto p-6">
+    <nav class="relative container mx-auto py-6">
         <div class="flex space-x-10 justify-between">
             <div class="flex">
                 <img class="" src="{{asset('images/logo-dark.svg')}}" alt="AkhbarMeter"/>
@@ -55,7 +55,7 @@
         </div>
     </nav>
 </section>
-<section id="mobileMenu" class="flex border-b-2 shadow-2xl lg:hidden">
+<section id="mobileMenu" class="hidden border-b-2 shadow-2xl lg:hidden">
     <div class="container flex flex-col justify-center items-center mx-auto space-y-6 py-6">
         <a href="#" class="hover:text-blue-600">Home</a>
         <a href="#" class="hover:text-blue-600">About</a>
