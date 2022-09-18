@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="flex items-center space-x-6">
-                    <a href="#">عربي</a>
+                    <a class="font-['Cairo']" href="#">عربي</a>
                     <img src="{{asset('images/icons/eg-flag.png')}}" class="w-auto h-6" alt="Egyptian Flag"/>
                     <a href="#" class="bg-blue-600 py-2 px-8 rounded text-white hover:bg-blue-800">Login</a>
                 </div>
@@ -64,7 +64,7 @@
         <a href="#" class="hover:text-blue-600">News</a>
         <a href="#" class="hover:text-blue-600">Academy</a>
         <div class="flex flex-row space-x-4">
-            <a href="#">عربي</a>
+            <a class="font-['Cairo']" href="#">عربي</a>
             <img src="{{asset('images/icons/eg-flag.png')}}" class="w-auto h-6" alt="Egyptian Flag"/>
         </div>
         <a href="#" class="bg-blue-600 py-2 px-8 rounded text-white hover:bg-blue-800">Login</a>
