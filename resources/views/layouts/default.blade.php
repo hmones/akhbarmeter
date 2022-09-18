@@ -6,8 +6,8 @@
 
     <title>AkhbarMeter - @yield('title')</title>
 
-    <link href="https://fonts.bunny.net/css2?family=Inter:400;600;700" rel="stylesheet">
-    <link href="https://fonts.bunny.net/css2?family=Cairo:400;600;700" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css2?family=Inter:400;600;700;800" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css2?family=Cairo:400;600;700;800" rel="stylesheet">
 
     <script src="{{asset('js/jquery.js')}}" type="application/javascript"></script>
     <script src="{{asset('js/app.js')}}" type="application/javascript"></script>
