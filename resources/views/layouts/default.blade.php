@@ -9,11 +9,14 @@
     <link href="https://fonts.bunny.net/css2?family=Inter:400;600;700;800" rel="stylesheet">
     <link href="https://fonts.bunny.net/css2?family=Cairo:400;600;700;800" rel="stylesheet">
 
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="{{asset('js/jquery.js')}}" type="application/javascript"></script>
-    <script src="{{asset('js/app.js')}}" type="application/javascript"></script>
+    <script src="{{asset('js/bootstrap.bundle.min.js')}}" type="application/javascript"></script>
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     @if(app()->getLocale() !== 'en')
-        <link rel="stylesheet" href="{{asset('css/rtl.css')}}">
+        <link rel="stylesheet" href="{{asset('css/bootstrap.rtl.min.css')}}">
+        <link rel="stylesheet" href="{{asset('css/app.rtl.css')}}">
     @endif
 
     <!-- Browser and App icons -->
@@ -38,9 +41,7 @@
 <body>
 <div class="flex flex-col h-screen justify-between">
     @include('partials.navigation')
-    <main class="container mb-auto mx-auto py-6">
-        @yield('content')
-    </main>
+    @yield('content')
     @include('partials.footer')
 </div>
 </body>
