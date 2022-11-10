@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('content')
-    <div class="container flex flex-col w-full items-center justify-center mx-auto space-y-4 my-16">
+    <div class="container hidden lg:flex flex-col w-full items-center justify-center mx-auto space-y-4 my-16">
         <div class="flex flex-col">
             <h1 class="text-5xl leading-10 font-extrabold tracking-tight">Contact Us</h1>
         </div>
@@ -11,11 +11,11 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="flex flex-row justify-center mx-20 space-y4 my-10 shadow-lg">
-            <div class="flex-row w-1/3 bg-blue-700 text-white">
+    <div class="lg:container mx-auto">
+        <div class="flex flex-col lg:flex-row justify-center lg:mx-20 space-y4 lg:my-10 lg:shadow-lg">
+            <div class="flex-col lg:flex-row lg:w-1/3 text-white bg-gradient-to-r from-blue-700 to-cyan-700 lg:to-blue-700">
                 <div class="p-10 h-full">
-                    <div class="flex-col space-y-6 mt-4">
+                    <div class="flex-col space-y-6 lg:mt-4">
                         <p class="font-extrabold">Contact information</p>
                         <p>Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat massa dictumst amet. Sapien
                             tortor lacus arcu.</p>
@@ -42,13 +42,24 @@
                 </div>
             </div>
 
-            <div class="flex-row w-2/3">
+            <div class="container flex flex-col w-full items-center lg:justify-center mx-auto space-y-4 my-10 lg:hidden">
+                <div class="flex flex-col">
+                    <h1 class="text-3xl leading-10 font-extrabold tracking-tight">Contact Us</h1>
+                </div>
+                <div class="flex-initial flex-col">
+                    <p class="text-center leading-6 font-normal text-gray-500">
+                        Simple text saying what the user should excpect by clicking on any of the news outlets.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex-row w-full lg:w-2/3">
                 <form action="{{route('contact.store')}}" method="post">
                     @csrf
-                    <div class="p-10 mt-10">
-                        <h2 class="text-3xl leading-10 font-extrabold tracking-tight">Send us a message</h2>
-                        <div class="flex flex-row w-auto mt-5 space-x-8">
-                            <div class="flex flex-col w-1/2">
+                    <div class="p-10 lg:mt-10">
+                        <h2 class="hidden lg:block text-3xl leading-10 font-extrabold tracking-tight">Send us a message</h2>
+                        <div class="flex flex-col space-y-6 lg:space-y-0 lg:flex-row w-auto lg:mt-5 lg:space-x-8">
+                            <div class="flex flex-col lg:w-1/2">
                                 <label for="firstName" class="text-sm">First name</label>
                                 @if($errors->first('firstName'))
                                     <small class="text-red-700">{{$errors->first('firstName')}}</small>
@@ -56,7 +67,7 @@
                                 <input type="text" id="firstName" name="firstName"
                                        class="p-3 h-12 border border-gray-300 rounded mt-1"/>
                             </div>
-                            <div class="flex flex-col w-1/2">
+                            <div class="flex flex-col lg:w-1/2">
                                 <label for="secondName" class="text-sm">Second name</label>
                                 @if($errors->first('secondName'))
                                     <small class="text-red-700">{{$errors->first('secondName')}}</small>
@@ -65,8 +76,8 @@
                                        class="p-3 h-12 border border-gray-300 rounded mt-1"/>
                             </div>
                         </div>
-                        <div class="flex flex-row w-auto mt-4 space-x-8">
-                            <div class="flex flex-col w-1/2">
+                        <div class="flex flex-col space-y-6 lg:space-y-0 lg:flex-row w-auto mt-4 lg:mt-5 lg:space-x-8">
+                            <div class="flex flex-col lg:w-1/2">
                                 <label for="email" class="text-sm">Email</label>
                                 @if($errors->first('email'))
                                     <small class="text-red-700">{{$errors->first('email')}}</small>
@@ -74,7 +85,7 @@
                                 <input type="text" id="email" name="email"
                                        class="p-3 h-12 border border-gray-300 rounded mt-1"/>
                             </div>
-                            <div class="flex flex-col w-1/2">
+                            <div class="flex flex-col lg:w-1/2">
                                 <label for="phone" class="text-sm">Phone number</label>
                                 @if($errors->first('phone'))
                                     <small class="text-red-700">{{$errors->first('phone')}}</small>
@@ -124,7 +135,7 @@
                 <div class="text-4xl leading-10 font-extrabold tracking-tight">Support us now!</div>
             </div>
             <div class="flex-initial w-2/5 flex-col">
-                <p class="text-lg text-center leading-6 font-normal">
+                <p class="text-center leading-6 font-normal">
                     We need your help to stay independent and to produce more videos and learning materials that would
                     benefit journalists and media consumers. Our project cannot continue without your support. We would
                     appreciate every cent you pay because this could help us become sustainable.
