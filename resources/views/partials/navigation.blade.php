@@ -17,13 +17,13 @@
     <nav class="relative container mx-auto py-6">
         <div class="flex space-x-10 justify-between items-center">
             <div class="flex">
-                <div class="bg-[url('/images/logo-light.svg')] lg:bg-[url('/images/logo-dark.svg')] h-6 bg-auto bg-no-repeat" style="width: 170px; height: 19px;">
+                <a href="{{route('home')}}" class="bg-[url('/images/logo-light.svg')] lg:bg-[url('/images/logo-dark.svg')] h-6 bg-auto bg-no-repeat" style="width: 170px; height: 19px;">
                     &nbsp;
-                </div>
+                </a>
             </div>
             <div class="hidden lg:flex container items-center justify-between">
                 <div class="space-x-8">
-                    <a href="#" class="hover:text-blue-600">Home</a>
+                    <a href="{{route('home')}}" class="hover:text-blue-600">Home</a>
                     <a href="#" class="hover:text-blue-600">About</a>
                     <a href="#" class="hover:text-blue-600">How it works</a>
                     <a href="#" class="hover:text-blue-600">Ranking</a>
@@ -49,7 +49,7 @@
 </section>
 <section id="mobileMenu" class="hidden border-b-2 shadow-md">
     <div class="container flex flex-col justify-center items-center mx-auto space-y-6 py-6">
-        <a href="#" class="hover:text-blue-600">Home</a>
+        <a href="{{route('home')}}" class="hover:text-blue-600">Home</a>
         <a href="#" class="hover:text-blue-600">About</a>
         <a href="#" class="hover:text-blue-600">How it works</a>
         <a href="#" class="hover:text-blue-600">Ranking</a>

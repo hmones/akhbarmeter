@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>AkhbarMeter - @yield('title')</title>
+    <title>AkhbarMeter | @yield('title')</title>
 
     <link href="https://fonts.bunny.net/css2?family=Inter:400;600;700;800" rel="stylesheet">
     <link href="https://fonts.bunny.net/css2?family=Cairo:400;600;700;800" rel="stylesheet">
 
+    <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="{{asset('js/jquery.js')}}" type="application/javascript"></script>
     <script src="{{asset('js/bootstrap.bundle.min.js')}}" type="application/javascript"></script>
@@ -40,9 +41,11 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-<div class="flex flex-col h-screen justify-between">
+<div class="flex flex-col h-full justify-between">
     @include('partials.navigation')
-    @yield('content')
+    <div class="h-full">
+        @yield('content')
+    </div>
     @include('partials.footer')
 </div>
 </body>
