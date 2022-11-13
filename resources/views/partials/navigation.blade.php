@@ -17,7 +17,11 @@
     <nav class="relative container mx-auto py-6">
         <div class="flex space-x-10 justify-between items-center">
             <div class="flex">
-                <a href="{{route('home')}}" class="bg-[url('/images/logo-light.svg')] lg:bg-[url('/images/logo-dark.svg')] h-6 bg-auto bg-no-repeat" style="width: 170px; height: 19px;">
+                <a
+                    href="{{route('home')}}"
+                    class="bg-[url('/images/logo-light.svg')] lg:bg-[url('/images/logo-dark.svg')] h-6 bg-auto
+                     bg-no-repeat"
+                    style="width: 170px; height: 19px;">
                     &nbsp;
                 </a>
             </div>
