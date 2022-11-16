@@ -7,7 +7,9 @@ use Illuminate\View\View;
 
 class AdminController extends Controller
 {
-    protected $modelClass, $modelPlural, $requestClass;
+    protected $modelClass;
+    protected $modelPlural;
+    protected $requestClass;
 
     public function index(): View
     {

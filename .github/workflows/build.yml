@@ -11,7 +11,7 @@ jobs:
     name: Feature tests for Laravel
     runs-on: ubuntu-latest
     container:
-      image: kirschbaumdevelopment/laravel-test-runner:8.0
+      image: kirschbaumdevelopment/laravel-test-runner:8.1
     services:
       mysql:
         image: mysql:8.0
