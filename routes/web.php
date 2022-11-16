@@ -1,18 +1,16 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
-use TCG\Voyager\Facades\Voyager;
 
 Route::resource('contact', ContactController::class)->only(['index', 'store']);
 Route::resource('videos', VideoController::class)->only(['index', 'show']);
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', fn () => view('welcome'))->name('home');
+Route::post('/lang', [LanguageController::class, 'store'])->name('lang');
 
+Route::get('/dashboard', fn () => view('dashboard'))->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::group(['prefix' => 'admin-panel'], function () {
-    Voyager::routes();
-});
+require __DIR__.'/auth.php';

@@ -36,9 +36,8 @@
                 </div>
 
                 <div class="flex items-center space-x-6">
-                    <a class="font-['Cairo']" href="#">عربي</a>
-                    <img src="{{asset('images/icons/eg-flag.png')}}" class="w-auto h-6" alt="Egyptian Flag"/>
-                    <a href="#" class="bg-blue-600 py-2 px-8 rounded text-white hover:bg-blue-800">Login</a>
+                    @include('partials.components.language-switcher')
+                    <a href="{{route('login')}}" class="bg-blue-600 py-2 px-8 rounded text-white hover:bg-blue-800">Login</a>
                 </div>
             </div>
             <div id="mobileMenuButton" class="flex lg:hidden text-white cursor-pointer">
@@ -60,10 +59,9 @@
         <a href="#" class="hover:text-blue-600">News</a>
         <a href="#" class="hover:text-blue-600">Academy</a>
         <div class="flex flex-row space-x-4">
-            <a class="font-['Cairo']" href="#">عربي</a>
-            <img src="{{asset('images/icons/eg-flag.png')}}" class="w-auto h-6" alt="Egyptian Flag"/>
+            @include('partials.components.language-switcher')
         </div>
-        <a href="#" class="bg-blue-600 py-2 px-8 rounded text-white hover:bg-blue-800">Login</a>
+        <a href="{{route('login')}}" class="bg-blue-600 py-2 px-8 rounded text-white hover:bg-blue-800">Login</a>
     </div>
 </section>
 
