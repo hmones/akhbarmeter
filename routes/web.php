@@ -12,5 +12,3 @@ Route::get('/', fn () => view('welcome'))->name('home');
 Route::post('/lang', [LanguageController::class, 'store'])->name('lang');
 
 Route::get('/dashboard', fn () => view('dashboard'))->middleware(['auth', 'verified'])->name('dashboard');
-
-require_once __DIR__.'/auth.php';

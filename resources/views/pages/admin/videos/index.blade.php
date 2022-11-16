@@ -12,7 +12,8 @@
             </a>
         </div>
         <div class="container mb-20 mt-10">
-            <table class="table-auto border-y-2 border-gray-100 mx-auto w-full">
+            <table class="table-auto border-y-2 border-gray-100 mx-auto w-full" >
+                <caption>Table for videos saved in the backend</caption>
                 <thead class="bg-gray-900 text-white p-2">
                 <tr class="border-y-2 border-gray-100">
                     <th class="p-2">Title</th>
