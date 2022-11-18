@@ -10,7 +10,7 @@
                     <div class="flex flex-row">
                         <i class="fa fa-youtube-play fa-2x text-red-700 me-2" aria-hidden="true"></i>
                         @foreach(collect($record->tags)->take(3) as $tag)
-                            <a href="{{route('videos.index', ['tag' => $tag])}}" class="flex flex-row mx-2 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
+                            <a href="{{route($route, ['tag' => $tag])}}" class="flex flex-row mx-2 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
                                 #{{$tag}}
                             </a>
                         @endforeach
@@ -20,13 +20,13 @@
                             <i class="fa fa-clock-o" aria-hidden="true"></i>
                         </div>
                         <div class="flex flex-row h-fit">
-                            {{$record->created_at->diffForHumans()}}
+                            {{$time}}
                         </div>
                     </div>
                 </div>
             </div>
             <div class="flex flex-col">
-                {{$record->title}}
+                {{$title}}
             </div>
         </div>
     </div>

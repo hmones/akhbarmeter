@@ -10,7 +10,7 @@ class StoreVideoRequest extends FormRequest
     {
         return [
             'url'         => 'required|url',
-            'title'       => 'required|string',
+            'title'       => 'required',
             'description' => 'nullable',
             'tags'        => 'nullable',
             'icon'        => 'nullable',

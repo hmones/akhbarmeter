@@ -68,15 +68,7 @@
                     <div class="flex flex-col items-start space-y-4 w-1/2">
                         @switch($type)
                             @case('rich')
-                                <label for="{{$field}}" class="text-sm">
-                                    {{Str::title($field)}}
-                                </label>
-                                <textarea name="{{$field}}"
-                                          id="{{$field}}"
-                                          cols="30"
-                                          rows="10"
-                                          class="p-3 border border-gray-300
-                                          rounded mt-1 w-full">{{$model->$field}}</textarea>
+                                @include('partials.components.rich-text', compact(['model', 'field']))
                                 @break
                             @case('tags')
                                 <label for="{{$field}}" class="text-sm">{{Str::title($field)}}</label>
@@ -89,11 +81,7 @@
                                 <div class="invalid-feedback">Please select a valid tag.</div>
                                 @break
                             @default
-                                @include('partials.components.text-input', [
-                                    'label' => Str::title($field),
-                                    'name'  => $field,
-                                    'value' => $model->$field,
-                                ])
+                                @include('partials.components.text-input', compact(['field', 'model']))
                         @endswitch
                     </div>
                 @endforeach
