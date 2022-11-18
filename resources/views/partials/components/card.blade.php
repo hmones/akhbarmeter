@@ -9,10 +9,10 @@
                 <div class="flex flex-row justify-between">
                     <div class="flex flex-row">
                         <i class="fa fa-youtube-play fa-2x text-red-700 me-2" aria-hidden="true"></i>
-                        @foreach($record->tags as $tag)
-                            <div class="flex flex-row mx-2 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
+                        @foreach(collect($record->tags)->take(3) as $tag)
+                            <a href="{{route('videos.index', ['tag' => $tag])}}" class="flex flex-row mx-2 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
                                 #{{$tag}}
-                            </div>
+                            </a>
                         @endforeach
                     </div>
                     <div class="flex flex-row space-x-1.5 text-gray-400">

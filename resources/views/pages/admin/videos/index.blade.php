@@ -7,8 +7,10 @@
                 <span class="text-gray-400"> > </span>
                 <a href="javascript:void(0)">Videos</a>
             </h3>
-            <a href="{{route('admin.videos.create')}}">
-                <h3 class="text-3xl">New <em class="fa fa-plus-circle text-gray-400"></em></h3>
+            <a class="bg-blue-600 py-2 px-8 rounded text-white hover:bg-blue-800"
+               href="{{route('admin.videos.create')}}">
+                <em class="fa fa-plus text-white"></em>
+                New
             </a>
         </div>
         <div class="container mb-20 mt-10">

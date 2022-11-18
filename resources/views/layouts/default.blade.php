@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="{{asset('css/bootstrap.rtl.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/app.rtl.css')}}">
     @endif
+    @yield('scripts')
 
     <!-- Browser and App icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="{{asset('images/favicon/apple-icon-57x57.png')}}">
@@ -42,7 +43,7 @@
 </head>
 <body>
 <div class="flex flex-col h-full justify-between">
-    @include('partials.navigation')
+    @include('partials.navigation', ['isColoredNavigation' => isset($isColoredNavigation)])
     <div class="h-full">
         @yield('content')
     </div>

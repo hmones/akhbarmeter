@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,4 +29,11 @@ class Video extends Model
     protected $casts = [
         'tags' => 'array',
     ];
+
+    public function scopeFilter(Builder $query, $params): void
+    {
+        if (data_get($params, 'tag', false)) {
+            $query->whereJsonContains('tags', data_get($params, 'tag'));
+        }
+    }
 }

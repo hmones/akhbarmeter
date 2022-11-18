@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreVideoRequest;
+use App\Http\Requests\VideoSearchRequest;
 use App\Models\Video;
 use Illuminate\View\View;
 
 class VideoController extends Controller
 {
-    public function index(): View
+    public function index(VideoSearchRequest $request): View
     {
-        return view('pages.video.index', ['videos' => Video::paginate(9)]);
+        return view('pages.video.index', ['videos' => Video::filter($request->safe()->toArray())->paginate(9)]);
     }
 
     public function store(StoreVideoRequest $request)

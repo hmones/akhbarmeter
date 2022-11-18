@@ -13,37 +13,37 @@ class AdminController extends Controller
 
     public function index(): View
     {
-        return view("pages.admin.$this->modelPlural.index", [$this->modelPlural => $this->modelClass::paginate(25)]);
+        return view("pages.admin.$this->modelPlural.index", [
+            $this->modelPlural => $this->modelClass::orderBy('created_at', 'desc')->paginate(25)
+        ]);
     }
 
     public function store()
     {
-        $request = resolve($this->requestClass);
-
-        $this->modelClass::create($request->safe()->toArray());
+        $this->modelClass::create(resolve($this->requestClass)->safe()->toArray());
 
         return redirect()->route("admin.$this->modelPlural.index")->with('success', 'Record is created successfully!');
     }
 
     public function create(): View
     {
-        return view("pages.admin.$this->modelPlural.edit");
+        return view("pages.admin.$this->modelPlural.edit", ['model' => resolve($this->modelClass)]);
     }
 
     public function edit($model): View
     {
-        $model = resolve($this->modelClass)->findOrFail($model);
-
-        return view("pages.admin.$this->modelPlural.edit", compact('model'));
+        return view("pages.admin.$this->modelPlural.edit", [
+            'model' => resolve($this->modelClass)->findOrFail($model)
+        ]);
     }
 
     public function update($model)
     {
-        $request = resolve($this->requestClass);
         $model = resolve($this->modelClass)->findOrFail($model);
-        $model->update($request->safe()->toArray());
+        $model->update(resolve($this->requestClass)->safe()->toArray());
 
-        return redirect()->route("admin.$this->modelPlural.index")->with('success', 'Record is updated successfully!');
+        return redirect()->route("admin.$this->modelPlural.index")
+            ->with('success', 'Record is updated successfully!');
     }
 
     public function destroy($model)
@@ -51,6 +51,7 @@ class AdminController extends Controller
         $model = resolve($this->modelClass)->findOrFail($model);
         $model->delete();
 
-        return redirect()->route("admin.$this->modelPlural.index")->with('success', 'Record is deleted successfully!');
+        return redirect()->route("admin.$this->modelPlural.index")
+            ->with('success', 'Record is deleted successfully!');
     }
 }

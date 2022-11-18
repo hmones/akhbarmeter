@@ -13,13 +13,21 @@
     </div>
 </section>
 
-<section id="mainMenu" class="border-none lg:border-b-2 bg-gradient-to-r from-blue-700 to-cyan-700 lg:bg-none">
+<section id="mainMenu"
+         class="
+          {{$isColoredNavigation ? 'border-none lg:border-b-2 lg:border-solid bg-gradient-to-r from-blue-700 to-cyan-700' : 'border-b-2'}}
+          lg:bg-none">
     <nav class="relative container mx-auto py-6">
         <div class="flex space-x-10 justify-between items-center">
             <div class="flex">
                 <a
                     href="{{route('home')}}"
-                    class="bg-[url('/images/logo-light.svg')] lg:bg-[url('/images/logo-dark.svg')] h-6 bg-auto
+                    class="
+                    {{ $isColoredNavigation
+                        ? "bg-[url('/images/logo-light.svg')] lg:bg-[url('/images/logo-dark.svg')]"
+                        : "bg-[url('/images/logo-dark.svg')]"
+                    }}
+                    h-6 bg-auto
                      bg-no-repeat"
                     style="width: 170px; height: 19px;">
                     &nbsp;
@@ -40,7 +48,7 @@
                     <a href="{{route('login')}}" class="bg-blue-600 py-2 px-8 rounded text-white hover:bg-blue-800">Login</a>
                 </div>
             </div>
-            <div id="mobileMenuButton" class="flex lg:hidden text-white cursor-pointer">
+            <div id="mobileMenuButton" class="flex lg:hidden {{ $isColoredNavigation ? 'text-white' : 'text-black' }} cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
