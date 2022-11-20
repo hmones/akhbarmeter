@@ -12,7 +12,8 @@ parameters:
 #    ignoreErrors:
 #        - '#PHPDoc tag @var#'
 #
-#    excludePaths:
-#        - ./*/*/FileToBeExcluded.php
+    excludePaths:
+        - ./*/*/VerifyEmailController.php
 #
 #    checkMissingIterableValueType: false
+

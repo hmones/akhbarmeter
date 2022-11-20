@@ -31,6 +31,8 @@ jobs:
           cp .env.ci .env
           php artisan key:generate
           php artisan migrate:fresh
+      - name: Build frontend assets
+        run: npm run build
       - name: Execute tests
         run: php artisan test
       - name: Execute clean code test

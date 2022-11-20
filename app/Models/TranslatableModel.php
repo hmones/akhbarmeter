@@ -14,7 +14,7 @@ class TranslatableModel extends Model
     {
         if (array_key_exists($key, $this->attributes) || $this->hasGetMutator($key)) {
             if (in_array($key, $this->translatable ?? [])) {
-                return $this->getTranslation($key, app()->getLocale() ?? 'ar') ?? $this->getAttributeValue($key);
+                return $this->getTranslation($key, empty(app()->getLocale()) ? 'ar' : app()->getLocale()) ?? $this->getAttributeValue($key);
             }
 
             return $this->getAttributeValue($key);
