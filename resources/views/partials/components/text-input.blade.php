@@ -1,4 +1,4 @@
-<label for="{{$field ?? ''}}" class="text-sm">{{Str::title($field) ?? ''}}</label>
+<label for="{{$field ?? ''}}" class="text-sm">{{Str::of($field)->ucfirst()->replace('_', ' ') ?? ''}}</label>
 @if(in_array($field, $model->translatable ?? []))
     <div id="{{$field}}_ar_input" class="flex flex-row w-full items-center">
         <input type="text" id="{{$field ?? ''}}" name="{{($field ?? '') . '[ar]'}}"

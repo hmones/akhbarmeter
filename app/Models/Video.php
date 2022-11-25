@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
+use App\Constants\InputFields;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Spatie\Translatable\HasTranslations;
 
 class Video extends TranslatableModel
 {
     use HasFactory;
-    use HasTranslations;
 
     public $translatable = [
         'title',
@@ -17,11 +16,11 @@ class Video extends TranslatableModel
     ];
 
     public $editableFields = [
-        'title'       => 'text',
-        'url'         => 'text',
-        'description' => 'rich',
-        'tags'        => 'tags',
-        'icon'        => 'text'
+        'title'       => InputFields::TEXT,
+        'url'         => InputFields::TEXT,
+        'description' => InputFields::RICH_TEXT,
+        'tags'        => InputFields::TAGS,
+        'icon'        => InputFields::TEXT
     ];
 
     protected $fillable = [

@@ -12,5 +12,6 @@ class VideoController extends AdminController
         $this->modelPlural = 'videos';
         $this->modelClass = Video::class;
         $this->requestClass = StoreVideoRequest::class;
+        $this->displayedFields = ['title', 'url'];
     }
 }

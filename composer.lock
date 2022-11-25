@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1b97f397a07739ad9e8d41f67aa62c0b",
+    "content-hash": "60fcf2868e1654c9e2fe4af8c74ee7b3",
     "packages": [
         {
             "name": "brick/math",
@@ -5859,6 +5859,71 @@
                 "source": "https://github.com/hamcrest/hamcrest-php/tree/v2.0.1"
             },
             "time": "2020-07-09T08:09:16+00:00"
+        },
+        {
+            "name": "hmones/laravel-facade",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hmones/laravel-facade.git",
+                "reference": "ba319aef46cd35f6f665523b2857dc2fe4699ddf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hmones/laravel-facade/zipball/ba319aef46cd35f6f665523b2857dc2fe4699ddf",
+                "reference": "ba319aef46cd35f6f665523b2857dc2fe4699ddf",
+                "shasum": ""
+            },
+            "require": {
+                "composer-runtime-api": "^2.0",
+                "illuminate/support": "~7|~8|~9"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~5|~6|~7",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Hmones\\LaravelFacade\\LaravelFacadeServiceProvider"
+                    ],
+                    "aliases": {
+                        "LaravelFacade": "Hmones\\LaravelFacade\\Facades\\LaravelFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hmones\\LaravelFacade\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Haytahm Mones",
+                    "email": "haytham.mones@gmail.com",
+                    "homepage": "https://www.haythammones.com"
+                },
+                {
+                    "name": "Maab Javaid",
+                    "email": "maabjavaid9@gmail.com"
+                }
+            ],
+            "description": "Generates facades in your laravel project with one simple command.",
+            "homepage": "https://github.com/hmones/laravel-facade",
+            "keywords": [
+                "LaravelFacade",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/hmones/laravel-facade/issues",
+                "source": "https://github.com/hmones/laravel-facade/tree/v1.2.0"
+            },
+            "time": "2022-05-10T13:46:22+00:00"
         },
         {
             "name": "laravel/breeze",

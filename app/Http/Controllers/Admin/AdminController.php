@@ -10,11 +10,14 @@ class AdminController extends Controller
     protected $modelClass;
     protected $modelPlural;
     protected $requestClass;
+    protected $displayedFields = [];
 
     public function index(): View
     {
-        return view("pages.admin.$this->modelPlural.index", [
-            $this->modelPlural => $this->modelClass::orderBy('created_at', 'desc')->paginate(25)
+        return view("pages.admin.index", [
+            'records'         => $this->modelClass::orderBy('created_at', 'desc')->paginate(25),
+            'displayedFields' => $this->displayedFields,
+            'modelPlural'     => $this->modelPlural
         ]);
     }
 
@@ -27,13 +30,14 @@ class AdminController extends Controller
 
     public function create(): View
     {
-        return view("pages.admin.$this->modelPlural.edit", ['model' => resolve($this->modelClass)]);
+        return view("pages.admin.edit", ['model' => resolve($this->modelClass), 'modelPlural' => $this->modelPlural]);
     }
 
     public function edit($model): View
     {
-        return view("pages.admin.$this->modelPlural.edit", [
-            'model' => resolve($this->modelClass)->findOrFail($model)
+        return view("pages.admin.edit", [
+            'model'       => resolve($this->modelClass)->findOrFail($model),
+            'modelPlural' => $this->modelPlural
         ]);
     }
 
