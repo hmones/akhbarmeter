@@ -2,25 +2,20 @@
 
 namespace App\Models;
 
-use App\Constants\InputFields;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Video extends TranslatableModel
 {
+    use CrudTrait;
     use HasFactory;
+    use HasTranslations;
 
     public $translatable = [
         'title',
         'description'
-    ];
-
-    public $editableFields = [
-        'title'       => InputFields::TEXT,
-        'url'         => InputFields::TEXT,
-        'description' => InputFields::RICH_TEXT,
-        'tags'        => InputFields::TAGS,
-        'icon'        => InputFields::TEXT
     ];
 
     protected $fillable = [

@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;

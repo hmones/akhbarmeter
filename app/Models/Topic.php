@@ -3,13 +3,16 @@
 
 namespace App\Models;
 
-use App\Constants\InputFields;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Topic extends TranslatableModel
 {
+    use CrudTrait;
     use HasFactory;
+    use HasTranslations;
 
     const TYPES = [
         'violations'   => 'Violations',
@@ -20,20 +23,6 @@ class Topic extends TranslatableModel
     public $translatable = [
         'title',
         'description'
-    ];
-
-    public $editableFields = [
-        'title'         => InputFields::TEXT,
-        'description'   => InputFields::RICH_TEXT,
-        'image'         => InputFields::IMAGE,
-        'tags'          => InputFields::TAGS,
-        'type'          => InputFields::DROPDOWN,
-        'author_name'   => InputFields::TEXT,
-        'author_avatar' => InputFields::IMAGE,
-    ];
-
-    public $dropdownValues = [
-        'type' => self::TYPES
     ];
 
     protected $fillable = [
