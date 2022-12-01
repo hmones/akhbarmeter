@@ -10,12 +10,12 @@ return new class extends Migration
     {
         Schema::create('topics', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->text('title');
             $table->text('description');
             $table->string('image')->nullable();
             $table->json('tags')->nullable();
             $table->string('author_name');
-            $table->string('author_avatar');
+            $table->string('author_avatar')->nullable();
             $table->string('type');
             $table->timestamps();
         });

@@ -8,8 +8,8 @@
                         <div class="flex flex-row">
                             @yield('tags-icon')
                             @foreach(collect($tags)->take(3) as $tag)
-                                <a href="{{route($route, ['tag' => $tag])}}" class="flex flex-row mx-2 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
-                                    #{{$tag}}
+                                <a href="{{route($route, ['tag' => $tag['value']])}}" class="flex flex-row mx-2 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
+                                    #{{data_get($tag, 'value')}}
                                 </a>
                             @endforeach
                         </div>

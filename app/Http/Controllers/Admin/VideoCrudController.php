@@ -36,7 +36,6 @@ class VideoCrudController extends CrudController
         CRUD::column('title');
         CRUD::column('url');
         CRUD::column('description');
-        CRUD::column('tags');
         CRUD::column('icon');
     }
 
@@ -46,7 +45,11 @@ class VideoCrudController extends CrudController
 
         CRUD::field('title');
         CRUD::field('url');
-        CRUD::field('description');
+        CRUD::field('description')->type('ckeditor')->options([
+            'autoGrow_minHeight'   => 200,
+            'autoGrow_bottomSpace' => 50,
+            'removePlugins'        => 'resize,maximize',
+        ]);
         CRUD::field('tags');
         CRUD::field('icon');
     }

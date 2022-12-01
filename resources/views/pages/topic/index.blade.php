@@ -40,7 +40,7 @@
                                 'time'  => $record->created_at->diffForHumans(),
                                 'route' => 'topics.index',
                                 'tags'  => $record->tags,
-                                'avatar' => $record->image,
+                                'avatar' => Storage::url($record->image),
                                 'show'  => route('topics.show', ['topic' => $record])
                             ])
                         </div>

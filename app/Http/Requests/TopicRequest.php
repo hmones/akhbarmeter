@@ -16,11 +16,11 @@ class TopicRequest extends FormRequest
         return [
             'title'         => 'required',
             'description'   => 'required',
-            'image'         => 'nullable|url',
-            'tags'          => 'nullable|array',
+            'image'         => 'nullable|image|max:10000',
+            'tags'          => 'nullable',
             'type'          => 'required|string',
             'author_name'   => 'required',
-            'author_avatar' => 'nullable|url'
+            'author_avatar' => 'nullable|image|max:10000'
         ];
     }
 }

@@ -27,7 +27,7 @@ class TopicCrudController extends CrudController
 
     public function setup(): void
     {
-        CRUD::setModel(\App\Models\Topic::class);
+        CRUD::setModel(Topic::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/topic');
         CRUD::setEntityNameStrings('topic', 'topics');
     }
@@ -36,10 +36,9 @@ class TopicCrudController extends CrudController
     {
         CRUD::column('title');
         CRUD::column('description');
-        CRUD::column('image')->type('image');
-        CRUD::column('tags')->type('json');
+        CRUD::column('image')->type('image')->disk(config('filesystems.default'));
         CRUD::column('author_name');
-        CRUD::column('author_avatar')->type('image');
+        CRUD::column('author_avatar')->type('image')->disk(config('filesystems.default'));
         CRUD::column('type');
     }
 
@@ -52,16 +51,15 @@ class TopicCrudController extends CrudController
     {
         CRUD::setValidation(TopicRequest::class);
         CRUD::field('title');
-        CRUD::field('description');
-        CRUD::field('image');
-        CRUD::field('tags')->type('repeatable')->fields([[
-                                                             'name'    => 'name',
-                                                             'type'    => 'text',
-                                                             'label'   => 'Name',
-                                                             'wrapper' => ['class' => 'form-group col-md-4'],
-                                                         ]])->new_item_label('Add tag');
+        CRUD::field('description')->type('ckeditor')->options([
+            'autoGrow_minHeight'   => 200,
+            'autoGrow_bottomSpace' => 50,
+            'removePlugins'        => 'resize,maximize',
+        ]);
+        CRUD::field('image')->type('upload')->upload(true);
+        CRUD::field('tags');
         CRUD::field('author_name');
-        CRUD::field('author_avatar');
+        CRUD::field('author_avatar')->type('upload')->upload(true);
         CRUD::field('type')->type('select_from_array')->options(Topic::TYPES);
     }
 }
