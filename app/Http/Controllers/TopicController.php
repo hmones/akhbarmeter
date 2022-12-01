@@ -8,7 +8,7 @@ use Illuminate\View\View;
 
 class TopicController extends Controller
 {
-    const PAGINATION_ITEMS = 9;
+    const PAGINATION_ITEMS = 3;
 
     public function index(TopicSearchRequest $request): View
     {

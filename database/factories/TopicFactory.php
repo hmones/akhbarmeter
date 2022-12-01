@@ -10,10 +10,10 @@ class TopicFactory extends Factory
     public function definition(): array
     {
         return [
-            'title'         => $this->faker->sentence,
-            'description'   => $this->faker->paragraphs(10),
+            'title'         => ['en' => $this->faker->sentence, 'ar' => $this->faker->sentence],
+            'description'   => ['en' => $this->faker->paragraphs(10), 'ar' => $this->faker->paragraphs(10)],
             'image'         => $this->faker->imageUrl,
-            'tags'          => [$this->faker->word, $this->faker->word],
+            'tags'          => [['value' => $this->faker->word], ['value' => $this->faker->word]],
             'type'          => $this->faker->randomElement(Topic::TYPES),
             'author_name'   => $this->faker->name,
             'author_avatar' => $this->faker->imageUrl
