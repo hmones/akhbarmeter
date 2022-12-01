@@ -28,6 +28,9 @@ class TopicController extends Controller
 
     public function show(Topic $topic): View
     {
-        return view('pages.topic.show', compact('topic'));
+        return view('pages.topic.show', [
+            'topic'   => $topic,
+            'related' => Topic::where('type', $topic->type)->orderBy('created_at', 'desc')->take(9)->get()
+        ]);
     }
 }
