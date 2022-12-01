@@ -14,7 +14,7 @@ class TopicFactory extends Factory
             'description'   => ['en' => $this->faker->paragraphs(10), 'ar' => $this->faker->paragraphs(10)],
             'image'         => $this->faker->imageUrl,
             'tags'          => [['value' => $this->faker->word], ['value' => $this->faker->word]],
-            'type'          => $this->faker->randomElement(Topic::TYPES),
+            'type'          => $this->faker->randomElement(array_keys(Topic::TYPES)),
             'author_name'   => $this->faker->name,
             'author_avatar' => $this->faker->imageUrl
         ];
