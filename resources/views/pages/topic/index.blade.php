@@ -22,35 +22,44 @@
                         <i class="fa fa-close"></i>
                     </a>
                 @endif
-                @foreach($topics->pluck('tags')->flatten()->take(18) as $tag)
-                    <a href="{{route('topics.index', compact('tag'))}}" class="flex flex-row mx-2 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
-                        #{{$tag}}
-                    </a>
+                @foreach($topics as $topicsList)
+                    @foreach($topicsList->pluck('tags')->flatten()->take(18) as $tag)
+                        <a href="{{route('topics.index', compact('tag'))}}" class="flex flex-row mx-2 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
+                            #{{$tag}}
+                        </a>
+                    @endforeach
                 @endforeach
             </div>
         </div>
 
         <div class="container mb-10 space-y-10">
-            @foreach($topics->chunk(3) as $rowTopics)
-                <div class="flex flex-col xl:flex-row w-full items-start items-stretch justify-center mx-auto space-y-10 xl:space-y-0">
-                    @foreach($rowTopics as $record)
-                        <div class="flex flex-col xl:flex-row w-full xl:w-1/3 mx-2">
-                            @include('partials.topic-card', [
-                                'title' => $record->title,
-                                'time'  => $record->created_at->diffForHumans(),
-                                'route' => 'topics.index',
-                                'tags'  => $record->tags,
-                                'avatar' => Storage::url($record->image),
-                                'show'  => route('topics.show', ['topic' => $record])
-                            ])
-                        </div>
-                    @endforeach
-                </div>
+            @foreach($topics as $type => $topicsList)
+                @if($topicsList->count() > 0)
+                    <div class="font-extrabold">{{\App\Models\Topic::TYPES[$type]}}</div>
+                @endif
+                @foreach($topicsList->chunk(3) as $rowTopics)
+                    <div
+                        class="flex flex-col xl:flex-row w-full items-start items-stretch justify-left mx-auto space-y-10 xl:space-y-0">
+                        @foreach($rowTopics as $record)
+                            <div class="flex flex-col xl:flex-row w-full xl:w-1/3 mx-2">
+                                @include('partials.topic-card', [
+                                    'title' => $record->title,
+                                    'time'  => $record->created_at->diffForHumans(),
+                                    'route' => 'topics.index',
+                                    'tags'  => $record->tags,
+                                    'avatar' => Storage::url($record->image),
+                                    'show'  => route('topics.show', ['topic' => $record])
+                                ])
+                            </div>
+                        @endforeach
+                    </div>
+                @endforeach
             @endforeach
         </div>
-
-        <div class="container my-20 space-y-10">
-            {{$topics->links()}}
-        </div>
+        @if($paginationTopic)
+            <div class="container my-20 space-y-10">
+                {{$topics[$paginationTopic]->links()}}
+            </div>
+        @endif
     </div>
 @endsection
