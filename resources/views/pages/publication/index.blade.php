@@ -22,12 +22,10 @@
                         <i class="fa fa-close"></i>
                     </a>
                 @endif
-                @foreach($publications as $publicationList)
-                    @foreach($publicationList->pluck('tags')->flatten()->take(18) as $tag)
-                        <a href="{{route('publications.index', compact('tag'))}}" class="flex flex-row mx-2 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
-                            #{{$tag}}
-                        </a>
-                    @endforeach
+                @foreach($publications->pluck('tags')->whereNotNull()->flatten()->take(18) as $tag)
+                    <a href="{{route('publications.index', compact('tag'))}}" class="flex flex-row mx-2 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
+                        #{{$tag}}
+                    </a>
                 @endforeach
             </div>
         </div>
@@ -39,14 +37,16 @@
                         <div class="flex flex-col xl:flex-row w-full xl:w-1/3 mx-2">
                             @include('partials.file-card', [
                                 'title' => $record->title,
-                                'description' => $record->descroption,
+                                'description' => $record->description,
                                 'time'  => $record->created_at->diffForHumans(),
                                 'route' => 'publications.index',
                                 'image' => Storage::url($record->image),
                                 'author' => $record->author_name,
                                 'avatar' => Storage::url($record->author_avatar),
                                 'file' => Storage::url($record->file),
-                                'tags'  => $record->tags
+                                'tags'  => $record->tags,
+                                'created' => $record->created_at,
+                                'read' => $record->min_to_read
                             ])
                         </div>
                     @endforeach
