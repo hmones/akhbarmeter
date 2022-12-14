@@ -11,10 +11,10 @@ return new class extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
             $table->string('url');
-            $table->string('title');
-            $table->text('description');
-            $table->json('tags');
-            $table->string('icon');
+            $table->text('title');
+            $table->text('description')->nullable();
+            $table->json('tags')->nullable();
+            $table->string('icon')->nullable();
             $table->timestamps();
         });
     }

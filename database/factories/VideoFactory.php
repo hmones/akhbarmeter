@@ -9,11 +9,11 @@ class VideoFactory extends Factory
     public function definition(): array
     {
         return [
-            'title'       => fake()->sentence,
-            'url'         => fake()->url,
-            'description' => fake()->paragraph,
-            'tags'        => [fake()->word, fake()->word],
-            'icon'        => fake()->imageUrl
+            'title'       => ['en' => $this->faker->sentence, 'ar' => $this->faker->sentence],
+            'url'         => 'https://www.youtube.com/embed/7Dy8ymLWeU0?list=RD7Dy8ymLWeU0',
+            'description' => ['en' => $this->faker->paragraphs(10), 'ar' => $this->faker->paragraphs(10)],
+            'tags'        => [['value' => $this->faker->word], ['value' => $this->faker->word]],
+            'icon'        => $this->faker->imageUrl
         ];
     }
 }
