@@ -12,9 +12,19 @@ class TopicController extends Controller
 
     public function index(TopicSearchRequest $request): View
     {
-        $violations = Topic::filter($request->safe()->toArray())->where('type', 'violations')->orderBy('created_at', 'desc')->paginate(self::PAGINATION_ITEMS);
-        $fakeNews = Topic::filter($request->safe()->toArray())->where('type', 'fakeNews')->orderBy('created_at', 'desc')->paginate(self::PAGINATION_ITEMS);
-        $codeOfEthics = Topic::filter($request->safe()->toArray())->where('type', 'codeOfEthics')->orderBy('created_at', 'desc')->paginate(self::PAGINATION_ITEMS);
+        $query = $request->safe()->toArray();
+        $violations = Topic::filter($query)
+            ->whereType('violations')
+            ->orderBy('created_at', 'desc')
+            ->paginate(self::PAGINATION_ITEMS);
+        $fakeNews = Topic::filter($query)
+            ->whereType('fakeNews')
+            ->orderBy('created_at', 'desc')
+            ->paginate(self::PAGINATION_ITEMS);
+        $codeOfEthics = Topic::filter($query)
+            ->whereType('codeOfEthics')
+            ->orderBy('created_at', 'desc')
+            ->paginate(self::PAGINATION_ITEMS);
 
         return view('pages.topic.index', [
             'topics'          => compact(['violations', 'codeOfEthics', 'fakeNews']),

@@ -15,6 +15,8 @@ class Topic extends Model
     use HasFactory;
     use HasTranslations;
 
+    const PAGINATION_ITEMS = 3;
+
     const TYPES = [
         'violations'   => 'Violations',
         'fakeNews'     => 'Fake News',

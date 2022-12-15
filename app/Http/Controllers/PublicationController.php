@@ -10,7 +10,9 @@ class PublicationController extends Controller
     public function index(PublicationSearchRequest $request)
     {
         return view('pages.publication.index', [
-            'publications' => Publication::filter($request->safe()->toArray())->orderBy('created_at', 'desc')->paginate(9)
+            'publications' => Publication::filter($request->safe()->toArray())
+                ->orderBy('created_at', 'desc')
+                ->paginate(9)
         ]);
     }
 }

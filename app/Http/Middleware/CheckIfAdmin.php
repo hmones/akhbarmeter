@@ -12,10 +12,6 @@ class CheckIfAdmin
             return $this->respondToUnauthorizedRequest($request);
         }
 
-        if (!$this->checkIfUserIsAdmin(backpack_user())) {
-            return $this->respondToUnauthorizedRequest($request);
-        }
-
         return $next($request);
     }
 
@@ -24,11 +20,5 @@ class CheckIfAdmin
         return ($request->ajax() || $request->wantsJson())
             ? response(trans('backpack::base.unauthorized'), 401)
             : redirect()->guest(backpack_url('login'));
-    }
-
-    private function checkIfUserIsAdmin($user): bool
-    {
-        // return ($user->is_admin == 1);
-        return true;
     }
 }

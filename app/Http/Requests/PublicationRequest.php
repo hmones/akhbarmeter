@@ -17,10 +17,10 @@ class PublicationRequest extends FormRequest
             'title'         => 'required',
             'description'   => 'nullable',
             'tags'          => 'nullable',
-            'file'          => 'required|file|max:30000',
+            'file'          => 'required|file|max:8000',
             'author_name'   => 'required',
-            'author_avatar' => 'nullable|image|max:10000',
-            'image'         => 'nullable|image|max:10000',
+            'author_avatar' => 'nullable|image|max:8000',
+            'image'         => 'nullable|image|max:8000',
             'min_to_read'   => 'required|numeric',
         ];
     }
