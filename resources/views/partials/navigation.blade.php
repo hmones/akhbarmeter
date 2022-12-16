@@ -13,17 +13,29 @@
     </div>
 </section>
 
-<section id="mainMenu" class="border-none lg:border-b-2 bg-gradient-to-r from-blue-700 to-cyan-700 lg:bg-none">
+<section id="mainMenu"
+         class="
+          {{$isColoredNavigation ? 'border-none lg:border-b-2 lg:border-solid bg-gradient-to-r from-blue-700 to-cyan-700' : 'border-b-2'}}
+          lg:bg-none">
     <nav class="relative container mx-auto py-6">
         <div class="flex space-x-10 justify-between items-center">
             <div class="flex">
-                <div class="bg-[url('/images/logo-light.svg')] lg:bg-[url('/images/logo-dark.svg')] h-6 bg-auto bg-no-repeat" style="width: 170px; height: 19px;">
+                <a
+                    href="{{route('home')}}"
+                    class="
+                    {{ $isColoredNavigation
+                        ? "bg-[url('/images/logo-light.svg')] lg:bg-[url('/images/logo-dark.svg')]"
+                        : "bg-[url('/images/logo-dark.svg')]"
+                    }}
+                    h-6 bg-auto
+                     bg-no-repeat"
+                    style="width: 170px; height: 19px;">
                     &nbsp;
-                </div>
+                </a>
             </div>
             <div class="hidden lg:flex container items-center justify-between">
                 <div class="space-x-8">
-                    <a href="#" class="hover:text-blue-600">Home</a>
+                    <a href="{{route('home')}}" class="hover:text-blue-600">Home</a>
                     <a href="#" class="hover:text-blue-600">About</a>
                     <a href="#" class="hover:text-blue-600">How it works</a>
                     <a href="#" class="hover:text-blue-600">Ranking</a>
@@ -32,12 +44,11 @@
                 </div>
 
                 <div class="flex items-center space-x-6">
-                    <a class="font-['Cairo']" href="#">عربي</a>
-                    <img src="{{asset('images/icons/eg-flag.png')}}" class="w-auto h-6" alt="Egyptian Flag"/>
-                    <a href="#" class="bg-blue-600 py-2 px-8 rounded text-white hover:bg-blue-800">Login</a>
+                    @include('partials.components.language-switcher')
+                    <a href="{{route('login')}}" class="bg-blue-600 py-2 px-8 rounded text-white hover:bg-blue-800">Login</a>
                 </div>
             </div>
-            <div id="mobileMenuButton" class="flex lg:hidden text-white cursor-pointer">
+            <div id="mobileMenuButton" class="flex lg:hidden {{ $isColoredNavigation ? 'text-white' : 'text-black' }} cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -49,17 +60,16 @@
 </section>
 <section id="mobileMenu" class="hidden border-b-2 shadow-md">
     <div class="container flex flex-col justify-center items-center mx-auto space-y-6 py-6">
-        <a href="#" class="hover:text-blue-600">Home</a>
+        <a href="{{route('home')}}" class="hover:text-blue-600">Home</a>
         <a href="#" class="hover:text-blue-600">About</a>
         <a href="#" class="hover:text-blue-600">How it works</a>
         <a href="#" class="hover:text-blue-600">Ranking</a>
         <a href="#" class="hover:text-blue-600">News</a>
         <a href="#" class="hover:text-blue-600">Academy</a>
         <div class="flex flex-row space-x-4">
-            <a class="font-['Cairo']" href="#">عربي</a>
-            <img src="{{asset('images/icons/eg-flag.png')}}" class="w-auto h-6" alt="Egyptian Flag"/>
+            @include('partials.components.language-switcher')
         </div>
-        <a href="#" class="bg-blue-600 py-2 px-8 rounded text-white hover:bg-blue-800">Login</a>
+        <a href="{{route('login')}}" class="bg-blue-600 py-2 px-8 rounded text-white hover:bg-blue-800">Login</a>
     </div>
 </section>
 

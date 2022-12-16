@@ -19,6 +19,7 @@ class ContactController extends Controller
     {
         Mail::to(config('mail.from.address'))->send(new ContactMail($request->safe()->toArray()));
 
-        return redirect(route('contact.index'))->with('success', 'Thank you for contacting us, we will get in touch with you shortly!');
+        return redirect(route('contact.index'))
+            ->with('success', 'Thank you for contacting us, we will get in touch with you shortly!');
     }
 }
