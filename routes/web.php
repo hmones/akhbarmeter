@@ -7,7 +7,7 @@ use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('contact', ContactController::class)->only(['index', 'store']);
-Route::resource('videos', VideoController::class)->only(['index']);
+Route::resource('videos', VideoController::class)->only(['index', 'show']);
 Route::resource('publications', PublicationController::class)->only(['index']);
 Route::resource('topics', TopicController::class)->only(['index', 'show']);
 

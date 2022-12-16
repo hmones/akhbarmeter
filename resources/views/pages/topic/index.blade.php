@@ -24,7 +24,8 @@
                 @endif
                 @foreach($topics as $topicsList)
                     @foreach($topicsList->pluck('tags')->flatten()->take(18) as $tag)
-                        <a href="{{route('topics.index', compact('tag'))}}" class="flex flex-row mx-2 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
+                        <a href="{{route('topics.index', compact('tag'))}}"
+                           class="flex flex-row mx-2 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
                             #{{$tag}}
                         </a>
                     @endforeach
@@ -48,7 +49,7 @@
                                     'route' => 'topics.index',
                                     'tags'  => $record->tags,
                                     'avatar' => Storage::url($record->image),
-                                    'show'  => route('topics.show', ['topic' => $record])
+                                    'show'  => route('topics.show', $record->id)
                                 ])
                             </div>
                         @endforeach

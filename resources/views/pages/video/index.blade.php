@@ -17,7 +17,8 @@
 
         <div class="container mb-10 space-y-10">
             @foreach($videos->chunk(3) as $rowVideos)
-                <div class="flex flex-col xl:flex-row w-full items-start items-stretch justify-center mx-auto space-y-10 xl:space-y-0">
+                <div
+                    class="flex flex-col xl:flex-row w-full items-start items-stretch justify-center mx-auto space-y-10 xl:space-y-0">
                     @foreach($rowVideos as $record)
                         <div class="flex flex-col xl:flex-row w-full xl:w-1/3 mx-2">
                             @include('partials.video-card', [
@@ -25,7 +26,8 @@
                                 'time'  => $record->created_at->diffForHumans(),
                                 'route' => 'videos.index',
                                 'avatar' => $record->url,
-                                'tags'  => $record->tags
+                                'tags'  => $record->tags,
+                                'show'  => route('videos.show', $record->id)
                             ])
                         </div>
                     @endforeach
