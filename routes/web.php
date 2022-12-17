@@ -12,5 +12,8 @@ Route::resource('publications', PublicationController::class)->only(['index']);
 Route::resource('topics', TopicController::class)->only(['index', 'show']);
 
 Route::get('/', fn () => view('welcome'))->name('home');
+Route::get('about', fn () => view('pages.about.main'))->name('about');
+Route::get('akhbarmeter', fn () => view('pages.about.akhbarmeter'))->name('akhbarmeter');
+Route::get('methodology', fn () => view('pages.about.methodology'))->name('methodology');
 
 Route::get('/dashboard', fn () => view('dashboard'))->middleware(['auth', 'verified'])->name('dashboard');
