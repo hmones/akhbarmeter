@@ -71,14 +71,17 @@
                       id="mc-embedded-subscribe-form"
                       method="post"
                       name="mc-embedded-subscribe-form" novalidate="" target="_blank">
-                    <input class="flex flex-row p-3 h-12 border border-gray-300 rounded mt-1 w-full text-black" id="mce-EMAIL" name="EMAIL" placeholder="e.g. first.lastname@domain.com" spellcheck="false" type="email" value=""/>
-                    <input class="flex flex-row px-3 py-2 h-12 shadow-sm rounded mt-1 bg-blue-500" id="mc-embedded-subscribe" name="subscribe" type="submit" value="Notify me">
+                    <input class="flex flex-row p-3 h-12 border border-gray-300 rounded mt-1 w-full text-black"
+                           id="mce-EMAIL" name="EMAIL" placeholder="e.g. first.lastname@domain.com" spellcheck="false"
+                           type="email" value=""/>
+                    <input class="flex flex-row px-3 py-2 h-12 shadow-sm rounded mt-1 bg-blue-500"
+                           id="mc-embedded-subscribe" name="subscribe" type="submit" value="Notify me">
                 </form>
                 <div class="flex flex-col text-xs leading-5 font-normal">
                     <span>We care about the protection of your data. Read our <a href="#">Privacy Policy</a></span>
                     <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                     <div aria-hidden="true" style="position: relative; left: -5000px;z-index:-1;">
-                        <input name="b_2911001665bae66f0f76c3b60_04234119df" tabindex="-1" type="text" value="" />
+                        <input name="b_2911001665bae66f0f76c3b60_04234119df" tabindex="-1" type="text" value=""/>
                     </div>
                 </div>
             </div>

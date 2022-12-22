@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests;
 
+use App\Models\QuestionOption;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class VideoRequest extends FormRequest
+class QuestionOptionRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -15,11 +17,11 @@ class VideoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'url'         => 'required|url',
+            'question_id' => 'nullable|exists:questions,id',
             'title'       => 'required',
             'description' => 'nullable',
-            'tags'        => 'nullable',
-            'icon'        => 'nullable',
+            'weight'      => Rule::in(QuestionOption::WEIGHTS),
+            'selected'    => 'in:0,1',
         ];
     }
 

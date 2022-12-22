@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class VideoRequest extends FormRequest
+class ArticleTypeRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -15,10 +15,8 @@ class VideoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'url'         => 'required|url',
-            'title'       => 'required',
+            'title'       => 'nullable',
             'description' => 'nullable',
-            'tags'        => 'nullable',
             'icon'        => 'nullable',
         ];
     }

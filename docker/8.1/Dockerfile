@@ -44,8 +44,12 @@ RUN apt-get update \
     && apt-get install -y yarn \
     && apt-get install -y mysql-client \
     && apt-get install -y postgresql-client-$POSTGRES_VERSION \
+    && apt update \
+    && apt install -y software-properties-common \
+    && apt install -y python3-pip \
     && apt-get -y autoremove \
     && apt-get clean \
+    && pip install cfscrape \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.1
