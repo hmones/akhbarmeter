@@ -15,8 +15,8 @@ class QuestionOption extends Model
     use CrudTrait;
 
     const WEIGHTS = [0, 1];
-    const NO_MISTAKE = 0;
-    const MISTAKE = 1;
+    const NO_MISTAKE = 1;
+    const MISTAKE = 0;
 
     public $translatable = [
         'title',
