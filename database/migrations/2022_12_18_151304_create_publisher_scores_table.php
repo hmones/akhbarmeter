@@ -19,6 +19,8 @@ return new class extends Migration
             $table->integer('score_2');
             $table->integer('score_3');
             $table->integer('score');
+            $table->integer('rank');
+            $table->boolean('is_trending')->default(false);
             $table->timestamps();
         });
     }

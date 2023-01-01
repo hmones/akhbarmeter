@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('content')
-    <div class="bg-[url('{{Storage::url($topic->image)}}')] bg-cover bg-center">
+    <div style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{Storage::url($topic->image)}}'); background-position: center; background-size: cover;">
         <div class="container flex flex-col w-full items-center justify-center mx-auto space-y-4 py-16 text-white">
             <div class="flex flex-col">
                 <h1 class="text-5xl leading-10 font-extrabold tracking-tight">{{$topic->title}}</h1>

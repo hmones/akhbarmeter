@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="{{asset('css/bootstrap.rtl.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/app.rtl.css')}}">
     @endif
-    @yield('scripts')
+    @stack('scripts')
 
     <!-- Browser and App icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="{{asset('images/favicon/apple-icon-57x57.png')}}">

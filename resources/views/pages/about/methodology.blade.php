@@ -3,10 +3,8 @@
     Methodology (How it works?)
 @endsection
 @section('content')
-    @include('partials.page-header', [
-        'headline' => 'How it works?',
-        'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit.'
-    ])
+    <x-page-header headline="How it works?" description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque"/>
+
     <div class="p-4 bg-indigo-50 md:container md:mx-auto md:rounded-xl md:flex items-center">
         <div class="flex flex-col space-y-4 md:space-y-0 md:p-10">
             <div class="flex flex-col">
@@ -35,7 +33,7 @@
     </div>
 
     <div
-        class="flex flex-col md:flex-row items-center justify-center text-center px-8 my-6 space-y-6 md:space-y-0 md:container md:mx-auto md:items-start md:mt-20">
+            class="flex flex-col md:flex-row items-center justify-center text-center px-8 my-6 space-y-6 md:space-y-0 md:container md:mx-auto md:items-start md:mt-20">
         <div class="flex flex-col md:w-1/3 md:text-left md:px-10 md:space-y-4">
             <div class="flex flex-col">
                 <div class="font-extrabold text-xl leading-10 md:text-3xl md:leading-9">
@@ -81,10 +79,7 @@
     </div>
 
     <div class="text-center md:mt-20">
-        @include('partials.page-header', [
-            'headline' => 'Do all criteria have the same influence on the final rating score?',
-            'description' => 'The three different categories of questions (professionalism, violations of law conduct and human rights, and manipulation) do not equally influence the public.'
-        ])
+        <x-page-header headline="Do all criteria have the same influence on the final rating score?" description="The three different categories of questions (professionalism, violations of law conduct and human rights, and manipulation) do not equally influence the public."/>
     </div>
 
     <div class="container px-4 flex flex-col space-y-8 md:flex-row md:space-y-0 md:space-x-4">
@@ -93,8 +88,8 @@
                 <svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="0.244141" width="48" height="48" rx="6" fill="#6366F1"/>
                     <path
-                        d="M33.2441 24C33.2441 28.9706 29.2147 33 24.2441 33M33.2441 24C33.2441 19.0294 29.2147 15 24.2441 15M33.2441 24H15.2441M24.2441 33C19.2736 33 15.2441 28.9706 15.2441 24M24.2441 33C25.901 33 27.2441 28.9706 27.2441 24C27.2441 19.0294 25.901 15 24.2441 15M24.2441 33C22.5873 33 21.2441 28.9706 21.2441 24C21.2441 19.0294 22.5873 15 24.2441 15M15.2441 24C15.2441 19.0294 19.2736 15 24.2441 15"
-                        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            d="M33.2441 24C33.2441 28.9706 29.2147 33 24.2441 33M33.2441 24C33.2441 19.0294 29.2147 15 24.2441 15M33.2441 24H15.2441M24.2441 33C19.2736 33 15.2441 28.9706 15.2441 24M24.2441 33C25.901 33 27.2441 28.9706 27.2441 24C27.2441 19.0294 25.901 15 24.2441 15M24.2441 33C22.5873 33 21.2441 28.9706 21.2441 24C21.2441 19.0294 22.5873 15 24.2441 15M15.2441 24C15.2441 19.0294 19.2736 15 24.2441 15"
+                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </div>
             <div class="flex flex-col text-lg leading-6 font-medium">
@@ -109,8 +104,8 @@
                 <svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="0.244141" width="48" height="48" rx="6" fill="#6366F1"/>
                     <path
-                        d="M15.2441 18L18.2441 19M18.2441 19L15.2441 28C17.0167 29.3334 19.4728 29.3334 21.2453 28M18.2441 19L21.2442 28M18.2441 19L24.2441 17M30.2441 19L33.2441 18M30.2441 19L27.2441 28C29.0167 29.3334 31.4728 29.3334 33.2453 28M30.2441 19L33.2442 28M30.2441 19L24.2441 17M24.2441 15V17M24.2441 33V17M24.2441 33H21.2441M24.2441 33H27.2441"
-                        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            d="M15.2441 18L18.2441 19M18.2441 19L15.2441 28C17.0167 29.3334 19.4728 29.3334 21.2453 28M18.2441 19L21.2442 28M18.2441 19L24.2441 17M30.2441 19L33.2441 18M30.2441 19L27.2441 28C29.0167 29.3334 31.4728 29.3334 33.2453 28M30.2441 19L33.2442 28M30.2441 19L24.2441 17M24.2441 15V17M24.2441 33V17M24.2441 33H21.2441M24.2441 33H27.2441"
+                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </div>
             <div class="flex flex-col text-lg leading-6 font-medium">
@@ -166,7 +161,7 @@
             Disclamier
         </div>
         <div
-            class="flex flex-col text-sm leading-5 font-normal text-gray-500 md:text-base md:leading-6 md:text-black">
+                class="flex flex-col text-sm leading-5 font-normal text-gray-500 md:text-base md:leading-6 md:text-black">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dui arcu sodales ullamcorper mauris eget eleifend
             proin semper odio. Convallis sit imperdiet egestas at sed duis donec at amet. Orci sed non diam, vel, enim
             convallis magna. Orci mattis orci dictum varius. Semper luctus risus platea feugiat lobortis blandit enim at
