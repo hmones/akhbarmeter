@@ -14,12 +14,12 @@
         <div id="checkNewsErrorBag" class="flex flex-col mx-auto justify-center">
 
         </div>
-        <div class="flex flex-col md:flex-row space-y-2 md:space-x-2 md:space-y-0 w-2/3 mt-8 mx-auto justify-center">
-            <div class="w-1/2">
+        <div class="flex flex-col lg:flex-row space-y-2 lg:space-x-2 lg:space-y-0 w-2/3 mt-8 mx-auto justify-center items-center">
+            <div class="w-full lg:w-1/2">
                 <x-input.text id="urlField" name="url" placeholder="Paste news link here..."/>
             </div>
             <div id="checkNewsSubmitButton"
-                 class="bg-blue-500 hover:bg-blue-400 pt-2.5 h-12 mt-1 text-white cursor-pointer rounded w-1/4 text-center">
+                 class="bg-blue-500 hover:bg-blue-400 pt-2.5 h-12 mt-1 text-white cursor-pointer rounded w-full lg:w-1/4 text-center">
                 <span id="checkNewsText" class="text-base leading-6 font-medium">
                     Check its accuracy now!
                 </span>
