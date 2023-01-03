@@ -12,7 +12,11 @@ class ArticleController extends Controller
 
     public function index(ArticleSearchRequest $request): View
     {
-        $articles = Article::whereNotNull('score_at')->whereActive(1)->orderBy('created_at', 'desc')->paginate(self::PAGINATION_ITEMS);
+        $articles = Article::filter($request->safe()->toArray())
+            ->whereNotNull('score_at')
+            ->whereActive(1)
+            ->orderBy('created_at', 'desc')
+            ->paginate(self::PAGINATION_ITEMS);
 
         return view('pages.article.index', compact('articles'));
     }

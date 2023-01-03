@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CheckNewsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\ReviewController;
@@ -16,8 +18,9 @@ Route::resource('publications', PublicationController::class)->only(['index']);
 Route::resource('topics', TopicController::class)->only(['index', 'show']);
 Route::resource('articles', ArticleController::class)->only('index', 'show');
 Route::resource('publishers', PublisherController::class)->only('index', 'show');
+Route::post('check-news-article', [CheckNewsController::class, 'store'])->name('check.news.store');
 
-Route::get('/', fn() => view('welcome'))->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('about', fn() => view('pages.about.main'))->name('about');
 Route::get('akhbarmeter', fn() => view('pages.about.akhbarmeter'))->name('akhbarmeter');
 Route::get('methodology', fn() => view('pages.about.methodology'))->name('methodology');

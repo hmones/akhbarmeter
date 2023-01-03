@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use GuzzleHttp\Psr7\Uri;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection;
+use Illuminate\Support\ValidatedInput;
 
 class Article extends Model
 {
@@ -99,5 +101,14 @@ class Article extends Model
     {
         return $this->review->responses()->with('option.question')->get()
             ->where('option.question.weight', $category);
+    }
+
+    public function scopeFilter(Builder $query, array $request): Builder
+    {
+        $queryString = '%' . data_get($request, 'query') . '%';
+
+        return $query->where('title', 'like', $queryString)
+            ->orWhere('content', 'like', $queryString)
+            ->orWhere('url', 'like', $queryString);
     }
 }

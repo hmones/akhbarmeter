@@ -103,7 +103,7 @@
                         The article was copied from <a class="text-blue-700" href="{{$article->publisher->url}}">{{$article->publisher->name}}</a> {{$article->fetched_at}}  <a class="text-blue-700" href="{{$article->url}}">View original article</a>
                     </div>
                 </div>
-                @include('partials.article-card-footer', compact('article'))
+                <x-cards.article-footer :article="$article" />
             </div>
         </div>
     </div>

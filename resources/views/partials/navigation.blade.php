@@ -49,7 +49,17 @@
 
                 <div class="flex items-center space-x-6">
                     @include('partials.components.language-switcher')
-                    <a href="{{route('login')}}" class="bg-blue-600 py-2 px-8 rounded text-white hover:bg-blue-800">Login</a>
+                    @if(auth()->check())
+                        <a href="{{route('dashboard')}}" class="text-blue-700">Welcome, {{auth()->user()?->name}}</a>
+                        <form method="POST" action="{{route('logout')}}">
+                            @csrf
+                            <em class="fa fa-sign-out text-gray-500 cursor-pointer"
+                               onclick="event.preventDefault();this.closest('form').submit();">
+                            </em>
+                        </form>
+                    @else
+                        <a href="{{route('login')}}" class="bg-blue-600 py-2 px-8 rounded text-white hover:bg-blue-800">Login</a>
+                    @endif
                 </div>
             </div>
             <div id="mobileMenuButton"

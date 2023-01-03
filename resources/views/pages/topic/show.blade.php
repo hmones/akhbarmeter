@@ -41,14 +41,7 @@
                 class="flex flex-col xl:flex-row w-full items-start items-stretch justify-left mx-auto space-y-10 xl:space-y-0">
                 @foreach($rowTopics as $record)
                     <div class="flex flex-col xl:flex-row w-full xl:w-1/3 mx-2">
-                        @include('partials.topic-card', [
-                            'title' => $record->title,
-                            'time'  => $record->created_at->diffForHumans(),
-                            'route' => 'topics.index',
-                            'tags'  => $record->tags,
-                            'avatar' => Storage::url($record->image),
-                            'show'  => route('topics.show', ['topic' => $record])
-                        ])
+                        <x-cards.topic :topic="$record" />
                     </div>
                 @endforeach
             </div>

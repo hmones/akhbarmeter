@@ -34,17 +34,7 @@
             class="flex flex-col xl:flex-row w-full items-start items-stretch justify-left mx-auto space-y-10 xl:space-y-0">
             @foreach($publisher->articles()->latest()->whereActive(1)->limit(9)->get() as $article)
                 <div class="flex flex-col xl:flex-row w-full xl:w-1/3 mx-2">
-                    @include('partials.article-card', [
-                        'article' => $article,
-                        'title'   => $article->title,
-                        'time'    => $article->created_at->diffForHumans(),
-                        'route'   => 'articles.index',
-                        'tags'    => array_filter(preg_split('/[#\s]/', $article->publisher->hashtags)),
-                        'avatar'  => $article->image ? Storage::url($article->image) : asset('images/placeholders/article.png'),
-                        'icon'    => $article->publisher->image ? Storage::url($article->publisher->image) : asset('images/placeholders/publisher.png'),
-                        'show'    => route('articles.show', $article->id),
-                        'showTotalScore' => false
-                    ])
+                    <x-cards.article :article="$article" showTotalScore="false"/>
                 </div>
             @endforeach
         </div>
@@ -84,27 +74,37 @@
 
         const DATA_COUNT = 12;
         const labels = APP_LOCALE === 'en' ? MONTHS.en : MONTHS.ar;
+        const barThickness = 25;
+        const borderRadius = 10;
         const data = {
             labels: labels,
             datasets: [
                 {
                     label: 'Human Rights',
                     data: {{json_encode($data->pluck('score_3')->toArray())}},
+                    barThickness: barThickness,
+                    borderRadius: borderRadius,
                     backgroundColor: '#1E3A8A',
                 },
                 {
                     label: 'Credibility',
                     data: {{json_encode($data->pluck('score_2')->toArray())}},
+                    barThickness: barThickness,
+                    borderRadius: borderRadius,
                     backgroundColor: '#1D4ED8',
                 },
                 {
                     label: 'Professionalism',
                     data: {{json_encode($data->pluck('score_1')->toArray())}},
+                    barThickness: barThickness,
+                    borderRadius: borderRadius,
                     backgroundColor: '#3B82F6',
                 },
                 {
                     label: 'Average Rate',
                     data: {{json_encode($data->pluck('score')->toArray())}},
+                    barThickness: barThickness,
+                    borderRadius: borderRadius,
                     backgroundColor: '#93C5FD',
                 },
             ]
@@ -139,7 +139,7 @@
                         stacked: true
                     }
                 },
-                locale: '{{session('locale')}}'
+                locale: '{{session('locale') ?? 'ar'}}'
             }
         };
 
