@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class PublisherScore extends Model
 {
+    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
 
     const TRENDING = 1;

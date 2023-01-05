@@ -13,3 +13,5 @@
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('article-type') }}"><i class="nav-icon la la-question"></i> Article types</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('question-label') }}"><i class="nav-icon la la-question"></i> Question labels</a></li>
 {{--<li class="nav-item"><a class="nav-link" href="{{ backpack_url('question-option') }}"><i class="nav-icon la la-question"></i> Question options</a></li>--}}
+
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('publisher-score') }}"><i class="nav-icon la la-th-list"></i> Publisher scores</a></li>

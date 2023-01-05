@@ -26,4 +26,5 @@ Route::group([
     Route::crud('article-topic', 'ArticleTopicCrudController');
     Route::crud('article-type', 'ArticleTypeCrudController');
     Route::crud('question-label', 'QuestionLabelCrudController');
+    Route::crud('publisher-score', 'PublisherScoreCrudController');
 }); // this should be the absolute last line of this file

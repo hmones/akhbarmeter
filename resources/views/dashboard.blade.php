@@ -14,7 +14,7 @@
                     </div>
                     <div class="flex flex-col space-y-6">
                         @forelse($unReviewedArticles as $article)
-                            <div class="flex flex-row justify-between items-center">
+                            <div clasqs="flex flex-row justify-between items-center">
                                 <div class="flex flex-col">
                                     <div class="flex flex-row items-center space-x-4">
                                         <span class="px-4 py-4"> <em class="fa fa-check-circle text-gray-400 text-2xl"></em></span>
