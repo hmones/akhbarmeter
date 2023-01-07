@@ -11,9 +11,12 @@ class Kernel extends ConsoleKernel
 {
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->job(new CalculateRankForPublishers(now()->subWeek(), PublisherScore::PERIOD_WEEK))->weeklyOn(Schedule::SUNDAY);
-        $schedule->job(new CalculateRankForPublishers(now()->subMonth(), PublisherScore::PERIOD_MONTH))->monthlyOn();
-        $schedule->job(new CalculateRankForPublishers(now()->subYear(), PublisherScore::PERIOD_YEAR))->yearlyOn();
+        $schedule->job(new CalculateRankForPublishers(now()->subWeek(), PublisherScore::PERIOD_WEEK))
+            ->weeklyOn(Schedule::SUNDAY);
+        $schedule->job(new CalculateRankForPublishers(now()->subMonth(), PublisherScore::PERIOD_MONTH))
+            ->monthlyOn();
+        $schedule->job(new CalculateRankForPublishers(now()->subYear(), PublisherScore::PERIOD_YEAR))
+            ->yearlyOn();
     }
 
     protected function commands(): void

@@ -36,7 +36,10 @@ class PublisherScoreCrudController extends CrudController
         $request = $this->crud->validateRequest();
         $this->crud->registerFieldEvents();
 
-        CalculateRankForPublishers::dispatch(Carbon::parse($request->from), $request->period ?? PublisherScore::PERIOD_WEEK);
+        CalculateRankForPublishers::dispatch(
+            Carbon::parse($request->from),
+            $request->period ?? PublisherScore::PERIOD_WEEK
+        );
 
         return redirect()->route('publisher-score.index')->with('success', trans('backpack::crud.insert_success'));
     }

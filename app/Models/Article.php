@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection;
-use Illuminate\Support\ValidatedInput;
 
 class Article extends Model
 {
@@ -90,10 +89,12 @@ class Article extends Model
     public function getLabels(int $category = 0): Collection
     {
         return $this->review?->responses()->with('option.question.label')->get()
-            ->whereIn('option.question.weight', $category === 0
-                ? [Question::HUMAN_RIGHTS_WEIGHT, Question::CREDIBILITY_WEIGHT, Question::PROFESSIONALISM_WEIGHT]
-                : [$category])
-            ->pluck('option.question.label')
+            ->whereIn(
+                'option.question.weight',
+                $category === 0
+                    ? [Question::HUMAN_RIGHTS_WEIGHT, Question::CREDIBILITY_WEIGHT, Question::PROFESSIONALISM_WEIGHT]
+                    : [$category]
+            )->pluck('option.question.label')
             ->sortBy('priority') ?? collect();
     }
 

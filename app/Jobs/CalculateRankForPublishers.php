@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Exceptions\InvalidEnumValueException;
 use App\Models\Publisher;
 use App\Models\PublisherScore;
 use Exception;
@@ -72,7 +73,7 @@ class CalculateRankForPublishers implements ShouldQueue, ShouldBeUnique
             PublisherScore::PERIOD_WEEK => [$this->startDate, $this->startDate->copy()->addWeek()],
             PublisherScore::PERIOD_MONTH => [$this->startDate, $this->startDate->copy()->addMonth()],
             PublisherScore::PERIOD_YEAR => [$this->startDate, $this->startDate->copy()->addYear()],
-            default => throw new Exception("Invalid period passed to the job $this->period")
+            default => throw new InvalidEnumValueException("Invalid period passed to the job $this->period")
         };
     }
 }

@@ -10,7 +10,9 @@ class PublisherController extends Controller
 {
     public function index(): View
     {
-        return view('pages.publisher.index', ['publishers' => Publisher::whereActive(1)->with('scores')->get()->sortBy('name')]);
+        return view('pages.publisher.index', [
+            'publishers' => Publisher::whereActive(1)->with('scores')->get()->sortBy('name')
+        ]);
     }
 
 

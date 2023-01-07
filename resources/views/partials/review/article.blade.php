@@ -4,7 +4,7 @@
     <div id="viewSwitchButton" class="text-blue-700 cursor-pointer">Switch between article's edit and view modes</div>
 </div>
 <div class="my-4" id="articleIframe" style="display: none;">
-    <iframe src="{{$article->url}}" class="w-full h-[70vh]" allow referrerpolicy="no-referrer"></iframe>
+    <iframe title="Article view on as on the publisher's website" src="{{$article->url}}" class="w-full h-[70vh]" allow referrerpolicy="no-referrer"></iframe>
 </div>
 <div class="my-4" id="articleForm">
     <div class="flex flex-col space-y-4">
