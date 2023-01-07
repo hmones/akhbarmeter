@@ -6,6 +6,7 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 
 class Translation extends Model
 {
@@ -13,7 +14,13 @@ class Translation extends Model
     use HasFactory;
     use HasTranslations;
 
-    public $translatable = ['value'];
+    public $translatable = ['content'];
+
+    protected static function booted()
+    {
+        parent::booted();
+        static::created(fn () => Cache::forget('translations'));
+    }
 
     protected $guarded = [];
 }
