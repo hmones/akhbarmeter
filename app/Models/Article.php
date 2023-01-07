@@ -89,12 +89,12 @@ class Article extends Model
 
     public function getLabels(int $category = 0): Collection
     {
-        return $this->review->responses()->with('option.question.label')->get()
+        return $this->review?->responses()->with('option.question.label')->get()
             ->whereIn('option.question.weight', $category === 0
                 ? [Question::HUMAN_RIGHTS_WEIGHT, Question::CREDIBILITY_WEIGHT, Question::PROFESSIONALISM_WEIGHT]
                 : [$category])
             ->pluck('option.question.label')
-            ->sortBy('priority');
+            ->sortBy('priority') ?? collect();
     }
 
     public function getResponsesByCategory(int $category): Collection

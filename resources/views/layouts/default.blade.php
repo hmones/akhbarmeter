@@ -44,7 +44,7 @@
 </head>
 <body>
 <div class="flex flex-col h-full justify-between">
-    @include('partials.navigation', ['isColoredNavigation' => isset($isColoredNavigation)])
+    <x-navigation :isColoredNavigation="isset($isColoredNavigation)" :isHomePage="isset($isHomePage)"/>
     <div class="h-full">
         @yield('content')
     </div>

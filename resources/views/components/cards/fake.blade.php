@@ -1,16 +1,16 @@
 @props(['article'])
 
-<div class="flex flex-col lg:flex-row rounded-5 justify-center w-full">
-    <div class="flex flex-col lg:w-1/3 bg-[url('{{Storage::url($article->image)}}')] bg-cover items-center justify-center h-[260px]">
+<div class="flex flex-col lg:flex-row justify-center w-full">
+    <div class="flex flex-col rounded-t-lg lg:rounded-none lg:rounded-l-lg lg:w-1/3 bg-[url('{{$article->image ? Storage::url($article->image) : asset('images/placeholders/article.png')}}')] bg-cover items-center justify-center h-[260px] lg:w-[470px]">
         <img src="{{asset('images/icons/fake.svg')}}" alt="Fake article icon">
     </div>
-    <div class="flex flex-col p-8 space-y-4 bg-gray-50 justify-content-start">
+    <div class="flex flex-col rounded-b-lg lg:rounded-none lg:rounded-r-lg p-8 space-y-4 bg-gray-50 justify-content-start w-full">
         <div class="flex flex-row overflow-hidden items-center justify-between">
             <div class="flex flex-row">
                 <img class="w-[32px] rounded-circle"
-                     src="{{$article->publisher->image ? Storage::url($article->publisher->image) : asset('images/placeholders/publisher.png')}}"
+                     src="{{$article->publisher?->image ? Storage::url($article->publisher->image) : asset('images/placeholders/publisher.png')}}"
                      alt="{{$article->title}}">
-                @foreach(collect(array_filter(preg_split('/[#\s]/', $article->publisher->hashtags)))->take(3) as $tag)
+                @foreach(collect(array_filter(preg_split('/[#\s]/', $article->publisher?->hashtags)))->take(3) ?? [] as $tag)
                     <a href="#"
                        class="flex flex-row mx-2 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
                         #{{data_get($tag, 'value', $tag)}}
