@@ -44,7 +44,7 @@ class FetchArticle implements ShouldQueue
 
 
         $imagePath = data_get($data, 'image') instanceof UploadedFile
-            ? Storage::putFile('article/image', $data['image'])
+            ? Storage::putFile('v3.0/article/image', $data['image'], 'public')
             : null;
 
 
