@@ -11,6 +11,10 @@ function translate(string $key): string|array
     return match ($translation->count()) {
         0 => $key,
         1 => $translation->first()->content,
-        default => $translation->pluck('content', 'key')->keyBy(fn ($item, $index) => str($index)->remove($key . '.'))->undot()->toArray()
+        default => $translation
+            ->pluck('content', 'key')
+            ->keyBy(fn($item, $index) => str($index)->remove($key . '.'))
+            ->undot()
+            ->toArray()
     };
 }

@@ -7,7 +7,6 @@ use Illuminate\Support\Carbon;
 
 class ArticleFactory extends Factory
 {
-    //TODO Fix the factory for not creating the article
     public function definition(): array
     {
         return [
@@ -22,7 +21,7 @@ class ArticleFactory extends Factory
             'is_fake'    => fake()->boolean,
             'score_at'   => null,
             'fetched_at' => now(),
-            'created_at' => Carbon::parse(fake()->date),
+            'created_at' => now(),
         ];
     }
 }

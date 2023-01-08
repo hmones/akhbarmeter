@@ -43,17 +43,20 @@ class HomeController extends Controller
             '#SinaiFestival'
         ];
 
-        return view('welcome', compact([
-            'articles',
-            'topics',
-            'publications',
-            'video',
-            'fakeNews',
-            'best',
-            'bestThree',
-            'worst',
-            'worstThree',
-            'trendingHashtags'
-        ]));
+        return view(
+            'welcome',
+            compact([
+                'articles',
+                'topics',
+                'publications',
+                'video',
+                'fakeNews',
+                'best',
+                'bestThree',
+                'worst',
+                'worstThree',
+                'trendingHashtags'
+            ])
+        );
     }
 }
