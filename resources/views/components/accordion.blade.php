@@ -1,8 +1,9 @@
+@props(['headline' => '', 'description' => ''])
 <div class="bg-white md:mx-8 md:border md:border-gray-200 rounded-lg md:px-6">
     <div class="flex flex-row px-2 py-4 rounded items-center">
         <div class="flex flex-col w-4/5">
             <div class="text-lg leading-8 font-semibold md:text-xl md:leading-7 md:font-bold">
-                {{$headline ?? ""}}
+                {{$headline}}
             </div>
         </div>
         <div class="flex flex-col w-1/5 cursor-pointer accordion-button md:items-end">
@@ -12,12 +13,7 @@
         </div>
     </div>
     <div class="flex flex-col content px-2 pb-4 text-sm leading-5 font-normal text-gray-500 md:text-base md:leading-6" style="display: none;">
-        {{$description ?? ""}}
+        {{$description}}
     </div>
 </div>
 
-<script>
-    $('div.accordion-button').unbind('click').on('click', function () {
-        $(this).parent().siblings('.content').toggle('hidden')
-    })
-</script>

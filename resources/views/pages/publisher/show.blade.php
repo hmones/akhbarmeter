@@ -10,23 +10,23 @@
                 <img class="flex flex-col rounded-lg" src="{{Storage::url($publisher->image)}}" alt="{{$publisher->name}}"/>
                 <div class="flex flex-col space-y-3">
                     <div class="text-xs leading-4 font-medium">{{$publisher->hashtags}}</div>
-                    <div class="text-xl leading-8 font-semibold">Rank:
-                        No. {{$publisher->scores()->lastMonth()->first()?->rank ?? 1}}</div>
-                    <div class="text-base leading-6 font-normal">Last month
-                        Rating: {{$publisher->scores()->lastMonth()->first()?->score ?? 100}}%
+                    <div class="text-xl leading-8 font-semibold">
+                        {{translate('components.publisher.card.rank')}}
+                        {{$publisher->scores()->lastMonth()->first()?->rank ?? 1}}</div>
+                    <div class="text-base leading-6 font-normal">
+                        {{translate('components.publisher.card.month')}}
+                        {{$publisher->scores()->lastMonth()->first()?->score ?? 100}}%
                     </div>
-                    <div class="text-base leading-6 font-normal">Last week
-                        Rating: {{$publisher->scores()->lastWeek()->first()?->score ??100}}%
-                    </div>
-                    <div class="text-base leading-6 font-medium">
-                        Small Disclaimer about the way we calculate these numbers.
+                    <div class="text-base leading-6 font-normal">
+                        {{translate('components.publisher.card.week')}}
+                        {{$publisher->scores()->lastWeek()->first()?->score ??100}}%
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <x-page-header headline="Latest Reviews from {{$publisher->name}}"
-                   description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."
+    <x-page-header :headline="translate('pages.publisher.header') . $publisher->name"
+                   :description="translate('pages.publisher.description')"
     hideOnMobile="true"/>
 
     <div class="container mb-10 space-y-10">
@@ -80,28 +80,28 @@
             labels: labels,
             datasets: [
                 {
-                    label: 'Human Rights',
+                    label: '{{translate('general.human-rights')}}',
                     data: {{json_encode($data->pluck('score_3')->toArray())}},
                     barThickness: barThickness,
                     borderRadius: borderRadius,
                     backgroundColor: '#1E3A8A',
                 },
                 {
-                    label: 'Credibility',
+                    label: '{{translate('general.credibility')}}',
                     data: {{json_encode($data->pluck('score_2')->toArray())}},
                     barThickness: barThickness,
                     borderRadius: borderRadius,
                     backgroundColor: '#1D4ED8',
                 },
                 {
-                    label: 'Professionalism',
+                    label: '{{translate('general.professionalism')}}',
                     data: {{json_encode($data->pluck('score_1')->toArray())}},
                     barThickness: barThickness,
                     borderRadius: borderRadius,
                     backgroundColor: '#3B82F6',
                 },
                 {
-                    label: 'Average Rate',
+                    label: '{{translate('pages.publisher.average')}}',
                     data: {{json_encode($data->pluck('score')->toArray())}},
                     barThickness: barThickness,
                     borderRadius: borderRadius,

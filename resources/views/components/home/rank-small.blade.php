@@ -4,8 +4,8 @@
          src="{{$publisher->image ? Storage::url($publisher->image) : asset('images/placeholders/publisher.png')}}"
          alt="{{$publisher->name}}"/>
     <div class="flex flex-col space-y-1">
-        <div>No. {{$publisher->rank}}</div>
+        <div>{{translate('components.home.rank.number')}} {{$publisher->rank}}</div>
         <x-trend :score="$publisher->score" :isTrending="$publisher->is_trending" percentageClasses="text-xl leading-7 font-semibold"/>
-        <div class="text-xs leading-4 font-normal">Accuracy rank</div>
+        <div class="text-xs leading-4 font-normal">{{translate('components.home.rank.hint')}}</div>
     </div>
 </div>

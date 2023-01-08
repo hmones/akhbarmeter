@@ -2,10 +2,10 @@
     <div class="flex flex-col lg:flex-row lg:w-3/5 bg-blue-700 lg:rounded justify-center p-5">
         <div class="flex flex-col lg:w-1/2 space-y-2">
             <div class="flex flex-row text-3xl leading-9 font-extrabold">
-                Want accurate news and updates?
+                {{translate('component.newsletter.header')}}
             </div>
             <div class="flex flex-row">
-                Sign up for our newsletter to stay up on top of everyday news.
+                {{translate('component.newsletter.description')}}
             </div>
         </div>
         <div class="flex flex-col lg:w-1/2">
@@ -19,10 +19,14 @@
                        id="mce-EMAIL" name="EMAIL" placeholder="e.g. first.lastname@domain.com" spellcheck="false"
                        type="email" value=""/>
                 <input class="flex flex-row px-3 py-2 h-12 shadow-sm rounded mt-1 bg-blue-500"
-                       id="mc-embedded-subscribe" name="subscribe" type="submit" value="Notify me">
+                       id="mc-embedded-subscribe"
+                       name="subscribe" type="submit" value="{{translate('component.newsletter.button')}}">
             </form>
             <div class="flex flex-col text-xs leading-5 font-normal">
-                <span>We care about the protection of your data. Read our <a href="#">Privacy Policy</a></span>
+                <span>
+                    {{translate('component.newsletter.hint')}}
+                    <a href="#">{{translate('component.newsletter.privacy')}}</a>
+                </span>
                 <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                 <div aria-hidden="true" style="position: relative; left: -5000px;z-index:-1;">
                     <label class="hidden">

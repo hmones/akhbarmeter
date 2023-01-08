@@ -2,7 +2,8 @@
 @section('title', 'Publications')
 @section('content')
     <div class="container max-h-full">
-        <x-page-header headline="Publications" description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."/>
+        <x-page-header :headline="translate('pages.home.publications.header')"
+                       :description="translate('pages.home.publications.description')"/>
 
         <div class="container">
             <div class="flex flex-row mb-10">

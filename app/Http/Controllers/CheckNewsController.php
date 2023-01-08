@@ -12,6 +12,6 @@ class CheckNewsController extends Controller
     {
         Mail::to(config('mail.from.address'))->send(new CheckNewsMail($request->safe()->url));
 
-        return 'Thank you!';
+        return translate('pages.home.check.thanks');
     }
 }

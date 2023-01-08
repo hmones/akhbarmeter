@@ -2,7 +2,7 @@
 @section('title', 'Topics')
 @section('content')
     <div class="container max-h-full">
-        <x-page-header headline="Topics" description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."/>
+        <x-page-header :headline="translate('pages.topics.header')" :description="translate('pages.topics.description')"/>
 
         <div class="container">
             <div class="flex flex-row mb-10">
@@ -25,7 +25,7 @@
         <div class="container mb-10 space-y-10">
             @foreach($topics as $type => $topicsList)
                 @if($topicsList->count() > 0)
-                    <div class="font-extrabold">{{\App\Models\Topic::TYPES[$type]}}</div>
+                    <div class="font-extrabold">{{translate('pages.topics.' . $type)}}</div>
                 @endif
                 @foreach($topicsList->chunk(3) as $rowTopics)
                     <div

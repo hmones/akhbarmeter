@@ -3,13 +3,13 @@
 
 @section('content')
     <div class="container max-h-full">
-        <x-page-header headline="Search our Reviews"/>
+        <x-page-header :headline="translate('pages.articles.header')"/>
         <div class="flex flex-col w-4/5 justify-center mx-auto">
             <div class="w-full -mt-8 md:-mt-16 mx-auto">
                 <x-input.text id="searchQuery" name="query" value="{{request()->get('query')}}"/>
             </div>
             <div class="align-self-end w-fit mt-2 mb-16">
-                <x-learn-more href="#" text="Advanced search"/>
+                <x-learn-more href="#" text="{{translate('pages.articles.search.button')}}"/>
             </div>
         </div>
 

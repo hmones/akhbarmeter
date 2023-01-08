@@ -5,5 +5,7 @@
          src="{{$publisher?->image ? Storage::url($publisher->image) : asset('images/placeholders/publisher.png')}}"
          alt="{{$publisher->name}}"/>
     <x-trend :score="$publisher->score" :isTrending="$publisher->is_trending"/>
-    <div class="text-xs leading-4 font-normal text-center">Accuracy rank last month</div>
+    <div class="text-xs leading-4 font-normal text-center">
+        {{translate('components.home.rank.hint')}}
+    </div>
 </div>

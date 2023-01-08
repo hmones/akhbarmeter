@@ -27,7 +27,7 @@
                         {{$publication->author_name}}
                     </div>
                     <div class="flex flex-row text-sm leading-5 font-normal text-gray-500">
-                        {{$publication->created_at->format("F d, Y")}} . {{$publication->min_to_read}} min to read
+                        {{$publication->created_at->format("F d, Y")}} . {{$publication->min_to_read}} {{translate('pages.topic.mins')}}
                     </div>
                 </div>
 

@@ -5,7 +5,9 @@
 @section('content')
     <div class="container flex flex-col w-full items-center justify-center mx-auto space-y-4 my-16">
         <div class="flex flex-col">
-            <h1 class="text-5xl leading-10 font-extrabold tracking-tight">Video</h1>
+            <h1 class="text-5xl leading-10 font-extrabold tracking-tight">
+                {{translate('pages.video.header')}}
+            </h1>
         </div>
         <div class="flex-initial w-1/3 flex-col">
             <p class="text-lg text-center leading-6 font-normal text-gray-500">

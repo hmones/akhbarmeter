@@ -14,11 +14,11 @@
             <div class="flex flex-col space-y-4">
                 <div class="flex flex-row">
                     <div class="text-lg leading-7 font-bold md:text-4xl md:leading-10 md:font-extrabold">
-                        Who we are
+                        {{translate('pages.about.header')}}
                     </div>
                 </div>
                 <div class="flex flex-row text-sm leading-8 font-normal md:text-xl">
-                    This text can be a short text that would explain what the brand will be like and how to show people who we are but without any explansions.
+                    {{translate('pages.about.description')}}
                 </div>
             </div>
         </div>
@@ -36,10 +36,10 @@
                         </svg>
                     </div>
                     <div class="flex flex-row text-lg leading-8 font-semibold md:text-4xl md:leading-10 md:font-extrabold">
-                        Media Meter
+                        {{translate('pages.about.mediameter.header')}}
                     </div>
                     <div class="flex flex-row text-sm md:text-xl leading-7 font-normal text-gray-500">
-                        AkhbarMeter (MediaMeter) is one of the first dynamic digital media observatories in Egypt and...
+                        {{translate('pages.about.mediameter.description')}}
                     </div>
                     <x-learn-more href="{{route('akhbarmeter')}}" />
                 </div>
@@ -53,10 +53,10 @@
                         </svg>
                     </div>
                     <div class="flex flex-row text-lg leading-8 font-semibold md:text-4xl md:leading-10 md:font-extrabold">
-                        How it works?
+                        {{translate('pages.about.methodology.header')}}
                     </div>
                     <div class="flex flex-row text-sm md:text-xl leading-7 font-normal text-gray-500">
-                        The team evaluate news articles by answering a series of questions (19 questions) that are availa...
+                        {{translate('pages.about.methodology.description')}}
                     </div>
                     <x-learn-more href="{{route('methodology')}}" />
                 </div>
@@ -64,7 +64,7 @@
                     <div class="flex flex-row bg-gray-100 text-black rounded p-4">
                         <div class="flex flex-col space-y-2 md:space-y-12">
                             <div class="flex flex-row text-lg leading-8 font-semibold md:text-4xl md:leading-10 md:font-extrabold">
-                                Our Partners
+                                {{translate('pages.about.partners')}}
                             </div>
                             <x-learn-more href="{{route('akhbarmeter')}}#partners" />
                         </div>
@@ -72,7 +72,7 @@
                     <div class="flex flex-row bg-gray-100 text-black rounded p-4">
                         <div class="flex flex-col space-y-2 md:space-y-12">
                             <div class="flex flex-row text-lg leading-8 font-semibold md:text-4xl md:leading-10 md:font-extrabold">
-                                Contact Us
+                                {{translate('pages.about.contact')}}
                             </div>
                             <x-learn-more href="{{route('contact.index')}}" />
                         </div>

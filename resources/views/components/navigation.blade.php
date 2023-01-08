@@ -4,9 +4,9 @@
     <div class="container">
         <div class="flex flex-row justify-content-between">
             <div class="flex flex-row rtl:flex-row-reverse space-x-9 rtl:space-x-reverse">
-                <a href="#">Advertisement</a>
-                <a href="#">Partnership</a>
-                <a href="{{route('contact.index')}}">Contact us</a>
+                @foreach(translate('navigation.top') as $item)
+                    <a href="{{data_get($item, 'link')}}">{{data_get($item, 'text')}}</a>
+                @endforeach
             </div>
             <div class="col-5 space-x-4 d-flex justify-content-end rtl:space-x-reverse">
                 @include('partials.components.social-media-links')
@@ -19,8 +19,9 @@
     $backgroundColor = isset($backgroundColor) ? 'bg-blue-900' : 'bg-gradient-to-r from-blue-700 to-cyan-700'
 @endphp
 @php
-    $desktopLogo = $isHomePage ? 'logo-light.svg' : 'logo-dark.svg';
-    $mobileLogo = $isColoredNavigation ? 'logo-light.svg' : 'logo-dark.svg';
+    $lightLogo = app()->getLocale() === 'en' ? 'logo-light.svg' : 'logo-light-ar.svg';
+    $desktopLogo = $isHomePage ? $lightLogo : 'logo-dark.svg';
+    $mobileLogo = $isColoredNavigation ? $lightLogo : 'logo-dark.svg';
 @endphp
 
 <section id="mainMenu"
@@ -35,7 +36,7 @@
                     class="bg-[url('/images/{{$mobileLogo}}')] lg:bg-[url('/images/{{$desktopLogo}}')]
                     h-6 bg-auto
                      bg-no-repeat"
-                    style="width: 170px; height: 19px;">
+                    style="width: 170px; height: 21px;">
                     &nbsp;
                 </a>
             </div>
@@ -47,7 +48,9 @@
                 <div class="flex items-center space-x-6 rtl:space-x-reverse">
                     @include('partials.components.language-switcher')
                     @if(auth()->check())
-                        <a href="{{route('dashboard')}}" class="{{$isHomePage ? 'text-white' : 'text-blue-700'}}">Welcome, {{auth()->user()?->name}}</a>
+                        <a href="{{route('dashboard')}}" class="{{$isHomePage ? 'text-white' : 'text-blue-700'}}">
+                            {{translate('navigation.main.welcome.text')}}, {{auth()->user()?->name}}
+                        </a>
                         <form method="POST" action="{{route('logout')}}">
                             @csrf
                             <em class="fa fa-sign-out {{$isHomePage ? 'text-white' : 'text-gray-500'}} cursor-pointer"
@@ -55,7 +58,9 @@
                             </em>
                         </form>
                     @else
-                        <a href="{{route('login')}}" class="{{$isHomePage ? 'bg-white text-gray-500' : 'bg-blue-600 text-white'}} py-2 px-8 rounded hover:bg-blue-800">Login</a>
+                        <a href="{{route('login')}}" class="{{$isHomePage ? 'bg-white text-gray-500' : 'bg-blue-600 text-white'}} py-2 px-8 rounded hover:bg-blue-800">
+                            {{translate('navigation.main.login.text')}}
+                        </a>
                     @endif
                 </div>
             </div>
@@ -76,7 +81,9 @@
         <div class="flex flex-row space-x-4 rtl:space-x-reverse">
             @include('partials.components.language-switcher')
         </div>
-        <a href="{{route('login')}}" class="bg-blue-600 py-2 px-8 rounded text-white hover:bg-blue-800">Login</a>
+        <a href="{{route('login')}}" class="bg-blue-600 py-2 px-8 rounded text-white hover:bg-blue-800">
+            {{translate('navigation.main.login.text')}}
+        </a>
     </div>
 </section>
 

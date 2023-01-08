@@ -19,8 +19,8 @@
 
     <!-- Latest News Section -->
     <section id="latestNews">
-        <x-page-header headline="Latest news"
-                       description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."/>
+        <x-page-header :headline="translate('pages.home.news.header')"
+                       :description="translate('pages.home.news.description')"/>
 
         <div class="container mb-10 space-y-10">
             @foreach($articles->chunk(3) as $rowArticles)
@@ -41,8 +41,8 @@
 
     <!-- Fake News section -->
     <section class="py-16">
-        <x-page-header headline="Fake news!"
-                       description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."/>
+        <x-page-header :headline="translate('pages.home.fake.header')"
+                       :description="translate('pages.home.fake.description')"/>
         <div class="container flex flex-col space-y-4">
             @foreach($fakeNews as $article)
                 <x-cards.fake :article="$article"/>
@@ -56,8 +56,8 @@
 
     <!--- The weekly summary Section -->
     <section class="py-16 bg-gray-50">
-        <x-page-header headline="The weekly summary..."
-                       description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."/>
+        <x-page-header :headline="translate('pages.home.video.header')"
+                       :description="translate('pages.home.video.description')"/>
         <div class="container">
             <iframe class="w-full h-[70vh]" src="{{$video->url}}" title="{{$video->title}}"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -69,8 +69,8 @@
 
     <!-- Latest Topics Section -->
     <section class="py-16">
-        <x-page-header headline="Topics"
-                       description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."/>
+        <x-page-header :headline="translate('pages.topics.header')"
+                       :description="translate('pages.topics.description')"/>
         <div class="container mb-10 space-y-10">
             <div
                 class="flex flex-col xl:flex-row w-full items-start items-stretch justify-left mx-auto space-y-10 xl:space-y-0">
@@ -86,8 +86,8 @@
 
     <!-- Insights and Partners Section -->
     <section class="py-16">
-        <x-page-header headline="Insights & Partners"
-                       description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."/>
+        <x-page-header :headline="translate('pages.home.insights.header')"
+                       :description="translate('pages.home.insights.description')"/>
         <div class="container">
             <div class="shadow-lg bg-white border-1 border-solid border-gray-200 py-8 px-8 lg:px-24 rounded-4">
                 <div class="flex flex-row justify-between mx-auto text-center">
@@ -96,28 +96,36 @@
                             class="text-xl leading-7 font-bold lg:text-5xl lg:leading-none lg:font-extrabold text-blue-500">
                             10
                         </div>
-                        <div class="text-sm lg:text-lg leading-6 font-medium text-gray-400">Publishers</div>
+                        <div class="text-sm lg:text-lg leading-6 font-medium text-gray-400">
+                            {{translate('pages.home.insights.publishers')}}
+                        </div>
                     </div>
                     <div class="flex flex-col space-y-4">
                         <div
                             class="text-xl leading-7 font-bold lg:text-5xl lg:leading-none lg:font-extrabold text-blue-500">
                             1000+
                         </div>
-                        <div class="text-sm lg:text-lg leading-6 font-medium text-gray-400">Topics</div>
+                        <div class="text-sm lg:text-lg leading-6 font-medium text-gray-400">
+                            {{translate('pages.home.insights.topics')}}
+                        </div>
                     </div>
                     <div class="flex flex-col space-y-4">
                         <div
                             class="text-xl leading-7 font-bold lg:text-5xl lg:leading-none lg:font-extrabold text-blue-500">
-                            19000+
+                            20k+
                         </div>
-                        <div class="text-sm lg:text-lg leading-6 font-medium text-gray-400">Review</div>
+                        <div class="text-sm lg:text-lg leading-6 font-medium text-gray-400">
+                            {{translate('pages.home.insights.review')}}
+                        </div>
                     </div>
                     <div class="flex flex-col space-y-4">
                         <div
                             class="text-xl leading-7 font-bold lg:text-5xl lg:leading-none lg:font-extrabold text-blue-500">
                             3
                         </div>
-                        <div class="text-sm lg:text-lg leading-6 font-medium text-gray-400">Reviewers</div>
+                        <div class="text-sm lg:text-lg leading-6 font-medium text-gray-400">
+                            {{translate('pages.home.insights.employees')}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -137,8 +145,8 @@
     </section>
 
     <!-- Latest Publications Section -->
-    <x-page-header headline="Publications"
-                   description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."/>
+    <x-page-header :headline="translate('pages.home.publications.header')"
+                   :description="translate('pages.home.publications.description')"/>
 
     <div class="container mb-10 space-y-10">
         @foreach($publications->chunk(3) as $rowPublications)
@@ -162,13 +170,15 @@
         <div class="container flex flex-col space-y-6 lg:space-y-0 lg:flex-row justify-between items-center">
             <div class="flex flex-col text-xl text-center lg:text-4xl leading-10 font-extrabold">
                 <div class="ltr:lg:text-left rtl:lg:text-right">
-                    Ready to dive in?
+                    {{translate('pages.home.download.header')}}
                 </div>
                 <div class="text-blue-600 ltr:lg:text-left rtl:lg:text-right">
-                    Download our news report today.
+                    {{translate('pages.home.download.description')}}
                 </div>
             </div>
-            <a href="#" class="text-white bg-blue-600 py-2 px-4 rounded hover:bg-blue-700">Download now</a>
+            <a href="{{translate('pages.home.download.link')}}" class="text-white bg-blue-600 py-2 px-4 rounded hover:bg-blue-700">
+                {{translate('pages.home.download.button')}}
+            </a>
         </div>
     </div>
     @include('partials.newsletter')
