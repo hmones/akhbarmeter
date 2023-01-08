@@ -3,8 +3,8 @@
     <div class="text-xs leading-4 font-semibold uppercase">{{$title}}</div>
     <img class="w-28"
          src="{{$publisher?->image ? Storage::url($publisher->image) : asset('images/placeholders/publisher.png')}}"
-         alt="{{$publisher->name}}"/>
-    <x-trend :score="$publisher->score" :isTrending="$publisher->is_trending"/>
+         alt="{{$publisher?->name}}"/>
+    <x-trend :score="$publisher?->score ?? 100" :isTrending="$publisher?->is_trending ?? 1"/>
     <div class="text-xs leading-4 font-normal text-center">
         {{translate('components.home.rank.hint')}}
     </div>
