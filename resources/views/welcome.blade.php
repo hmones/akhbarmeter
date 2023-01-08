@@ -15,7 +15,10 @@
     </section>
 
     <!-- Monthly Ranking -->
-    <x-home.sections.rank :best="$best" :worst="$worst" :bestThree="$bestThree" :worstThree="$worstThree"/>
+    @if(!empty($best) && !empty($worst) && !empty($bestThree) && !empty($worstThree))
+        <x-home.sections.rank :best="$best" :worst="$worst" :bestThree="$bestThree" :worstThree="$worstThree"/>
+    @endif
+
 
     <!-- Latest News Section -->
     <section id="latestNews">
@@ -59,7 +62,7 @@
         <x-page-header :headline="translate('pages.home.video.header')"
                        :description="translate('pages.home.video.description')"/>
         <div class="container">
-            <iframe class="w-full h-[70vh]" src="{{$video->url}}" title="{{$video->title}}"
+            <iframe class="w-full h-[70vh]" src="{{$video?->url}}" title="{{$video?->title}}"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
             </iframe>

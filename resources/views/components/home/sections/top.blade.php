@@ -19,7 +19,9 @@
                 <div class="text-white text-xl leading-7 font-bold lg:text-4xl lg:leading-10 lg:font-extrabold">
                     {{translate('pages.home.top-section.fake.header')}}
                 </div>
-                <x-cards.fake :article="$fakeNews->first()"/>
+                @if($fakeNews->first())
+                    <x-cards.fake :article="$fakeNews->first()"/>
+                @endif
             </div>
         </div>
         <div class="flex flex-col-reverse lg:flex-row w-full lg:space-x-6 rtl:space-x-reverse">
@@ -53,7 +55,9 @@
             <span class="text-base leading-6 font-semibold tracking-wide uppercase">
                     {{translate('pages.home.top-section.latest')}}
                 </span>
-            <span class="text-base leading-none font-normal">{{$articles->first()?->title}}</span>
+            @if($articles->first())
+                <span class="text-base leading-none font-normal">{{$articles->first()?->title}}</span>
+            @endif
         </div>
     </div>
 </section>
