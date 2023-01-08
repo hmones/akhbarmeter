@@ -34,7 +34,7 @@
 
     <div
             class="flex flex-col md:flex-row items-center justify-center text-center px-8 my-6 space-y-6 md:space-y-0 md:container md:mx-auto md:items-start md:mt-20">
-        <div class="flex flex-col md:w-1/3 md:text-left md:px-10 md:space-y-4">
+        <div class="flex flex-col md:w-1/3 ltr:md:text-left rtl:text-right md:px-10 md:space-y-4">
             <div class="flex flex-col">
                 <div class="font-extrabold text-xl leading-10 md:text-3xl md:leading-9">
                     Frequently asked questions
@@ -48,7 +48,7 @@
             </div>
         </div>
         <div class="flex flex-col space-y-6 md:w-2/3">
-            <div class="flex flex-col text-left space-y-2">
+            <div class="flex flex-col ltr:text-left rtl:text-right space-y-2">
                 <div class="flex flex-row text-lg leading-6 font-semibold">
                     How are articles rated on AkhbarMeter
                 </div>
@@ -63,7 +63,7 @@
                     and content writing.
                 </div>
             </div>
-            <div class="flex flex-col text-left space-y-2">
+            <div class="flex flex-col ltr:text-left rtl:text-right space-y-2">
                 <div class="flex flex-row text-lg leading-6 font-semibold">
                     What does the rating percentage refer to?
                 </div>
@@ -82,7 +82,7 @@
         <x-page-header headline="Do all criteria have the same influence on the final rating score?" description="The three different categories of questions (professionalism, violations of law conduct and human rights, and manipulation) do not equally influence the public."/>
     </div>
 
-    <div class="container px-4 flex flex-col space-y-8 md:flex-row md:space-y-0 md:space-x-4">
+    <div class="container px-4 flex flex-col space-y-8 md:flex-row md:space-y-0 md:space-x-4 rtl:space-x-reverse">
         <div class="flex flex-col space-y-4 md:w-1/3">
             <div class="flex flex-col">
                 <svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">

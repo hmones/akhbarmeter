@@ -40,7 +40,7 @@
             @endforeach
         </div>
         @if($paginationTopic)
-            <div class="container my-20 space-y-10">
+            <div class="container my-20 space-y-10" dir="ltr">
                 {{$topics[$paginationTopic]->links()}}
             </div>
         @endif

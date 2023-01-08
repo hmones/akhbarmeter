@@ -5,12 +5,14 @@
             <div class="flex flex-col">
                 <h1 class="text-5xl leading-10 font-extrabold tracking-tight">{{$topic->title}}</h1>
             </div>
-            <div class="flex-initial w-4/5 flex-col">
-                <p class="text-lg text-center leading-6 font-normal">
-                    {{$topic->created_at->format('F d, Y')}} |
-                    <em class="fa fa-clock-o"></em> 5 min read | Article Author: {{$topic->author_name}}
-                    | Category: {{\App\Models\Topic::TYPES[$topic->type]}}
-                </p>
+            <div class="flex flex-row w-4/5 text-lg text-center leading-6 font-normal mx-auto justify-center space-x-1.5 rtl:space-x-reverse">
+                <span>{{$topic->created_at->format('F d, Y')}} |</span>
+                <span class="flex flex-row rtl:flex-row-reverse items-center space-x-1.5 rtl:space-x-reverse">
+                    <em class="fa fa-clock-o"></em>
+                    <span> 5 min read |</span>
+                </span>
+                <span> Article Author: {{$topic->author_name}} |</span>
+                <span> Category: {{\App\Models\Topic::TYPES[$topic->type]}} </span>
             </div>
         </div>
     </div>

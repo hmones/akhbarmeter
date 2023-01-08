@@ -2,13 +2,13 @@
 
 <section class="hidden lg:block bg-gray-900 text-white py-2 z-10">
     <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-7 space-x-9">
+        <div class="flex flex-row justify-content-between">
+            <div class="flex flex-row rtl:flex-row-reverse space-x-9 rtl:space-x-reverse">
                 <a href="#">Advertisement</a>
                 <a href="#">Partnership</a>
                 <a href="{{route('contact.index')}}">Contact us</a>
             </div>
-            <div class="col-5 space-x-4 d-flex justify-content-end">
+            <div class="col-5 space-x-4 d-flex justify-content-end rtl:space-x-reverse">
                 @include('partials.components.social-media-links')
             </div>
         </div>
@@ -28,7 +28,7 @@
           {{$isColoredNavigation ? 'border-none lg:bg-white lg:border-b-2 lg:border-solid ' . $backgroundColor : 'border-b-2'}}
           lg:bg-none {{$isHomePage ? 'text-white' : ''}}">
     <nav class="relative container mx-auto py-6">
-        <div class="flex space-x-10 justify-between items-center">
+        <div class="flex space-x-10 justify-between items-center rtl:space-x-reverse">
             <div class="flex">
                 <a
                     href="{{route('home')}}"
@@ -40,11 +40,11 @@
                 </a>
             </div>
             <div class="hidden lg:flex container items-center justify-between">
-                <div class="space-x-8">
+                <div class="flex flex-row rtl:flex-row-reverse space-x-8 rtl:space-x-reverse">
                     <x-navigation-links :isHomePage="$isHomePage"/>
                 </div>
 
-                <div class="flex items-center space-x-6">
+                <div class="flex items-center space-x-6 rtl:space-x-reverse">
                     @include('partials.components.language-switcher')
                     @if(auth()->check())
                         <a href="{{route('dashboard')}}" class="{{$isHomePage ? 'text-white' : 'text-blue-700'}}">Welcome, {{auth()->user()?->name}}</a>
@@ -73,7 +73,7 @@
 <section id="mobileMenu" class="hidden border-b-2 shadow-md">
     <div class="container flex flex-col justify-center items-center mx-auto space-y-6 py-6">
         <x-navigation-links :isHomePage="$isHomePage"/>
-        <div class="flex flex-row space-x-4">
+        <div class="flex flex-row space-x-4 rtl:space-x-reverse">
             @include('partials.components.language-switcher')
         </div>
         <a href="{{route('login')}}" class="bg-blue-600 py-2 px-8 rounded text-white hover:bg-blue-800">Login</a>

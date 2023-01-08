@@ -1,7 +1,5 @@
 @extends('layouts.default')
-@section('title')
-    Who we are?
-@endsection
+@section('title', 'Who we are?')
 @section('content')
     <x-page-header headline="Who we are?" description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque"/>
 
@@ -11,7 +9,7 @@
                 <img class="my-auto h-[177px] md:h-[405px] w-full" src="{{asset('images/about.png')}}"
                      alt="AkhbarMeter Team"/>
             </div>
-            <div class="flex flex-col p-10 pb-60 md:p-32 md:pl-[285px] md:-ml-48 bg-blue-600 rounded-lg w-full text-white space-y-6">
+            <div class="flex flex-col p-10 pb-60 md:p-32 ltr:md:pl-[285px] rtl:md:pr-[285px] ltr:md:-ml-48 rtl:md:-mr-48 bg-blue-600 rounded-lg w-full text-white space-y-6">
                 <div class="text-xl leading-8 font-semibold md:text-4xl md:leading-10 md:font-extrabold">
                     Our history
                 </div>
@@ -28,7 +26,7 @@
 
 
     <div class="bg-gray-50 p-16 md:px-24 my-6">
-        <div class="flex flex-col md:flex-row space-y-10 md:space-y-0 md:space-x-8">
+        <div class="flex flex-col md:flex-row space-y-10 md:space-y-0 md:space-x-8 rtl:space-x-reverse">
             <div class="flex flex-col space-y-4 md:w-1/3">
                 <div class="flex flex-row">
                     <svg width="57" height="56" viewBox="0 0 57 56" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -177,7 +175,7 @@
                              class="text-center h-auto w-48"/>
                     </div>
                 </div>
-                <div class="flex flex-row space-x-16 items-center">
+                <div class="flex flex-row space-x-16 items-center rtl:space-x-reverse">
                     <div class="flex flex-col w-1/4">
                         <img src="{{asset('images/portfolio/mag2.png')}}" alt="Daily News Egypt"
                              class="text-center h-auto w-auto"/>

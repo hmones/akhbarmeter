@@ -14,7 +14,7 @@
         <div id="checkNewsErrorBag" class="flex flex-col mx-auto justify-center">
 
         </div>
-        <div class="flex flex-col lg:flex-row space-y-2 lg:space-x-2 lg:space-y-0 w-2/3 mt-8 mx-auto justify-center items-center">
+        <div class="flex flex-col lg:flex-row space-y-2 lg:space-x-2 lg:space-y-0 w-2/3 mt-8 mx-auto justify-center items-center rtl:space-x-reverse">
             <div class="w-full lg:w-1/2">
                 <x-input.text id="urlField" name="url" placeholder="Paste news link here..."/>
             </div>

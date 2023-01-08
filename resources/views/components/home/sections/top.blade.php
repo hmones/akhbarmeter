@@ -1,10 +1,10 @@
 @props(['best', 'worst', 'fakeNews', 'articles'])
 <section id="topSection" class="bg-gradient-to-r from-blue-700 to-cyan-700 py-6 -mt-32 lg:-mt-[90px]">
     <div class="container mt-32 flex flex-col space-y-8 z-10">
-        <div class="flex flex-col-reverse lg:flex-row w-full lg:space-x-6">
+        <div class="flex flex-col-reverse lg:flex-row w-full lg:space-x-6 rtl:space-x-reverse">
             <div class="flex flex-col space-y-4 lg:w-1/3">
                 <div class="text-white text-xl leading-7 font-bold lg:text-4xl lg:leading-10 lg:font-extrabold mt-6 lg:mt-0">Top ranking</div>
-                <div class="flex flex-row space-x-4 w-full">
+                <div class="flex flex-row space-x-4 w-full rtl:space-x-reverse">
                     <div class="flex flex-col w-1/2 bg-white rounded-lg p-6">
                         <x-home.rank :publisher="$best"/>
                     </div>
@@ -18,7 +18,7 @@
                 <x-cards.fake :article="$fakeNews->first()"/>
             </div>
         </div>
-        <div class="flex flex-col-reverse lg:flex-row w-full lg:space-x-6">
+        <div class="flex flex-col-reverse lg:flex-row w-full lg:space-x-6 rtl:space-x-reverse">
             <div class="flex flex-col text-base leading-6 font-normal lg:w-1/3 text-white mt-6 lg:mt-0">
                 The first digital online media observatory in Egypt and the Middle East that ranks digital media
                 channels according to their adherence to ethical and professional standards in media production. The
@@ -26,7 +26,7 @@
             </div>
             <div class="flex flex-col space-y-4 lg:w-2/3">
                 <div class="text-white text-xl leading-7 font-bold lg:text-4xl lg:leading-10 lg:font-extrabold">Search news ...</div>
-                <form class="flex flex-col lg:flex-row items-start lg:space-x-4" action="{{route('articles.index')}}" method="GET">
+                <form class="flex flex-col lg:flex-row items-start lg:space-x-4 rtl:space-x-reverse" action="{{route('articles.index')}}" method="GET">
                     <div class="w-full lg:w-1/2">
                         <x-input.text id="urlField" name="query" placeholder="What are you looking for?"/>
                     </div>
@@ -40,9 +40,9 @@
     </div>
 
     <!-- Scroll Down Top News Section -->
-    <div class="hidden container mt-24 lg:flex flex-row space-x-8 text-white items-center z-10">
+    <div class="hidden container mt-24 lg:flex flex-row space-x-8 text-white items-center z-10 rtl:space-x-reverse">
         <a class="text-base leading-6 font-semibold tracking-wide uppercase hover:text-white" href="#latestNews">Scroll Down</a>
-        <div class="flex flex-row space-x-4 items-center">
+        <div class="flex flex-row space-x-4 items-center rtl:space-x-reverse">
             <em class="fa fa-circle text-cyan-500 text-xs"></em>
             <span class="text-base leading-6 font-semibold tracking-wide uppercase">
                     Latest News:

@@ -18,7 +18,7 @@
             @endforeach
         </div>
 
-        <div class="container my-20 space-y-10">
+        <div class="container my-20 space-y-10" dir="ltr">
             {{$videos->links()}}
         </div>
     </div>

@@ -24,7 +24,7 @@
         </div>
 
         <div class="container my-10 md:my-20">
-            <div class="flex flex-col md:flex-row justify-between space-y-6 md:space-y-0 md:space-x-6">
+            <div class="flex flex-col md:flex-row justify-between space-y-6 md:space-y-0 md:space-x-6 rtl:space-x-reverse">
                 <div class="flex flex-col md:w-1/3 bg-gray-100 text-black rounded p-4 space-y-2 md:space-y-4">
                     <div class="flex flex-row">
                         <svg viewBox="0 0 97 96" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-16 md:w-[97px]">
@@ -41,10 +41,7 @@
                     <div class="flex flex-row text-sm md:text-xl leading-7 font-normal text-gray-500">
                         AkhbarMeter (MediaMeter) is one of the first dynamic digital media observatories in Egypt and...
                     </div>
-                    <a href="{{route('akhbarmeter')}}" class="flex flex-row text-sm md:text-base leading-6 font-medium text-blue-600">
-                        Learn more ⟶
-                    </a>
-
+                    <x-learn-more href="{{route('akhbarmeter')}}" />
                 </div>
                 <div class="flex flex-col md:w-1/3 bg-gray-100 text-black rounded p-4 space-y-2 md:space-y-4">
                     <div class="flex flex-row">
@@ -61,9 +58,7 @@
                     <div class="flex flex-row text-sm md:text-xl leading-7 font-normal text-gray-500">
                         The team evaluate news articles by answering a series of questions (19 questions) that are availa...
                     </div>
-                    <a href="{{route('methodology')}}" class="flex flex-row text-sm md:text-base leading-6 font-medium text-blue-600">
-                        Learn more ⟶
-                    </a>
+                    <x-learn-more href="{{route('methodology')}}" />
                 </div>
                 <div class="flex flex-col md:w-1/3 space-y-6">
                     <div class="flex flex-row bg-gray-100 text-black rounded p-4">
@@ -71,9 +66,7 @@
                             <div class="flex flex-row text-lg leading-8 font-semibold md:text-4xl md:leading-10 md:font-extrabold">
                                 Our Partners
                             </div>
-                            <a href="{{route('akhbarmeter')}}#partners" class="flex flex-row text-sm md:text-base leading-6 font-medium text-blue-600">
-                                Learn more ⟶
-                            </a>
+                            <x-learn-more href="{{route('akhbarmeter')}}#partners" />
                         </div>
                     </div>
                     <div class="flex flex-row bg-gray-100 text-black rounded p-4">
@@ -81,9 +74,7 @@
                             <div class="flex flex-row text-lg leading-8 font-semibold md:text-4xl md:leading-10 md:font-extrabold">
                                 Contact Us
                             </div>
-                            <a href="{{route('contact.index')}}" class="flex flex-row text-sm md:text-base leading-6 font-medium text-blue-600">
-                                Learn more ⟶
-                            </a>
+                            <x-learn-more href="{{route('contact.index')}}" />
                         </div>
                     </div>
                 </div>

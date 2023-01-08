@@ -19,7 +19,7 @@
                         <p class="font-extrabold">Contact information</p>
                         <p>Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat massa dictumst amet. Sapien
                             tortor lacus arcu.</p>
-                        <div class="flex flex-row space-x-6">
+                        <div class="flex flex-row space-x-6 rtl:space-x-reverse">
                             <div class="flex-row">
                                 <img src="{{asset('images/icons/phone.svg')}}" alt="Phone Contact"/>
                             </div>
@@ -27,7 +27,7 @@
                                 +4915255782470
                             </div>
                         </div>
-                        <div class="flex flex-row space-x-4">
+                        <div class="flex flex-row space-x-4 rtl:space-x-reverse">
                             <div class="flex-row">
                                 <img src="{{asset('images/icons/mail.svg')}}" alt="Email Contact"/>
                             </div>
@@ -35,7 +35,7 @@
                                 info@akhbarmeter.org
                             </div>
                         </div>
-                        <div class="flex flex-row space-x-4">
+                        <div class="flex flex-row space-x-4 rtl:space-x-reverse">
                             @include('partials.components.social-media-links')
                         </div>
                     </div>

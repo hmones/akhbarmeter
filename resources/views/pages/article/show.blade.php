@@ -3,18 +3,18 @@
     <div style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{Storage::url($article->image)}}'); background-position: center; background-size: cover;">
         <div class="container flex flex-col w-full items-center justify-center mx-auto space-y-4 py-16 text-white">
             <div class="flex flex-col">
-                <div class="flex flex-row items-center space-x-3">
+                <div class="flex flex-row items-center space-x-3 rtl:space-x-reverse">
                     <img src="{{Storage::url($article->publisher->image)}}" alt="{{$article->publisher->name}}" class="h-[52px] rounded"/>
                     <div class="flex flex-col space-y-1">
-                        <span class="text-xs leading-4 font-semibold">No. {{$article->publisher->scores()->where('period', 'week')->orderBy('created_at', 'desc')->first()?->rank ?? 1}}</span>
-                        <div class="flex flex-row">
+                        <span class="text-xs leading-4 font-semibold">No. {{$article->publisher->scores()->wherePeriod('week')->latest()->first()?->rank ?? 1}}</span>
+                        <div class="flex flex-row items-center space-x-1.5 rtl:space-x-reverse">
                             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M19 10.5V10.5C19 15.471 14.971 19.5 10 19.5V19.5C5.029 19.5 1 15.471 1 10.5V10.5C1 5.529 5.029 1.5 10 1.5V1.5C14.971 1.5 19 5.529 19 10.5Z" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M10 6.5V14.5" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M7 9.5L10 6.5L13 9.5" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                             <span class="text-green-500 text-xl leading-7 font-semibold">
-                                {{$article->publisher->scores()->where('period', 'week')->orderBy('created_at', 'desc')->first()?->score ?? 38}}%
+                                {{$article->publisher->scores()->wherePeriod('week')->latest()->first()?->score ?? 38}}%
                             </span>
                         </div>
                         <span class="text-xs leading-4 font-normal">Accuracy Rank</span>
@@ -24,15 +24,11 @@
             <div class="flex flex-col">
                 <h1 class="text-base lg:text-3xl leading-9 font-bold text-center">{{$article->title}}</h1>
             </div>
-            <div class="hidden lg:flex flex-initial w-4/5 flex-col">
-                <p class="text-center text-base leading-6 font-medium">
-                    {{$article->created_at->format('F d, Y')}}
-                    | Article Author: {{$article->author_name}}
-                    | Reviewed by: {{$article->user?->name}}
-                    @if($article->topic)
-                        | Category: {{$article->topic->title}}
-                    @endif
-                </p>
+            <div class="hidden lg:flex flex-row w-4/5 text-lg text-center leading-6 font-normal mx-auto justify-center space-x-1.5 rtl:space-x-reverse">
+                <span>{{$article->created_at->format('F d, Y')}} |</span>
+                <span> Article Author: {{$article->author_name}} |</span>
+                <span> Reviewed by: {{$article->user?->name}} |</span>
+                <span> Category: {{$article->topic?->title}} </span>
             </div>
         </div>
     </div>
@@ -67,7 +63,7 @@
                     <div class="text-center text-base leading-6 font-medium py-4">
                         Our detailed review
                     </div>
-                    <div class="flex flex-row justify-center mx-auto pt-4 pb-8 text-xs space-x-8">
+                    <div class="flex flex-row justify-center mx-auto pt-4 pb-8 text-xs space-x-8 rtl:space-x-reverse">
                         <button id="profButton" class="cursor-pointer bg-blue-600 text-white shadow-md rounded-lg px-4 py-2">Professionalism</button>
                         <button id="credButton" class="cursor-pointer bg-white shadow-md rounded-lg px-4 py-2">Credibility</button>
                         <button id="hrButton" class="cursor-pointer bg-white shadow-md rounded-lg px-4 py-2">Human Rights</button>
@@ -103,7 +99,7 @@
                         The article was copied from <a class="text-blue-700" href="{{$article->publisher->url}}">{{$article->publisher->name}}</a> {{$article->fetched_at}}  <a class="text-blue-700" href="{{$article->url}}">View original article</a>
                     </div>
                 </div>
-                <x-cards.article-footer :article="$article" />
+                <x-cards.article-footer :article="$article" showTotalScore="false" />
             </div>
         </div>
     </div>

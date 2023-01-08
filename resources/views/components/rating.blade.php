@@ -7,7 +7,7 @@
     $color = ($score <= 30) ? '#EF4444' : ($score <= 80 ? '#FBBF24' : '#10B981');
 @endphp
 
-<div {{$attributes->merge(['class' => 'flex flex-row space-x-1 items-center'])}}>
+<div {{$attributes->merge(['class' => 'flex flex-row space-x-1 items-center rtl:space-x-reverse'])}}>
     <span class="leading-4 font-normal">{{$score}}%</span>
     @if($fullCircles > 0)
         @foreach(range(1, $fullCircles) as $count)

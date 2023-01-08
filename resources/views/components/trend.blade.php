@@ -1,6 +1,6 @@
 @props(['score', 'isTrending', 'percentageClasses' => 'text-3xl leading-9 font-bold'])
 
-<div class="flex flex-row items-center space-x-2">
+<div class="flex flex-row items-center space-x-2 rtl:space-x-reverse">
     @if($isTrending)
         <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M19.4395 10V10C19.4395 14.971 15.4105 19 10.4395 19V19C5.46845 19 1.43945 14.971 1.43945 10V10C1.43945 5.029 5.46845 1 10.4395 1V1C15.4105 1 19.4395 5.029 19.4395 10Z" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

@@ -1,7 +1,7 @@
 @props(['label'])
 
 <div class="flex flex-row rounded-lg items-center justify-center text-center">
-    <div class="bg-{{$label->color}}-500 p-2 rounded-l-lg border-2 border-solid border-{{$label->color}}-500">
+    <div class="bg-{{$label->color}}-500 p-2 ltr:rounded-l-lg rtl:rounded-r-lg border-2 border-solid border-{{$label->color}}-500">
         @if($label->color === 'red')
             <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle r="9" transform="matrix(-1 0 0 1 12.2441 12)" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -28,7 +28,7 @@
             </svg>
         @endif
     </div>
-    <div class="p-2 rounded-r-lg border-2 border-solid border-{{$label->color}}-500">
+    <div class="p-2 ltr:rounded-r-lg rtl:rounded-l-lg border-2 border-solid border-{{$label->color}}-500">
         {{$label->title}}
     </div>
 </div>

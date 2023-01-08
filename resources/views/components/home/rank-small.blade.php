@@ -1,5 +1,5 @@
 @props(['publisher'])
-<div class="flex flex-row space-x-2">
+<div class="flex flex-row space-x-2 rtl:space-x-reverse">
     <img class="w-16 h-16"
          src="{{$publisher->image ? Storage::url($publisher->image) : asset('images/placeholders/publisher.png')}}"
          alt="{{$publisher->name}}"/>
