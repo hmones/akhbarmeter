@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('translations', function (Blueprint $table) {
             $table->id();
             $table->string('key')->unique();
-            $table->text('value')->nullable();
+            $table->text('content')->nullable();
             $table->string('page')->nullable();
             $table->timestamps();
         });

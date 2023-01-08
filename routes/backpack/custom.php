@@ -20,4 +20,11 @@ Route::group([
     Route::crud('topic', 'TopicCrudController');
     Route::crud('publication', 'PublicationCrudController');
     Route::crud('translation', 'TranslationCrudController');
+    Route::crud('publisher', 'PublisherCrudController');
+    Route::crud('article', 'ArticleCrudController');
+    Route::crud('question', 'QuestionCrudController');
+    Route::crud('article-topic', 'ArticleTopicCrudController');
+    Route::crud('article-type', 'ArticleTypeCrudController');
+    Route::crud('question-label', 'QuestionLabelCrudController');
+    Route::crud('publisher-score', 'PublisherScoreCrudController');
 }); // this should be the absolute last line of this file

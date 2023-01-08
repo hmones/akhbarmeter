@@ -40,7 +40,7 @@ class TranslationCrudController extends CrudController
         CRUD::setValidation(TranslationRequest::class);
         CRUD::field('key');
         CRUD::field('page');
-        CRUD::field('value');
+        CRUD::field('content');
     }
 
     protected function setupUpdateOperation(): void

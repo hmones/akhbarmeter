@@ -14,17 +14,17 @@
             <div class="flex flex-col space-y-4">
                 <div class="flex flex-row">
                     <div class="text-lg leading-7 font-bold md:text-4xl md:leading-10 md:font-extrabold">
-                        Who we are
+                        {{translate('pages.about.header')}}
                     </div>
                 </div>
                 <div class="flex flex-row text-sm leading-8 font-normal md:text-xl">
-                    This text can be a short text that would explain what the brand will be like and how to show people who we are but without any explansions.
+                    {{translate('pages.about.description')}}
                 </div>
             </div>
         </div>
 
         <div class="container my-10 md:my-20">
-            <div class="flex flex-col md:flex-row justify-between space-y-6 md:space-y-0 md:space-x-6">
+            <div class="flex flex-col md:flex-row justify-between space-y-6 md:space-y-0 md:space-x-6 rtl:space-x-reverse">
                 <div class="flex flex-col md:w-1/3 bg-gray-100 text-black rounded p-4 space-y-2 md:space-y-4">
                     <div class="flex flex-row">
                         <svg viewBox="0 0 97 96" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-16 md:w-[97px]">
@@ -36,15 +36,12 @@
                         </svg>
                     </div>
                     <div class="flex flex-row text-lg leading-8 font-semibold md:text-4xl md:leading-10 md:font-extrabold">
-                        Media Meter
+                        {{translate('pages.about.mediameter.header')}}
                     </div>
                     <div class="flex flex-row text-sm md:text-xl leading-7 font-normal text-gray-500">
-                        AkhbarMeter (MediaMeter) is one of the first dynamic digital media observatories in Egypt and...
+                        {{translate('pages.about.mediameter.description')}}
                     </div>
-                    <a href="{{route('akhbarmeter')}}" class="flex flex-row text-sm md:text-base leading-6 font-medium text-blue-600">
-                        Learn more ⟶
-                    </a>
-
+                    <x-learn-more href="{{route('akhbarmeter')}}" />
                 </div>
                 <div class="flex flex-col md:w-1/3 bg-gray-100 text-black rounded p-4 space-y-2 md:space-y-4">
                     <div class="flex flex-row">
@@ -56,34 +53,28 @@
                         </svg>
                     </div>
                     <div class="flex flex-row text-lg leading-8 font-semibold md:text-4xl md:leading-10 md:font-extrabold">
-                        How it works?
+                        {{translate('pages.about.methodology.header')}}
                     </div>
                     <div class="flex flex-row text-sm md:text-xl leading-7 font-normal text-gray-500">
-                        The team evaluate news articles by answering a series of questions (19 questions) that are availa...
+                        {{translate('pages.about.methodology.description')}}
                     </div>
-                    <a href="{{route('methodology')}}" class="flex flex-row text-sm md:text-base leading-6 font-medium text-blue-600">
-                        Learn more ⟶
-                    </a>
+                    <x-learn-more href="{{route('methodology')}}" />
                 </div>
                 <div class="flex flex-col md:w-1/3 space-y-6">
                     <div class="flex flex-row bg-gray-100 text-black rounded p-4">
                         <div class="flex flex-col space-y-2 md:space-y-12">
                             <div class="flex flex-row text-lg leading-8 font-semibold md:text-4xl md:leading-10 md:font-extrabold">
-                                Our Partners
+                                {{translate('pages.about.partners')}}
                             </div>
-                            <a href="{{route('akhbarmeter')}}#partners" class="flex flex-row text-sm md:text-base leading-6 font-medium text-blue-600">
-                                Learn more ⟶
-                            </a>
+                            <x-learn-more href="{{route('akhbarmeter')}}#partners" />
                         </div>
                     </div>
                     <div class="flex flex-row bg-gray-100 text-black rounded p-4">
                         <div class="flex flex-col space-y-2 md:space-y-12">
                             <div class="flex flex-row text-lg leading-8 font-semibold md:text-4xl md:leading-10 md:font-extrabold">
-                                Contact Us
+                                {{translate('pages.about.contact')}}
                             </div>
-                            <a href="{{route('contact.index')}}" class="flex flex-row text-sm md:text-base leading-6 font-medium text-blue-600">
-                                Learn more ⟶
-                            </a>
+                            <x-learn-more href="{{route('contact.index')}}" />
                         </div>
                     </div>
                 </div>

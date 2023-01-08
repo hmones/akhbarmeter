@@ -1,36 +1,30 @@
 @extends('layouts.default')
-@section('title')
-    Who we are?
-@endsection
+@section('title', translate('pages.akhbarmeter.header'))
 @section('content')
-    @include('partials.page-header', [
-            'headline' => 'Who we are?',
-            'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque'
-        ])
+    <x-page-header :headline="translate('pages.akhbarmeter.header')"
+                   :description="translate('pages.akhbarmeter.description')"/>
 
     <div class="container">
         <div class="flex flex-col-reverse md:flex-row justify-center items-center align-content-center">
             <div class="flex flex-col rounded-lg z-10 md:align-middle -mt-48 md:m-0 shadow-2xl">
-                <img class="my-auto h-[177px] md:h-[405px] w-full" src="{{asset('images/about.png')}}" alt="AkhbarMeter Team"/>
+                <img class="my-auto h-[177px] md:h-[405px] w-full" src="{{asset('images/about.png')}}"
+                     alt="AkhbarMeter Team"/>
             </div>
-            <div class="flex flex-col p-10 pb-60 md:p-32 md:pl-[285px] md:-ml-48 bg-blue-600 rounded-lg w-full text-white space-y-6">
-                    <div class="text-xl leading-8 font-semibold md:text-4xl md:leading-10 md:font-extrabold">
-                        Our history
-                    </div>
-                    <div class="text-sm leading-8 font-normal md:text-xl md:leading-7">
-                        AkhbarMeter (MediaMeter) is one of the first dynamic digital media observatories in Egypt and the
-                        world, which rank news agencies according to their adherence to ethical and processional media
-                        standards. AkhbarMeter, is a youth-led initiative developed by Egyptians. The initiative started on
-                        a voluntary basis in 2014 and officially in 2018. It is an attempt to response to increasing use of
-                        media to manipulate the public and polarize society.
-                    </div>
+            <div
+                class="flex flex-col p-10 pb-60 md:p-32 ltr:md:pl-[285px] rtl:md:pr-[285px] ltr:md:-ml-48 rtl:md:-mr-48 bg-blue-600 rounded-lg w-full text-white space-y-6">
+                <div class="text-xl leading-8 font-semibold md:text-4xl md:leading-10 md:font-extrabold">
+                    {{translate('pages.akhbarmeter.history.header')}}
+                </div>
+                <div class="text-sm leading-8 font-normal md:text-xl md:leading-7">
+                    {{translate('pages.akhbarmeter.history.description')}}
+                </div>
             </div>
         </div>
     </div>
 
 
     <div class="bg-gray-50 p-16 md:px-24 my-6">
-        <div class="flex flex-col md:flex-row space-y-10 md:space-y-0 md:space-x-8">
+        <div class="flex flex-col md:flex-row space-y-10 md:space-y-0 md:space-x-8 rtl:space-x-reverse">
             <div class="flex flex-col space-y-4 md:w-1/3">
                 <div class="flex flex-row">
                     <svg width="57" height="56" viewBox="0 0 57 56" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,16 +42,11 @@
                 </div>
                 <div class="flex flex-row">
                     <div class="text-4xl leading-10 font-extrabold">
-                        We monitor
+                        {{translate('pages.akhbarmeter.monitor.header')}}
                     </div>
                 </div>
                 <div class="flex flex-row text-xl leading-7 text-gray-500">
-                    AkhbarMeter (MediaMeter) monitors and assesses the truthfulness and professionalism of the top ten
-                    online news websites in Egypt based on Similar Web rankings. Our reviewers select and evaluate
-                    articles from the political or economic sections of each news outlet based on their importance to
-                    the Egyptian readers. Reviewers assess each article based on several methodological questions
-                    developed in consultation with various international fact-checking experts that fall under three
-                    broad categories of professionalism, manipulation and human rights violations.
+                    {{translate('pages.akhbarmeter.monitor.description')}}
                 </div>
             </div>
             <div class="flex flex-col space-y-4 md:w-1/3">
@@ -77,19 +66,11 @@
                 </div>
                 <div class="flex flex-row">
                     <div class="text-4xl leading-10 font-extrabold">
-                        We review
+                        {{translate('pages.akhbarmeter.review.header')}}
                     </div>
                 </div>
                 <div class="flex flex-row text-xl leading-7 text-gray-500">
-                    Specific questions include whether the article conceals information, contains false information,
-                    uses photos to manipulate facts, cites sources representing different views, reflects bias by the
-                    author, contains hate speech, negatively profiles members of certain groups, and more. Assessed
-                    articles are posted on the website (https://akhbarmeter.org/) along with responses to the questions
-                    described above. Each reviewed article is marked with an icon that provides a score out of 100% on
-                    how professional and truthful it is. If the article contains false or misinformation, the icon is
-                    marked accordingly to warn reader s. Our staff often contact authors of reviewed articles to give
-                    them a chance to respond to the evaluation and offer to publish their responses on the article’s
-                    page on the website.
+                    {{translate('pages.akhbarmeter.review.description')}}
                 </div>
             </div>
             <div class="flex flex-col space-y-4 md:w-1/3">
@@ -109,15 +90,11 @@
                 </div>
                 <div class="flex flex-row">
                     <div class="text-4xl leading-10 font-extrabold">
-                        We assess
+                        {{translate('pages.akhbarmeter.assess.header')}}
                     </div>
                 </div>
                 <div class="flex flex-row text-xl leading-7 text-gray-500">
-                    In addition to daily article reviews, AkhbarMeter (MediaMeter) conducts a monthly analysis of each
-                    media outlet performance based on the cumulative articles reviewed and a monthly score for each
-                    media outlet will be generated automatically. Finally, we publish three one-page articles per month
-                    with deeper analysis on critical news items. The assessments are also circulated through its social
-                    media networks for a wide range of audience.
+                    {{translate('pages.akhbarmeter.assess.description')}}
                 </div>
             </div>
         </div>
@@ -125,32 +102,36 @@
 
     <div id="partners" class="container flex flex-col md:flex-row items-center space-y-10 md:space-y-0">
         <div class="flex flex-col text-4xl leading-10 font-extrabold w-full md:w-1/5 text-center md:text-left">
-            Awards Received
+            {{translate('pages.akhbarmeter.awards')}}
         </div>
         <div class="flex flex-col w-1/4">
-            <img src="{{asset('images/portfolio/eya.png')}}" alt="European Youth Award" class="text-center h-auto w-48"/>
+            <img src="{{asset('images/portfolio/eya.png')}}" alt="European Youth Award"
+                 class="text-center h-auto w-48"/>
         </div>
         <div class="flex flex-col w-1/4">
-            <img src="{{asset('images/portfolio/dpc.png')}}" alt="Digital Participation Summit" class="text-center h-auto w-48"/>
+            <img src="{{asset('images/portfolio/dpc.png')}}" alt="Digital Participation Summit"
+                 class="text-center h-auto w-48"/>
         </div>
         <div class="flex flex-col w-1/4">
-            <img src="{{asset('images/portfolio/amf.png')}}" alt="Alexandria Media Forum" class=" text-center h-auto w-48"/>
+            <img src="{{asset('images/portfolio/amf.png')}}" alt="Alexandria Media Forum"
+                 class=" text-center h-auto w-48"/>
         </div>
     </div>
 
     <div class="bg-gray-50 py-20">
         <div class="container flex flex-col md:flex-row items-center space-y-10 md:space-y-0">
             <div class="flex flex-col text-4xl leading-10 font-extrabold w-full md:w-1/5 text-center md:text-left">
-                Partners
+                {{translate('pages.akhbarmeter.partners')}}
             </div>
             <div class="flex flex-col w-1/4">
                 <img src="{{asset('images/portfolio/tlg.jpg')}}" alt="Tahrir Lounge" class="text-center h-auto w-48"/>
             </div>
             <div class="flex flex-col w-1/4">
-                <img src="{{asset('images/portfolio/mk.png')}}" alt="Macedonia Media Fact Checking" class="text-center h-auto w-48" />
+                <img src="{{asset('images/portfolio/mk.png')}}" alt="Macedonia Media Fact Checking"
+                     class="text-center h-auto w-48"/>
             </div>
             <div class="flex flex-col w-1/4">
-                <img src="{{asset('images/portfolio/zastone.png')}}" alt="Zastone" class="text-center h-auto w-48" />
+                <img src="{{asset('images/portfolio/zastone.png')}}" alt="Zastone" class="text-center h-auto w-48"/>
             </div>
         </div>
     </div>
@@ -158,26 +139,31 @@
     <div class="container">
         <div class="flex flex-col md:flex-row items-center space-y-10 md:space-y-0 py-20">
             <div class="flex flex-col text-4xl leading-10 font-extrabold w-full md:w-1/5 text-center md:text-left">
-                Featured in
+                {{translate('pages.akhbarmeter.featured')}}
             </div>
             <div class="flex flex-col items center space-y-20">
                 <div class="flex flex-row items-center space-x-16">
                     <div class="flex flex-col w-1/4">
-                        <img src="{{asset('images/portfolio/mag1.gif')}}" alt="Ich mag meine uni" class="text-center h-auto w-48"/>
+                        <img src="{{asset('images/portfolio/mag1.gif')}}" alt="Ich mag meine uni"
+                             class="text-center h-auto w-48"/>
                     </div>
                     <div class="flex flex-col w-1/4">
-                        <img src="{{asset('images/portfolio/wbs.jpg')}}" alt="Willy Brandt School" class="text-center h-auto w-48"/>
+                        <img src="{{asset('images/portfolio/wbs.jpg')}}" alt="Willy Brandt School"
+                             class="text-center h-auto w-48"/>
                     </div>
                     <div class="flex flex-col w-1/4">
-                        <img src="{{asset('images/portfolio/ca.jpg')}}" alt="Commitment Award" class="text-center h-auto w-48"/>
+                        <img src="{{asset('images/portfolio/ca.jpg')}}" alt="Commitment Award"
+                             class="text-center h-auto w-48"/>
                     </div>
                 </div>
-                <div class="flex flex-row space-x-16 items-center">
+                <div class="flex flex-row space-x-16 items-center rtl:space-x-reverse">
                     <div class="flex flex-col w-1/4">
-                        <img src="{{asset('images/portfolio/mag2.png')}}" alt="Daily News Egypt" class="text-center h-auto w-auto" />
+                        <img src="{{asset('images/portfolio/mag2.png')}}" alt="Daily News Egypt"
+                             class="text-center h-auto w-auto"/>
                     </div>
                     <div class="flex flex-col w-1/4">
-                        <img src="{{asset('images/portfolio/mk.png')}}" alt="Macedonia Media Fact Checking" class="text-center h-auto w-48" />
+                        <img src="{{asset('images/portfolio/mk.png')}}" alt="Macedonia Media Fact Checking"
+                             class="text-center h-auto w-48"/>
                     </div>
                 </div>
             </div>

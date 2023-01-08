@@ -1,13 +1,9 @@
 @extends('layouts.default')
-@section('title')
-    Publications
-@endsection
+@section('title', 'Publications')
 @section('content')
     <div class="container max-h-full">
-        @include('partials.page-header', [
-            'headline' => 'Publications',
-            'description' => 'Simple text saying what the user should excpect by clicking on any of the news outlets.'
-        ])
+        <x-page-header :headline="translate('pages.home.publications.header')"
+                       :description="translate('pages.home.publications.description')"/>
 
         <div class="container">
             <div class="flex flex-row mb-10">
@@ -29,29 +25,17 @@
         <div class="container mb-10 space-y-10">
             @foreach($publications->chunk(3) as $rowPublications)
                 <div
-                    class="flex flex-col xl:flex-row w-full items-start items-stretch justify-center mx-auto space-y-10 xl:space-y-0">
+                        class="flex flex-col xl:flex-row w-full items-start items-stretch justify-center mx-auto space-y-10 xl:space-y-0">
                     @foreach($rowPublications as $record)
                         <div class="flex flex-col xl:flex-row w-full xl:w-1/3 mx-2">
-                            @include('partials.file-card', [
-                                'title' => $record->title,
-                                'description' => $record->description,
-                                'time'  => $record->created_at->diffForHumans(),
-                                'route' => 'publications.index',
-                                'image' => Storage::url($record->image),
-                                'author' => $record->author_name,
-                                'avatar' => Storage::url($record->author_avatar),
-                                'file' => Storage::url($record->file),
-                                'tags'  => $record->tags,
-                                'created' => $record->created_at,
-                                'read' => $record->min_to_read
-                            ])
+                            <x-cards.publication :publication="$record"/>
                         </div>
                     @endforeach
                 </div>
             @endforeach
         </div>
 
-        <div class="container my-20 space-y-10">
+        <div class="container my-20 space-y-10" dir="ltr">
             {{$publications->links()}}
         </div>
     </div>

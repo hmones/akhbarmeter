@@ -1,13 +1,8 @@
 @extends('layouts.default')
-@section('title')
-    Topics
-@endsection
+@section('title', 'Topics')
 @section('content')
     <div class="container max-h-full">
-        @include('partials.page-header', [
-            'headline' => 'Topics',
-            'description' => 'Simple text saying what the user should excpect by clicking on any of the news outlets.'
-        ])
+        <x-page-header :headline="translate('pages.topics.header')" :description="translate('pages.topics.description')"/>
 
         <div class="container">
             <div class="flex flex-row mb-10">
@@ -30,21 +25,14 @@
         <div class="container mb-10 space-y-10">
             @foreach($topics as $type => $topicsList)
                 @if($topicsList->count() > 0)
-                    <div class="font-extrabold">{{\App\Models\Topic::TYPES[$type]}}</div>
+                    <div class="font-extrabold">{{translate('pages.topics.' . $type)}}</div>
                 @endif
                 @foreach($topicsList->chunk(3) as $rowTopics)
                     <div
-                        class="flex flex-col xl:flex-row w-full items-start items-stretch justify-left mx-auto space-y-10 xl:space-y-0">
+                            class="flex flex-col xl:flex-row w-full items-start items-stretch justify-left mx-auto space-y-10 xl:space-y-0">
                         @foreach($rowTopics as $record)
                             <div class="flex flex-col xl:flex-row w-full xl:w-1/3 mx-2">
-                                @include('partials.topic-card', [
-                                    'title' => $record->title,
-                                    'time'  => $record->created_at->diffForHumans(),
-                                    'route' => 'topics.index',
-                                    'tags'  => $record->tags,
-                                    'avatar' => Storage::url($record->image),
-                                    'show'  => route('topics.show', $record->id)
-                                ])
+                                <x-cards.topic :topic="$record" />
                             </div>
                         @endforeach
                     </div>
@@ -52,7 +40,7 @@
             @endforeach
         </div>
         @if($paginationTopic)
-            <div class="container my-20 space-y-10">
+            <div class="container my-20 space-y-10" dir="ltr">
                 {{$topics[$paginationTopic]->links()}}
             </div>
         @endif

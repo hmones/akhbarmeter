@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale() ?? 'ar') }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale() ?? 'ar') }}" dir="{{app()->getLocale() !== 'en' ? 'rtl' : 'ltr'}}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>AkhbarMeter | @yield('title')</title>
 
@@ -20,7 +21,7 @@
         <link rel="stylesheet" href="{{asset('css/bootstrap.rtl.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/app.rtl.css')}}">
     @endif
-    @yield('scripts')
+    @stack('scripts')
 
     <!-- Browser and App icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="{{asset('images/favicon/apple-icon-57x57.png')}}">
@@ -43,7 +44,7 @@
 </head>
 <body>
 <div class="flex flex-col h-full justify-between">
-    @include('partials.navigation', ['isColoredNavigation' => isset($isColoredNavigation)])
+    <x-navigation :isColoredNavigation="isset($isColoredNavigation)" :isHomePage="isset($isHomePage)"/>
     <div class="h-full">
         @yield('content')
     </div>
