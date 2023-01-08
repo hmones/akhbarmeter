@@ -3,7 +3,7 @@
         route="publications.index">
     <x-slot:image>
         <div
-            class="w-full h-[266px] bg-[url('{{Storage::url($publication->image)}}')] bg-cover bg-center bg-no-repeat"></div>
+            class="w-full h-[266px] bg-[url('{{$publication->image ? Storage::url($publication->image) : asset('images/placeholders/article.png')}}')] bg-cover bg-center bg-no-repeat"></div>
     </x-slot:image>
     <x-slot:description>
         <div class="my-2 text-base leading-6 font-normal text-gray-500 align-self-stretch">

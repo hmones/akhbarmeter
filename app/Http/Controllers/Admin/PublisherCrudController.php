@@ -45,7 +45,6 @@ class PublisherCrudController extends CrudController
         CRUD::setValidation(PublisherRequest::class);
 
         CRUD::field('name');
-        CRUD::field('slug')->type('slug')->target('name');
         CRUD::field('description')->type('ckeditor')->options([
             'autoGrow_minHeight'   => 200,
             'autoGrow_bottomSpace' => 50,

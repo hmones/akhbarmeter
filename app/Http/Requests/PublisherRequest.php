@@ -15,11 +15,6 @@ class PublisherRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'slug'          => [
-                'required',
-                Rule::unique('publishers', 'slug')->ignore(request()->publisher),
-                'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/i'
-            ],
             'name'          => 'required',
             'description'   => 'nullable',
             'url'           => 'required|url',

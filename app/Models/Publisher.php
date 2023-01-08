@@ -7,6 +7,7 @@ use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage;
 
 class Publisher extends Model
 {
@@ -45,6 +46,6 @@ class Publisher extends Model
 
     public function setImageAttribute($value): void
     {
-        $this->uploadFileToDisk($value, 'image', config('filesystems.default'), "publisher/image");
+        $this->attributes['image'] = Storage::putFile('v3.0/publisher/image', $value, 'public');
     }
 }

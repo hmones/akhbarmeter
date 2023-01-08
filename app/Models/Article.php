@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Storage;
 
 class Article extends Model
 {
@@ -60,7 +61,7 @@ class Article extends Model
 
     public function setImageAttribute($value): void
     {
-        $this->uploadFileToDisk($value, 'image', config('filesystems.default'), "article/image");
+        $this->attributes['image'] = Storage::putFile('v3.0/article/image', $value, 'public');
     }
 
     public function updatePublisher(): ?Publisher

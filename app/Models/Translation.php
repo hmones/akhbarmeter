@@ -20,6 +20,7 @@ class Translation extends Model
     {
         parent::booted();
         static::created(fn () => Cache::forget('translations'));
+        static::updated(fn () => Cache::forget('translations'));
     }
 
     protected $guarded = [];

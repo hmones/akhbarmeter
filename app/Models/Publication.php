@@ -7,6 +7,7 @@ use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Publication extends Model
 {
@@ -34,16 +35,16 @@ class Publication extends Model
 
     public function setImageAttribute($value): void
     {
-        $this->uploadFileToDisk($value, 'image', config('filesystems.default'), "publication/image");
+        $this->attributes['image'] = Storage::putFile('v3.0/publication/image', $value, 'public');
     }
 
     public function setAuthorAvatarAttribute($value): void
     {
-        $this->uploadFileToDisk($value, 'author_avatar', config('filesystems.default'), "publication/author_avatar");
+        $this->attributes['image'] = Storage::putFile('v3.0/publication/author_avatar', $value, 'public');
     }
 
     public function setFileAttribute($value): void
     {
-        $this->uploadFileToDisk($value, 'file', config('filesystems.default'), "publication/file");
+        $this->attributes['image'] = Storage::putFile('v3.0/publication/file', $value, 'public');
     }
 }
