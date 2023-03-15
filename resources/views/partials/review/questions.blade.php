@@ -37,7 +37,7 @@
                         <input type="radio" id="option_{{$question->id}}_{{$option->id}}"
                                name="responses[{{$question->id}}][option_id]"
                                value="{{$option->id}}"
-                               @if($questionResponse->option_id === $option->id || (!$article->review()->exists() && $option->selected))
+                               @if($questionResponse?->option_id === $option->id || (!$article->review()->exists() && $option->selected))
                                    checked
                                @endif
                         />
