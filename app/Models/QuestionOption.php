@@ -28,6 +28,7 @@ class QuestionOption extends Model
         'description',
         'weight',
         'selected',
+        'is_not_applicable'
     ];
 
     public function question(): BelongsTo

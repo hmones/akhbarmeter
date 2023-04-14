@@ -113,6 +113,11 @@ class QuestionCrudController extends CrudController
                     'name'  => 'selected',
                     'type'  => 'checkbox',
                     'label' => 'Selected by default?'
+                ],
+                [
+                    'name'  => 'is_not_applicable',
+                    'type'  => 'checkbox',
+                    'label' => 'Does this option represents a not-applicable?'
                 ]
             ],
             'attribute'    => 'title',
