@@ -15,7 +15,7 @@ class TranslationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'key' => ['required', Rule::unique('translations', 'key')->ignore($this->translation->id)]
+            'key' => ['required', Rule::unique('translations', 'key')->ignore(request()->attributes->get('id'))]
         ];
     }
 }
