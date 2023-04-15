@@ -9,7 +9,9 @@
             <div class="text-lg leading-8 font-semibold">{{$response->option->question->title}}</div>
         </div>
         <div class="text-sm leading-5 font-normal">
-            <span class="font-semibold">{{$response->option->title}}</span>, {{$response->comment}}
+            <span class="font-semibold">{{$response->option->title}}</span>
+            </br>
+            <span>{{$response->comment}}</span>
         </div>
     </div>
 @endif

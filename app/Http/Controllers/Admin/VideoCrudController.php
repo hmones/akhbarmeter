@@ -44,7 +44,7 @@ class VideoCrudController extends CrudController
         CRUD::setValidation(VideoRequest::class);
 
         CRUD::field('title');
-        CRUD::field('url');
+        CRUD::field('url')->hint('Get this link by clicking on share option in youtube, then embed, then copy the link that will be in the code. The link should look like this: https://www.youtube.com/embed/hLoatpfE7VM');
         CRUD::field('description')->type('ckeditor')->options([
             'autoGrow_minHeight'   => 200,
             'autoGrow_bottomSpace' => 50,
