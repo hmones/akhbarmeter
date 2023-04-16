@@ -70,17 +70,7 @@ class QuestionCrudController extends CrudController
         CRUD::field('description');
         CRUD::field('hint');
         CRUD::field('weight');
-        CRUD::addField([
-            'type'          => 'relationship',
-            'name'          => 'label',
-            'ajax'          => true,
-            'data_source'   => backpack_url('question/fetch/question-label'),
-            'inline_create' => [
-                'entity' => 'question-label'
-            ],
-            'attribute'     => 'title',
-            'pivot'         => false
-        ]);
+        CRUD::field('label')->type('relationship')->attribute('title')->model(QuestionLabel::class);
         CRUD::addField([
             'type'         => 'relationship',
             'name'         => 'options',

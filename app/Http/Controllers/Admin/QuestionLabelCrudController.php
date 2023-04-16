@@ -47,7 +47,7 @@ class QuestionLabelCrudController extends CrudController
         CRUD::setValidation(QuestionLabelRequest::class);
 
         CRUD::field('title');
-        CRUD::field('icon');
+        CRUD::field('icon')->hint('You can select any icon from this website https://fontawesome.com/v4/icons/');
         CRUD::field('color')->type('enum')->options(QuestionLabel::COLORS);
         CRUD::field('priority');
     }

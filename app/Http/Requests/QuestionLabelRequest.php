@@ -18,7 +18,7 @@ class QuestionLabelRequest extends FormRequest
     {
         return [
             'title'    => 'required',
-            'icon'     => 'nullable',
+            'icon'     => 'required',
             'color'    => ['required', Rule::in(array_keys(QuestionLabel::COLORS))],
             'priority' => 'required|numeric',
         ];
