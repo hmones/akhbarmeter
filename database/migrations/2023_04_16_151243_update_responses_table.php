@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('responses', function (Blueprint $table) {
+        Schema::table('responses', function (Blueprint $table) {
             $table->text('comment')->change();
             $table->text('annotation')->change();
         });
