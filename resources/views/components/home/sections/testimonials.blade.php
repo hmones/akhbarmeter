@@ -13,7 +13,7 @@
                 <span class="text-lg leading-7 font-medium">{{translate('pages.home.testimonials.1.text')}}</span>
             </div>
             <div class="flex flex-row space-x-4 rtl:space-x-reverse">
-                <img src="{{asset('images/placeholders/publisher.png')}}" alt="Testimonial Person 1"
+                <img src="{{asset('images/testimonials/image1.jpg')}}" alt="Bassant Helmi"
                      class="w-12 h-12 rounded-circle border-2 border-solid border-white"/>
                 <div class="flex flex-col space-y-0.5 text-base leading-6 font-medium">
                     <div>{{translate('pages.home.testimonials.1.name')}}</div>
@@ -33,7 +33,7 @@
                 <span class="text-lg leading-7 font-medium">{{translate('pages.home.testimonials.2.text')}}</span>
             </div>
             <div class="flex flex-row space-x-4 rtl:space-x-reverse">
-                <img src="{{asset('images/placeholders/publisher.png')}}" alt="Testimonial Person 1"
+                <img src="{{asset('images/testimonials/image2.jpg')}}" alt="Testimonial Person 1"
                      class="w-12 h-12 rounded-circle border-2 border-solid border-white"/>
                 <div class="flex flex-col space-y-0.5 text-base leading-6 font-medium">
                     <div>{{translate('pages.home.testimonials.2.name')}}</div>
