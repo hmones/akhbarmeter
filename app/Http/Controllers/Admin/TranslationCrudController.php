@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\TranslationRequest;
+use App\Http\Requests\TranslationUpdateRequest;
 use App\Models\Translation;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -45,6 +46,9 @@ class TranslationCrudController extends CrudController
 
     protected function setupUpdateOperation(): void
     {
-        $this->setupCreateOperation();
+        CRUD::setValidation(TranslationUpdateRequest::class);
+        CRUD::field('key');
+        CRUD::field('page');
+        CRUD::field('content');
     }
 }

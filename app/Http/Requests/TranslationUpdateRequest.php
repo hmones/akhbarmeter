@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class TranslationRequest extends FormRequest
+class TranslationUpdateRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -15,7 +14,7 @@ class TranslationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'key' => ['required', Rule::unique('translations', 'key')]
+            'key' => ['required']
         ];
     }
 }
