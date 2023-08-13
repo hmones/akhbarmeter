@@ -29,13 +29,13 @@
             <div class="hidden lg:flex flex-row w-4/5 text-lg text-center leading-6 font-normal mx-auto justify-center space-x-1.5 rtl:space-x-reverse">
                 <span>{{$article->created_at->format('F d, Y')}} |
                     @if(!empty($article->author))
-                        <span> {{translate('pages.article.author')}}: {{$article->author}} |</span>
+                        <span> {{translate('pages.article.author')}}: {{$article->author}} </span>
                     @endif
                     @if(!empty($article->user?->name))
-                        <span> {{translate('pages.article.reviewed')}}: {{$article->user?->name}} |</span>
+                        <span>| {{translate('pages.article.reviewed')}}: {{$article->user?->name}} </span>
                     @endif
                     @if(!empty($article->topic?->title))
-                        <span> {{translate('pages.article.category')}}: {{$article->topic?->title}} </span>
+                        <span>| {{translate('pages.article.category')}}: {{$article->topic?->title}} </span>
                     @endif
             </div>
         </div>

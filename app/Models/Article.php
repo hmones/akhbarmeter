@@ -28,8 +28,8 @@ class Article extends Model
         'active',
         'publisher_id',
         'user_id',
-        'article_type_id',
-        'article_topic_id',
+        'type_id',
+        'topic_id',
         'is_fake',
         'fetched_at',
     ];
