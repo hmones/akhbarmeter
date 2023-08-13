@@ -23,6 +23,7 @@ class ArticleController extends Controller
 
     public function show(Article $article): View
     {
+        $article->load('topic');
         return view('pages.article.show', compact('article'));
     }
 }
