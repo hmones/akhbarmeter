@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <a href="{{route('article.show', $article)}}" class="text-xl leading-7 font-semibold text-gray-700">
+        <a href="{{route('articles.show', $article)}}" class="text-xl leading-7 font-semibold text-gray-700">
             {{$article?->title}}
         </a>
         <div class="hidden lg:flex text-base leading-6 font-normal text-gray-700">
