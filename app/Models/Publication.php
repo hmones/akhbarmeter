@@ -40,11 +40,11 @@ class Publication extends Model
 
     public function setAuthorAvatarAttribute($value): void
     {
-        $this->attributes['image'] = Storage::putFile('v3.0/publication/author_avatar', $value, 'public');
+        $this->attributes['author_avatar'] = Storage::putFile('v3.0/publication/author_avatar', $value, 'public');
     }
 
     public function setFileAttribute($value): void
     {
-        $this->attributes['image'] = Storage::putFile('v3.0/publication/file', $value, 'public');
+        $this->attributes['file'] = Storage::putFile('v3.0/publication/file', $value, 'public');
     }
 }
