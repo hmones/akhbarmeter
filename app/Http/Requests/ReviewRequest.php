@@ -16,7 +16,7 @@ class ReviewRequest extends FormRequest
             'review.user_id'        => 'exists:users,id',
             'review.article_id'     => 'exists:articles,id',
             'responses.*'           => 'required|array',
-            'responses.*.option_id' => 'exists:question_options,id',
+            'responses.*.option_id' => 'required|exists:question_options,id',
             'responses.*.comment'   => 'nullable',
             'responses.*.annotation' => 'nullable'
         ];

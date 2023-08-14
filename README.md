@@ -21,31 +21,16 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## Setting up
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+1. Make sure the current php version is 8.1 `sudo update-alternatives --config php` and choose 8.1
+2. Install composer 2.0 globally and run composer install from the root directory
+3. Give proper permissions to the storage folder by running `chmod -R 777 storage/logs` && `chmod -R 775 storage/framework/`
+4. Copy the env file and modify it: `cp .env.example .env`
+5. Run the docker containers: `vendor/bin/sail up`
+6. Create an application key: `vendor/bin/sail artisan key:generate`
+7. Make sure the database is created by visiting the container `docker compose exec mysql mysql -uUSERNAME -pPASSWORD` and if not make a new database
+8. Run the migrations `vendor/bin/sail artisan migrate --seed`
 
 ## Contributing
 
@@ -61,4 +46,4 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+AkhbarMeter is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
