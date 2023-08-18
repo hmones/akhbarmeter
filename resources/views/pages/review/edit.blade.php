@@ -20,7 +20,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <form class="flex flex-col lg:flex-row" action="{{route('reviews.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="flex flex-col lg:w-1/2 px-8">
+                        <div class="flex flex-col lg:w-1/2 px-8 h-screen overflow-scroll">
                             @include('partials.review.questions', compact('article'))
                         </div>
                         <div class="flex flex-col lg:w-1/2">
