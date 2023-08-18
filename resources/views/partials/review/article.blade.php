@@ -81,9 +81,9 @@
                 <button class="ql-direction" value="rtl"></button>
                 <button class="ql-list" value="ordered"></button>
                 <button class="ql-list" value="bullet"></button>
-                <button class="ql-pro">احترافية</button>
-                <button class="ql-cred">مصداقية</button>
-                <button class="ql-hr">حقوق الإنسان</button>
+                <button id="profButton" type="button" class="custom-editor-button">احترافية</button>
+                <button id="credButton" type="button" class="custom-editor-button">مصداقية</button>
+                <button id="hrButton" type="button" class="custom-editor-button">حقوق الإنسان</button>
             </div>
             <div id="contentEditor">{!! $article->content !!}</div>
         </div>
@@ -95,23 +95,22 @@
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 @endpush
 <style>
-    button.ql-pro, button.ql-cred, button.ql-hr {
+    button.custom-editor-button {
         color: white !important;
         width: fit-content !important;
         padding: 5px 10px !important;
         height: fit-content !important;
         border-radius: 5px;
     }
-    button.ql-hr {
-        background-color: rgb(239 68 68) !important;
+    #hrButton {
+        background-color: rgb(239 68 68);
     }
-    button.ql-cred {
-        background-color: rgb(249 115 22) !important;
+    #credButton {
+        background-color: rgb(249 115 22);
     }
-    button.ql-pro {
-        background-color: rgb(59 130 246) !important;
+    #profButton {
+        background-color: rgb(59 130 246);
     }
-
 </style>
 <script>
     function removeImage() {
