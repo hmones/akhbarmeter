@@ -4,7 +4,7 @@
         <div class="container flex flex-col w-full items-center justify-center mx-auto space-y-4 py-16 text-white">
             <div class="flex flex-col">
                 <div class="flex flex-row items-center space-x-3 rtl:space-x-reverse">
-                    <img src="{{Storage::url($article->publisher->image)}}" alt="{{$article->publisher->name}}" class="h-[52px] rounded"/>
+                    <img src="{{empty($article->publisher->image) ? asset("images/placeholders/publisher.png") : Storage::url($article->publisher->image)}}" alt="{{$article->publisher->name}}" class="h-[52px] rounded"/>
                     <div class="flex flex-col space-y-1">
                         <span class="text-xs leading-4 font-semibold">
                             {{translate('components.home.rank.number')}} {{$article->publisher->scores()->wherePeriod('week')->latest()->first()?->rank ?? 1}}

@@ -81,9 +81,9 @@
                 <button class="ql-direction" value="rtl"></button>
                 <button class="ql-list" value="ordered"></button>
                 <button class="ql-list" value="bullet"></button>
-                <button id="profButton" type="button" class="custom-editor-button">احترافية</button>
-                <button id="credButton" type="button" class="custom-editor-button">مصداقية</button>
-                <button id="hrButton" type="button" class="custom-editor-button">حقوق الإنسان</button>
+                <button class="ql-pro">احترافية</button>
+                <button class="ql-cred">مصداقية</button>
+                <button class="ql-hr">حقوق الإنسان</button>
             </div>
             <div id="contentEditor">{!! $article->content !!}</div>
         </div>
@@ -95,21 +95,21 @@
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 @endpush
 <style>
-    button.custom-editor-button {
+    button.ql-pro, button.ql-cred, button.ql-hr {
         color: white !important;
         width: fit-content !important;
         padding: 5px 10px !important;
         height: fit-content !important;
         border-radius: 5px;
     }
-    #hrButton {
-        background-color: rgb(239 68 68);
+    button.ql-hr {
+        background-color: rgb(239 68 68) !important;
     }
-    #credButton {
-        background-color: rgb(249 115 22);
+    button.ql-cred {
+        background-color: rgb(249 115 22) !important;
     }
-    #profButton {
-        background-color: rgb(59 130 246);
+    button.ql-pro {
+        background-color: rgb(59 130 246) !important;
     }
 
 </style>
@@ -124,7 +124,6 @@
         if (this.files && this.files[0]) {
             const reader = new FileReader();
             reader.onload = function (e) {
-                console.log(e, e.target.result)
                 $('#image-preview img').attr("src", e.target.result);
                 $('#image-preview').removeClass("hidden")
                 $('#image-placeholder').addClass("hidden");
@@ -156,7 +155,7 @@
         var range = highlight.getRangeAt(0);
         var spn = document.createElement('a');
         spn.innerHTML = highlight;
-        spn.className = colorClass + ' border-dotted border-b-2 border-gray-500';
+        spn.className = '!' + colorClass + ' !hover:' + colorClass + ' border-dotted border-b-2 border-gray-500';
         spn.href = '#evaluation';
         spn.setAttribute('data-tooltip', toolTip);
         spn.setAttribute('data-inverted', '');
