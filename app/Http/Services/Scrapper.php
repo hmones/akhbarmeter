@@ -3,6 +3,7 @@
 use DOMDocument;
 use DOMXPath;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
@@ -46,7 +47,7 @@ class Scrapper
         $process->run();
 
         if (!$process->isSuccessful()) {
-            throw new ProcessFailedException($process);
+            Log::error("Running fetching script failed", compact("process"));
         }
 
         return $process->getOutput();

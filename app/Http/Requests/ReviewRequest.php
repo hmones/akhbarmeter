@@ -21,4 +21,15 @@ class ReviewRequest extends FormRequest
             'responses.*.annotation' => 'nullable'
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'article.title.*'         => 'Article title is required',
+            'article.image.*'         => 'Images has to be of filetype image and of size 7mb',
+            'article.content.*'       => 'Article content is required',
+            'review.user_id.*'        => 'The reviewer has to be a valid system user',
+            'responses.*.option_id.*' => 'All questions need to have at least one answer selected',
+        ];
+    }
 }

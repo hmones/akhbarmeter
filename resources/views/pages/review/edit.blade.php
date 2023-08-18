@@ -3,6 +3,16 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Review') }}
         </h2>
+        @if(!empty($errors->all()))
+            <div class="mt-4">
+                <h3 class="text-red-600 font-bold">There were some issues in the data you entered:</h3>
+                <ul class="ps-4">
+                    @foreach($errors->all() as $message)
+                        <li class="text-red-600"> &#8226; {{$message}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </x-slot>
     <div class="py-12">
         <div class="mx-auto sm:px-6 lg:px-8">

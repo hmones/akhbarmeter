@@ -78,4 +78,4 @@
                 'rows' => 10])
 </div>
 
-<button type="submit">Save</button>
+<x-primary-button class="mt-4 w-24 justify-center">Save </x-primary-button>

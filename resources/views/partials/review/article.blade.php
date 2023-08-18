@@ -53,15 +53,17 @@
         </div>
         <div class="flex flex-col">
             <label for="image" class="text-sm">Image</label>
-            @if($article->image)
-                <img class="mt-2 cursor-pointer" src="/storage/{{$article->image}}"
+            <div id="image-preview" class="{{empty($article->image) ? "hidden" : ""}} flex">
+                <img class="mt-2 cursor-pointer w-1/2" src="{{Storage::url($article->image)}}"
                      alt="{{$article->title}}" onclick="$('#image').click()">
-            @else
+                <em class="fa fa-close ms-2 cursor-pointer" onclick="removeImage()"></em>
+            </div>
+            <div id="image-placeholder" class="{{empty($article->image) ? "" : "hidden"}}">
                 <div class="flex rounded-lg w-48 h-48 justify-center items-center
                 mt-2 border-dashed border-2 border-gray-200 cursor-pointer" onclick="$('#image').click()">
                     <em class="fa fa-3x fa-image text-gray-200"></em>
                 </div>
-            @endif
+            </div>
             <input id="image" class="hidden" type="file" name="article[image]" accept="image/*" value="">
         </div>
         <div class="flex flex-col">
@@ -112,6 +114,25 @@
 
 </style>
 <script>
+    function removeImage() {
+       $('#image-preview').addClass("hidden");
+       $('#image-placeholder').removeClass("hidden");
+       $('#image').val("");
+    }
+
+    $("#image").change(function () {
+        if (this.files && this.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                console.log(e, e.target.result)
+                $('#image-preview img').attr("src", e.target.result);
+                $('#image-preview').removeClass("hidden")
+                $('#image-placeholder').addClass("hidden");
+            };
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+
     $('#viewSwitchButton').on('click', function () {
         $('#articleIframe').toggle()
         $('#articleForm').toggle()

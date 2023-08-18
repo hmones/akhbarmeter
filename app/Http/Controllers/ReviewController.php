@@ -6,6 +6,7 @@ use App\Http\Requests\ReviewRequest;
 use App\Models\Article;
 use App\Models\Question;
 use App\Repositories\ReviewRepository;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class ReviewController extends Controller
@@ -20,7 +21,7 @@ class ReviewController extends Controller
         return view('pages.review.edit', compact('article', 'questions'));
     }
 
-    public function store(ReviewRequest $request)
+    public function store(ReviewRequest $request): RedirectResponse
     {
         $data = $request->safe()->toArray();
         $review = data_get($data, 'review', []);
