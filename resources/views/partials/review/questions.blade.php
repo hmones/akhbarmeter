@@ -34,7 +34,7 @@
                 </div>
                 <div class="flex flex-col py-4">
                     @foreach($question->options as $option)
-                        <div class="flex flex-row space-x-4 rtl:space-x-reverse">
+                        <div class="flex flex-row space-x-4 rtl:space-x-reverse items-center">
                             <input type="radio" id="option_{{$question->id}}_{{$option->id}}"
                                    name="responses[{{$question->id}}][option_id]"
                                    value="{{$option->id}}"
