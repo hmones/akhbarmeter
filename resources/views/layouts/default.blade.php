@@ -16,6 +16,7 @@
     <script src="{{asset('js/bootstrap.bundle.min.js')}}" type="application/javascript"></script>
     <script src="{{asset('js/app.js')}}" type="application/javascript"></script>
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/theme.css')}}">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     @if(app()->getLocale() !== 'en')
         <link rel="stylesheet" href="{{asset('css/bootstrap.rtl.min.css')}}">

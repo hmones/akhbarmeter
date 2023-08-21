@@ -1,3 +1,15 @@
 #mobileMenuButton {
     cursor: pointer;
 }
+a.hr_link, a.hr_link:hover {
+    color: rgb(239 68 68) !important;
+    border-bottom: lightslategray dotted 2px !important;
+}
+a.cred_link, a.cred_link:hover {
+    color: rgb(249 115 22) !important;
+    border-bottom: lightslategray dotted 2px !important;
+}
+a.pro_link, a.pro_link:hover {
+    color: rgb(59 130 246) !important;
+    border-bottom: lightslategray dotted 2px !important;
+}

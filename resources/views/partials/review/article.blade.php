@@ -1,19 +1,19 @@
-<div class="text-xl text-semibold mb-4">Article</div>
-<div class="flex flex-row items-center space-x-4">
+<div class="text-xl text-semibold mb-4">الخبر</div>
+<div class="flex flex-row items-center space-x-4 rtl:space-x-reverse">
     <em class="fa fa-eye"></em>
-    <div id="viewSwitchButton" class="text-blue-700 cursor-pointer">Switch between article's edit and view modes</div>
+    <div id="viewSwitchButton" class="text-blue-700 cursor-pointer">انتقل ما بين تصفح الخبر علي موقعنا أو موقع الجريدة</div>
 </div>
 <div class="my-4" id="articleIframe" style="display: none;">
-    <iframe title="Article view on as on the publisher's website" src="{{$article->url}}" class="w-full h-[70vh]" allow referrerpolicy="no-referrer"></iframe>
+{{--    <iframe title="Article view on as on the publisher's website" src="{{$article->url}}" class="w-full h-[70vh]" allow referrerpolicy="no-referrer"></iframe>--}}
 </div>
 <div class="my-4" id="articleForm">
     <div class="flex flex-col space-y-4">
         <input type="hidden" name="review[article_id]" value="{{$article->id}}">
         <input type="hidden" name="review[user_id]" value="{{auth()?->id()}}">
-        <div class="flex flex-row space-x-4">
+        <div class="flex flex-row space-x-4 rtl:space-x-reverse">
             <div class="flex flex-col w-1/2">
                 @include('partials.components.disabled-input', [
-                        'label' => 'Publisher',
+                        'label' => 'الناشر',
                         'id' => 'publisher',
                         'value' => $article->publisher?->name
                     ])
@@ -21,22 +21,22 @@
             <div class="flex flex-col w-1/2">
                 @include('partials.components.disabled-input', [
                         'id' => 'articleAuthor',
-                        'label' => 'Author',
+                        'label' => 'الصحفي',
                         'value' => $article->author
                     ])
             </div>
         </div>
-        <div class="flex flex-row space-x-4">
+        <div class="flex flex-row space-x-4 rtl:space-x-reverse">
             <div class="flex flex-col w-1/2">
                 @include('partials.components.disabled-input', [
-                        'label' => 'Topic',
+                        'label' => 'الموضوع',
                         'id' => 'articleTopic',
                         'value' => $article->topic?->title
                     ])
             </div>
             <div class="flex flex-col w-1/2">
                 @include('partials.components.disabled-input', [
-                        'label' => 'Type',
+                        'label' => 'النوع',
                         'id' => 'articleType',
                         'value' => $article->type?->title
                     ])
@@ -46,13 +46,13 @@
         <div class="flex flex-col">
             @include('partials.components.text-input', [
                     'id' => 'articleTitle',
-                    'label' => 'Title',
+                    'label' => 'العنوان',
                     'name' => 'article[title]',
                     'value' => $article->title
                     ])
         </div>
         <div class="flex flex-col">
-            <label for="image" class="text-sm">Image</label>
+            <label for="image" class="text-sm">الصورة</label>
             <div id="image-preview" class="{{empty($article->image) ? "hidden" : ""}} flex">
                 <img class="mt-2 cursor-pointer w-1/2" src="{{Storage::url($article->image)}}"
                      alt="{{$article->title}}" onclick="$('#image').click()">
@@ -67,7 +67,7 @@
             <input id="image" class="hidden" type="file" name="article[image]" accept="image/*" value="">
         </div>
         <div class="flex flex-col">
-            <label for="content" class="text-sm">Content</label>
+            <label for="content" class="text-sm">المحتوى</label>
             <textarea id="content" name="article[content]" class="hidden">{!! $article->content !!}</textarea>
             <div id="toolbar" class="flex flex-row items-center space-x-2">
                 <button class="ql-bold"></button>
@@ -81,11 +81,12 @@
                 <button class="ql-direction" value="rtl"></button>
                 <button class="ql-list" value="ordered"></button>
                 <button class="ql-list" value="bullet"></button>
-                <button id="profButton" type="button" class="custom-editor-button">احترافية</button>
-                <button id="credButton" type="button" class="custom-editor-button">مصداقية</button>
-                <button id="hrButton" type="button" class="custom-editor-button">حقوق الإنسان</button>
+                <button class="ql-clean"></button>
+                <button id="profButton" type="button" class="ql-pro_link custom-editor-button">احترافية</button>
+                <button id="credButton" type="button" class="ql-cred_link custom-editor-button">مصداقية</button>
+                <button id="hrButton" type="button" class="ql-hr_link custom-editor-button">حقوق الإنسان</button>
             </div>
-            <div id="contentEditor">{!! $article->content !!}</div>
+            <div id="contentEditor" class="min-h-[50vh]">{!! $article->content !!}</div>
         </div>
     </div>
 </div>
@@ -136,6 +137,53 @@
         $('#articleForm').toggle()
     })
 
+    const Inline = Quill.import('blots/inline');
+
+    class HrLink extends Inline {
+        static create(value) {
+            let node = super.create(value);
+            node.setAttribute('href', '#evaluation');
+            return node;
+        }
+    }
+
+    HrLink.blotName = 'hr_link';
+    HrLink.className = 'hr_link';
+    HrLink.tagName = 'A';
+
+
+    class CredLink extends Inline {
+        static create(value) {
+            let node = super.create(value);
+            node.setAttribute('href', '#evaluation');
+            return node;
+        }
+    }
+
+    CredLink.blotName = 'cred_link';
+    CredLink.className = 'cred_link';
+    CredLink.tagName = 'A';
+
+
+    class ProLink extends Inline {
+        static create(value) {
+            let node = super.create(value);
+            node.setAttribute('href', '#evaluation');
+            return node;
+        }
+    }
+
+    ProLink.blotName = 'pro_link';
+    ProLink.className = 'pro_link'
+    ProLink.tagName = 'A';
+
+
+    Quill.register({
+        'formats/hr_link': HrLink,
+        'formats/pro_link': ProLink,
+        'formats/cred_link': CredLink
+    });
+
     var editor = new Quill('#contentEditor', {
         theme: 'snow',
         placeholder: 'من فضلك أدخل النص ...',
@@ -148,23 +196,5 @@
     editor.on('text-change', function () {
         $('#content').html($('#contentEditor .ql-editor').html())
     })
-
-    function replaceSelectionWithAnchorTag(colorClass, toolTip) {
-        var highlight = window.getSelection();
-        var range = highlight.getRangeAt(0);
-        var spn = document.createElement('a');
-        spn.innerHTML = highlight;
-        spn.className = '!' + colorClass + ' !hover:' + colorClass + ' border-dotted border-b-2 border-gray-500';
-        spn.href = '#evaluation';
-        spn.setAttribute('data-tooltip', toolTip);
-        spn.setAttribute('data-inverted', '');
-        range.deleteContents();
-        range.insertNode(spn);
-        $('#content').html($('#contentEditor .ql-editor').html())
-    }
-
-    $('#hrButton').click(() => replaceSelectionWithAnchorTag('text-red-500', '{{translate("page.view.cat3")}}'));
-    $('#credButton').click(() => replaceSelectionWithAnchorTag('text-orange-500', '{{translate("page.view.cat2")}}'));
-    $('#profButton').click(() => replaceSelectionWithAnchorTag('text-blue-500', '{{translate("page.view.cat1")}}'));
 </script>
 

@@ -1,19 +1,19 @@
-<div class="text-xl text-semibold mb-4">Questions</div>
+<div class="text-xl text-semibold mb-4">الأسئلة</div>
 <div class="flex flex-col space-y-4">
     @foreach($questions as $category => $categoryQuestions)
         <!-- Category Header -->
-        <div class="flex flex-row space-x-4 items-center text-gray-500">
-            <em class="fa fa-arrow-right text-blue-700"></em>
+        <div class="flex flex-row space-x-4 rtl:space-x-reverse items-center text-gray-500">
+            <em class="fa fa-arrow-left text-blue-700"></em>
             <div class="text-xl text-semibold">
                 @switch($category)
                     @case(\App\Models\Question::HUMAN_RIGHTS_WEIGHT)
-                        Human Rights
+                        احترام حقوق الإنسان
                         @break
                     @case(\App\Models\Question::CREDIBILITY_WEIGHT)
-                        Credibility
+                        المصداقية
                         @break
                     @default
-                        Professionalism
+                        الإحترافية
                 @endswitch
             </div>
         </div>
@@ -24,7 +24,7 @@
                 $questionResponse = $article->review?->responses?->whereIn('option_id', $question->options->pluck('id')->toArray())->first();
             @endphp
             <div class="px-4 space-y-4">
-                <div class="flex flex-row mb-4 space-x-4">
+                <div class="flex flex-row mb-4 space-x-4 rtl:space-x-reverse">
                     <em class="fa fa-arrow-right text-blue-700"></em>
                     <div class="text-sm">{{$question->title}}</div>
                     @if(!empty($question->description))
@@ -32,7 +32,7 @@
                            data-content="{{$question->description}}"></i>
                     @endif
                 </div>
-                <div class="flex flex-row px-8 space-x-4">
+                <div class="flex flex-col py-4">
                     @foreach($question->options as $option)
                         <input type="radio" id="option_{{$question->id}}_{{$option->id}}"
                                name="responses[{{$question->id}}][option_id]"
@@ -54,14 +54,14 @@
                 <div class="px-8">
                     @include('partials.components.rich-text', [
                             'id' => 'comment_' . $question->id,
-                            'label' => 'Comment',
+                            'label' => 'تعليق المقيم',
                             'name' => 'responses[' . $question->id . '][comment]',
                             'value' => $questionResponse?->comment])
                 </div>
                 <div class="px-8">
                     @include('partials.components.rich-text', [
                             'id' => 'annotation_q_' . $question->id,
-                            'label' => 'Text containing the mistake',
+                            'label' => 'النص الذي يحتوي علي الخطأ',
                             'name' => 'responses[' . $question->id . '][annotation]',
                             'value' => $questionResponse?->annotation])
                 </div>
@@ -72,10 +72,10 @@
 <div class="mt-6">
     @include('partials.components.rich-text', [
                 'id' => 'reviewComment',
-                'label' => 'Reviewer\'s comment',
+                'label' => 'تعليق المقيم علي الخبر',
                 'name' => 'review[comment]',
                 'value' => $article?->review?->comment,
                 'rows' => 10])
 </div>
 
-<x-primary-button class="mt-4 w-24 justify-center">Save </x-primary-button>
+<x-primary-button class="mt-4 w-24 justify-center">حفظ </x-primary-button>
