@@ -25,7 +25,7 @@
             @endphp
             <div class="px-4 space-y-4">
                 <div class="flex flex-row mb-4 space-x-4 rtl:space-x-reverse">
-                    <em class="fa fa-arrow-right text-blue-700"></em>
+                    <em class="fa fa-arrow-left text-blue-700"></em>
                     <div class="text-sm">{{$question->title}}</div>
                     @if(!empty($question->description))
                         <i class="circular small question grey icon opt_tooltips"
@@ -34,21 +34,23 @@
                 </div>
                 <div class="flex flex-col py-4">
                     @foreach($question->options as $option)
-                        <input type="radio" id="option_{{$question->id}}_{{$option->id}}"
-                               name="responses[{{$question->id}}][option_id]"
-                               value="{{$option->id}}"
-                               @if($questionResponse?->option_id === $option->id || (!$article->review()->exists() && $option->selected))
-                                   checked
-                               @endif
-                        />
-                        <label for="option_{{$question->id}}_{{$option->id}}"
-                               class="{{$option->weight ? 'text-green-500' : 'text-red-500'}}">
-                            {{$option->title}}
-                            @if(!empty($option->description))
-                                <i class="circular question grey icon link opt_tooltips"
-                                   data-content="{{$option->description}}"></i>
-                            @endif
-                        </label>
+                        <div class="flex flex-row space-x-4 rtl:space-x-reverse">
+                            <input type="radio" id="option_{{$question->id}}_{{$option->id}}"
+                                   name="responses[{{$question->id}}][option_id]"
+                                   value="{{$option->id}}"
+                                   @if($questionResponse?->option_id === $option->id || (!$article->review()->exists() && $option->selected))
+                                       checked
+                                @endif
+                            />
+                            <label for="option_{{$question->id}}_{{$option->id}}"
+                                   class="{{$option->weight ? 'text-green-500' : 'text-red-500'}}">
+                                {{$option->title}}
+                                @if(!empty($option->description))
+                                    <i class="circular question grey icon link opt_tooltips"
+                                       data-content="{{$option->description}}"></i>
+                                @endif
+                            </label>
+                        </div>
                     @endforeach
                 </div>
                 <div class="px-8">
