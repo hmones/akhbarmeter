@@ -1,6 +1,9 @@
 <div class="text-xl text-semibold mb-4">الأسئلة</div>
 <div class="flex flex-col space-y-4">
     @foreach($questions as $category => $categoryQuestions)
+        @php
+            $categoryQuestions = $categoryQuestions->sortBy('order');
+        @endphp
         <!-- Category Header -->
         <div class="flex flex-row space-x-4 rtl:space-x-reverse items-center text-gray-500">
             <em class="fa fa-arrow-left text-blue-700"></em>

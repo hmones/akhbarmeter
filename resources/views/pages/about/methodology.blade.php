@@ -122,7 +122,7 @@
         <div class="text-xl font-extrabold leading-10 mb-8 md:p-8 md:text-3xl md:leading-8 md:tracking-tight">
             {{translate('pages.methodology.questions.header')}}
         </div>
-        @foreach(\App\Models\Question::whereActive(1)->get() as $question)
+        @foreach(\App\Models\Question::whereActive(1)->orderBy('order', 'asc')->get() as $question)
             <x-accordion :headline="$question->title" :description="$question->description"/>
         @endforeach
         <script>

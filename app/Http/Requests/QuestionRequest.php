@@ -20,8 +20,9 @@ class QuestionRequest extends FormRequest
             'title'       => 'required',
             'description' => 'nullable',
             'hint'        => 'nullable',
-            'weight'      => Rule::in(Question::WEIGHTS),
+            'weight'      => ['required', Rule::in(Question::WEIGHTS)],
             'label_id'    => 'nullable|exists:question_labels,id',
+            'order'       => 'required|numeric',
             'active'      => 'in:0,1',
         ];
     }

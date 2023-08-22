@@ -33,6 +33,7 @@ class Question extends Model
         'weight',
         'label_id',
         'active',
+        'order'
     ];
 
     public function label(): BelongsTo

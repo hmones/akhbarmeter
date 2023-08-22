@@ -102,7 +102,7 @@ class Article extends Model
     public function getResponsesByCategory(int $category): Collection
     {
         return $this->review?->responses()->with('option.question')->get()
-            ->where('option.question.weight', $category) ?? collect();
+            ->where('option.question.weight', $category)->sortBy('option.question.order') ?? collect();
     }
 
     public function scopeFilter(Builder $query, array $request): Builder

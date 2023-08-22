@@ -24,6 +24,12 @@ class QuestionCrudController extends CrudController
     use ShowOperation;
     use FetchOperation;
 
+    protected array $weightOptions = [
+        Question::PROFESSIONALISM_WEIGHT => 'Professionalism',
+        Question::CREDIBILITY_WEIGHT => 'Credibility',
+        Question::HUMAN_RIGHTS_WEIGHT => 'Human Rights',
+    ];
+
     public function fetchQuestionLabel()
     {
         return $this->fetch([
@@ -52,7 +58,7 @@ class QuestionCrudController extends CrudController
     protected function setupListOperation(): void
     {
         CRUD::column('title');
-        CRUD::column('weight');
+        CRUD::column('weight')->type('select_from_array')->options($this->weightOptions);
         CRUD::column('label')->type('relationship')->attribute('title');
         CRUD::column('active');
     }
@@ -69,7 +75,7 @@ class QuestionCrudController extends CrudController
         CRUD::field('title');
         CRUD::field('description');
         CRUD::field('hint');
-        CRUD::field('weight');
+        CRUD::field('weight')->type('select_from_array')->options($this->weightOptions)->allows_null(false);
         CRUD::field('label')->type('relationship')->attribute('title')->model(QuestionLabel::class);
         CRUD::addField([
             'type'         => 'relationship',
@@ -114,5 +120,6 @@ class QuestionCrudController extends CrudController
             'force_delete' => true
         ]);
         CRUD::field('active');
+        CRUD::field('order');
     }
 }
