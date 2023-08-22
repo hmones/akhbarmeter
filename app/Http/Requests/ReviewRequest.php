@@ -12,6 +12,8 @@ class ReviewRequest extends FormRequest
             'article.title'         => 'required',
             'article.image'         => 'sometimes|image|max:8000',
             'article.content'       => 'required',
+            'article.author'        => 'nullable',
+            'article.date'          => 'nullable|date',
             'review.comment'        => 'nullable',
             'review.user_id'        => 'exists:users,id',
             'review.article_id'     => 'exists:articles,id',

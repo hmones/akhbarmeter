@@ -19,8 +19,9 @@
                     ])
             </div>
             <div class="flex flex-col w-1/2">
-                @include('partials.components.disabled-input', [
+                @include('partials.components.text-input', [
                         'id' => 'articleAuthor',
+                        'name' => 'article[author]',
                         'label' => 'الصحفي',
                         'value' => $article->author
                     ])
@@ -42,7 +43,11 @@
                     ])
             </div>
         </div>
-
+        <div class="flex flex-row space-x-4 rtl:space-x-reverse">
+            <div class="flex flex-col w-1/2">
+                <x-input.date label="التاريخ" name="article[date]" id="articleDate" value="{{$article->date}}"/>
+            </div>
+        </div>
         <div class="flex flex-col">
             @include('partials.components.text-input', [
                     'id' => 'articleTitle',

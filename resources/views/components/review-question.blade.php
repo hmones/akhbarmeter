@@ -11,7 +11,7 @@
         <div class="text-sm leading-5 font-normal">
             <span class="font-semibold">{{$response->option->title}}</span>
             </br>
-            <span>{{$response->comment}}</span>
+            <span>{!! $response->comment !!}</span>
         </div>
     </div>
 @endif

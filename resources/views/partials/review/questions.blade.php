@@ -57,11 +57,7 @@
                     @endforeach
                 </div>
                 <div class="px-8">
-                    @include('partials.components.rich-text', [
-                            'id' => 'comment_' . $question->id,
-                            'label' => 'تعليق المقيم',
-                            'name' => 'responses[' . $question->id . '][comment]',
-                            'value' => $questionResponse?->comment])
+                    <x-input.rich-text id="comment_{{$question->id}}" label="تعليق المقيم" name="responses[{{$question->id}}][comment]" value="{{$questionResponse?->comment}}" />
                 </div>
                 <div class="px-8">
                     @include('partials.components.rich-text', [
