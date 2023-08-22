@@ -18,6 +18,8 @@ class Topic extends Model
 
     const PAGINATION_ITEMS = 3;
 
+    const FAKE_NEWS = 'fakeNews';
+
     const TYPES = [
         'violations'   => 'Violations',
         'fakeNews'     => 'Fake News',
@@ -48,6 +50,11 @@ class Topic extends Model
         if (data_get($params, 'tag', false)) {
             $query->whereJsonContains('tags', ['value' => data_get($params, 'tag')]);
         }
+    }
+
+    public function scopeFake(Builder $query): void
+    {
+        $query->whereType(self::FAKE_NEWS);
     }
 
     public function setImageAttribute($value): void

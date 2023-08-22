@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('content')
-    <div style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{Storage::url($topic->image)}}'); background-position: center; background-size: cover;">
+    <div style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{$topic->image ? Storage::url($topic->image) : ""}}'); background-position: center; background-size: cover;">
         <div class="container flex flex-col w-full items-center justify-center mx-auto space-y-4 py-16 text-white">
             <div class="flex flex-col">
                 <h1 class="text-5xl leading-10 font-extrabold tracking-tight">{{$topic->title}}</h1>
@@ -19,7 +19,9 @@
 
     <div class="container">
         <div class="flex flex-row items-center justify-center mx-auto space-y-10 my-16">
-            {!! $topic->description !!}
+            <div>
+                {!! $topic->description !!}
+            </div>
         </div>
     </div>
 

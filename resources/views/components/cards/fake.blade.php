@@ -7,10 +7,7 @@
     <div class="flex flex-col rounded-b-lg lg:rounded-none lg:ltr:rounded-r-lg lg:rtl:rounded-l-lg p-8 space-y-4 bg-gray-50 justify-content-start w-full">
         <div class="flex flex-row overflow-hidden items-center justify-between">
             <div class="flex flex-row">
-                <img class="w-[32px] rounded-circle"
-                     src="{{$article?->publisher?->image ? Storage::url($article->publisher->image) : asset('images/placeholders/publisher.png')}}"
-                     alt="{{$article?->title}}">
-                @foreach(collect(array_filter(preg_split('/[#\s]/', $article?->publisher?->hashtags)))->take(3) ?? [] as $tag)
+                @foreach(collect($article?->tags)->take(3) ?? [] as $tag)
                     <a href="#"
                        class="flex flex-row mx-2 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
                         #{{data_get($tag, 'value', $tag)}}
@@ -26,7 +23,7 @@
                 </div>
             </div>
         </div>
-        <a href="{{route('articles.show', $article)}}" class="text-xl leading-7 font-semibold text-gray-700">
+        <a href="{{route('topics.show', $article)}}" class="text-xl leading-7 font-semibold text-gray-700">
             {{$article?->title}}
         </a>
         <div class="hidden lg:flex text-base leading-6 font-normal text-gray-700">

@@ -14,10 +14,10 @@ class HomeController extends Controller
     public function index(): View
     {
         $articles = Article::whereNotNull('score_at')->whereActive(1)->orderBy('created_at', 'desc')->limit(6)->get();
-        $topics = Topic::orderBy('created_at', 'desc')->limit(3)->get();
+        $topics = Topic::whereNot('type', Topic::FAKE_NEWS)->orderBy('created_at', 'desc')->limit(3)->get();
         $publications = Publication::orderBy('created_at', 'desc')->limit(3)->get();
         $video = Video::latest()->first();
-        $fakeNews = Article::whereIsFake(1)->whereActive(1)->latest()->limit(3)->get();
+        $fakeNews = Topic::fake()->latest()->limit(3)->get();
         $scores = PublisherScore::wherePeriod(PublisherScore::PERIOD_MONTH)
             ->orderBy('to', 'desc')
             ->limit(10)
