@@ -1,27 +1,42 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+![AkhbarMeter Logo](https://akhbarmeter.org/themes/mediameter/assets/images/logo-ar-dark.png)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[MediaMeter (AkhbarMeter)](https://akhbarmeter.org) is one of the first dynamic digital media observatory in Egypt and the world, which rank news agencies according to their adherance to ethical and processional media standards. MediaMeter, is a youth-led initiative developed by Egyptians. The initiative started in 2014 in response to increasing use of media to spread fear among citizens, manipulate the public and polarize society.
 
-## About Laravel
+The website is built using Laravel.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### What do we currently do
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+MediaMeter (AkhbarMeter) currently operates in Egypt. The project monitors and assesses the truthfulness and professionalism of the top ten online news agencies based on Alexa and SimilarWeb rankings. Reviewers assess articles from the digital news agencies based on several methodological questions developed in consultation with various international fact-checking experts and which can be modified in the code making it easily deployed in other settings. The questions fall under three broad categories of professionalism, manipulation, and violations to human rights. Specific questions include whether the article conceals information, contains false information, uses photos to manipulate facts, cites sources representing different views, reflects bias by the author, contains hate speech, negatively profiles members of certain groups, and more. Assessed articles are posted on the website (https://akhbarmeter.org/) along with responses to the questions described above. Each reviewed article is marked with an icon that provides a score out of 100% on how professional and truthful it is. If the article contains false or misinformation, the icon is marked accordingly to warn readers. MediaMeter staff often contact authors of reviewed articles to give them a chance to respond to the evaluation and offer to publish their responses on the article’s page on the website.
 
-## Setting up
+### Support the project
+
+We need your help to stay independent and to produce more content, and also to help others deploy their version of the project in their respective country. Our project welcomes your support with whatever you can. This could help us become sustainable and create more impact.
+
+[![Support us on Patron](https://akhbarmeter.org/themes/mediameter/assets/images/patron.png)](https://www.patreon.com/akhbarmeter).
+
+### Development Team
+
+AkhbarMeter was created by Egyptian developers who believe in digital participation and who both continue to develop the platform.
+
+
+### Contact
+
+You can communicate with us using the following mediums:
+
+* [Follow us on Twitter](http://twitter.com/akhbarmeter) for announcements and updates.
+* [Follow us on Facebook](http://facebook.com/akhbarmeter) for announcements and updates.
+* [Follow us on Instagram](http://instagram.com/akhbarmeter) for announcements and updates.
+* [Send us email](mailto:akhbarmeter@gmail.com) for further cooperation.
+
+### License
+
+The platform is open-sourced software licensed under [CC BY-NC-ND 4.0 License](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+
+
+
+### For Development
 
 1. Make sure the current php version is 8.1 `sudo update-alternatives --config php` and choose 8.1
 2. Install composer 2.0 globally and run composer install from the root directory
@@ -31,19 +46,3 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 6. Create an application key: `vendor/bin/sail artisan key:generate`
 7. Make sure the database is created by visiting the container `docker compose exec mysql mysql -uUSERNAME -pPASSWORD` and if not make a new database
 8. Run the migrations `vendor/bin/sail artisan migrate --seed`
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-AkhbarMeter is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
