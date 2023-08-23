@@ -4,7 +4,7 @@
     <label for="{{$id}}" class="text-sm">{{$label}}</label>
 @endif
 <textarea id="{{$id}}" name="{{$name}}" class="hidden">{!! $value !!}</textarea>
-<div id="editor_{{$id}}">{!! $value !!}</div>
+<div id="editor_{{$id}}"></div>
 
 <script>
     window['editor_{{$id}}'] = (new Quill('#editor_{{$id}}', {
@@ -18,6 +18,7 @@
     window['editor_{{$id}}'].on('text-change', function () {
         $('#{{$id}}').html($('#editor_{{$id}} .ql-editor').html())
     });
+    window['editor_{{$id}}'].root.innerHTML = $('#{{$id}}').val()
     window['editor_{{$id}}'].format('direction', 'rtl');
     window['editor_{{$id}}'].format('align', 'right');
 </script>

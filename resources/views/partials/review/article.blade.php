@@ -86,6 +86,7 @@
                 <button class="ql-direction" value="rtl"></button>
                 <button class="ql-list" value="ordered"></button>
                 <button class="ql-list" value="bullet"></button>
+                <button class="ql-image"></button>
                 <button class="ql-clean"></button>
                 <button id="profButton" type="button" class="ql-pro_link custom-editor-button">احترافية</button>
                 <button id="credButton" type="button" class="ql-cred_link custom-editor-button">مصداقية</button>
