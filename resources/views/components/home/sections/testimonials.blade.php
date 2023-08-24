@@ -2,7 +2,7 @@
     <div class="container flex flex-col lg:flex-row py-16 lg:space-x-8 rtl:space-x-reverse">
         <div
             class="flex flex-col py-8 pe-4 space-y-8 border-b-2 lg:border-b-0 ltr:lg:border-r-2 rtl:lg:border-l-2 border-solid border-blue-900 text-white lg:w-1/2">
-            <img src="{{asset('images/testimonials/logo1.png')}}" alt="Logo 1" class="w-24">
+            <img src="{{asset('images/testimonials/logo1.png')}}" alt="Digital Arabia Network logo" class="w-24 brightness-0 invert">
             <div class="flex flex-row -space-x-2 align-items-baseline">
                 <!-- Quote image -->
                 <svg width="30" height="25" viewBox="0 0 30 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="flex flex-col py-8 pe-4 space-y-8 text-white lg:w-1/2">
-            <img src="{{asset('images/testimonials/logo1.png')}}" alt="Logo 1" class="w-24">
+            <img src="{{asset('images/testimonials/logo2.png')}}" alt="Arij Logo" class="w-16 brightness-0 invert">
             <div class="flex flex-row -space-x-2 align-items-baseline">
                 <!-- Quote image -->
                 <svg width="30" height="25" viewBox="0 0 30 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,7 +33,7 @@
                 <span class="text-lg leading-7 font-medium">{{translate('pages.home.testimonials.2.text')}}</span>
             </div>
             <div class="flex flex-row space-x-4 rtl:space-x-reverse">
-                <img src="{{asset('images/testimonials/image2.jpg')}}" alt="Testimonial Person 1"
+                <img src="{{asset('images/testimonials/image2.jpg')}}" alt="Rawan El Damen"
                      class="w-12 h-12 rounded-circle border-2 border-solid border-white"/>
                 <div class="flex flex-col space-y-0.5 text-base leading-6 font-medium">
                     <div>{{translate('pages.home.testimonials.2.name')}}</div>
