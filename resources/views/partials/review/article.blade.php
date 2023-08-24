@@ -4,7 +4,7 @@
     <div id="viewSwitchButton" class="text-blue-700 cursor-pointer">انتقل ما بين تصفح الخبر علي موقعنا أو موقع الجريدة</div>
 </div>
 <div class="my-4" id="articleIframe" style="display: none;">
-{{--    <iframe title="Article view on as on the publisher's website" src="{{$article->url}}" class="w-full h-[70vh]" allow referrerpolicy="no-referrer"></iframe>--}}
+    <iframe title="Article view on as on the publisher's website" src="{{$article->url}}" class="w-full h-[70vh]" allow referrerpolicy="no-referrer"></iframe>
 </div>
 <div class="my-4" id="articleForm">
     <div class="flex flex-col space-y-4">
@@ -59,7 +59,7 @@
         <div class="flex flex-col">
             <label for="image" class="text-sm">الصورة</label>
             <div id="image-preview" class="{{empty($article->image) ? "hidden" : ""}} flex">
-                <img class="mt-2 cursor-pointer w-1/2" src="{{Storage::url($article->image)}}"
+                <img class="mt-2 cursor-pointer w-1/2" src="{{$article->image ? Storage::url($article->image) : ""}}"
                      alt="{{$article->title}}" onclick="$('#image').click()">
                 <em class="fa fa-close ms-2 cursor-pointer" onclick="removeImage()"></em>
             </div>

@@ -18,7 +18,7 @@ class HomeController extends Controller
         $publications = Publication::orderBy('created_at', 'desc')->limit(3)->get();
         $video = Video::latest()->first();
         $fakeNews = Topic::fake()->latest()->limit(3)->get();
-        $scores = PublisherScore::wherePeriod(PublisherScore::PERIOD_MONTH)
+        $scores = PublisherScore::with('publisher')->wherePeriod(PublisherScore::PERIOD_MONTH)
             ->orderBy('to', 'desc')
             ->limit(10)
             ->get()

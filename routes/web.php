@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ArticleStatisticsController;
 use App\Http\Controllers\CheckNewsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\PublisherController;
+use App\Http\Controllers\PublisherStatisticsController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\VideoController;
@@ -27,6 +29,9 @@ Route::get('methodology', fn() => view('pages.about.methodology'))->name('method
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('statistics/articles', [ArticleStatisticsController::class, 'index'])->name('statistics.article');
+    Route::post('statistics/articles', [ArticleStatisticsController::class, 'store'])->name('statistics.article.download');
+    Route::get('statistics/publishers', [PublisherStatisticsController::class, 'index'])->name('statistics.publisher');
     Route::get('reviews/{article}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
     Route::post('reviews', [ReviewController::class, 'store'])->name('reviews.store');
 });
