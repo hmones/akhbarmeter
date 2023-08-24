@@ -30,7 +30,7 @@
                                                         <x-input.date label="إلى" id="to" name="to" min="2014-01-01" max="2100-01-01" value="{{request('to', now()->toDateString())}}"/>
                                                     </div>
                                                     <x-primary-button class="h-12"> <div class="flex flex-row space-x-4 rtl:space-x-reverse"><div>ابحث</div><em class="fa fa-search"></em></div></x-primary-button>
-                                                    <x-primary-button class="h-12"> <div class="flex flex-row space-x-4 rtl:space-x-reverse"><div>تنزيل البيانات</div><em class="fa fa-download"></em></div></x-primary-button>
+                                                    <a href="javascript:void(0);" class="inline-flex items-center px-4 py-2 bg-blue-700 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-600 active:bg-blue-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 h-12" onclick="$('#download_form').submit();"> <div class="flex flex-row space-x-4 rtl:space-x-reverse"><div>تنزيل البيانات</div><em class="fa fa-download"></em></div></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -45,9 +45,9 @@
                                     لـ
                                     {{ $articles->count() }}
                                     مقال تم تقييمهم في الفترة من
-                                    {{ $from }}
+                                    {{ request('from', now()->firstOfMonth()->subMonth()->toDateString()) }}
                                     وحتى
-                                    {{ $to }}
+                                    {{ request('to', now()->toDateString()) }}
                                 </h4>
                             </div>
                             <div class="ui grid">
@@ -73,8 +73,20 @@
                                 </div>
                             @endforeach
                         </div>
+                        <form id="download_form" action="{{route('statistics.article.download')}}" method="POST">
+                            @csrf
+                            @method('post')
+                            <input id="from_download" type="hidden" name="from" value="{{request('from', now()->firstOfMonth()->subMonth()->toDateString())}}" />
+                            <input id="to_download" type="hidden" name="to" value="{{request('to', now()->toDateString())}}" />
+                        </form>
                         <br><br>
                         <script type="text/javascript">
+                            $('#from').on('change', function () {
+                                $('#from_download').val($('#from').val())
+                            });
+                            $('#to').on('change', function () {
+                                $('#to_download').val($('#to').val())
+                            });
                             window.chartColors = {
                                 red: 'rgb(176, 70, 59)',
                                 orange: 'rgb(255, 159, 64)',

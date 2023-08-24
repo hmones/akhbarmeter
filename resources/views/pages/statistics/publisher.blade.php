@@ -47,7 +47,7 @@
                                     لـ
                                     {{App\Models\Publisher::whereActive(1)->count()}}
                                     جرائد تم تقييمهم في الفترة من
-                                    {{request('from', \Illuminate\Support\Carbon::parse('first day of last month')->toDateString())}}
+                                    {{request('from', now()->firstOfMonth()->subMonth()->toDateString())}}
                                     وحتى
                                     {{request('to', now()->toDateString())}}
                                 </h4>

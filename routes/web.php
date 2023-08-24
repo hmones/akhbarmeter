@@ -30,7 +30,7 @@ Route::get('methodology', fn() => view('pages.about.methodology'))->name('method
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('statistics/articles', [ArticleStatisticsController::class, 'index'])->name('statistics.article');
-    Route::post('statistics/articles', [ArticleStatisticsController::class, 'store'])->name('statistics.article.download');
+    Route::post('statistics/articles/download', [ArticleStatisticsController::class, 'store'])->name('statistics.article.download');
     Route::get('statistics/publishers', [PublisherStatisticsController::class, 'index'])->name('statistics.publisher');
     Route::get('reviews/{article}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
     Route::post('reviews', [ReviewController::class, 'store'])->name('reviews.store');
