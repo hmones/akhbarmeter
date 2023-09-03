@@ -27,7 +27,7 @@
             {{$article?->title}}
         </a>
         <div class="hidden lg:flex text-base leading-6 font-normal text-gray-700">
-            {{str($article?->content)->stripTags()->limit(150)}}
+            {{str($article?->description)->stripTags()->limit(250)}}
         </div>
     </div>
 </div>
