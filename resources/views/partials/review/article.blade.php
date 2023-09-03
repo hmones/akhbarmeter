@@ -10,6 +10,51 @@
     <div class="flex flex-col space-y-4">
         <input type="hidden" name="review[article_id]" value="{{$article->id}}">
         <input type="hidden" name="review[user_id]" value="{{auth()?->id()}}">
+        <div class="flex flex-col">
+            @include('partials.components.text-input', [
+                    'id' => 'articleTitle',
+                    'label' => 'العنوان',
+                    'name' => 'article[title]',
+                    'value' => $article->title
+                    ])
+        </div>
+        <div class="flex flex-col">
+            <label for="content" class="text-sm">المحتوى</label>
+            <textarea id="content" name="article[content]" class="hidden">{!! $article->content !!}</textarea>
+            <div id="toolbar" class="flex flex-row items-center space-x-2">
+                <button class="ql-bold"></button>
+                <button class="ql-italic"></button>
+                <button class="ql-underline"></button>
+                <button class="ql-strike"></button>
+                <button class="ql-script" value="sub"></button>
+                <button class="ql-script" value="super"></button>
+                <button class="ql-indent" value="-1"></button>
+                <button class="ql-indent" value="+1"></button>
+                <button class="ql-list" value="ordered"></button>
+                <button class="ql-list" value="bullet"></button>
+                <button class="ql-image"></button>
+                <button class="ql-clean"></button>
+                <button id="profButton" type="button" class="ql-pro_link custom-editor-button">احترافية</button>
+                <button id="credButton" type="button" class="ql-cred_link custom-editor-button">مصداقية</button>
+                <button id="hrButton" type="button" class="ql-hr_link custom-editor-button">حقوق الإنسان</button>
+            </div>
+            <div id="contentEditor" class="min-h-[50vh]" style="font-size: 25px;">{!! $article->content !!}</div>
+        </div>
+        <div class="flex flex-col">
+            <label for="image" class="text-sm">الصورة</label>
+            <div id="image-preview" class="{{empty($article->image) ? "hidden" : ""}} flex">
+                <img class="mt-2 cursor-pointer w-1/2" src="{{$article->image ? Storage::url($article->image) : ""}}"
+                     alt="{{$article->title}}" onclick="$('#image').click()">
+                <em class="fa fa-close ms-2 cursor-pointer" onclick="removeImage()"></em>
+            </div>
+            <div id="image-placeholder" class="{{empty($article->image) ? "" : "hidden"}}">
+                <div class="flex rounded-lg w-48 h-48 justify-center items-center
+                mt-2 border-dashed border-2 border-gray-200 cursor-pointer" onclick="$('#image').click()">
+                    <em class="fa fa-3x fa-image text-gray-200"></em>
+                </div>
+            </div>
+            <input id="image" class="hidden" type="file" name="article[image]" accept="image/*" value="">
+        </div>
         <div class="flex flex-row space-x-4 rtl:space-x-reverse">
             <div class="flex flex-col w-1/2">
                 @include('partials.components.disabled-input', [
@@ -48,52 +93,6 @@
                 <x-input.date label="التاريخ" name="article[date]" id="articleDate" value="{{$article->date}}"/>
             </div>
         </div>
-        <div class="flex flex-col">
-            @include('partials.components.text-input', [
-                    'id' => 'articleTitle',
-                    'label' => 'العنوان',
-                    'name' => 'article[title]',
-                    'value' => $article->title
-                    ])
-        </div>
-        <div class="flex flex-col">
-            <label for="image" class="text-sm">الصورة</label>
-            <div id="image-preview" class="{{empty($article->image) ? "hidden" : ""}} flex">
-                <img class="mt-2 cursor-pointer w-1/2" src="{{$article->image ? Storage::url($article->image) : ""}}"
-                     alt="{{$article->title}}" onclick="$('#image').click()">
-                <em class="fa fa-close ms-2 cursor-pointer" onclick="removeImage()"></em>
-            </div>
-            <div id="image-placeholder" class="{{empty($article->image) ? "" : "hidden"}}">
-                <div class="flex rounded-lg w-48 h-48 justify-center items-center
-                mt-2 border-dashed border-2 border-gray-200 cursor-pointer" onclick="$('#image').click()">
-                    <em class="fa fa-3x fa-image text-gray-200"></em>
-                </div>
-            </div>
-            <input id="image" class="hidden" type="file" name="article[image]" accept="image/*" value="">
-        </div>
-        <div class="flex flex-col">
-            <label for="content" class="text-sm">المحتوى</label>
-            <textarea id="content" name="article[content]" class="hidden">{!! $article->content !!}</textarea>
-            <div id="toolbar" class="flex flex-row items-center space-x-2">
-                <button class="ql-bold"></button>
-                <button class="ql-italic"></button>
-                <button class="ql-underline"></button>
-                <button class="ql-strike"></button>
-                <button class="ql-script" value="sub"></button>
-                <button class="ql-script" value="super"></button>
-                <button class="ql-indent" value="-1"></button>
-                <button class="ql-indent" value="+1"></button>
-                <button class="ql-direction" value="rtl"></button>
-                <button class="ql-list" value="ordered"></button>
-                <button class="ql-list" value="bullet"></button>
-                <button class="ql-image"></button>
-                <button class="ql-clean"></button>
-                <button id="profButton" type="button" class="ql-pro_link custom-editor-button">احترافية</button>
-                <button id="credButton" type="button" class="ql-cred_link custom-editor-button">مصداقية</button>
-                <button id="hrButton" type="button" class="ql-hr_link custom-editor-button">حقوق الإنسان</button>
-            </div>
-            <div id="contentEditor" class="min-h-[50vh]">{!! $article->content !!}</div>
-        </div>
     </div>
 </div>
 
@@ -117,6 +116,13 @@
     }
     #profButton {
         background-color: rgb(59 130 246);
+    }
+    #contentEditor.ql-editor {
+        font-size: 25px;
+    }
+    .ql-editor {
+        text-align: right;
+        direction: rtl;
     }
 </style>
 <script>

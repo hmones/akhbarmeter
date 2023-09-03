@@ -12,13 +12,11 @@
         placeholder: 'من فضلك أدخل النص ...',
         tabsize: 2,
         modules: {
-            toolbar: [['bold', 'italic'], ['link', 'image'], ['clean'], [{ 'direction': 'rtl' }]]
+            toolbar: [['bold', 'italic'], ['link', 'image'], ['clean']]
         }
     }))
     window['editor_{{$id}}'].on('text-change', function () {
         $('#{{$id}}').html($('#editor_{{$id}} .ql-editor').html())
     });
     window['editor_{{$id}}'].root.innerHTML = $('#{{$id}}').val()
-    window['editor_{{$id}}'].format('direction', 'rtl');
-    window['editor_{{$id}}'].format('align', 'right');
 </script>
