@@ -28,20 +28,7 @@ class HomeController extends Controller
         $scores->pop(2);
         $bestThree = $scores->pop(3);
         $best = $scores->pop();
-        $trendingHashtags = [
-            '#Trending',
-            '#Egypt',
-            '#Worldwide',
-            '#Fashion',
-            '#Economy',
-            '#CairoFilmFestival',
-            '#UkraineWar',
-            '#Startups',
-            '#Drama',
-            '#Ramadan2023',
-            '#EuropeToday',
-            '#SinaiFestival'
-        ];
+        $trendingHashtags = cache()->rememberForever('tags', fn () => Topic::select('tags')->pluck('tags')->flatten()->unique());
 
         return view(
             'welcome',

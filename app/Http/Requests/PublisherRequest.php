@@ -16,6 +16,7 @@ class PublisherRequest extends FormRequest
     {
         return [
             'name'          => 'required',
+            'slug'          => 'nullable|regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/i',
             'description'   => 'nullable',
             'url'           => 'required|url',
             'image'         => 'nullable|image|max:8000',

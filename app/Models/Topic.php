@@ -23,7 +23,8 @@ class Topic extends Model
     const TYPES = [
         'violations'   => 'Violations',
         'fakeNews'     => 'Fake News',
-        'codeOfEthics' => 'Code of Ethics'
+        'codeOfEthics' => 'Code of Ethics',
+        'other'        => 'Other'
     ];
 
     public $translatable = [
@@ -33,12 +34,15 @@ class Topic extends Model
 
     protected $fillable = [
         'title',
+        'slug',
         'description',
         'image',
         'tags',
         'author_name',
         'author_avatar',
-        'type'
+        'type',
+        'published_at',
+        'active'
     ];
 
     protected $casts = [

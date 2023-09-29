@@ -6,7 +6,7 @@
     </div>
     <div class="flex-initial w-4/5 md:w-1/3 flex-col">
         <p class="text-sm leading-7 font-normal md:text-xl text-gray-500 text-center">
-            {{$description}}
+            {!! $description !!}
         </p>
     </div>
 </div>

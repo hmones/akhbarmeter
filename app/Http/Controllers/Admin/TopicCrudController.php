@@ -46,6 +46,10 @@ class TopicCrudController extends CrudController
     {
         CRUD::setValidation(TopicRequest::class);
         CRUD::field('title');
+        CRUD::field('slug')
+            ->type('slug')
+            ->label('Slug (used for building links, only in english)')
+            ->target('title');
         CRUD::field('description')->type('ckeditor')->options([
             'autoGrow_minHeight'   => 200,
             'autoGrow_bottomSpace' => 50,
@@ -56,5 +60,7 @@ class TopicCrudController extends CrudController
         CRUD::field('author_name');
         CRUD::field('author_avatar')->type('upload')->upload(true);
         CRUD::field('type')->type('select_from_array')->options(Topic::TYPES);
+        CRUD::field('published_at');
+        CRUD::field('active');
     }
 }

@@ -81,7 +81,7 @@ class Article extends Model
     public function getLabel(int $category = 0): QuestionLabel
     {
         return $this->getLabels($category)->first() ?? new QuestionLabel([
-            'title' => ['ar' => 'Accurate', 'en' => 'Accurate'],
+            'title' => ['ar' => 'جيد', 'en' => 'Accurate'],
             'icon'  => 'exclamation',
             'color' => 'green',
         ]);
@@ -95,7 +95,8 @@ class Article extends Model
                 $category === 0
                     ? [Question::HUMAN_RIGHTS_WEIGHT, Question::CREDIBILITY_WEIGHT, Question::PROFESSIONALISM_WEIGHT]
                     : [$category]
-            )->pluck('option.question.label')
+            )->where('option.weight', QuestionOption::MISTAKE)
+            ->pluck('option.question.label')
             ->sortBy('priority') ?? collect();
     }
 

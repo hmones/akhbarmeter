@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="{{asset('css/bootstrap.rtl.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/app.rtl.css')}}">
     @endif
+{{--    @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
     @stack('scripts')
 
     <!-- Browser and App icons -->

@@ -4,7 +4,7 @@
     $halfCircles = (int)(($score % 20) !== 0);
     $fullCircles = (int)($score / 20);
     $emptyCircles = 5 - $fullCircles - $halfCircles;
-    $color = ($score <= 30) ? '#EF4444' : ($score <= 80 ? '#FBBF24' : '#10B981');
+    $color = getColorForScore($score, 'hex');
 @endphp
 
 <div {{$attributes->merge(['class' => 'flex flex-row space-x-1 items-center rtl:space-x-reverse'])}}>

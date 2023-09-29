@@ -7,7 +7,7 @@
         <div
             class="flex flex-col-reverse lg:flex-row w-1/2 lg:space-x-4 justify-between items-center">
             @foreach($bestThree ?? [] as $score)
-                    <x-home.rank-small :publisher="$publisher"/>
+                    <x-home.rank-small :score="$score"/>
             @endforeach
             <div class="mb-4 lg:mb-0">
                 <x-home.rank :score="$best" :title="translate('components.home.rank.best')"/>
@@ -18,7 +18,7 @@
                 <x-home.rank :score="$worst" :title="translate('components.home.rank.worst')"/>
             </div>
             @foreach($worstThree ?? [] as $score)
-                <x-home.rank-small :publisher="$publisher"/>
+                <x-home.rank-small :score="$score"/>
             @endforeach
         </div>
     </div>

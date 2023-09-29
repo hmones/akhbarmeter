@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('content')
-    <x-page-header :headline="$publisher->name" :description="$publisher->description"/>
-    <div class="container">
+    <div class="container max-h-full">
+        <x-page-header :headline="$publisher->name" :description="$publisher->description"/>
         <div class="flex flex-col lg:flex-row-reverse p-4 rounded-lg bg-gray-50 my-4 space-y-4 lg:space-x-6 lg:space-y-0 rtl:space-x-reverse">
             <div class="lg:w-4/5 lg:px-4">
                 <canvas id="chart"></canvas>
@@ -24,19 +24,23 @@
                 </div>
             </div>
         </div>
-    </div>
-    <x-page-header :headline="translate('pages.publisher.header') . $publisher->name"
-                   :description="translate('pages.publisher.description')"
-    hideOnMobile="true"/>
+        <x-page-header :headline="translate('pages.publisher.header') . $publisher->name"
+                       :description="translate('pages.publisher.description')"
+                       hideOnMobile="true"/>
 
-    <div class="container mb-10 space-y-10">
-        <div
-            class="flex flex-col xl:flex-row w-full items-start items-stretch justify-left mx-auto space-y-10 xl:space-y-0">
-            @foreach($publisher->articles()->latest()->whereActive(1)->limit(9)->get() as $article)
-                <div class="flex flex-col xl:flex-row w-full xl:w-1/3 mx-2">
-                    <x-cards.article :article="$article" showTotalScore="false"/>
+        <div class="container mb-10 space-y-10">
+
+                @foreach($publisher->articles()->latest()->whereActive(1)->limit(9)->get()->chunk(3) as $articleRow)
+                <div
+                    class="flex flex-col xl:flex-row w-full items-start items-stretch justify-left mx-auto space-y-10 xl:space-y-0">
+                    @foreach($articleRow as $article)
+                        <div class="flex flex-col xl:flex-row w-full xl:w-1/3 mx-2">
+                            <x-cards.article :article="$article" showTotalScore="false"/>
+                        </div>
+                    @endforeach
                 </div>
-            @endforeach
+                @endforeach
+
         </div>
     </div>
     <script>

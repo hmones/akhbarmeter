@@ -1,22 +1,22 @@
 @extends('layouts.default')
 @section('content')
-    <div style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{Storage::url($article->image)}}'); background-position: center; background-size: cover;">
+    <div style="background: linear-gradient(to right,#6dd5ed,#1850eb);">
         <div class="container flex flex-col w-full items-center justify-center mx-auto space-y-4 py-16 text-white">
             <div class="flex flex-col">
                 <div class="flex flex-row items-center space-x-3 rtl:space-x-reverse">
                     <img src="{{empty($article->publisher->image) ? asset("images/placeholders/publisher.png") : Storage::url($article->publisher->image)}}" alt="{{$article->publisher->name}}" class="h-[52px] rounded"/>
                     <div class="flex flex-col space-y-1">
-                        <span class="text-xs leading-4 font-semibold">
-                            {{translate('components.home.rank.number')}} {{$article->publisher->scores()->wherePeriod('week')->latest()->first()?->rank ?? 1}}
-                        </span>
+{{--                        <span class="text-xs leading-4 font-semibold">--}}
+{{--                            {{translate('components.home.rank.number')}} {{$article->publisher->scores()->wherePeriod('week')->latest()->first()?->rank ?? 1}}--}}
+{{--                        </span>--}}
                         <div class="flex flex-row items-center space-x-1.5 rtl:space-x-reverse">
-                            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M19 10.5V10.5C19 15.471 14.971 19.5 10 19.5V19.5C5.029 19.5 1 15.471 1 10.5V10.5C1 5.529 5.029 1.5 10 1.5V1.5C14.971 1.5 19 5.529 19 10.5Z" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M10 6.5V14.5" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M7 9.5L10 6.5L13 9.5" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <span class="text-green-500 text-xl leading-7 font-semibold">
-                                {{$article->publisher->scores()->wherePeriod('week')->latest()->first()?->score ?? 38}}%
+{{--                            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                <path fill-rule="evenodd" clip-rule="evenodd" d="M19 10.5V10.5C19 15.471 14.971 19.5 10 19.5V19.5C5.029 19.5 1 15.471 1 10.5V10.5C1 5.529 5.029 1.5 10 1.5V1.5C14.971 1.5 19 5.529 19 10.5Z" stroke="{{getColorForScore($article->review->score, 'hex')}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                <path d="M10 6.5V14.5" stroke="{{getColorForScore($article->review->score, 'hex')}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                <path d="M7 9.5L10 6.5L13 9.5" stroke="{{getColorForScore($article->review->score, 'hex')}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                            </svg>--}}
+                            <span class="text-white text-xl leading-7 font-semibold rounded-2 bg-{{getColorForScore($article->review->score)}} px-2 py-1">
+                                {{$article->review->score ?? 100}}%
                             </span>
                         </div>
                         <span class="text-xs leading-4 font-normal">{{translate('components.home.rank.hint')}}</span>
@@ -47,6 +47,7 @@
             <div class="lg:w-2/3 flex flex-col space-y-4">
                 <!-- Article Content -->
                 <div class="px-3 lg:px-0 mb-5">
+                    <img src="{{Storage::url($article->image)}}" alt="{{$article->title}}" class="max-h-[400px] rounded float-start me-8" />
                     {!! $article->content !!}
                 </div>
                 <!-- Reviewers Comments -->
@@ -56,7 +57,7 @@
                             {{translate('pages.article.comment.reviewer')}}
                         </div>
                         <div class="py-4 text-gray-700">
-                            {{$article->review->comment}}
+                            {!! $article->review->comment !!}
                         </div>
                         <div class="text-center text-base leading-6 font-medium pb-4 border-b-2 border-solid border-gray-200">
                             {{translate('pages.article.comment.journalist')}}

@@ -3,7 +3,6 @@
 @section('content')
     <div class="container max-h-full">
         <x-page-header :headline="translate('pages.topics.header')" :description="translate('pages.topics.description')"/>
-
         <div class="container">
             <div class="flex flex-row mb-10">
                 @if(request()->has('tag'))
@@ -11,13 +10,11 @@
                         <i class="fa fa-close"></i>
                     </a>
                 @endif
-                @foreach($topics as $topicsList)
-                    @foreach($topicsList->pluck('tags')->flatten()->take(18) as $tag)
-                        <a href="{{route('topics.index', compact('tag'))}}"
-                           class="flex flex-row mx-2 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
-                            #{{$tag}}
-                        </a>
-                    @endforeach
+                @foreach($tags as $tag)
+                    <a href="{{route('topics.index', compact('tag'))}}"
+                       class="flex flex-row mx-1 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
+                        #{{$tag}}
+                    </a>
                 @endforeach
             </div>
         </div>
@@ -41,7 +38,7 @@
         </div>
         @if($paginationTopic)
             <div class="container my-20 space-y-10" dir="ltr">
-                {{$topics[$paginationTopic]->links()}}
+                {{$topics[$paginationTopic]->appends(request()->except('page'))->links()}}
             </div>
         @endif
     </div>

@@ -14,7 +14,6 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script src="{{asset('js/jquery.js')}}"></script>
-        <script src="https://cdn.tailwindcss.com"></script>
 
         <!-- Browser and App icons -->
         <link rel="apple-touch-icon" sizes="57x57" href="{{asset('images/favicon/apple-icon-57x57.png')}}">

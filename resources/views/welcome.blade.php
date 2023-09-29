@@ -6,9 +6,9 @@
     <!-- Trending hashtags -->
     <section id="trends" class="border-b-2 border-solid border-gray-200">
         <div class="container py-4 flex flex-row overflow-hidden">
-            @foreach($trendingHashtags as $hashtag)
-                <a href="#" class="mx-2 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
-                    {{$hashtag}}
+            @foreach($trendingHashtags as $tag)
+                <a href="{{route('topics.index', compact('tag'))}}" class="mx-2 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
+                    #{{$tag}}
                 </a>
             @endforeach
         </div>

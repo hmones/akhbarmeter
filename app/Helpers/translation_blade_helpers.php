@@ -18,3 +18,21 @@ function translate(string $key): string|array
             ->toArray()
     };
 }
+
+function getColorForScore(int $score, string $format = 'tailwindcss'): string
+{
+    return ($score <= 30) ? COLORS[$format]['red'] : ($score <= 80 ?  COLORS[$format]['orange'] : COLORS[$format]['green']);
+}
+
+const COLORS = [
+    'hex' => [
+        'red' => '#EF4444',
+        'orange' => '#FBBF24',
+        'green' => '#10B981'
+    ],
+    'tailwindcss' => [
+        'red' => 'red-500',
+        'orange' => 'orange-500',
+        'green' => 'green-500'
+    ]
+];

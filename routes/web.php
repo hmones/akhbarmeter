@@ -19,6 +19,7 @@ Route::resource('videos', VideoController::class)->only(['index', 'show']);
 Route::resource('publications', PublicationController::class)->only(['index']);
 Route::resource('topics', TopicController::class)->only(['index', 'show']);
 Route::resource('articles', ArticleController::class)->only('index', 'show');
+Route::resource('article', ArticleController::class)->only('index', 'show');
 Route::resource('publishers', PublisherController::class)->only('index', 'show');
 Route::post('check-news-article', [CheckNewsController::class, 'store'])->name('check.news.store');
 

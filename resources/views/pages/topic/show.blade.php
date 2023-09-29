@@ -3,7 +3,7 @@
     <div style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{$topic->image ? Storage::url($topic->image) : ""}}'); background-position: center; background-size: cover;">
         <div class="container flex flex-col w-full items-center justify-center mx-auto space-y-4 py-16 text-white">
             <div class="flex flex-col">
-                <h1 class="text-5xl leading-10 font-extrabold tracking-tight">{{$topic->title}}</h1>
+                <h1 class="text-5xl leading-relaxed text-center font-extrabold tracking-tight">{{$topic->title}}</h1>
             </div>
             <div class="flex flex-row w-4/5 text-lg text-center leading-6 font-normal mx-auto justify-center space-x-1.5 rtl:space-x-reverse">
                 <span>{{$topic->created_at->format('d/m/Y')}} |</span>
