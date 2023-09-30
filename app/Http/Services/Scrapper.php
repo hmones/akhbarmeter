@@ -21,9 +21,10 @@ class Scrapper
 
     public function getContentByXpath($titleXpath, $contentXpath, $imageXpath, $authorXpath): array
     {
+        $content = [];
         $html = $this->getContent();
         if (empty($html)) {
-            return [];
+            return $content;
         }
 
         $dom = new DOMDocument();
@@ -32,12 +33,19 @@ class Scrapper
         libxml_use_internal_errors($internalErrors);
         $rootDom = new DOMXpath($dom);
 
-        return [
-            "title"   => $this->getTitleByXpath($rootDom, $titleXpath),
-            "content" => $this->getContentTextByXpath($rootDom, $contentXpath),
-            "author"  => $this->getAuthorByXpath($rootDom, $authorXpath),
-            "image"   => $this->getImageByXpath($rootDom, $imageXpath)
-        ];
+        try {
+            $content = [
+                "title"   => $this->getTitleByXpath($rootDom, $titleXpath),
+                "content" => $this->getContentTextByXpath($rootDom, $contentXpath),
+                "author"  => $this->getAuthorByXpath($rootDom, $authorXpath),
+                "image"   => $this->getImageByXpath($rootDom, $imageXpath)
+            ];
+        } catch (\Exception $exception) {
+            Log::error("Failed to fetch the website", compact('exception'));
+            return $content;
+        }
+
+        return $content;
     }
 
     public function getContent(): string
