@@ -23,7 +23,7 @@ class ArticleController extends Controller
 
     public function show(Article $article): View
     {
-        $article->load('topic');
+        $article->load('topic', 'review.responses.option.question');
         return view('pages.article.show', compact('article'));
     }
 }

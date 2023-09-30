@@ -89,21 +89,20 @@ class Article extends Model
 
     public function getLabels(int $category = 0): Collection
     {
-        return $this->review?->responses()->with('option.question.label')->get()
-            ->whereIn(
+        return $this->review?->responses
+            ?->whereIn(
                 'option.question.weight',
                 $category === 0
                     ? [Question::HUMAN_RIGHTS_WEIGHT, Question::CREDIBILITY_WEIGHT, Question::PROFESSIONALISM_WEIGHT]
                     : [$category]
-            )->where('option.weight', QuestionOption::MISTAKE)
-            ->pluck('option.question.label')
-            ->sortBy('priority') ?? collect();
+            )?->where('option.weight', QuestionOption::MISTAKE)
+            ?->pluck('option.question.label')
+            ?->sortBy('priority') ?? collect();
     }
 
     public function getResponsesByCategory(int $category): Collection
     {
-        return $this->review?->responses()->with('option.question')->get()
-            ->where('option.question.weight', $category)->sortBy('option.question.order') ?? collect();
+        return $this->review?->responses?->where('option.question.weight', $category)?->sortBy('option.question.order') ?? collect();
     }
 
     public function scopeFilter(Builder $query, array $request): Builder

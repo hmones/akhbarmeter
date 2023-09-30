@@ -13,7 +13,7 @@ class HomeController extends Controller
 {
     public function index(): View
     {
-        $articles = Article::whereNotNull('score_at')->whereActive(1)->orderBy('created_at', 'desc')->limit(6)->get();
+        $articles = Article::with('review.responses.option.question.label')->whereNotNull('score_at')->whereActive(1)->orderBy('created_at', 'desc')->limit(6)->get();
         $topics = Topic::whereNot('type', Topic::FAKE_NEWS)->orderBy('created_at', 'desc')->limit(3)->get();
         $publications = Publication::orderBy('created_at', 'desc')->limit(3)->get();
         $video = Video::latest()->first();
