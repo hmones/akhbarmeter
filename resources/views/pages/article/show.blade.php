@@ -1,20 +1,12 @@
 @extends('layouts.default')
 @section('content')
     <div style="background: linear-gradient(to right,#6dd5ed,#1850eb);">
-        <div class="container flex flex-col w-full items-center justify-center mx-auto space-y-4 py-16 text-white">
+        <div class="container mx-auto flex flex-col w-full items-center justify-center mx-auto space-y-4 py-16 text-white">
             <div class="flex flex-col">
                 <div class="flex flex-row items-center space-x-3 rtl:space-x-reverse">
                     <img src="{{empty($article->publisher->image) ? asset("images/placeholders/publisher.png") : Storage::url($article->publisher->image)}}" alt="{{$article->publisher->name}}" class="h-[52px] rounded"/>
                     <div class="flex flex-col space-y-1">
-{{--                        <span class="text-xs leading-4 font-semibold">--}}
-{{--                            {{translate('components.home.rank.number')}} {{$article->publisher->scores()->wherePeriod('week')->latest()->first()?->rank ?? 1}}--}}
-{{--                        </span>--}}
                         <div class="flex flex-row items-center space-x-1.5 rtl:space-x-reverse">
-{{--                            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
-{{--                                <path fill-rule="evenodd" clip-rule="evenodd" d="M19 10.5V10.5C19 15.471 14.971 19.5 10 19.5V19.5C5.029 19.5 1 15.471 1 10.5V10.5C1 5.529 5.029 1.5 10 1.5V1.5C14.971 1.5 19 5.529 19 10.5Z" stroke="{{getColorForScore($article->review->score, 'hex')}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
-{{--                                <path d="M10 6.5V14.5" stroke="{{getColorForScore($article->review->score, 'hex')}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
-{{--                                <path d="M7 9.5L10 6.5L13 9.5" stroke="{{getColorForScore($article->review->score, 'hex')}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
-{{--                            </svg>--}}
                             <span class="text-white text-xl leading-7 font-semibold rounded-2 bg-{{getColorForScore($article->review->score)}} px-2 py-1">
                                 {{$article->review->score ?? 100}}%
                             </span>
@@ -41,13 +33,13 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container mx-auto">
         <div class="flex flex-col lg:flex-row justify-center mx-auto my-16">
             <!-- Content -->
             <div class="lg:w-2/3 flex flex-col space-y-4">
                 <!-- Article Content -->
                 <div class="px-3 lg:px-0 mb-5">
-                    <img src="{{Storage::url($article->image)}}" alt="{{$article->title}}" class="max-h-[400px] rounded float-start me-8" />
+                    <img src="{{Storage::url($article->image)}}" alt="{{$article->title}}" class="max-h-[400px] rounded float-left" />
                     {!! $article->content !!}
                 </div>
                 <!-- Reviewers Comments -->
@@ -83,26 +75,28 @@
                             {{translate('general.human-rights')}}
                         </button>
                     </div>
-                    <div id="profQuestions">
-                        @forelse($article->getResponsesByCategory(\App\Models\Question::PROFESSIONALISM_WEIGHT) as $response)
-                            <x-review-question :response="$response" />
-                        @empty
-                            <div class="py-4 text-sm text-center">{{translate('pages.article.details.nothing')}}</div>
-                        @endforelse
-                    </div>
-                    <div id="credQuestions" style="display: none">
-                        @forelse($article->getResponsesByCategory(\App\Models\Question::CREDIBILITY_WEIGHT) as $response)
-                            <x-review-question :response="$response" />
-                        @empty
-                            <div class="py-4 text-sm text-center">{{translate('pages.article.details.nothing')}}</div>
-                        @endforelse
-                    </div>
-                    <div id="hrQuestions" style="display: none">
-                        @forelse($article->getResponsesByCategory(\App\Models\Question::HUMAN_RIGHTS_WEIGHT) as $response)
-                            <x-review-question :response="$response" />
-                        @empty
-                            <div class="py-4 text-sm text-center">{{translate('pages.article.details.nothing')}}</div>
-                        @endforelse
+                    <div id="evaluation">
+                        <div id="profQuestions">
+                            @forelse($article->getResponsesByCategory(\App\Models\Question::PROFESSIONALISM_WEIGHT) as $response)
+                                <x-review-question :response="$response" />
+                            @empty
+                                <div class="py-4 text-sm text-center">{{translate('pages.article.details.nothing')}}</div>
+                            @endforelse
+                        </div>
+                        <div id="credQuestions" style="display: none">
+                            @forelse($article->getResponsesByCategory(\App\Models\Question::CREDIBILITY_WEIGHT) as $response)
+                                <x-review-question :response="$response" />
+                            @empty
+                                <div class="py-4 text-sm text-center">{{translate('pages.article.details.nothing')}}</div>
+                            @endforelse
+                        </div>
+                        <div id="hrQuestions" style="display: none">
+                            @forelse($article->getResponsesByCategory(\App\Models\Question::HUMAN_RIGHTS_WEIGHT) as $response)
+                                <x-review-question :response="$response" />
+                            @empty
+                                <div class="py-4 text-sm text-center">{{translate('pages.article.details.nothing')}}</div>
+                            @endforelse
+                        </div>
                     </div>
                 </div>
             </div>
@@ -134,10 +128,10 @@
             toggleTabs(2)
         })
         function toggleTabs(tabIndex) {
-            var buttons = ['#profButton', '#credButton', '#hrButton']
-            var tabs = ['#profQuestions', '#credQuestions', '#hrQuestions']
-            var selectedButton = buttons[tabIndex]
-            var selectedTab = tabs[tabIndex]
+            const buttons = ['#profButton', '#credButton', '#hrButton'];
+            const tabs = ['#profQuestions', '#credQuestions', '#hrQuestions'];
+            const selectedButton = buttons[tabIndex];
+            const selectedTab = tabs[tabIndex];
             buttons.splice(tabIndex, 1)
             tabs.splice(tabIndex, 1)
             $(selectedButton).removeClass('bg-white bg-blue-600 text-white').addClass('bg-blue-600 text-white')
