@@ -20,7 +20,9 @@
     <div class="container mx-auto">
         <div class="flex flex-row items-center justify-center mx-auto space-y-10 my-16">
             <div>
-                <img src="{{Storage::url($topic->image)}}" alt="{{$topic->title}}" class="max-h-[400px] rounded float-left me-8" />
+                @if($topic->image)
+                    <img src="{{Storage::url($topic->image)}}" alt="{{$topic->title}}" class="w-full rounded float-left me-8" />
+                @endif
                 {!! $topic->description !!}
             </div>
         </div>
