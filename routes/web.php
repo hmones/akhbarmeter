@@ -18,6 +18,7 @@ Route::resource('contact', ContactController::class)->only(['index', 'store']);
 Route::resource('videos', VideoController::class)->only(['index', 'show']);
 Route::resource('publications', PublicationController::class)->only(['index']);
 Route::resource('topics', TopicController::class)->only(['index', 'show']);
+Route::redirect('topics/akhbar-kathb', 'topics');
 Route::resource('articles', ArticleController::class)->only('index', 'show');
 Route::resource('article', ArticleController::class)->only('index', 'show');
 Route::resource('publishers', PublisherController::class)->only('index', 'show');
@@ -26,7 +27,6 @@ Route::post('check-news-article', [CheckNewsController::class, 'store'])->name('
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('about', fn() => view('pages.about.main'))->name('about');
 Route::redirect('about-us', 'about');
-Route::redirect('topics/akhbar-kathb', 'topics?tag=خبر غير حقيقي');
 Route::get('akhbarmeter', fn() => view('pages.about.akhbarmeter'))->name('akhbarmeter');
 Route::get('methodology', fn() => view('pages.about.methodology'))->name('methodology');
 
