@@ -4,7 +4,7 @@
     <x-page-header :headline="translate('pages.akhbarmeter.header')"
                    :description="translate('pages.akhbarmeter.description')"/>
 
-    <div class="container">
+    <div class="container mx-auto">
         <div class="flex flex-col-reverse md:flex-row justify-center items-center align-content-center">
             <div class="flex flex-col rounded-lg z-10 md:align-middle -mt-48 md:m-0 shadow-2xl">
                 <img class="my-auto h-[177px] md:h-[405px] w-full" src="{{asset('images/about.png')}}"
@@ -16,7 +16,7 @@
                     {{translate('pages.akhbarmeter.history.header')}}
                 </div>
                 <div class="text-sm leading-8 font-normal md:text-xl md:leading-7">
-                    {{translate('pages.akhbarmeter.history.description')}}
+                    {!! translate('pages.akhbarmeter.history.description') !!}
                 </div>
             </div>
         </div>
@@ -100,7 +100,7 @@
         </div>
     </div>
 
-    <div id="partners" class="container flex flex-col md:flex-row items-center space-y-10 md:space-y-0">
+    <div id="partners" class="container mx-auto flex flex-col md:flex-row items-center space-y-10 md:space-y-0 space-x-16 rtl:space-x-reverse">
         <div class="flex flex-col text-4xl leading-10 font-extrabold w-full md:w-1/5 text-center md:text-left">
             {{translate('pages.akhbarmeter.awards')}}
         </div>
@@ -119,7 +119,7 @@
     </div>
 
     <div class="bg-gray-50 py-20">
-        <div class="container flex flex-col md:flex-row items-center space-y-10 md:space-y-0">
+        <div class="container mx-auto flex flex-col md:flex-row items-center space-y-10 md:space-y-0 space-x-16 rtl:space-x-reverse">
             <div class="flex flex-col text-4xl leading-10 font-extrabold w-full md:w-1/5 text-center md:text-left">
                 {{translate('pages.akhbarmeter.partners')}}
             </div>
@@ -136,13 +136,13 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="flex flex-col md:flex-row items-center space-y-10 md:space-y-0 py-20">
+    <div class="container mx-auto">
+        <div class="flex flex-col md:flex-row items-center space-y-10 md:space-y-0 py-20 space-x-16 rtl:space-x-reverse">
             <div class="flex flex-col text-4xl leading-10 font-extrabold w-full md:w-1/5 text-center md:text-left">
                 {{translate('pages.akhbarmeter.featured')}}
             </div>
             <div class="flex flex-col items center space-y-20">
-                <div class="flex flex-row items-center space-x-16">
+                <div class="flex flex-row items-center space-x-16 rtl:space-x-reverse">
                     <div class="flex flex-col w-1/4">
                         <img src="{{asset('images/portfolio/mag1.gif')}}" alt="Ich mag meine uni"
                              class="text-center h-auto w-48"/>

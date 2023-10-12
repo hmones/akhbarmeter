@@ -68,7 +68,7 @@
                        description="{{translate('pages.methodology.category.description')}}"/>
     </div>
 
-    <div class="container px-4 flex flex-col space-y-8 md:flex-row md:space-y-0 md:space-x-4 rtl:space-x-reverse">
+    <div class="container mx-auto px-4 flex flex-col space-y-8 md:flex-row md:space-y-0 md:space-x-4 rtl:space-x-reverse">
         <div class="flex flex-col space-y-4 md:w-1/3">
             <div class="flex flex-col">
                 <svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -132,13 +132,13 @@
         </script>
     </div>
 
-    <div class="container flex flex-col space-y-2 my-4 md:space-y-10 md:py-20">
+    <div class="container mx-auto flex flex-col space-y-2 my-4 md:space-y-10 md:py-20">
         <div class="flex flex-col text-lg leading-6 font-semibold md:text-3xl md:leading-9 md:font-bold">
             {{translate('pages.methodology.disclaimer.header')}}
         </div>
         <div
             class="flex flex-col text-sm leading-5 font-normal text-gray-500 md:text-base md:leading-6 md:text-black">
-            {{translate('pages.methodology.disclaimer.description')}}
+            {!! translate('pages.methodology.disclaimer.description') !!}
         </div>
     </div>
 @endsection
