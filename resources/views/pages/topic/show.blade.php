@@ -21,7 +21,7 @@
         <div class="flex flex-row items-center justify-center mx-auto space-y-10 my-16">
             <div>
                 @if($topic->image)
-                    <img src="{{Storage::url($topic->image)}}" alt="{{$topic->title}}" class="rounded w-full lg:w-1/3 float-left" />
+                    <img src="{{Storage::url($topic->image)}}" alt="{{$topic->title}}" class="rounded w-full lg:w-1/3 float-left lg:mr-4" />
                 @endif
                 <div>
                     {!! $topic->description !!}

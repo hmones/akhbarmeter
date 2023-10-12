@@ -18,6 +18,7 @@ Route::resource('contact', ContactController::class)->only(['index', 'store']);
 Route::resource('videos', VideoController::class)->only(['index', 'show']);
 Route::resource('publications', PublicationController::class)->only(['index']);
 Route::redirect('topics/akhbar-kathb', '/topics');
+Route::get('/post/{topic}', [TopicController::class, 'show']);
 Route::resource('topics', TopicController::class)->only(['index', 'show']);
 Route::resource('articles', ArticleController::class)->only('index', 'show');
 Route::resource('article', ArticleController::class)->only('index', 'show');

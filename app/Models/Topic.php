@@ -70,4 +70,9 @@ class Topic extends Model
     {
         $this->attributes['image'] = Storage::putFile('v3.0/topic/author_avatar', $value, 'public');
     }
+
+    public function resolveRouteBinding($value, $field = null): self
+    {
+        return $this->where('id', $value)->orWhere('slug', $value)->firstOrFail();
+    }
 }
