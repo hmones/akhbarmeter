@@ -13,3 +13,8 @@ a.pro_link, a.pro_link:hover {
     color: rgb(59 130 246) !important;
     border-bottom: lightslategray dotted 2px !important;
 }
+
+br {
+    content: " ";
+    height: 1rem;
+}
