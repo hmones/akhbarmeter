@@ -3,16 +3,22 @@
     <div style="background: linear-gradient(to right,#6dd5ed,#1850eb);">
         <div class="container mx-auto flex flex-col w-full items-center justify-center mx-auto space-y-4 py-16 text-white">
             <div class="flex flex-col">
-                <h1 class="text-5xl leading-relaxed text-center font-extrabold tracking-tight">{{$topic->title}}</h1>
+                <h1 class="text-3xl md:text-5xl leading-relaxed text-center font-extrabold tracking-tight">{{$topic->title}}</h1>
             </div>
-            <div class="flex flex-row w-4/5 text-lg text-center leading-6 font-normal mx-auto justify-center space-x-1.5 rtl:space-x-reverse">
-                <span>{{$topic->created_at->format('d/m/Y')}} |</span>
-                <span class="flex flex-row items-center space-x-1.5 rtl:space-x-reverse">
+            <div class="flex flex-col md:flex-row w-4/5 text-lg text-center leading-6 font-normal mx-auto justify-center space-x-1.5 rtl:space-x-reverse">
+                <div class="flex flex-row justify-center">
+                    <span>{{$topic->created_at->format('d/m/Y')}}&nbsp;</span>
+                    <span class="hidden md:flex"> | </span></div>
+                <div class="flex flex-row items-center justify-center space-x-1.5 rtl:space-x-reverse mx-auto">
                     <em class="fa fa-clock-o"></em>
-                    <span> 5 {{translate('pages.topic.mins')}} |</span>
-                </span>
-                <span> {{translate('pages.topic.author')}}: {{$topic->author_name}} |</span>
-                <span> {{translate('pages.topic.category')}}: {{translate('pages.topics.' . $topic->type)}} </span>
+                    <span> 5 {{translate('pages.topic.mins')}}</span>
+                    <span class="hidden md:flex"> |</span>
+                </div>
+                <div class="flex flex-row justify-center">
+                    <span> {{translate('pages.topic.author')}}: {{$topic->author_name}}&nbsp;</span>
+                    <span class="hidden md:flex"> |</span>
+                </div>
+                <div> {{translate('pages.topic.category')}}: {{translate('pages.topics.' . $topic->type)}} </div>
             </div>
         </div>
     </div>
@@ -21,7 +27,7 @@
         <div class="flex flex-row items-center justify-center mx-auto space-y-10 my-16">
             <div>
                 @if($topic->image)
-                    <img src="{{Storage::url($topic->image)}}" alt="{{$topic->title}}" class="rounded w-full lg:w-1/3 float-left lg:mr-4" />
+                    <img src="{{Storage::url($topic->image)}}" alt="{{$topic->title}}" class="rounded w-full lg:w-1/3 float-left mb-8 lg:mr-4" />
                 @endif
                 <div>
                     {!! $topic->description !!}
