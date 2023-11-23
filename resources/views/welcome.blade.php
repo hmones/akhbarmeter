@@ -5,11 +5,13 @@
 
     <!-- Trending hashtags -->
     <section id="trends" class="border-b-2 border-solid border-gray-200">
-        <div class="container py-4 flex flex-row overflow-hidden">
+        <div class="container py-4 flex flex-row overflow-scroll">
             @foreach($trendingHashtags as $tag)
-                <a href="{{route('topics.index', compact('tag'))}}" class="mx-2 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
-                    #{{$tag}}
-                </a>
+                <div class="flex flex-col min-w-fit">
+                    <a href="{{route('topics.index', compact('tag'))}}" class="mx-2 px-2 py-1 bg-gray-100 h-fit rounded-5 text-sm mt-1">
+                        #{{$tag}}
+                    </a>
+                </div>
             @endforeach
         </div>
     </section>

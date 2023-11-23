@@ -25,9 +25,11 @@
             </div>
         </div>
         <div class="flex flex-col-reverse lg:flex-row w-full lg:space-x-6 rtl:space-x-reverse">
+            <img src="{{asset('images/ifcn_badge.png')}}" class="hidden lg:flex flex-wrap w-[110px] mx-auto" alt="AkhbarMeter IFCN badge"/>
             <div class="flex flex-col text-base leading-6 font-normal lg:w-1/3 text-white mt-6 lg:mt-0">
                 {{translate('pages.home.top-section.about-akhbarmeter')}}
             </div>
+            <img src="{{asset('images/ifcn_badge.png')}}" class="flex lg:hidden flex-wrap w-[110px] mx-auto mt-4" alt="AkhbarMeter IFCN badge"/>
             <div class="flex flex-col space-y-4 lg:w-2/3">
                 <div class="text-white text-xl leading-7 font-bold lg:text-4xl lg:leading-10 lg:font-extrabold">
                     {{translate('pages.home.top-section.search.header')}}
