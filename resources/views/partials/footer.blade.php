@@ -5,7 +5,7 @@
                 <a href="{{data_get($item, 'link')}}">{{data_get($item, 'text')}}</a>
             @endforeach
         </div>
-        <img src="{{asset('images/ifcn_badge.png')}}" class="hidden lg:flex flex-wrap w-[110px] mx-auto" alt="AkhbarMeter IFCN badge"/>
+        <img src="{{asset('images/ifcn_badge.png')}}" class="flex flex-wrap w-[110px] mx-auto" alt="AkhbarMeter IFCN badge"/>
         <div class="flex justify-center space-x-4 rtl:space-x-reverse">
             @include('partials.components.social-media-links')
         </div>
