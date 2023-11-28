@@ -64,6 +64,9 @@
                             </div>
                         @endforelse
                     </div>
+                    <div class="container mx-auto my-20 space-y-10">
+                        {{$reviewedArticles->links()}}
+                    </div>
                 </div>
             </div>
         </div>

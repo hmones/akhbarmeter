@@ -7,6 +7,8 @@ use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
+    public const PAGINATION_ITEMS = 10;
+
     public function index(): View
     {
         $unReviewedArticles = Article::where('user_id', auth()->id())
@@ -18,8 +20,7 @@ class DashboardController extends Controller
         $reviewedArticles = Article::where('user_id', auth()->id())
             ->whereNotNull('score_at')
             ->orderBy('score_at', 'desc')
-            ->take(10)
-            ->get();
+            ->paginate(self::PAGINATION_ITEMS);
 
         return view('dashboard', compact('reviewedArticles', 'unReviewedArticles'));
     }
