@@ -19,12 +19,10 @@
     // Navigation is not colored
     $desktopMenuClasses = $isColoredNavigation ? 'px-4 bg-gradient-to-r from-blue-700 to-cyan-700 border-none text-white' : 'px-4 border-b-2 lg:bg-white';
     $backgroundColor = isset($backgroundColor) ? 'bg-blue-900' : '';
-    $backgroundColor = $isColoredNavigation ? $backgroundColor : ''
-@endphp
-@php
-    $lightLogo = app()->getLocale() === 'en' ? 'logo-light.svg' : 'logo-light-ar.svg';
-    $desktopLogo = $isColoredNavigation ? $lightLogo : 'logo-dark.svg';
-    $mobileLogo = $isColoredNavigation ? $lightLogo : 'logo-dark.svg';
+    $backgroundColor = $isColoredNavigation ? $backgroundColor : '';
+    $logoColor = $isColoredNavigation ? 'light' : 'dark';
+    $logoLanguage = app()->getLocale();
+    $logo = "logo-$logoColor-$logoLanguage.svg";
 @endphp
 
 <section id="mainMenu" class="{{$desktopMenuClasses}}">
@@ -33,14 +31,8 @@
             <div class="flex">
                 <a
                     href="{{route('home')}}"
-                    class="h-6 bg-auto bg-no-repeat lg:hidden"
-                    style="width: 170px; height: 21px; background-image: url('/images/{{$mobileLogo}}')">
-                    &nbsp;
-                </a>
-                <a
-                    href="{{route('home')}}"
-                    class="h-6 bg-auto bg-no-repeat hidden lg:block"
-                    style="width: 170px; height: 21px; background-image: url('/images/{{$desktopLogo}}')">
+                    class="h-6 bg-auto bg-no-repeat"
+                    style="width: 170px; height: 21px; background-image: url('/images/{{$logo}}')">
                     &nbsp;
                 </a>
             </div>
