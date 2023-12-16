@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
             ->monthlyOn();
         $schedule->job(new CalculateRankForPublishers(now()->subYear(), PublisherScore::PERIOD_YEAR))
             ->yearlyOn();
+        $schedule->command('sitemap:generate')->daily();
     }
 
     protected function commands(): void
