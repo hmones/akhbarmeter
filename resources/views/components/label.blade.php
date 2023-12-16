@@ -1,8 +1,8 @@
 @props(['label'])
 
 <div class="flex flex-row rounded-lg items-center justify-center text-center">
-    <div class="bg-{{$label->color}}-500 p-2 ltr:rounded-l-lg rtl:rounded-r-lg border-2 border-solid border-{{$label->color}}-500">
         @if($label->color === 'red')
+        <div class="bg-red-500 p-2 ltr:rounded-l-lg rtl:rounded-r-lg border-2 border-solid border-red-500">
             <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle r="9" transform="matrix(-1 0 0 1 12.2441 12)" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <circle r="1.5" transform="matrix(-1 0 0 1 12.2441 12)" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -10,7 +10,12 @@
                 <path d="M10.3216 6.07653C10.9276 5.87953 11.5736 5.76953 12.2456 5.76953C15.6866 5.76953 18.4766 8.55953 18.4766 12.0005" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M11.1855 10.9398L7.83555 7.58984" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
+        </div>
+        <div class="p-2 ltr:rounded-r-lg rtl:rounded-l-lg border-2 border-solid border-red-500">
+            {{$label->title}}
+        </div>
         @elseif($label->color === 'orange' || $label->color === 'yellow')
+        <div class="bg-orange-500 p-2 ltr:rounded-l-lg rtl:rounded-r-lg border-2 border-solid border-orange-500">
             <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle r="9" transform="matrix(-1 0 0 1 12.2441 12)" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <circle r="1.5" transform="matrix(-1 0 0 1 12.2441 12)" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -18,7 +23,12 @@
                 <path d="M9.96666 6.1875C7.87529 6.95226 5.89287 9.30886 6.01299 12.0008" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M12.2441 10.4998V5.75977" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
+        </div>
+        <div class="p-2 ltr:rounded-r-lg rtl:rounded-l-lg border-2 border-solid border-orange-500">
+            {{$label->title}}
+        </div>
         @else
+        <div class="bg-green-500 p-2 ltr:rounded-l-lg rtl:rounded-r-lg border-2 border-solid border-green-500">
             <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="12.2441" cy="12" r="9" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <circle cx="12.2441" cy="12" r="1.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -26,10 +36,10 @@
                 <path d="M14.1687 6.07653C13.5627 5.87953 12.9167 5.76953 12.2447 5.76953C8.80367 5.76953 6.01367 8.55953 6.01367 12.0005" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M13.3047 10.9398L16.6547 7.58984" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
+        </div>
+        <div class="p-2 ltr:rounded-r-lg rtl:rounded-l-lg border-2 border-solid border-green-500">
+            {{$label->title}}
+        </div>
         @endif
-    </div>
-    <div class="p-2 ltr:rounded-r-lg rtl:rounded-l-lg border-2 border-solid border-{{$label->color}}-500">
-        {{$label->title}}
-    </div>
 </div>
 

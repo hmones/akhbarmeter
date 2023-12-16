@@ -11,18 +11,14 @@
     <link href="https://fonts.bunny.net/css2?family=Cairo:400;600;700;800" rel="stylesheet">
 
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
-    <script src="https://cdn.tailwindcss.com"></script>
     <script src="{{asset('js/jquery.js')}}" type="application/javascript"></script>
-    <script src="{{asset('js/bootstrap.bundle.min.js')}}" type="application/javascript"></script>
     <script src="{{asset('js/app.js')}}" type="application/javascript"></script>
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/theme.css')}}">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     @if(app()->getLocale() !== 'en')
-        <link rel="stylesheet" href="{{asset('css/bootstrap.rtl.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/app.rtl.css')}}">
     @endif
-{{--    @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
+    @vite('resources/css/app.css')
     @stack('scripts')
 
     <!-- Browser and App icons -->
@@ -46,8 +42,8 @@
 </head>
 <body>
 <div class="flex flex-col h-full justify-between">
-    <x-navigation :isColoredNavigation="isset($isColoredNavigation)" :isHomePage="isset($isHomePage)"/>
-    <div class="h-full">
+    <x-navigation :isColoredNavigation="$isColoredNavigation ?? false"/>
+    <div class="mx-auto h-full w-full">
         @yield('content')
     </div>
     @include('partials.footer')

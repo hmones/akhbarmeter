@@ -24,7 +24,7 @@
     </div>
 
     <div class="container mx-auto">
-        <div class="flex flex-row items-center justify-center mx-auto space-y-10 my-16">
+        <div class="flex flex-row items-center justify-center mx-auto space-y-10 my-16 px-2">
             <div>
                 @if($topic->image)
                     <img src="{{Storage::url($topic->image)}}" alt="{{$topic->title}}" class="rounded w-full lg:w-1/3 float-left mb-8 lg:mr-4" />
@@ -57,7 +57,7 @@
             <div
                 class="flex flex-col xl:flex-row w-full items-start items-stretch justify-left mx-auto space-y-10 xl:space-y-0">
                 @foreach($rowTopics as $record)
-                    <div class="flex flex-col xl:flex-row w-full xl:w-1/3 mx-2">
+                    <div class="flex flex-col xl:flex-row w-full xl:w-1/3 px-2">
                         <x-cards.topic :topic="$record" />
                     </div>
                 @endforeach

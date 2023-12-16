@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/theme.css')}}">
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite('resources/css/app.css')
         <script src="{{asset('js/jquery.js')}}"></script>
 
         <!-- Browser and App icons -->

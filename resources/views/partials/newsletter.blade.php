@@ -1,6 +1,6 @@
 <div class="lg:container flex flex-col w-full items-center justify-center mx-auto pt-16 lg:py-16 text-white">
-    <div class="flex flex-col lg:flex-row lg:w-3/5 bg-blue-700 lg:rounded justify-center p-5">
-        <div class="flex flex-col lg:w-1/2 space-y-2">
+    <div class="flex flex-col lg:flex-row lg:w-3/5 bg-blue-700 lg:rounded justify-center p-8 space-x-4">
+        <div class="flex flex-col lg:w-1/2 space-y-2 my-auto">
             <div class="flex flex-row text-3xl leading-9 font-extrabold">
                 {{translate('component.newsletter.header')}}
             </div>
@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="flex flex-col lg:w-1/2">
-            <form class="flex flex-row space-y-4 py-6 space-x-2"
+            <form class="flex flex-row space-y-4 pb-3 space-x-2 my-auto"
                   action="https://akhbarmeter.us11.list-manage.com/subscribe/post?u=2911001665bae66f0f76c3b60&amp;id=04234119df"
                   id="mc-embedded-subscribe-form"
                   method="post"

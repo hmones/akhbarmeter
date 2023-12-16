@@ -7,7 +7,7 @@
     <x-slot:image>
         <a href="{{route('articles.show', $article->id)}}">
             <div
-                class="w-full h-[266px] bg-[url('{{$article->image ? Storage::url($article->image) : asset('images/placeholders/article.png')}}')] bg-cover bg-center bg-no-repeat rounded-t-lg">
+                class="w-full h-[266px] bg-cover bg-center bg-no-repeat rounded-t-lg" style="background-image: url('{{$article->image ? Storage::url($article->image) : asset('images/placeholders/article.png')}}')">
             </div>
         </a>
     </x-slot:image>

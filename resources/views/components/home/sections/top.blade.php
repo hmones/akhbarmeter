@@ -1,6 +1,6 @@
 @props(['best', 'worst', 'fakeNews', 'articles'])
-<section id="topSection" class="bg-gradient-to-r from-blue-700 to-cyan-700 py-6 -mt-32 lg:-mt-[90px]">
-    <div class="container mt-32 flex flex-col space-y-8 z-10">
+<section id="topSection" class="bg-gradient-to-r from-blue-700 to-cyan-700 px-2 py-6">
+    <div class="container mx-auto flex flex-col space-y-8 z-10">
         <div class="flex flex-col-reverse lg:flex-row w-full lg:space-x-6 rtl:space-x-reverse">
             <div class="flex flex-col space-y-4 lg:w-1/3">
                 <div class="text-white text-xl leading-7 font-bold lg:text-4xl lg:leading-10 lg:font-extrabold mt-6 lg:mt-0">
@@ -48,7 +48,7 @@
     </div>
 
     <!-- Scroll Down Top News Section -->
-    <div class="hidden container mt-24 lg:flex flex-row space-x-8 text-white items-center z-10 rtl:space-x-reverse">
+    <div class="hidden container mx-auto mt-24 lg:flex flex-row space-x-8 text-white items-center z-10 rtl:space-x-reverse">
         <a class="text-base leading-6 font-semibold tracking-wide uppercase hover:text-white" href="#latestNews">
             {{translate('pages.home.top-section.scroll')}}
         </a>

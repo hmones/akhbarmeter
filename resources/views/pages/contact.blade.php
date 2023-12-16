@@ -1,4 +1,4 @@
-@extends('layouts.default', ['isColoredNavigation' => true])
+@extends('layouts.default')
 @section('content')
     <div class="container hidden lg:flex flex-col w-full items-center justify-center mx-auto space-y-4 my-16">
         <div class="flex flex-col">

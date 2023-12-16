@@ -132,7 +132,7 @@
         </script>
     </div>
 
-    <div class="container mx-auto flex flex-col space-y-2 my-4 md:space-y-10 md:py-20">
+    <div class="container mx-auto flex flex-col space-y-2 my-4 md:space-y-10 md:py-20 px-2">
         <div class="flex flex-col text-lg leading-6 font-semibold md:text-3xl md:leading-9 md:font-bold">
             {{translate('pages.methodology.disclaimer.header')}}
         </div>

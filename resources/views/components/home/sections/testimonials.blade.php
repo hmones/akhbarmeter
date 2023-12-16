@@ -1,7 +1,7 @@
 <section class="bg-blue-700">
-    <div class="container flex flex-col lg:flex-row py-16 lg:space-x-8 rtl:space-x-reverse">
+    <div class="container mx-auto flex flex-col lg:flex-row py-16 lg:space-x-8 rtl:space-x-reverse p-4">
         <div
-            class="flex flex-col py-8 pe-4 space-y-8 border-b-2 lg:border-b-0 ltr:lg:border-r-2 rtl:lg:border-l-2 border-solid border-blue-900 text-white lg:w-1/2">
+            class="flex flex-col py-8 pe-4 space-y-8 text-white lg:w-1/2">
             <img src="{{asset('images/testimonials/logo1.png')}}" alt="Digital Arabia Network logo" class="w-24 brightness-0 invert">
             <div class="flex flex-row -space-x-2 align-items-baseline">
                 <!-- Quote image -->

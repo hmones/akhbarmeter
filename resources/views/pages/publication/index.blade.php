@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('title', 'Publications')
 @section('content')
-    <div class="container max-h-full">
+    <div class="container mx-auto max-h-full">
         <x-page-header :headline="translate('pages.home.publications.header')"
                        :description="translate('pages.home.publications.description')"/>
 

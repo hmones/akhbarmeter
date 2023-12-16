@@ -1,6 +1,6 @@
 @props(['article'])
 
-<div class="flex flex-col lg:flex-row justify-center w-full">
+<div class="flex flex-col lg:flex-row justify-center w-full px-2">
     <div class="flex flex-col rounded-t-lg lg:rounded-none lg:ltr:rounded-l-lg rtl:lg:rounded-r-lg lg:w-1/3 bg-cover items-center justify-center h-[260px] lg:w-[470px]"
          style="background-image: url('{{$article?->image ? Storage::url($article->image) : asset('images/placeholders/article.png')}}')"
     >

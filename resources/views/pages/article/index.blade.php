@@ -2,7 +2,7 @@
 @section('title', 'Articles')
 
 @section('content')
-    <div class="container max-h-full">
+    <div class="container mx-auto max-h-full">
         <x-page-header :headline="translate('pages.articles.header')"/>
         <div class="flex flex-col w-4/5 justify-center mx-auto">
             <div class="w-full -mt-8 md:-mt-16 mx-auto">
@@ -13,12 +13,12 @@
             </div>
         </div>
 
-        <div class="container mb-10 space-y-10">
+        <div class="container mx-auto mb-10 space-y-10">
             @foreach($articles->chunk(3) as $rowArticles)
                 <div
                     class="flex flex-col xl:flex-row w-full items-start items-stretch justify-left mx-auto space-y-10 xl:space-y-0">
                     @foreach($rowArticles as $article)
-                        <div class="flex flex-col xl:flex-row w-full xl:w-1/3 mx-2">
+                        <div class="flex flex-col xl:flex-row w-full xl:w-1/3 px-2">
                             <x-cards.article :article="$article" />
                         </div>
                     @endforeach
@@ -26,7 +26,7 @@
             @endforeach
         </div>
 
-        <div class="container my-20 space-y-10"  dir="ltr">
+        <div class="container mx-auto my-20 space-y-10"  dir="ltr">
             {{$articles->links()}}
         </div>
     </div>

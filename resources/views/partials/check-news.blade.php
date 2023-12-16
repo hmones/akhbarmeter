@@ -1,7 +1,7 @@
 <form id="checkNewsForm" action="{{route('check.news.store')}}" method="POST">
     @csrf
     <div
-        class="bg-blue-700 text-white p-20 flex flex-col w-full items-center justify-center mx-auto space-y-4 my-8 md:my-16">
+        class="bg-blue-700 text-white p-10 lg:p-20 flex flex-col w-full items-center justify-center mx-auto space-y-4 my-8 md:my-16">
         <div class="flex flex-col">
             <h2 class="text-xl font-extrabold leading-10 md:text-5xl md:tracking-tight text-center">
                 {{translate('pages.home.check.header')}}
