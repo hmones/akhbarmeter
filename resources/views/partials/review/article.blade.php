@@ -38,7 +38,7 @@
                 <button id="credButton" type="button" class="ql-cred_link custom-editor-button">مصداقية</button>
                 <button id="hrButton" type="button" class="ql-hr_link custom-editor-button">حقوق الإنسان</button>
             </div>
-            <div id="contentEditor" class="min-h-[50vh]" style="font-size: 25px;">{!! $article->content !!}</div>
+            <div id="contentEditor" class="min-h-[50vh] !text-lg">{!! $article->content !!}</div>
         </div>
         <div class="flex flex-col">
             <label for="image" class="text-sm">الصورة</label>

@@ -4,7 +4,7 @@
     <label for="{{$id}}" class="text-sm">{{$label}}</label>
 @endif
 <textarea id="{{$id}}" name="{{$name}}" class="hidden">{!! $value !!}</textarea>
-<div id="editor_{{$id}}" class="text-lg"></div>
+<div id="editor_{{$id}}" class="!text-lg"></div>
 
 <script>
     window['editor_{{$id}}'] = (new Quill('#editor_{{$id}}', {
