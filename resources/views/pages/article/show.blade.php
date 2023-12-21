@@ -1,5 +1,14 @@
 @extends('layouts.default')
+@section('title') {{ $article->title }} @endsection
 @section('content')
+    <style>
+        #article_content a, #evaluation a{
+            color: rgb(37, 99, 235);
+        }
+        #article_content a:hover, #evaluation a:hover{
+            color: gray;
+        }
+    </style>
     <div style="background: linear-gradient(to right,#6dd5ed,#1850eb);">
         <div class="container mx-auto flex flex-col w-full items-center justify-center mx-auto space-y-4 py-16 text-white">
             <div class="flex flex-col">
@@ -38,7 +47,7 @@
             <!-- Content -->
             <div class="lg:w-2/3 flex flex-col space-y-4">
                 <!-- Article Content -->
-                <div class="px-3 lg:px-0 mb-5">
+                <div class="px-3 lg:px-0 mb-5" id="article_content">
                     @if($article->image)
                         <img src="{{Storage::url($article->image)}}" alt="{{$article->title}}" class="w-full lg:w-1/2 rounded float-left" />
                     @endif

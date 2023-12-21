@@ -1,4 +1,5 @@
 @extends('layouts.default')
+@section('title') {{ $publisher->name }} @endsection
 @section('content')
     <div class="container mx-auto max-h-full">
         <x-page-header :headline="$publisher->name" :description="$publisher->description"/>
