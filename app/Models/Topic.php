@@ -47,6 +47,7 @@ class Topic extends Model
 
     protected $casts = [
         'tags' => 'array',
+        'published_at' => 'datetime'
     ];
 
     public function scopeFilter(Builder $query, $params): void
