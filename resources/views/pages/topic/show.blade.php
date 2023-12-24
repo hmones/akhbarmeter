@@ -21,7 +21,7 @@
             </div>
             <div class="flex flex-col md:flex-row w-4/5 text-lg text-center leading-6 font-normal mx-auto justify-center space-x-1.5 rtl:space-x-reverse">
                 <div class="flex flex-row justify-center">
-                    <span>{{$topic->created_at->format('d/m/Y')}}&nbsp;</span>
+                    <span>{{$topic->published_at->format('d/m/Y')}}&nbsp;</span>
                     <span class="hidden md:flex"> | </span></div>
                 <div class="flex flex-row items-center justify-center space-x-1.5 rtl:space-x-reverse mx-auto">
                     <em class="fa fa-clock-o"></em>
