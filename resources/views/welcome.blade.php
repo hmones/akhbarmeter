@@ -1,5 +1,9 @@
 @extends('layouts.default', ['isColoredNavigation' => true])
 
+@section('seo')
+    <x-seo />
+@endsection
+
 @section('content')
     <x-home.sections.top :best="$best" :worst="$worst" :fakeNews="$fakeNews" :articles="$articles"/>
 

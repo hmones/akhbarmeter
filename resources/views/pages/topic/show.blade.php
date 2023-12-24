@@ -1,5 +1,10 @@
 @extends('layouts.default')
-@section('title') {{ $topic->title }} @endsection
+
+@section('seo')
+    @php($image = $topic->image ? Storage::url($topic->image) : '')
+    <x-seo :title="$topic->title" :description="str(strip_tags($topic->description))->limit(250)" :keywords="str($topic->title)->replace(' ', ' , ')" :image="$image"/>
+@endsection
+
 @section('content')
     <style>
         #topic_content a{

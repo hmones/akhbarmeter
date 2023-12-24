@@ -3,9 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property='og:site_name' content='AkhbarMeter | أخبارميتر' />
+    <meta name="application-name" content="AkhbarMeter | أخبارميتر">
+    @yield('seo')
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>AkhbarMeter | @yield('title')</title>
 
     <link href="https://fonts.bunny.net/css2?family=Inter:400;600;700;800" rel="stylesheet">
     <link href="https://fonts.bunny.net/css2?family=Cairo:400;600;700;800" rel="stylesheet">

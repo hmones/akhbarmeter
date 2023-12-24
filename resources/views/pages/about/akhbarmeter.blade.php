@@ -1,5 +1,9 @@
 @extends('layouts.default')
-@section('title', translate('pages.akhbarmeter.header'))
+
+@section('seo')
+    <x-seo :title="translate('pages.akhbarmeter.header')" :description="translate('pages.akhbarmeter.description')" />
+@endsection
+
 @section('content')
     <x-page-header :headline="translate('pages.akhbarmeter.header')"
                    :description="translate('pages.akhbarmeter.description')"/>

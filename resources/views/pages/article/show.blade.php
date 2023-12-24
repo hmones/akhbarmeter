@@ -1,5 +1,13 @@
 @extends('layouts.default')
-@section('title') {{ $article->title }} @endsection
+
+@section('seo')
+    @php($image = empty($article->publisher->image) ? asset("images/placeholders/publisher.png") : Storage::url($article->publisher->image))
+    <x-seo :title="$article->title"
+           :description="str(strip_tags($article->content))->limit(250)"
+           :keywords="str($article->title)->replace(' ', ' , ')"
+           :image="$image" />
+@endsection
+
 @section('content')
     <style>
         #article_content a, #evaluation a{

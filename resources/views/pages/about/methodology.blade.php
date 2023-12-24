@@ -1,5 +1,9 @@
 @extends('layouts.default')
-@section('title', translate('pages.methodology.title'))
+
+@section('seo')
+    <x-seo :title="translate('pages.methodology.title')" :description="translate('pages.methodology.description')" keywords="مهنية، احترافية، حقوق الإنسان، أخلاقيات الصحافة، معايير الصحافة، المعايير الاحترافية للصحافة، الصحافة النزيهة، المسائلة، مرصد صحفي، Professionalism, Credibility, Human Rights, Media Ethics, Media Standards, Ethical Media, Media Accountability, Media Observatory"/>
+@endsection
+
 @section('content')
     <x-page-header :headline="translate('pages.methodology.header')"
                    :description="translate('pages.methodology.description')"/>

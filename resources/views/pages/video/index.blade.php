@@ -1,7 +1,11 @@
 @extends('layouts.default')
-@section('title', 'Videos')
+
+@section('seo')
+    <x-seo :title="translate('pages.videos.header')" :description="translate('pages.videos.description')" />
+@endsection
+
 @section('content')
-    <div class="container max-h-full">
+    <div class="container max-h-full mx-auto">
         <x-page-header :headline="translate('pages.videos.header')"
                        :description="translate('pages.videos.description')"/>
 

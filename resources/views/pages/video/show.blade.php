@@ -1,7 +1,9 @@
 @extends('layouts.default')
-@section('title')
-    {{ $video->title }}
+
+@section('seo')
+    <x-seo :title="$video->title" :description="$video->description" />
 @endsection
+
 @section('content')
     <div class="container flex flex-col w-full items-center justify-center mx-auto space-y-4 my-16">
         <div class="flex flex-col">
@@ -16,14 +18,14 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container mx-auto">
         <iframe class="w-full h-[60vh]" src="{{$video->url}}" title="{{$video->title}}"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen>
         </iframe>
     </div>
 
-    <div class="container">
+    <div class="container mx-auto">
         <div class="flex flex-row items-center justify-center mx-auto space-y-10 my-16">
             {!! $video->description !!}
         </div>

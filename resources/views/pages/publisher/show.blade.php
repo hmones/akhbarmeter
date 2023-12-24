@@ -1,5 +1,9 @@
 @extends('layouts.default')
-@section('title') {{ $publisher->name }} @endsection
+
+@section('seo')
+    <x-seo :title="$publisher->name" :description="strip_tags($publisher->description)" :image="Storage::url($publisher->image)" />
+@endsection
+
 @section('content')
     <div class="container mx-auto max-h-full">
         <x-page-header :headline="$publisher->name" :description="$publisher->description"/>

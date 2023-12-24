@@ -1,5 +1,8 @@
 @extends('layouts.default')
-@section('title', 'Articles')
+
+@section('seo')
+    <x-seo :title="translate('pages.articles.header')" />
+@endsection
 
 @section('content')
     <div class="container mx-auto max-h-full">

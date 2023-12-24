@@ -1,7 +1,9 @@
 @extends('layouts.default')
-@section('title')
-    Page not found - 404
+
+@section('seo')
+    <x-seo title="Page not found - 404" />
 @endsection
+
 @section('content')
     <div class="container flex flex-col mx-auto my-auto items-center justify-center py-40 space-y-3">
         <div class="flex flex-col items-center justify-center">

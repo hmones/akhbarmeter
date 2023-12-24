@@ -1,4 +1,9 @@
 @extends('layouts.default')
+
+@section('seo')
+    <x-seo :title="translate('pages.contact.header')" :description="translate('pages.contact.description')" />
+@endsection
+
 @section('content')
     <div class="container hidden lg:flex flex-col w-full items-center justify-center mx-auto space-y-4 my-16">
         <div class="flex flex-col">

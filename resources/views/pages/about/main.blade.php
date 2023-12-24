@@ -1,7 +1,9 @@
 @extends('layouts.default', ['isColoredNavigation' => false])
-@section('title')
-    About
+
+@section('seo')
+    <x-seo :title="translate('pages.about.header')" :description="translate('pages.about.description')"  />
 @endsection
+
 @section('content')
     <style>
         .radial-blue-background {
