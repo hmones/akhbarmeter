@@ -25,7 +25,7 @@
             <div class="flex flex-col text-xs leading-5 font-normal">
                 <span>
                     {{translate('component.newsletter.hint')}}
-                    <a href="#">{{translate('component.newsletter.privacy')}}</a>
+                    <a class="text-gray-200" href="{{route('privacy')}}">{{translate('component.newsletter.privacy')}}</a>
                 </span>
                 <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                 <div aria-hidden="true" style="position: relative; left: -5000px;z-index:-1;">
