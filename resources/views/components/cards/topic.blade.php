@@ -1,6 +1,6 @@
 @props(['topic'])
 
-<x-card :title="$topic->title" :time="$topic->created_at->diffForHumans()" :show="route('topics.show', $topic->id)" >
+<x-card :title="$topic->title" :time="$topic->published_at->diffForHumans()" :show="route('topics.show', $topic->id)" >
     <x-slot:image>
         <a href="{{route('topics.show', $topic->id)}}">
             <div  class="w-full h-[266px] bg-cover bg-center bg-no-repeat" style="background-image: url('{{$topic->image ? Storage::url($topic->image) : asset('images/placeholders/article.png')}}')"></div>
