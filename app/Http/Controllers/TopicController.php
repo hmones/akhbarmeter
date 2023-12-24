@@ -8,39 +8,15 @@ use Illuminate\View\View;
 
 class TopicController extends Controller
 {
-    const PAGINATION_ITEMS = 3;
+    const PAGINATION_ITEMS = 9;
 
     public function index(TopicSearchRequest $request): View
     {
         $query = $request->safe()->toArray();
-        $violations = Topic::filter($query)
-            ->whereType('violations')
-            ->orderBy('published_at', 'desc')
-            ->paginate(self::PAGINATION_ITEMS);
-        $fakeNews = Topic::filter($query)
-            ->whereType('fakeNews')
-            ->orderBy('published_at', 'desc')
-            ->paginate(self::PAGINATION_ITEMS);
-        $codeOfEthics = Topic::filter($query)
-            ->whereType('codeOfEthics')
-            ->orderBy('published_at', 'desc')
-            ->paginate(self::PAGINATION_ITEMS);
-        $other = Topic::filter($query)
-            ->whereType('other')
-            ->orderBy('published_at', 'desc')
-            ->paginate(self::PAGINATION_ITEMS);
-        $tags = cache()->remember('tags', 86400, fn () => \App\Models\Topic::select('tags')->pluck('tags')->flatten()->unique());
+        $topics = Topic::filter($query)->where('type', '!=', Topic::FAKE_NEWS)->orderBy('published_at', 'desc')->paginate(self::PAGINATION_ITEMS);
+        $tags = cache()->remember('topics.tags', 86400, fn () => Topic::where('type', '!=', Topic::FAKE_NEWS)->pluck('tags')->flatten()->unique());
 
-        return view('pages.topic.index', [
-            'tags'            => $tags,
-            'topics'          => compact(['violations', 'codeOfEthics', 'fakeNews', 'other']),
-            'paginationTopic' => data_get(array_keys(collect([
-                'violations'   => $violations->count(),
-                'fakeNews'     => $fakeNews->count(),
-                'codeOfEthics' => $codeOfEthics->count(),
-                'other'        => $other->count(),
-            ])->filter(fn($value) => $value === self::PAGINATION_ITEMS)->toArray()), 0)
-        ]);
+        return view('pages.topic.index', compact('tags', 'topics'));
     }
 
     public function show(Topic $topic): View

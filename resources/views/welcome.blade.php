@@ -58,7 +58,7 @@
             @endforeach
         </div>
         <div class="container mx-auto flex flex-col">
-            <x-view-all class="mt-16" href="{{route('topics.index')}}"/>
+            <x-view-all class="mt-16" href="{{route('fake.news')}}"/>
         </div>
     </section>
 

@@ -1,22 +1,22 @@
 @extends('layouts.default')
 
 @section('seo')
-    <x-seo :title="translate('pages.topics.header')" :description="translate('pages.topics.description')" />
+    <x-seo :title="translate('pages.home.fake.header')" :description="translate('pages.home.fake.description')" />
 @endsection
 
 @section('content')
     <div class="container mx-auto max-h-full px-2">
-        <x-page-header :headline="translate('pages.topics.header')" :description="translate('pages.topics.description')"/>
+        <x-page-header :headline="translate('pages.home.fake.header')" :description="translate('pages.home.fake.description')"/>
         <div class="container">
             <div class="flex flex-row mb-10 overflow-scroll h-fit" style="overflow-y:hidden">
                 @if(request()->has('tag'))
-                    <a href="{{route('topics.index')}}" class="flex flex-row mx-2 px-2 h-fit rounded-5 text-sm mt-1.5">
+                    <a href="{{route('fake.news')}}" class="flex flex-row mx-2 px-2 h-fit rounded-5 text-sm mt-1.5">
                         <i class="fa fa-close"></i>
                     </a>
                 @endif
                 @foreach($tags as $tag)
                     <div class="flex flex-col min-w-fit">
-                        <a href="{{route('topics.index', compact('tag'))}}"
+                        <a href="{{route('fake.news', compact('tag'))}}"
                            class="flex flex-row mx-1 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
                             #{{$tag}}
                         </a>
