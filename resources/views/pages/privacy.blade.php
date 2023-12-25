@@ -10,13 +10,13 @@
             list-style: revert;
         }
     </style>
-    <div class="container hidden lg:flex flex-col w-full items-center justify-center mx-auto space-y-4 my-16">
+    <div class="container flex flex-col w-full items-center justify-center mx-auto space-y-4 my-16">
         <div class="flex flex-col">
-            <h1 class="text-5xl leading-10 font-extrabold tracking-tight">Privacy Policy</h1>
+            <h1 class="text-4xl md:text-5xl leading-10 font-extrabold tracking-tight">Privacy Policy</h1>
         </div>
     </div>
 
-    <div class="container mx-auto my-8" dir="ltr">
+    <div class="container mx-auto my-8 px-4" dir="ltr">
         <p>Updated at 2023-09-30</p>
         <br>
         <p> AkhbarMeter (“we,” “our,” or “us”) is committed to protecting your privacy. This Privacy Policy explains how your personal information is collected, used, and disclosed by AkhbarMeter.</p>

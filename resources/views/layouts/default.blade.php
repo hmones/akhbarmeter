@@ -43,6 +43,18 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+
+    @if(request()->hasCookie('cookie_consent'))
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3DV4V13KYR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-3DV4V13KYR');
+    </script>
+    @endif
 </head>
 <body>
 <div class="flex flex-col h-full justify-between">
@@ -50,6 +62,8 @@
     <div class="mx-auto h-full w-full">
         @yield('content')
     </div>
+    //in your blade template
+    @include('cookie-consent::index')
     @include('partials.footer')
 </div>
 </body>
