@@ -33,6 +33,7 @@
                 <button class="ql-list" value="ordered"></button>
                 <button class="ql-list" value="bullet"></button>
                 <button class="ql-image"></button>
+                <button class="ql-video"></button>
                 <button class="ql-clean"></button>
                 <button id="profButton" type="button" class="ql-pro_link custom-editor-button">احترافية</button>
                 <button id="credButton" type="button" class="ql-cred_link custom-editor-button">مصداقية</button>
@@ -99,6 +100,7 @@
 @push('scripts')
     <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="{{ asset('js/quill-resize-module.min.js') }}"></script>
 @endpush
 <style>
     button.custom-editor-button {
@@ -195,13 +197,19 @@
         'formats/pro_link': ProLink,
         'formats/cred_link': CredLink
     });
+    Quill.register("modules/resize", window.QuillResizeModule);
 
     var editor = new Quill('#contentEditor', {
         theme: 'snow',
         placeholder: 'من فضلك أدخل النص ...',
         tabsize: 2,
         modules: {
-            toolbar: '#toolbar'
+            toolbar: '#toolbar',
+            resize: {
+                locale: {
+                    center: "center",
+                },
+            },
         }
     });
 
