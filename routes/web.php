@@ -15,8 +15,10 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
+use Spatie\Honeypot\ProtectAgainstSpam;
 
-Route::resource('contact', ContactController::class)->only(['index', 'store']);
+Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('contact', [ContactController::class, 'store'])->name('contact.store')->middleware(ProtectAgainstSpam::class);
 Route::resource('videos', VideoController::class)->only(['index', 'show']);
 Route::resource('publications', PublicationController::class)->only(['index']);
 Route::redirect('topics/akhbar-kathb', '/topics');

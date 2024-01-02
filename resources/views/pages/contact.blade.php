@@ -38,7 +38,7 @@
                                 <img src="{{asset('images/icons/mail.svg')}}" alt="Email Contact"/>
                             </div>
                             <div class="flex-row">
-                                info@akhbarmeter.org
+                                info[at]akhbarmeter[dot]org
                             </div>
                         </div>
                         <div class="flex flex-row space-x-4 rtl:space-x-reverse">
@@ -100,6 +100,7 @@
                                 @endif
                                 <input type="text" id="phone" name="phone"
                                        class="p-3 h-12 border border-gray-300 rounded mt-1"/>
+                                <x-honeypot />
                             </div>
                         </div>
                         <div class="flex flex-row w-auto mt-4 space-x-8">
