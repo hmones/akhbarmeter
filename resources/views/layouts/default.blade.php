@@ -54,6 +54,8 @@
 
         gtag('config', 'G-3DV4V13KYR');
     </script>
+    @else
+    {{--    Google tags are removed due to consent not approved    --}}
     @endif
 </head>
 <body>
