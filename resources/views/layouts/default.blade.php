@@ -44,7 +44,7 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    @if(request()->hasCookie('cookie_consent'))
+    @if(request()->cookie('cookie_consent') === 1)
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3DV4V13KYR"></script>
     <script>
