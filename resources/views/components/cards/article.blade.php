@@ -14,7 +14,7 @@
     <x-slot:icon>
         <img class="w-[32px] rounded-circle"
              src="{{$article->publisher?->image ? Storage::url($article->publisher->image) : asset('images/placeholders/publisher.png')}}"
-             alt="{{$article->title}}">
+             alt="{{$article->title}}" loading="lazy">
     </x-slot:icon>
     <x-slot:footer>
         <x-cards.article-footer :article="$article" :show="route('articles.show', $article->id)" :showTotalScore="$showTotalScore"/>

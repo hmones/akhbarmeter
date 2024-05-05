@@ -70,7 +70,7 @@
         <div class="container mx-auto">
             <iframe class="w-full h-[70vh]" src="{{$video?->url}}" title="{{$video?->title}}"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
+                    allowfullscreen loading="lazy">
             </iframe>
         </div>
         <x-view-all class="mt-16" href="{{route('videos.index')}}"/>

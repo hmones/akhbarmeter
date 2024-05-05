@@ -4,7 +4,7 @@
     <x-slot:image>
         <iframe class="w-full" height="266" src="{{$video->url}}" title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
+                allowfullscreen loading="lazy">
         </iframe>
     </x-slot:image>
     <x-slot:icon>
