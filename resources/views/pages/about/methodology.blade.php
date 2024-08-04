@@ -53,7 +53,7 @@
                     {{translate('pages.methodology.how.header')}}
                 </div>
                 <div class="text-base leading-6 font-normal text-gray-500">
-                    {{translate('pages.methodology.how.description')}}
+                    {!! translate('pages.methodology.how.description') !!}
                 </div>
             </div>
             <div class="flex flex-col ltr:text-left rtl:text-right space-y-2">
@@ -61,7 +61,7 @@
                     {{translate('pages.methodology.explain.header')}}
                 </div>
                 <div class="text-base leading-6 font-normal text-gray-500">
-                    {{translate('pages.methodology.explain.description')}}
+                    {!!translate('pages.methodology.explain.description')!!}
                 </div>
             </div>
             <div class="flex flex-col ltr:text-left rtl:text-right space-y-2">
