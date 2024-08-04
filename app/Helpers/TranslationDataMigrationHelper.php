@@ -16,7 +16,7 @@ class TranslationDataMigrationHelper
 
     public function getEnglishTranslation(int $id, string $field): string
     {
-        return json_decode($this->translations->where('model_id', $id)->first()?->attribute_data ?? "")?->$field ?? "";
+        return json_decode($this->translations->where('model_id', $id)->first()?->attribute_data ?? '')?->$field ?? '';
     }
 
     public function getTransArray(string $arabic, string $english): string

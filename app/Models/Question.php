@@ -16,14 +16,17 @@ class Question extends Model
     use CrudTrait;
 
     const WEIGHTS = [1, 2, 3];
+
     const PROFESSIONALISM_WEIGHT = 1;
+
     const CREDIBILITY_WEIGHT = 2;
+
     const HUMAN_RIGHTS_WEIGHT = 3;
 
     public $translatable = [
         'title',
         'description',
-        'hint'
+        'hint',
     ];
 
     protected $fillable = [
@@ -33,7 +36,7 @@ class Question extends Model
         'weight',
         'label_id',
         'active',
-        'order'
+        'order',
     ];
 
     public function label(): BelongsTo

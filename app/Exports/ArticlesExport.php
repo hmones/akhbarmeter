@@ -18,7 +18,7 @@ class ArticlesExport implements WithMultipleSheets
     {
         return [
             new SummarySheet($this->summary),
-            new ArticlesSheet($this->articles)
+            new ArticlesSheet($this->articles),
         ];
     }
 }

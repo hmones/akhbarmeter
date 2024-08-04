@@ -6,14 +6,15 @@ use App\Models\Publication;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 
-return new class extends Migration {
+return new class extends Migration
+{
     public function up(): void
     {
         Publication::truncate();
         $publications = DB::table('cairo_mediameter_pubs')->get();
         $translationHelper = new TranslationDataMigrationHelper('Cairo\\MediaMeter\\Models\\Publication');
         $fileHelper = new FilesDataMigrationHelper('Cairo\\MediaMeter\\Models\\Publication');
-        $records = $publications->map(fn($record) => [
+        $records = $publications->map(fn ($record) => [
             'id' => $record->id,
             'title' => json_encode(['ar' => $record->name, 'en' => $translationHelper->getEnglishTranslation($record->id, 'name')]),
             'description' => json_encode(['ar' => $record->desc, 'en' => $translationHelper->getEnglishTranslation($record->id, 'desc')]),

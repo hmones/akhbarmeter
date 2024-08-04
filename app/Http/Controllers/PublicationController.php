@@ -12,7 +12,7 @@ class PublicationController extends Controller
         return view('pages.publication.index', [
             'publications' => Publication::filter($request->safe()->toArray())
                 ->orderBy('created_at', 'desc')
-                ->paginate(9)
+                ->paginate(9),
         ]);
     }
 }

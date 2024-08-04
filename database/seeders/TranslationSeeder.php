@@ -17,7 +17,7 @@ class TranslationSeeder extends Seeder
             $this->getTranslationRecord('navigation.top.contact.text', 'All', 'Contact us', 'تواصل معنا'),
             $this->getTranslationRecord('navigation.top.contact.link', 'All', '/contact'),
 
-            $this->getTranslationRecord('navigation.main.menu.home.text', 'All', 'Home', "الرئيسية"),
+            $this->getTranslationRecord('navigation.main.menu.home.text', 'All', 'Home', 'الرئيسية'),
             $this->getTranslationRecord('navigation.main.menu.home.link', 'All', '/'),
             $this->getTranslationRecord('navigation.main.menu.about.text', 'All', 'About', 'من نحن؟'),
             $this->getTranslationRecord('navigation.main.menu.about.link', 'All', '/about'),
@@ -97,7 +97,6 @@ class TranslationSeeder extends Seeder
             $this->getTranslationRecord('pages.topic.category', 'Topic', 'Category', 'التصنيف'),
             $this->getTranslationRecord('pages.topic.related.header', 'Topic', 'Related topics', 'مواضيع مرتبطة'),
             $this->getTranslationRecord('pages.topic.related.description', 'Topic', 'Topics that are related to this one', 'مواضيع لها علاقة بهذا الموضوع'),
-
 
             $this->getTranslationRecord('pages.home.insights.header', 'Home', 'Insights & Partners', 'أخبارميتر في أرقام'),
             $this->getTranslationRecord('pages.home.insights.description', 'Home', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed. '),
@@ -297,14 +296,14 @@ class TranslationSeeder extends Seeder
             Vulputate elit massa pellentesque eu id commodo ipsum. Cursus tellus sit suspendisse arcu vel viverra. Dolor
             integer cum dolor pellentesque elementum quisque. Ac ultrices sed velit ac lacus vulputate dictum. Nulla
             felis quam tempor purus id. Mi nam ornare ultricies fermentum tristique mi. Id arcu mauris egestas viverra
-            sed. Auctor pretium fermentum nam sed platea.    '),]);
+            sed. Auctor pretium fermentum nam sed platea.    '), ]);
         cache()->forget('translations');
     }
 
     protected function getTranslationRecord(string $key, string $page, string $en, $ar = null): array
     {
-        return ['key'        => $key, 'content' => $this->getTranslationString($en, $ar ?: $en), 'page' => $page,
-                'created_at' => now(),];
+        return ['key' => $key, 'content' => $this->getTranslationString($en, $ar ?: $en), 'page' => $page,
+            'created_at' => now(), ];
     }
 
     protected function getTranslationString(string $en, string $ar): string

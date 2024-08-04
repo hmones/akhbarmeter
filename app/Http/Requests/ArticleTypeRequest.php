@@ -15,10 +15,9 @@ class ArticleTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'       => 'nullable',
+            'title' => 'nullable',
             'description' => 'nullable',
-            'icon'        => 'nullable',
+            'icon' => 'nullable',
         ];
     }
-
 }

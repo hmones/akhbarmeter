@@ -42,7 +42,7 @@ class HomeController extends Controller
                 'bestThree',
                 'worst',
                 'worstThree',
-                'trendingHashtags'
+                'trendingHashtags',
             ])
         );
     }

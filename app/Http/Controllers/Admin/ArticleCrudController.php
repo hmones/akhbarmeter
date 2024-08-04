@@ -26,7 +26,7 @@ class ArticleCrudController extends CrudController
     public function setup(): void
     {
         CRUD::setModel(Article::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/article');
+        CRUD::setRoute(config('backpack.base.route_prefix').'/article');
         CRUD::setEntityNameStrings('article', 'articles');
     }
 
@@ -52,9 +52,9 @@ class ArticleCrudController extends CrudController
         CRUD::field('date');
         CRUD::field('image')->type('upload')->upload(true);
         CRUD::field('content')->type('ckeditor')->options([
-            'autoGrow_minHeight'   => 200,
+            'autoGrow_minHeight' => 200,
             'autoGrow_bottomSpace' => 50,
-            'removePlugins'        => 'resize,maximize',
+            'removePlugins' => 'resize,maximize',
         ]);
         CRUD::field('author');
         CRUD::field('comment');

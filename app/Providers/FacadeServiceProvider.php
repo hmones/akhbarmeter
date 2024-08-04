@@ -9,5 +9,5 @@ class FacadeServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
-	}
+    }
 }

@@ -23,7 +23,7 @@ class ArticleTopicCrudController extends CrudController
     public function setup(): void
     {
         CRUD::setModel(ArticleTopic::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/article-topic');
+        CRUD::setRoute(config('backpack.base.route_prefix').'/article-topic');
         CRUD::setEntityNameStrings('article topic', 'article topics');
     }
 
@@ -44,9 +44,9 @@ class ArticleTopicCrudController extends CrudController
 
         CRUD::field('title');
         CRUD::field('description')->type('ckeditor')->options([
-            'autoGrow_minHeight'   => 200,
+            'autoGrow_minHeight' => 200,
             'autoGrow_bottomSpace' => 50,
-            'removePlugins'        => 'resize,maximize',
+            'removePlugins' => 'resize,maximize',
         ]);
         CRUD::field('icon');
     }

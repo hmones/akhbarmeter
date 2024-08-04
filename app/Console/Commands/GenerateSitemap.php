@@ -31,7 +31,6 @@ class GenerateSitemap extends Command
             ->add(Url::create('/articles'))
             ->add(Url::create('/publishers')->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY));
 
-
         Topic::all()->each(function (Topic $topic) use ($sitemap) {
             $sitemap->add(Url::create("/topics/{$topic->id}"));
         });

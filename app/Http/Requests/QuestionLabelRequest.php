@@ -17,11 +17,10 @@ class QuestionLabelRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'    => 'required',
-            'icon'     => 'required',
-            'color'    => ['required', Rule::in(array_keys(QuestionLabel::COLORS))],
+            'title' => 'required',
+            'icon' => 'required',
+            'color' => ['required', Rule::in(array_keys(QuestionLabel::COLORS))],
             'priority' => 'required|numeric',
         ];
     }
-
 }

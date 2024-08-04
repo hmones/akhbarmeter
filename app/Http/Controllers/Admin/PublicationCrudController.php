@@ -22,9 +22,10 @@ class PublicationCrudController extends CrudController
     public function setup(): void
     {
         CRUD::setModel(\App\Models\Publication::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/publication');
+        CRUD::setRoute(config('backpack.base.route_prefix').'/publication');
         CRUD::setEntityNameStrings('publication', 'publications');
     }
+
     protected function setupListOperation(): void
     {
         CRUD::column('title');
@@ -38,9 +39,9 @@ class PublicationCrudController extends CrudController
 
         CRUD::field('title');
         CRUD::field('description')->type('ckeditor')->options([
-            'autoGrow_minHeight'   => 200,
+            'autoGrow_minHeight' => 200,
             'autoGrow_bottomSpace' => 50,
-            'removePlugins'        => 'resize,maximize',
+            'removePlugins' => 'resize,maximize',
         ]);
         CRUD::field('image')->type('upload')->upload(true);
         CRUD::field('file')->type('upload')->upload(true);

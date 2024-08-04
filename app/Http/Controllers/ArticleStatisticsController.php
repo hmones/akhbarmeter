@@ -39,16 +39,19 @@ class ArticleStatisticsController extends Controller
     {
         $from = Carbon::parse($request->get('from', 'first day of last month'));
         $to = Carbon::parse($request->get('to', 'now'));
+
         return Article::with(['publisher', 'type', 'topic', 'user', 'review'])->whereActive(1)->whereBetween('created_at', [$from, $to])->latest()->get();
     }
 
     protected function getQuestionsForArticles(Collection $articles): array
     {
         return Response::with(['option.question', 'review.article.publisher'])
-            ->whereHas('review.article', function (Builder $query) use ($articles) { $query->whereIn('id', $articles->pluck('id')->toArray()); })
+            ->whereHas('review.article', function (Builder $query) use ($articles) {
+            $query->whereIn('id', $articles->pluck('id')->toArray());
+            })
             ->get()
             ->groupBy('option.question.title')
-            ->transform(fn($item) => $item->groupBy('option.title')->transform(fn($item) => $item->countBy('review.article.publisher.name')))
+            ->transform(fn ($item) => $item->groupBy('option.title')->transform(fn ($item) => $item->countBy('review.article.publisher.name')))
             ->toArray();
     }
 }

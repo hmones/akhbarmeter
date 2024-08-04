@@ -26,7 +26,7 @@ class PublisherScoreCrudController extends CrudController
     public function setup(): void
     {
         CRUD::setModel(PublisherScore::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/publisher-score');
+        CRUD::setRoute(config('backpack.base.route_prefix').'/publisher-score');
         CRUD::setEntityNameStrings('publisher score', 'publisher scores');
     }
 
@@ -50,9 +50,9 @@ class PublisherScoreCrudController extends CrudController
         CRUD::column('from');
         CRUD::column('to');
         CRUD::column('period')->type('select_from_array')->options([
-            PublisherScore::PERIOD_WEEK  => 'Week',
+            PublisherScore::PERIOD_WEEK => 'Week',
             PublisherScore::PERIOD_MONTH => 'Month',
-            PublisherScore::PERIOD_YEAR  => 'Year'
+            PublisherScore::PERIOD_YEAR => 'Year',
         ]);
         CRUD::column('articles_count');
         CRUD::column('score');
@@ -69,9 +69,9 @@ class PublisherScoreCrudController extends CrudController
         CRUD::field('period')
             ->type('select_from_array')
             ->options([
-                PublisherScore::PERIOD_WEEK  => 'Week',
+                PublisherScore::PERIOD_WEEK => 'Week',
                 PublisherScore::PERIOD_MONTH => 'Month',
-                PublisherScore::PERIOD_YEAR  => 'Year'
+                PublisherScore::PERIOD_YEAR => 'Year',
             ]);
     }
 }

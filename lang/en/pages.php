@@ -2,6 +2,6 @@
 
 return [
     'contact-us' => [
-        'header' => 'Contact us'
-    ]
+        'header' => 'Contact us',
+    ],
 ];

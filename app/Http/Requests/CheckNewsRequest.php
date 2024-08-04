@@ -9,7 +9,7 @@ class CheckNewsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'url' => 'required|active_url|unique:articles,url'
+            'url' => 'required|active_url|unique:articles,url',
         ];
     }
 
@@ -17,8 +17,8 @@ class CheckNewsRequest extends FormRequest
     {
         return [
             'url.active_url' => translate('pages.home.check.error'),
-            'url.unique'     => 'articleExist',
-            'url.required'   => translate('pages.home.check.error'),
+            'url.unique' => 'articleExist',
+            'url.required' => translate('pages.home.check.error'),
         ];
     }
 }

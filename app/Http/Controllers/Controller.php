@@ -13,6 +13,6 @@ class Controller extends BaseController
 
     protected function getPagePath(string $method): string
     {
-        return 'pages.admin.' . $method;
+        return 'pages.admin.'.$method;
     }
 }

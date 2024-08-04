@@ -6,7 +6,8 @@ use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 
-return new class extends Migration {
+return new class extends Migration
+{
     public function up(): void
     {
         Article::truncate();
@@ -42,7 +43,7 @@ from cairo_mediameter_articles as a
             $index = $key + 1;
             $startTime = now();
             echo "\n$startTime: Starting to migrate chunk $index of $total (1000 articles each)";
-            $temp = $chunk->map(fn($record) => [
+            $temp = $chunk->map(fn ($record) => [
                 'id' => $record->id,
                 'url' => $record->url,
                 'title' => $record->title,
@@ -65,7 +66,7 @@ from cairo_mediameter_articles as a
             try {
                 DB::table('articles')->insert($temp);
             } catch (Exception $exception) {
-                echo "Error in migrating batch number $index:" . str($exception->getMessage())->limit(1000);
+                echo "Error in migrating batch number $index:".str($exception->getMessage())->limit(1000);
             }
         });
     }

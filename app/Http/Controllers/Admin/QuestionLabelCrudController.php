@@ -25,7 +25,7 @@ class QuestionLabelCrudController extends CrudController
     public function setup(): void
     {
         CRUD::setModel(QuestionLabel::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/question-label');
+        CRUD::setRoute(config('backpack.base.route_prefix').'/question-label');
         CRUD::setEntityNameStrings('question label', 'question labels');
     }
 

@@ -64,6 +64,14 @@
                     {{translate('pages.methodology.explain.description')}}
                 </div>
             </div>
+            <div class="flex flex-col ltr:text-left rtl:text-right space-y-2">
+                <div class="flex flex-row text-lg leading-6 font-semibold">
+                    {{translate('pages.methodology.fact-checking.header')}}
+                </div>
+                <div class="text-base leading-6 font-normal text-gray-500">
+                    {!! translate('pages.methodology.fact-checking.description') !!}
+                </div>
+            </div>
         </div>
     </div>
 
@@ -137,12 +145,19 @@
     </div>
 
     <div class="container mx-auto flex flex-col space-y-2 my-4 md:space-y-10 md:py-20 px-2">
-        <div class="flex flex-col text-lg leading-6 font-semibold md:text-3xl md:leading-9 md:font-bold">
-            {{translate('pages.methodology.disclaimer.header')}}
+        <div id="methodology_explanation" class="flex flex-col text-lg leading-6 font-semibold md:text-3xl md:leading-9 md:font-bold">
+            {{translate('pages.methodology.how.header')}}
         </div>
         <div
-            class="flex flex-col text-sm leading-5 font-normal text-gray-500 md:text-base md:leading-6 md:text-black">
-            {!! translate('pages.methodology.disclaimer.description') !!}
+            class="flex flex-col leading-5 font-normal text-gray-500 md:leading-6 space-y-6">
+            {!! translate('pages.methodology.how.details') !!}
+        </div>
+        <div id="fact_checking" class="flex flex-col text-lg leading-6 font-semibold md:text-3xl md:leading-9 md:font-bold">
+            {{translate('pages.methodology.fact-checking.header')}}
+        </div>
+        <div
+            class="flex flex-col leading-5 font-normal text-gray-500 md:leading-6 space-y-6">
+            {!! translate('pages.methodology.fact-checking.details') !!}
         </div>
     </div>
 @endsection

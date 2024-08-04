@@ -13,20 +13,20 @@ class PublisherScoreFactory extends Factory
         $period = fake()->randomElement([
             PublisherScore::PERIOD_WEEK,
             PublisherScore::PERIOD_MONTH,
-            PublisherScore::PERIOD_YEAR
+            PublisherScore::PERIOD_YEAR,
         ]);
 
         return [
-            'from'           => $this->getPeriodFromDate($period),
-            'to'             => now(),
-            'period'         => $period,
+            'from' => $this->getPeriodFromDate($period),
+            'to' => now(),
+            'period' => $period,
             'articles_count' => fake()->randomNumber(2),
-            'score_1'        => fake()->numberBetween(0, 100),
-            'score_2'        => fake()->numberBetween(0, 100),
-            'score_3'        => fake()->numberBetween(0, 100),
-            'score'          => fake()->numberBetween(0, 100),
-            'rank'           => fake()->numberBetween(1, 10),
-            'is_trending'    => fake()->boolean,
+            'score_1' => fake()->numberBetween(0, 100),
+            'score_2' => fake()->numberBetween(0, 100),
+            'score_3' => fake()->numberBetween(0, 100),
+            'score' => fake()->numberBetween(0, 100),
+            'rank' => fake()->numberBetween(1, 10),
+            'is_trending' => fake()->boolean,
         ];
     }
 
@@ -41,19 +41,19 @@ class PublisherScoreFactory extends Factory
 
     public function week(): Factory
     {
-        return $this->state(fn(array $attributes) => ['from'   => now()->startOfDay()->subWeek(),
-                                                      'period' => PublisherScore::PERIOD_WEEK]);
+        return $this->state(fn (array $attributes) => ['from' => now()->startOfDay()->subWeek(),
+            'period' => PublisherScore::PERIOD_WEEK]);
     }
 
     public function month(): Factory
     {
-        return $this->state(fn(array $attributes) => ['from'   => now()->startOfDay()->subMonth(),
-                                                      'period' => PublisherScore::PERIOD_MONTH]);
+        return $this->state(fn (array $attributes) => ['from' => now()->startOfDay()->subMonth(),
+            'period' => PublisherScore::PERIOD_MONTH]);
     }
 
     public function year(): Factory
     {
-        return $this->state(fn(array $attributes) => ['from'   => now()->startOfDay()->subYear(),
-                                                      'period' => PublisherScore::PERIOD_YEAR]);
+        return $this->state(fn (array $attributes) => ['from' => now()->startOfDay()->subYear(),
+            'period' => PublisherScore::PERIOD_YEAR]);
     }
 }

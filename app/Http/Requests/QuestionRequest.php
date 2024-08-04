@@ -17,14 +17,13 @@ class QuestionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'       => 'required',
+            'title' => 'required',
             'description' => 'nullable',
-            'hint'        => 'nullable',
-            'weight'      => ['required', Rule::in(Question::WEIGHTS)],
-            'label_id'    => 'nullable|exists:question_labels,id',
-            'order'       => 'required|numeric',
-            'active'      => 'in:0,1',
+            'hint' => 'nullable',
+            'weight' => ['required', Rule::in(Question::WEIGHTS)],
+            'label_id' => 'nullable|exists:question_labels,id',
+            'order' => 'required|numeric',
+            'active' => 'in:0,1',
         ];
     }
-
 }

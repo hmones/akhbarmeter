@@ -68,7 +68,7 @@ class Article extends Model
     {
         $url = new Uri($this->url);
 
-        $publisher = Publisher::where('url', 'like', '%' . $url->getHost() . '%')->first();
+        $publisher = Publisher::where('url', 'like', '%'.$url->getHost().'%')->first();
 
         if ($publisher) {
             $this->publisher_id = $publisher->id;
@@ -82,7 +82,7 @@ class Article extends Model
     {
         return $this->getLabels($category)->first() ?? new QuestionLabel([
             'title' => ['ar' => 'جيد', 'en' => 'Accurate'],
-            'icon'  => 'exclamation',
+            'icon' => 'exclamation',
             'color' => 'green',
         ]);
     }
@@ -107,7 +107,7 @@ class Article extends Model
 
     public function scopeFilter(Builder $query, array $request): Builder
     {
-        $queryString = '%' . data_get($request, 'query') . '%';
+        $queryString = '%'.data_get($request, 'query').'%';
 
         return $query->where('title', 'like', $queryString)
             ->orWhere('content', 'like', $queryString)

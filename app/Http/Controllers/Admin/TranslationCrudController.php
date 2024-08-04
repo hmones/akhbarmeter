@@ -24,7 +24,7 @@ class TranslationCrudController extends CrudController
     public function setup(): void
     {
         CRUD::setModel(Translation::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/translation');
+        CRUD::setRoute(config('backpack.base.route_prefix').'/translation');
         CRUD::setEntityNameStrings('translation', 'translations');
     }
 

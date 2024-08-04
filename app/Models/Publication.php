@@ -17,7 +17,7 @@ class Publication extends Model
 
     public $translatable = [
         'title',
-        'description'
+        'description',
     ];
 
     protected $guarded = [];

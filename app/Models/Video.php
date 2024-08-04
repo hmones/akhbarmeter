@@ -16,7 +16,7 @@ class Video extends Model
 
     public $translatable = [
         'title',
-        'description'
+        'description',
     ];
 
     protected $fillable = [
@@ -24,7 +24,7 @@ class Video extends Model
         'url',
         'description',
         'tags',
-        'icon'
+        'icon',
     ];
 
     protected $casts = [

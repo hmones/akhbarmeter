@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Builder;
 
 class PublisherScore extends Model
 {
@@ -13,11 +13,14 @@ class PublisherScore extends Model
     use HasFactory;
 
     const TRENDING = 1;
-    const NOT_TRENDING = 0;
-    const PERIOD_WEEK = 'week';
-    const PERIOD_MONTH = 'month';
-    const PERIOD_YEAR = 'year';
 
+    const NOT_TRENDING = 0;
+
+    const PERIOD_WEEK = 'week';
+
+    const PERIOD_MONTH = 'month';
+
+    const PERIOD_YEAR = 'year';
 
     protected $guarded = [];
 

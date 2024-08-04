@@ -39,16 +39,16 @@ class ReviewRepository
         $scoreProfessionalism = $scores->get(Question::PROFESSIONALISM_WEIGHT)?->average('weight') ?? 1;
 
         $score = (
-                ($scoreHumanRights * Question::HUMAN_RIGHTS_WEIGHT)
-                + ($scoreCredibility * Question::CREDIBILITY_WEIGHT)
-                + ($scoreProfessionalism * Question::PROFESSIONALISM_WEIGHT)
-            ) / (Question::PROFESSIONALISM_WEIGHT + Question::CREDIBILITY_WEIGHT + Question::HUMAN_RIGHTS_WEIGHT);
+            ($scoreHumanRights * Question::HUMAN_RIGHTS_WEIGHT)
+            + ($scoreCredibility * Question::CREDIBILITY_WEIGHT)
+            + ($scoreProfessionalism * Question::PROFESSIONALISM_WEIGHT)
+        ) / (Question::PROFESSIONALISM_WEIGHT + Question::CREDIBILITY_WEIGHT + Question::HUMAN_RIGHTS_WEIGHT);
 
         return [
-            'score_1' => (int)($scoreProfessionalism * 100),
-            'score_2' => (int)($scoreCredibility * 100),
-            'score_3' => (int)($scoreHumanRights * 100),
-            'score'   => (int)($score * 100)
+            'score_1' => (int) ($scoreProfessionalism * 100),
+            'score_2' => (int) ($scoreCredibility * 100),
+            'score_3' => (int) ($scoreHumanRights * 100),
+            'score' => (int) ($score * 100),
         ];
     }
 }

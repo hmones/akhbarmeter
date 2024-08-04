@@ -41,27 +41,27 @@ class CalculateRankForPublishers implements ShouldQueue, ShouldBeUnique
                 ->with('review')
                 ->get();
             $previousPeriodScore = PublisherScore::wherePeriod($this->period)->latest()->first()?->score ?? 0;
-            $currentScore = $articles->count() ? (int)$articles->average('review.score') : 100;
+            $currentScore = $articles->count() ? (int) $articles->average('review.score') : 100;
 
             $publisherScores->push([
-                'publisher_id'   => $publisher->id,
-                'from'           => Arr::first($duration),
-                'to'             => Arr::last($duration),
-                'period'         => $this->period,
+                'publisher_id' => $publisher->id,
+                'from' => Arr::first($duration),
+                'to' => Arr::last($duration),
+                'period' => $this->period,
                 'articles_count' => $articles->count(),
-                'score_1'        => $articles->count() ? (int)$articles->average('review.score_1') : 100,
-                'score_2'        => $articles->count() ? (int)$articles->average('review.score_2') : 100,
-                'score_3'        => $articles->count() ? (int)$articles->average('review.score_3') : 100,
-                'score'          => $currentScore,
-                'is_trending'    => $currentScore > $previousPeriodScore,
-                'created_at'     => now()
+                'score_1' => $articles->count() ? (int) $articles->average('review.score_1') : 100,
+                'score_2' => $articles->count() ? (int) $articles->average('review.score_2') : 100,
+                'score_3' => $articles->count() ? (int) $articles->average('review.score_3') : 100,
+                'score' => $currentScore,
+                'is_trending' => $currentScore > $previousPeriodScore,
+                'created_at' => now(),
             ]);
         }
 
         $publisherScores = $publisherScores
             ->sortByDesc('score')
             ->values()
-            ->map(fn($record, $key) => array_merge($record, ['rank' => $key + 1]))
+            ->map(fn ($record, $key) => array_merge($record, ['rank' => $key + 1]))
             ->toArray();
 
         PublisherScore::insert($publisherScores);

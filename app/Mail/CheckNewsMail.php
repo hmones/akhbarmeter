@@ -26,7 +26,7 @@ class CheckNewsMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            htmlString: 'Someone wants to check this news article for accuracy: <a href="'. $this->url .'">Link</a>',
+            htmlString: 'Someone wants to check this news article for accuracy: <a href="'.$this->url.'">Link</a>',
         );
     }
 }

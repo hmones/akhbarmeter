@@ -18,11 +18,10 @@ class QuestionOptionRequest extends FormRequest
     {
         return [
             'question_id' => 'nullable|exists:questions,id',
-            'title'       => 'required',
+            'title' => 'required',
             'description' => 'nullable',
-            'weight'      => Rule::in(QuestionOption::WEIGHTS),
-            'selected'    => 'in:0,1',
+            'weight' => Rule::in(QuestionOption::WEIGHTS),
+            'selected' => 'in:0,1',
         ];
     }
-
 }

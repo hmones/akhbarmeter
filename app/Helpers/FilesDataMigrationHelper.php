@@ -24,7 +24,7 @@ class FilesDataMigrationHelper
 
     protected function convertKey(string $filename): string
     {
-        $baseFolder = "uploads/public";
+        $baseFolder = 'uploads/public';
         $firstFolder = Str::of($filename)->substr(0, 3);
         $secondFolder = Str::of($filename)->substr(3, 3);
         $thirdFolder = Str::of($filename)->substr(6, 3);

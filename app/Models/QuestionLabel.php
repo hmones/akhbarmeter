@@ -15,13 +15,15 @@ class QuestionLabel extends Model
     use CrudTrait;
 
     const COLORS = [
-        'red'    => 'Red',
+        'red' => 'Red',
         'orange' => 'Orange',
-        'yellow' => 'Yellow'
+        'yellow' => 'Yellow',
     ];
+
     public $translatable = [
         'title',
     ];
+
     protected $fillable = [
         'title',
         'icon',

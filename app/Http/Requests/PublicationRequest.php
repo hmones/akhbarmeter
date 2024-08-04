@@ -14,14 +14,14 @@ class PublicationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'         => 'required',
-            'description'   => 'nullable',
-            'tags'          => 'nullable',
-            'file'          => 'required|file|max:8000',
-            'author_name'   => 'required',
+            'title' => 'required',
+            'description' => 'nullable',
+            'tags' => 'nullable',
+            'file' => 'required|file|max:8000',
+            'author_name' => 'required',
             'author_avatar' => 'nullable|image|max:8000',
-            'image'         => 'nullable|image|max:8000',
-            'min_to_read'   => 'required|numeric',
+            'image' => 'nullable|image|max:8000',
+            'min_to_read' => 'required|numeric',
         ];
     }
 }

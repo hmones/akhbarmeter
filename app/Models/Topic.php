@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
@@ -21,15 +20,15 @@ class Topic extends Model
     const FAKE_NEWS = 'fakeNews';
 
     const TYPES = [
-        'violations'   => 'Violations',
-        'fakeNews'     => 'Fake News',
+        'violations' => 'Violations',
+        'fakeNews' => 'Fake News',
         'codeOfEthics' => 'Code of Ethics',
-        'other'        => 'Other'
+        'other' => 'Other',
     ];
 
     public $translatable = [
         'title',
-        'description'
+        'description',
     ];
 
     protected $fillable = [
@@ -42,12 +41,12 @@ class Topic extends Model
         'author_avatar',
         'type',
         'published_at',
-        'active'
+        'active',
     ];
 
     protected $casts = [
         'tags' => 'array',
-        'published_at' => 'datetime'
+        'published_at' => 'datetime',
     ];
 
     public function scopeFilter(Builder $query, $params): void

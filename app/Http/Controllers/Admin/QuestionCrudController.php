@@ -33,25 +33,25 @@ class QuestionCrudController extends CrudController
     public function fetchQuestionLabel()
     {
         return $this->fetch([
-            'model'                 => QuestionLabel::class,
+            'model' => QuestionLabel::class,
             'searchable_attributes' => ['title'],
-            'data_source'           => backpack_url('question/fetch/question-label'),
+            'data_source' => backpack_url('question/fetch/question-label'),
         ]);
     }
 
     public function fetchQuestionOption()
     {
         return $this->fetch([
-            'model'                 => QuestionOption::class,
+            'model' => QuestionOption::class,
             'searchable_attributes' => ['title'],
-            'data_source'           => backpack_url('question/fetch/question-option'),
+            'data_source' => backpack_url('question/fetch/question-option'),
         ]);
     }
 
     public function setup(): void
     {
         CRUD::setModel(Question::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/question');
+        CRUD::setRoute(config('backpack.base.route_prefix').'/question');
         CRUD::setEntityNameStrings('question', 'questions');
     }
 
@@ -78,46 +78,46 @@ class QuestionCrudController extends CrudController
         CRUD::field('weight')->type('select_from_array')->options($this->weightOptions)->allows_null(false);
         CRUD::field('label')->type('relationship')->attribute('title')->model(QuestionLabel::class);
         CRUD::addField([
-            'type'         => 'relationship',
-            'name'         => 'options',
-            'ajax'         => true,
-            'subfields'    => [
+            'type' => 'relationship',
+            'name' => 'options',
+            'ajax' => true,
+            'subfields' => [
                 [
-                    'name'    => 'title',
-                    'type'    => 'text',
+                    'name' => 'title',
+                    'type' => 'text',
                     'wrapper' => [
                         'class' => 'form-group col-md-6',
                     ],
                 ],
                 [
-                    'name'    => 'description',
-                    'type'    => 'textarea',
+                    'name' => 'description',
+                    'type' => 'textarea',
                     'wrapper' => [
                         'class' => 'form-group col-md-6',
                     ],
                 ],
                 [
-                    'name'    => 'weight',
-                    'type'    => 'enum',
+                    'name' => 'weight',
+                    'type' => 'enum',
                     'options' => [
                         QuestionOption::NO_MISTAKE => 'No mistake',
-                        QuestionOption::MISTAKE    => 'A Mistake'
+                        QuestionOption::MISTAKE => 'A Mistake',
                     ],
-                    'label'   => 'What does this option represent?'
+                    'label' => 'What does this option represent?',
                 ],
                 [
-                    'name'  => 'selected',
-                    'type'  => 'checkbox',
-                    'label' => 'Selected by default?'
+                    'name' => 'selected',
+                    'type' => 'checkbox',
+                    'label' => 'Selected by default?',
                 ],
                 [
-                    'name'  => 'is_not_applicable',
-                    'type'  => 'checkbox',
-                    'label' => 'Does this option represents a not-applicable?'
-                ]
+                    'name' => 'is_not_applicable',
+                    'type' => 'checkbox',
+                    'label' => 'Does this option represents a not-applicable?',
+                ],
             ],
-            'attribute'    => 'title',
-            'force_delete' => true
+            'attribute' => 'title',
+            'force_delete' => true,
         ]);
         CRUD::field('active');
         CRUD::field('order');

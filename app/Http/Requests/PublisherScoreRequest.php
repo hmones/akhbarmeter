@@ -11,11 +11,11 @@ class PublisherScoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'from'   => 'required|date',
+            'from' => 'required|date',
             'period' => [
                 'required',
-                Rule::in(PublisherScore::PERIOD_WEEK, PublisherScore::PERIOD_MONTH, PublisherScore::PERIOD_YEAR)
-            ]
+                Rule::in(PublisherScore::PERIOD_WEEK, PublisherScore::PERIOD_MONTH, PublisherScore::PERIOD_YEAR),
+            ],
         ];
     }
 }

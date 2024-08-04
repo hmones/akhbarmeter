@@ -19,7 +19,7 @@ class StatisticsRepository
 
         foreach (range(0, 11) as $count) {
             $month = now()->subYear()->firstOfYear()->addMonths($count);
-            $monthlyScore =  $monthlyScores->where('from', $month)->first();
+            $monthlyScore = $monthlyScores->where('from', $month)->first();
 
             $scores[] = [
                 'score' => $monthlyScore?->score ?? 100,

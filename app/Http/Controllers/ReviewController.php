@@ -18,6 +18,7 @@ class ReviewController extends Controller
     public function edit(Article $article): View
     {
         $questions = Question::whereActive(1)->orderBy('weight', 'asc')->get()->groupBy('weight');
+
         return view('pages.review.edit', compact('article', 'questions'));
     }
 

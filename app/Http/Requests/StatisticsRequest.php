@@ -10,7 +10,7 @@ class StatisticsRequest extends FormRequest
     {
         return [
             'from' => 'nullable|date|before:to',
-            'to'   => 'nullable|date|after:from'
+            'to' => 'nullable|date|after:from',
         ];
     }
 
@@ -18,7 +18,7 @@ class StatisticsRequest extends FormRequest
     {
         return [
             'from.*' => 'From date should be a valid date before the "to" field',
-            'to.*'   => 'To date should be a valid date after the "from" field'
+            'to.*' => 'To date should be a valid date after the "from" field',
         ];
     }
 }

@@ -64,7 +64,6 @@
     <div class="mx-auto h-full w-full">
         @yield('content')
     </div>
-    //in your blade template
     @include('cookie-consent::index')
     @include('partials.footer')
 </div>

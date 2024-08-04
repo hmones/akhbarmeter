@@ -12,7 +12,7 @@ class PublisherUrlRule implements Rule
     {
         $url = new Uri($value);
 
-        return Publisher::where('url', 'like', '%' . $url->getHost() . '%')->exists();
+        return Publisher::where('url', 'like', '%'.$url->getHost().'%')->exists();
     }
 
     public function message(): string

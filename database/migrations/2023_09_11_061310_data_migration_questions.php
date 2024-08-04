@@ -5,13 +5,14 @@ use App\Models\Question;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 
-return new class extends Migration {
+return new class extends Migration
+{
     public function up(): void
     {
         Question::truncate();
         $questions = DB::table('cairo_mediameter_questions')->get();
         $translationHelper = new TranslationDataMigrationHelper('Cairo\\MediaMeter\\Models\\Question');
-        $records = $questions->map(fn($record, $key) => [
+        $records = $questions->map(fn ($record, $key) => [
             'id' => $record->id,
             'title' => json_encode(['ar' => $record->question, 'en' => $translationHelper->getEnglishTranslation($record->id, 'question')]),
             'description' => json_encode(['ar' => $record->desc, 'en' => '']),

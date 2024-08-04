@@ -22,6 +22,7 @@ class SummarySheet implements FromArray, WithTitle, WithHeadings
                 }
             }
         }
+
         return $summary;
     }
 

@@ -9,7 +9,7 @@ class LanguageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'lang' => 'required|in:ar,en'
+            'lang' => 'required|in:ar,en',
         ];
     }
 }

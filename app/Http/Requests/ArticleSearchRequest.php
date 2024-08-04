@@ -9,7 +9,7 @@ class ArticleSearchRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'query' => 'nullable|string'
+            'query' => 'nullable|string',
         ];
     }
 }

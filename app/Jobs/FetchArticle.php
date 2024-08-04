@@ -32,7 +32,7 @@ class FetchArticle implements ShouldQueue
             return;
         }
 
-        Log::debug('Starting fetch for ' . $this->article->url);
+        Log::debug('Starting fetch for '.$this->article->url);
         $scrapper = new Scrapper($this->article->url);
 
         $data = $scrapper->getContentByXpath(
@@ -42,20 +42,18 @@ class FetchArticle implements ShouldQueue
             $this->article->publisher->author_xpath
         );
 
-
         $imagePath = data_get($data, 'image') instanceof UploadedFile
             ? Storage::putFile('v3.0/article/image', $data['image'], 'public')
             : null;
 
-
         $this->article->setRawAttributes([
-            'image'      => $imagePath,
-            'title'      => data_get($data, 'title'),
-            'author'     => data_get($data, 'author'),
-            'content'    => data_get($data, 'content'),
-            'fetched_at' => now()
+            'image' => $imagePath,
+            'title' => data_get($data, 'title'),
+            'author' => data_get($data, 'author'),
+            'content' => data_get($data, 'content'),
+            'fetched_at' => now(),
         ])->save();
 
-        Log::info('Ended fetching for ' . $this->article->url);
+        Log::info('Ended fetching for '.$this->article->url);
     }
 }

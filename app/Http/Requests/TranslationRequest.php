@@ -15,7 +15,7 @@ class TranslationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'key' => ['required', Rule::unique('translations', 'key')]
+            'key' => ['required', Rule::unique('translations', 'key')],
         ];
     }
 }

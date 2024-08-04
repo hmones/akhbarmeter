@@ -14,13 +14,13 @@ class ArticleUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'   => 'nullable',
-            'date'    => 'nullable',
-            'image'   => 'nullable|image|max:8000',
+            'title' => 'nullable',
+            'date' => 'nullable',
+            'image' => 'nullable|image|max:8000',
             'content' => 'nullable',
-            'author'  => 'nullable|string',
+            'author' => 'nullable|string',
             'comment' => 'nullable|string',
-            'active'  => 'in:0,1',
+            'active' => 'in:0,1',
             'is_fake' => 'in:0,1',
         ];
     }

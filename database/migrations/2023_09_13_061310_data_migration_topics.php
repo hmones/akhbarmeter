@@ -7,14 +7,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
-return new class extends Migration {
+return new class extends Migration
+{
     public function up(): void
     {
         Topic::truncate();
         $types = [
-            'انتهاكات إعلامية'   => 'violations',
-            'خبر غير حقيقي'     => 'fakeNews',
-            'قواعد المهنية الإعلامية' => 'codeOfEthics'
+            'انتهاكات إعلامية' => 'violations',
+            'خبر غير حقيقي' => 'fakeNews',
+            'قواعد المهنية الإعلامية' => 'codeOfEthics',
         ];
         $topics = DB::table('rainlab_blog_posts')->get();
         $categories = DB::table('rainlab_blog_categories')->get();
@@ -25,7 +26,7 @@ return new class extends Migration {
             ->pluck('name', 'id')
             ->map(fn ($record) => data_get($types, $record))
             ->toArray();
-        $records = $topics->map(fn($record) => [
+        $records = $topics->map(fn ($record) => [
             'id' => $record->id,
             'title' => $translationHelper->getTranslatedField($record, 'title'),
             'slug' => $record->slug,

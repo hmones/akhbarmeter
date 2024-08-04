@@ -11,7 +11,7 @@ class VideoController extends Controller
     public function index(VideoSearchRequest $request): View
     {
         return view('pages.video.index', [
-            'videos' => Video::filter($request->safe()->toArray())->orderBy('created_at', 'desc')->paginate(9)
+            'videos' => Video::filter($request->safe()->toArray())->orderBy('created_at', 'desc')->paginate(9),
         ]);
     }
 

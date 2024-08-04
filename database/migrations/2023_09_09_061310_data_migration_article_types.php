@@ -6,7 +6,8 @@ use App\Models\ArticleType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 
-return new class extends Migration {
+return new class extends Migration
+{
     public function up(): void
     {
         ArticleType::truncate();
@@ -14,7 +15,7 @@ return new class extends Migration {
         $categories = DB::table('cairo_mediameter_categories')->get()->groupBy('cat_type');
         $translationHelper = new TranslationDataMigrationHelper('Cairo\\MediaMeter\\Models\\Category');
         foreach ($categories as $key => $category) {
-            $records = $category->map(fn($record) => [
+            $records = $category->map(fn ($record) => [
                 'id' => $record->id,
                 'title' => json_encode(['ar' => $record->cat_title, 'en' => $translationHelper->getEnglishTranslation($record->id, 'cat_title')]),
                 'description' => json_encode(['ar' => $record->cat_desc, 'en' => $translationHelper->getEnglishTranslation($record->id, 'cat_desc')]),

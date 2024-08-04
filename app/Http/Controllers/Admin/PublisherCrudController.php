@@ -23,7 +23,7 @@ class PublisherCrudController extends CrudController
     public function setup(): void
     {
         CRUD::setModel(Publisher::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/publisher');
+        CRUD::setRoute(config('backpack.base.route_prefix').'/publisher');
         CRUD::setEntityNameStrings('publisher', 'publishers');
     }
 
@@ -50,9 +50,9 @@ class PublisherCrudController extends CrudController
             ->label('Slug (used for building links, only in english)')
             ->target('name');
         CRUD::field('description')->type('ckeditor')->options([
-            'autoGrow_minHeight'   => 200,
+            'autoGrow_minHeight' => 200,
             'autoGrow_bottomSpace' => 50,
-            'removePlugins'        => 'resize,maximize',
+            'removePlugins' => 'resize,maximize',
         ]);
         CRUD::field('url');
         CRUD::field('image')->type('upload')->upload(true);
@@ -62,6 +62,5 @@ class PublisherCrudController extends CrudController
         CRUD::field('content_xpath');
         CRUD::field('image_xpath');
         CRUD::field('author_xpath');
-
     }
 }

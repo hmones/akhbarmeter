@@ -17,7 +17,7 @@ class Publisher extends Model
 
     public $translatable = [
         'name',
-        'description'
+        'description',
     ];
 
     protected $fillable = [

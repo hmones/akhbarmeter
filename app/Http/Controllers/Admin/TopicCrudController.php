@@ -23,7 +23,7 @@ class TopicCrudController extends CrudController
     public function setup(): void
     {
         CRUD::setModel(Topic::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/topic');
+        CRUD::setRoute(config('backpack.base.route_prefix').'/topic');
         CRUD::setEntityNameStrings('topic', 'topics');
     }
 
@@ -51,9 +51,9 @@ class TopicCrudController extends CrudController
             ->label('Slug (used for building links, only in english)')
             ->target('title');
         CRUD::field('description')->type('ckeditor')->options([
-            'autoGrow_minHeight'   => 200,
+            'autoGrow_minHeight' => 200,
             'autoGrow_bottomSpace' => 50,
-            'removePlugins'        => 'resize,maximize',
+            'removePlugins' => 'resize,maximize',
         ]);
         CRUD::field('image')->type('upload')->upload(true);
         CRUD::field('tags');

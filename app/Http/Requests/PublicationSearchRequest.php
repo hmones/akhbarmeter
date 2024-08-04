@@ -9,7 +9,7 @@ class PublicationSearchRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'tag' => 'sometimes|string'
+            'tag' => 'sometimes|string',
         ];
     }
 }
