@@ -137,6 +137,9 @@
             <div class="flex flex-col w-1/4">
                 <img src="{{asset('images/portfolio/zastone.png')}}" alt="Zastone" class="text-center h-auto w-48"/>
             </div>
+            <div class="flex flex-col w-1/4">
+                <img src="{{asset('images/portfolio/gfmd.png')}}" alt="Global Forum for Media Development" class="text-center h-auto w-48"/>
+            </div>
         </div>
     </div>
 

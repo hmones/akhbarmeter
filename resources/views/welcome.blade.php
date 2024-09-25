@@ -149,6 +149,9 @@
                     <img src="{{asset('images/partners/5.png')}}" class="w-20 lg:w-32" alt="Partner 5"/>
                     <img src="{{asset('images/partners/6.png')}}" class="w-20 lg:w-32" alt="Partner 6"/>
                 </div>
+                <div class="flex flex-row justify-center items-center">
+                    <img src="{{asset('images/partners/7.png')}}" class="w-20 lg:w-32" alt="Partner 7"/>
+                </div>
             </div>
         </div>
     </section>
