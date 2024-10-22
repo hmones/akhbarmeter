@@ -31,4 +31,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'check-api' => [
+        'url' => env('CHECK_API_URL'),
+        'token' => env('CHECK_API_TOKEN'),
+    ],
 ];

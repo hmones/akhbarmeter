@@ -27,4 +27,5 @@ Route::crud('video', 'VideoCrudController');
     Route::crud('article-type', 'ArticleTypeCrudController');
     Route::crud('question-label', 'QuestionLabelCrudController');
     Route::crud('publisher-score', 'PublisherScoreCrudController');
+    Route::crud('fact-checking-article', 'FactCheckingArticleCrudController');
 }); // this should be the absolute last line of this file
