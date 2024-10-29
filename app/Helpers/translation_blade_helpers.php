@@ -1,12 +1,8 @@
 <?php
 
-use App\Models\Translation;
-use Illuminate\Support\Facades\Cache;
-
 function translate(string $key): string|array
 {
-    $translations = Cache::rememberForever('translations', fn () => Translation::all()) ?? collect();
-    $translation = $translations->filter(fn ($value) => str($value->key)->startsWith($key));
+    $translation = cache('translations', collect())->filter(fn ($value) => str($value->key)->startsWith($key));
 
     return match ($translation->count()) {
         0 => $key,

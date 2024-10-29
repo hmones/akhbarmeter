@@ -28,7 +28,7 @@
         </div>
         <div class="flex flex-col mt-4">
             <a href="{{translate('pages.methodology.top.button.link')}}" class="bg-blue-600 shadow-sm py-2 px-4 rounded text-white w-fit mt-2">
-                {{translate('pages.methodology.top.button')}}
+                {{translate('pages.methodology.top.button.text')}}
             </a>
         </div>
     </div>

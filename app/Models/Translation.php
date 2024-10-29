@@ -16,11 +16,16 @@ class Translation extends Model
 
     public $translatable = ['content'];
 
-    protected static function booted()
+    protected static function booted(): void
     {
         parent::booted();
-        static::created(fn () => Cache::forget('translations'));
-        static::updated(fn () => Cache::forget('translations'));
+        static::created(fn () => self::cacheTranslations());
+        static::updated(fn () => self::cacheTranslations());
+    }
+
+    protected static function cacheTranslations(): void
+    {
+        Cache::rememberForever('translations', fn () => Translation::all());
     }
 
     protected $guarded = [];
