@@ -45,29 +45,26 @@ class FactCheckingArticleCrudController extends CrudController
         CRUD::field('summary');
         FactCheckingArticle::creating(function ($article) {
             // Define the GraphQL mutation
-            $query = [
-                'mutation' => [
-                    'createProjectMedia' => [
-                        'input' => [
-                            'media_type' => 'Blank',
-                            'set_status' => 'undetermined',
-                            'set_claim_description' => $article->claim_description,
-                            'set_fact_check' => [
-                                'title' => $article->title,
-                                'summary' => $article->summary,
-                                'language' => 'ar',
-                            ],
-                        ],
-                        'project_media' => [
-                            'claim_description' => [
-                                'fact_check' => [
-                                    'dbid',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-            ];
+            $query = 'mutation {
+            createProjectMedia(input: {
+                media_type: "Blank",
+                set_status: "undetermined",
+                set_claim_description: "'.str($article->claim_description)->replace('"', '\'').'",
+                set_fact_check: {
+                    title: "'.str($article->title)->replace('"', '\'').'",
+                    summary: "'.str($article->summary)->replace('"', '\'').'",
+                    language: "ar"
+                }
+            }) {
+                project_media {
+                    claim_description {
+                        fact_check {
+                            dbid
+                        }
+                    }
+                }
+            }
+        }';
 
             // Make the POST request
             $response = Http::asJson()->withHeaders(['X-Check-Token' => config('services.check-api.token')])
