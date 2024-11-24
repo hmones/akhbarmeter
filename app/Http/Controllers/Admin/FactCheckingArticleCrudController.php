@@ -12,7 +12,6 @@ use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 
 class FactCheckingArticleCrudController extends CrudController
 {
@@ -45,9 +44,7 @@ class FactCheckingArticleCrudController extends CrudController
         CRUD::field('summary');
         CRUD::field('claim_description');
         FactCheckingArticle::creating(function ($article) {
-            static $apiCalled = false;
-
-            if ($apiCalled) {
+            if (str($article->dbid)->isNotEmpty()) {
                 return;
             }
             // Define the GraphQL mutation
@@ -75,9 +72,6 @@ class FactCheckingArticleCrudController extends CrudController
             $response = Http::asJson()->withHeaders(['X-Check-Token' => config('services.check-api.token')])
                 ->post(config('services.check-api.url'), compact('query'))
                 ->json();
-            Log::info('Article sent', compact('response'));
-            Log::info($article->dbid);
-            $apiCalled = true;
 
             // Extract the dbid value
             $dbid = data_get($response, 'data.createProjectMedia.project_media.claim_description.fact_check.dbid');
