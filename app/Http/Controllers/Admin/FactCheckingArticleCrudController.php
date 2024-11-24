@@ -12,6 +12,7 @@ use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class FactCheckingArticleCrudController extends CrudController
 {
@@ -70,7 +71,7 @@ class FactCheckingArticleCrudController extends CrudController
             $response = Http::asJson()->withHeaders(['X-Check-Token' => config('services.check-api.token')])
                 ->post(config('services.check-api.url'), compact('query'))
                 ->json();
-
+            Log::info("API response", compact('response'));
             // Extract the dbid value
             $dbid = data_get($response, 'data.createProjectMedia.project_media.claim_description.fact_check.dbid');
 
