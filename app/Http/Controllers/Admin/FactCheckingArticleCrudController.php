@@ -48,10 +48,11 @@ class FactCheckingArticleCrudController extends CrudController
             $query = 'mutation {
             createProjectMedia(input: {
                 media_type: "Blank",
+                set_status: "undetermined",
                 set_claim_description: "'.$article->claim_description.'",
                 set_fact_check: {
                     title: "'.$article->title.'",
-                    summary: "'.$article->summary.'",
+                    summary: "'.str($article->summary)->replace('"', '\'').'",
                     language: "ar"
                 }
             }) {

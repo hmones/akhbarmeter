@@ -47,7 +47,7 @@ class ArticleStatisticsController extends Controller
     {
         return Response::with(['option.question', 'review.article.publisher'])
             ->whereHas('review.article', function (Builder $query) use ($articles) {
-            $query->whereIn('id', $articles->pluck('id')->toArray());
+                $query->whereIn('id', $articles->pluck('id')->toArray());
             })
             ->get()
             ->groupBy('option.question.title')
