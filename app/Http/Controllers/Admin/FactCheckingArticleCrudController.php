@@ -41,15 +41,14 @@ class FactCheckingArticleCrudController extends CrudController
     protected function setupCreateOperation(): void
     {
         CRUD::setValidation(StoreFactCheckingArticleRequest::class);
-        CRUD::field('claim_description');
         CRUD::field('title');
         CRUD::field('summary');
+        CRUD::field('claim_description');
         FactCheckingArticle::creating(function ($article) {
             // Define the GraphQL mutation
             $query = 'mutation {
             createProjectMedia(input: {
                 media_type: "Blank",
-                set_status: "undetermined",
                 set_claim_description: "'.str($article->claim_description)->replace('"', '\'').'",
                 set_fact_check: {
                     title: "'.str($article->title)->replace('"', '\'').'",
@@ -71,7 +70,7 @@ class FactCheckingArticleCrudController extends CrudController
             $response = Http::asJson()->withHeaders(['X-Check-Token' => config('services.check-api.token')])
                 ->post(config('services.check-api.url'), compact('query'))
                 ->json();
-            Log::info("API response", compact('response'));
+
             // Extract the dbid value
             $dbid = data_get($response, 'data.createProjectMedia.project_media.claim_description.fact_check.dbid');
 
