@@ -37,15 +37,38 @@
         </div>
     </div>
 
-    <div class="container mx-auto">
-        <div class="flex flex-row items-center justify-center mx-auto space-y-10 my-16 px-2">
-            <div>
-                @if($topic->image)
-                    <img src="{{Storage::url($topic->image)}}" alt="{{$topic->title}}" class="rounded w-full lg:w-1/3 float-left mb-8 lg:mr-4" />
-                @endif
-                <div id="topic_content">
+    <div class="container max-w-4xl mx-auto px-4 py-10">
+        <div class="flex gap-4">
+        <!-- Left Column (Text and Description with Rich Text Content) -->
+            <div class="flex-1">
+                <h1 class="text-4xl font-bold leading-tight">{{$topic->title}}</h1>
+                <div class="text-lg text-gray-500">
                     {!! $topic->description !!}
                 </div>
+            </div>
+
+            <div class="flex-5 bg-white shadow-xl p-8 rounded-lg">
+                <h2 class="text-xl font-semibold mb-4">Requests to fact check</h2>
+                <p class="text-sm text-gray-500 mb-6">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+                <form action="#" method="POST">
+                    <input
+                        type="email"
+                        class="w-full p-3 border border-gray-300 rounded-md mb-4"
+                        placeholder="Enter your Email"
+                        required
+                    >
+                    <button
+                        type="submit"
+                        class="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600"
+                    >
+                        Notify Me
+                    </button>
+                </form>
+                <p class="text-xs text-gray-400 mt-4">
+                    Your data is in the safe hands. Check out our <a href="#" class="text-blue-600">Privacy policy</a> for more info.
+                </p>
             </div>
         </div>
     </div>
