@@ -16,4 +16,6 @@
 
 
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('publisher-score') }}"><i class="nav-icon la la-sort-numeric-asc"></i> Publisher scores</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('media') }}"><i class="nav-icon la la-th-list"></i> Media</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('team') }}"><i class="nav-icon la la-th-list"></i> Teams</a></li>
 <li class="nav-item nav-link">@include('partials.components.language-switcher')</li>
