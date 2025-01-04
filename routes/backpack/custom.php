@@ -29,5 +29,5 @@ Route::group([
     Route::crud('publisher-score', 'PublisherScoreCrudController');
     Route::crud('fact-checking-article', 'FactCheckingArticleCrudController');
     Route::crud('media', 'MediaCrudController');
-    Route::crud('team', 'TeamCrudController');
+    Route::crud('team-member', 'TeamMemberCrudController');
 }); // this should be the absolute last line of this file

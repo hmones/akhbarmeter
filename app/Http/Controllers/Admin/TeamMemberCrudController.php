@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\TeamRequest;
-use App\Models\Team;
+use App\Models\TeamMember;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
@@ -12,14 +12,14 @@ use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
-class TeamCrudController extends CrudController
+class TeamMemberCrudController extends CrudController
 {
     use ListOperation, CreateOperation, UpdateOperation, DeleteOperation, ShowOperation;
 
     public function setup(): void
     {
-        CRUD::setModel(Team::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/team');
+        CRUD::setModel(TeamMember::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/team-member');
         CRUD::setEntityNameStrings('team', 'teams');
     }
 
