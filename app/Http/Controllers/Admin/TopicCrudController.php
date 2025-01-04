@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\TopicRequest;
+use App\Models\TeamMember;
 use App\Models\Topic;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -31,10 +32,10 @@ class TopicCrudController extends CrudController
     {
         CRUD::column('title');
         CRUD::column('description');
-        CRUD::column('image')->type('image')->disk(config('filesystems.default'));
-        CRUD::column('author_name');
-        CRUD::column('author_avatar')->type('image')->disk(config('filesystems.default'));
         CRUD::column('type');
+        CRUD::column('teamMember.first_name')
+            ->type('text')
+            ->label('Author');
     }
 
     protected function setupUpdateOperation(): void
@@ -55,10 +56,13 @@ class TopicCrudController extends CrudController
             'autoGrow_bottomSpace' => 50,
             'removePlugins' => 'resize,maximize',
         ]);
-        CRUD::field('image')->type('upload')->upload(true);
         CRUD::field('tags');
-        CRUD::field('author_name');
-        CRUD::field('author_avatar')->type('upload')->upload(true);
+        CRUD::field('team_member_id')
+            ->type('select')
+            ->label('Team Member')
+            ->entity('teamMember')
+            ->model(TeamMember::class)
+            ->attribute('first_name');
         CRUD::field('type')->type('select_from_array')->options(Topic::TYPES);
         CRUD::field('published_at');
         CRUD::field('active');

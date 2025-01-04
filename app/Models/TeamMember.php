@@ -6,6 +6,7 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class TeamMember extends Model
 {
@@ -25,4 +26,9 @@ class TeamMember extends Model
         'job_title',
         'bio'
     ];
+
+    public function topics(): HasMany
+    {
+        return $this->hasMany(Topic::class);
+    }
 }

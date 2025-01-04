@@ -7,6 +7,7 @@ use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
 
 class Topic extends Model
@@ -32,6 +33,7 @@ class Topic extends Model
     ];
 
     protected $fillable = [
+        'team_member_id',
         'title',
         'slug',
         'description',
@@ -49,6 +51,10 @@ class Topic extends Model
         'published_at' => 'datetime',
     ];
 
+    public function teamMember(): BelongsTo
+    {
+        return $this->belongsTo(TeamMember::class);
+    }
     public function scopeFilter(Builder $query, $params): void
     {
         if (data_get($params, 'tag', false)) {
