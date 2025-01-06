@@ -6,4 +6,18 @@
     ul, ol {
         @apply list-disc;
     }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply list-disc;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply list-disc;
+    }
+
+    blockquote {
+        @apply list-disc;
+        @apply border-l-4 pl-4;
+        @apply bg-[#2563EB] text-white p-4 rounded-md border-[#2563EB];
+    }
 }

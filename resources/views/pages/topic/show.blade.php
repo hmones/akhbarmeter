@@ -14,61 +14,88 @@
             color: gray;
         }
     </style>
-    <div style="background: linear-gradient(to right,#6dd5ed,#1850eb);">
-        <div class="container mx-auto flex flex-col w-full items-center justify-center mx-auto space-y-4 py-16 text-white">
-            <div class="flex flex-col">
-                <h1 class="text-3xl md:text-5xl leading-relaxed text-center font-extrabold tracking-tight">{{$topic->title}}</h1>
-            </div>
-            <div class="flex flex-col md:flex-row w-4/5 text-lg text-center leading-6 font-normal mx-auto justify-center space-x-1.5 rtl:space-x-reverse">
-                <div class="flex flex-row justify-center">
-                    <span>{{$topic->published_at->format('d/m/Y')}}&nbsp;</span>
-                    <span class="hidden md:flex"> | </span></div>
-                <div class="flex flex-row items-center justify-center space-x-1.5 rtl:space-x-reverse mx-auto">
-                    <em class="fa fa-clock-o"></em>
-                    <span> 5 {{translate('pages.topic.mins')}}</span>
-                    <span class="hidden md:flex"> |</span>
-                </div>
-                <div class="flex flex-row justify-center">
-                    <span> {{translate('pages.topic.author')}}: {{$topic->author_name}}&nbsp;</span>
-                    <span class="hidden md:flex"> |</span>
-                </div>
-                <div> {{translate('pages.topic.category')}}: {{translate('pages.topics.' . $topic->type)}} </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container max-w-4xl mx-auto px-4 py-10">
-        <div class="flex gap-4">
-        <!-- Left Column (Text and Description with Rich Text Content) -->
-            <div class="flex-1">
+    <div class="container mx-auto py-4">
+        <div class="grid grid-cols-1 md:grid-cols-[70%,30%] gap-8 ">
+            <div>
                 <h1 class="text-4xl font-bold leading-tight">{{$topic->title}}</h1>
-                <div class="text-lg text-gray-500">
+                @if($topic->sub_title)
+                    <p class="pt-2 pb-2 font-bold leading-tight">{{ $topic->sub_title }}</p>
+                @endif
+                <span>{{ translate('pages.topic.publishedAt') }} : {{ $topic->published_at->format('d/m/Y') }}&nbsp; {{ translate('pages.topic.updatedAt') }}: {{ $topic->updated_at->format('d/m/Y') }}&nbsp;</span>
+                <div class="text-lg text-gray-500 space-y-4 py-2">
                     {!! $topic->description !!}
                 </div>
             </div>
+            <div class="space-y-6">
+                <!-- Card 1 -->
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <h3 class="text-lg font-bold text-gray-900">Requests to fact check</h3>
+                    <p class="mt-2 text-sm text-gray-600">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                    <form action="#" method="POST" class="mt-4">
+                        <div class="flex items-center gap-2">
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Enter your Email"
+                                class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+                                required>
+                            <button
+                                type="submit"
+                                class="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition">
+                                Notify Me
+                            </button>
+                        </div>
+                    </form>
+                    <p class="mt-2 text-xs text-gray-500">
+                        Your data is in safe hands. Check out our <a href="#" class="text-blue-500 hover:underline">Privacy policy</a> for more info.
+                    </p>
+                </div>
 
-            <div class="flex-5 bg-white shadow-xl p-8 rounded-lg">
-                <h2 class="text-xl font-semibold mb-4">Requests to fact check</h2>
-                <p class="text-sm text-gray-500 mb-6">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
-                <form action="#" method="POST">
-                    <input
-                        type="email"
-                        class="w-full p-3 border border-gray-300 rounded-md mb-4"
-                        placeholder="Enter your Email"
-                        required
-                    >
+                <!-- Card 2 -->
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <h3 class="text-lg font-bold text-gray-900">LOREM IPSUM</h3>
+                    <p class="mt-2 text-sm text-gray-600">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dui arcu sodales ullamcorper mauris eget eleifend proin semper odio. Convallis sit imperdiet egestas at sed duis donec at amet.
+                    </p>
                     <button
-                        type="submit"
-                        class="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600"
-                    >
-                        Notify Me
+                        class="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition">
+                        <span class="text-lg">📱</span> +20100xxxxxxx
                     </button>
-                </form>
-                <p class="text-xs text-gray-400 mt-4">
-                    Your data is in the safe hands. Check out our <a href="#" class="text-blue-600">Privacy policy</a> for more info.
-                </p>
+                    <p class="mt-2 text-xs text-gray-500">
+                        Your data is in safe hands. Check out our <a href="#" class="text-blue-500 hover:underline">Privacy policy</a> for more info.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <h3 class="text-lg font-bold text-gray-900">Request correction</h3>
+                    <p class="mt-2 text-sm text-gray-600">
+                        Fill in the information for article correction.
+                    </p>
+                    <form action="#" method="POST" class="mt-4 space-y-3">
+                    <textarea
+                        name="message"
+                        placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+                        rows="4" required></textarea>
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Enter your Email"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+                            required>
+                        <button
+                            type="submit"
+                            class="w-full px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition">
+                            Submit
+                        </button>
+                    </form>
+                    <p class="mt-2 text-xs text-gray-500">
+                        Your data is in safe hands. Check out our <a href="#" class="text-blue-500 hover:underline">Privacy policy</a> for more info.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
