@@ -47,7 +47,7 @@ class TeamMemberCrudController extends CrudController
         CRUD::field('image')
             ->type('upload')
             ->upload(true)
-            ->path('uploads/images')
+            ->path('/')
             ->disk(config('filesystems.default'));
         CRUD::field('linked_in');
         CRUD::field('email');

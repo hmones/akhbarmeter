@@ -12,11 +12,13 @@ use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\PublisherStatisticsController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\TeamMemberController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
+Route::get('our-team', [TeamMemberController::class, 'index'])->name('team-member.index');
 Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('contact', [ContactController::class, 'store'])->name('contact.store')->middleware(ProtectAgainstSpam::class);
 Route::resource('videos', VideoController::class)->only(['index', 'show']);

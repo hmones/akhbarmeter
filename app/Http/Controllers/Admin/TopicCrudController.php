@@ -15,11 +15,7 @@ use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 class TopicCrudController extends CrudController
 {
-    use ListOperation;
-    use CreateOperation;
-    use UpdateOperation;
-    use DeleteOperation;
-    use ShowOperation;
+    use ListOperation, CreateOperation, UpdateOperation, DeleteOperation, ShowOperation;
 
     public function setup(): void
     {

@@ -6,6 +6,7 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Media extends Model
 {
@@ -19,4 +20,9 @@ class Media extends Model
     public $translatable = [
         'title'
     ];
+
+    public function setImageAttribute($value): void
+    {
+        $this->attributes['image'] = Storage::putFile('media', $value, config('filesystems.default'));
+    }
 }

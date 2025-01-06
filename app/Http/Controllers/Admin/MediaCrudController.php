@@ -38,9 +38,7 @@ class MediaCrudController extends CrudController
         CRUD::field('title');
         CRUD::field('image')
             ->type('upload')
-            ->upload(true)
-            ->path('uploads/images')
-            ->disk(config('filesystems.default'));
+            ->upload(true);
     }
 
     protected function setupUpdateOperation(): void
