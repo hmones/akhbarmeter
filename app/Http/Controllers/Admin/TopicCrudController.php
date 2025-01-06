@@ -43,6 +43,7 @@ class TopicCrudController extends CrudController
     {
         CRUD::setValidation(TopicRequest::class);
         CRUD::field('title');
+        CRUD::field('sub_title');
         CRUD::field('slug')
             ->type('slug')
             ->label('Slug (used for building links, only in english)')
@@ -59,6 +60,18 @@ class TopicCrudController extends CrudController
             ->entity('teamMember')
             ->model(TeamMember::class)
             ->attribute('first_name');
+        CRUD::field('claim_reference');
+        CRUD::field('fact_check_reference');
+        CRUD::field('legal_statement')->type('ckeditor')->options([
+            'autoGrow_minHeight' => 200,
+            'autoGrow_bottomSpace' => 50,
+            'removePlugins' => 'resize,maximize',
+        ]);
+        CRUD::field('correction_statement')->type('ckeditor')->options([
+            'autoGrow_minHeight' => 200,
+            'autoGrow_bottomSpace' => 50,
+            'removePlugins' => 'resize,maximize',
+        ]);
         CRUD::field('type')->type('select_from_array')->options(Topic::TYPES);
         CRUD::field('published_at');
         CRUD::field('active');

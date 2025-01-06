@@ -29,14 +29,22 @@ class Topic extends Model
 
     public $translatable = [
         'title',
+        'sub_title',
         'description',
+        'legal_statement',
+        'correction_statement'
     ];
 
     protected $fillable = [
         'team_member_id',
         'title',
+        'sub_title',
         'slug',
         'description',
+        'claim_reference',
+        'fact_check_reference',
+        'legal_statement',
+        'correction_statement',
         'image',
         'tags',
         'author_name',

@@ -14,14 +14,19 @@ class TopicRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required',
-            'slug' => 'required|regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/i',
-            'description' => 'required',
-            'tags' => 'nullable',
-            'type' => 'required|string',
-            'team_member_id' => 'required|exists:team_members,id',
-            'published_at' => 'nullable',
-            'active' => 'required|in:0,1',
+            'title'                => 'required',
+            'sub_title'            => 'nullable',
+            'slug'                 => 'required|regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/i',
+            'description'          => 'required',
+            'tags'                 => 'nullable',
+            'team_member_id'       => 'required|exists:team_members,id',
+            'claim_reference'      => 'nullable',
+            'fact_check_reference' => 'nullable',
+            'legal_statement'      => 'nullable',
+            'correction_statement' => 'nullable',
+            'type'                 => 'required|string',
+            'published_at'         => 'nullable',
+            'active'               => 'required|in:0,1'
         ];
     }
 }
