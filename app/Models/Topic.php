@@ -55,8 +55,10 @@ class Topic extends Model
     ];
 
     protected $casts = [
-        'tags' => 'array',
-        'published_at' => 'datetime',
+        'tags'                 => 'array',
+        'claim_reference'      => 'array',
+        'fact_check_reference' => 'array',
+        'published_at'         => 'datetime'
     ];
 
     public function teamMember(): BelongsTo
