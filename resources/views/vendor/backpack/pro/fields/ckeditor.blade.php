@@ -7,6 +7,7 @@
         "filebrowserBrowseUrl" => backpack_url('elfinder/ckeditor'),
         "extraPlugins" => $field['extra_plugins'],
         "embed_provider" => "//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}",
+        "mediaEmbed"
     ];
 
     $field['options'] = array_merge($defaultOptions, $field['options'] ?? []);

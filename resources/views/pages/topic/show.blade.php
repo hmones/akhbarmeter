@@ -14,7 +14,7 @@
             color: gray;
         }
     </style>
-    <div class="container mx-auto py-4">
+    <div class="container mx-auto py-4 px-4">
         <div class="grid grid-cols-1 md:grid-cols-[70%,30%] gap-8 ">
             <div>
                 <h1 class="text-4xl font-bold leading-tight">{{ data_get($topic, 'title') }}</h1>
@@ -71,6 +71,27 @@
                 <div class="flex flex-wrap gap-4 justify-end text-right">
                     @include('partials.social-media')
                 </div>
+                <div class="flex flex-wrap gap-4 bg-[#F9FAFB] p-6 mt-8 rounded-md shadow-md">
+                    <h2 class="text-lg font-bold mb-4">Fact Checker</h2>
+                    <div class="w-full">
+                        <!-- User Information -->
+                        <div class="flex items-center mb-4">
+                            <img
+                                src="{{asset('storage/' . data_get($topic, 'teamMember.image'))}}"
+                                alt="Profile Picture"
+                                class="w-10 h-10 rounded-full mr-4"
+                            />
+                            <div>
+                                <p class="text-sm font-medium text-blue-600">{{ data_get($topic, 'teamMember.fullName') }}</p>
+                                <p class="text-xs text-gray-500">{{ data_get($topic, 'teamMember.createdAt')->format('d/m/Y') }}</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 text-gray-700">
+                            {!! data_get($topic, 'teamMember.bio') !!}
+                        </div>
+                    </div>
+                </div>
                 <div class="flex space-x-8 mt-8">
                     @if(data_get($topic, 'legal_statement'))
                         <div class="bg-[#F9FAFB] p-4 rounded-md shadow">
@@ -89,96 +110,39 @@
                         </div>
                     @endif
                 </div>
-                <div class="flex flex-wrap gap-4 bg-[#F9FAFB] p-6 mt-8 rounded-md shadow-md">
-                    <h2 class="text-lg font-bold mb-4">Fact Checker</h2>
-                    <div class="w-full">
-                    <!-- User Information -->
-                        <div class="flex items-center mb-4">
-                            <img
-                                src="{{asset('storage/' . data_get($topic, 'teamMember.image'))}}"
-                                alt="Profile Picture"
-                                class="w-10 h-10 rounded-full mr-4"
-                            />
-                            <div>
-                                <p class="text-sm font-medium text-blue-600">{{ data_get($topic, 'teamMember.fullName') }}</p>
-                                <p class="text-xs text-gray-500">{{ data_get($topic, 'teamMember.createdAt')->format('d/m/Y') }}</p>
-                            </div>
-                        </div>
-
-                        <div class="space-y-4 text-gray-700">
-                            {!! data_get($topic, 'teamMember.bio') !!}
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="space-y-6">
                 <!-- Card 1 -->
                 <div class="bg-white shadow-md rounded-lg p-6">
-                    <h3 class="text-lg font-bold text-gray-900">Requests to fact check</h3>
+                    <h3 class="text-lg font-bold text-gray-900">{{ translate('pages.topic.requestToFactCheck') }}</h3>
                     <p class="mt-2 text-sm text-gray-600">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        {{ translate('pages.topic.requestToFactCheckMessage') }}
                     </p>
-                    <form action="#" method="POST" class="mt-4">
-                        <div class="flex items-center gap-2">
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="Enter your Email"
-                                class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
-                                required>
-                            <button
-                                type="submit"
-                                class="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition">
-                                Notify Me
-                            </button>
-                        </div>
-                    </form>
-                    <p class="mt-2 text-xs text-gray-500">
-                        Your data is in safe hands. Check out our <a href="#" class="text-blue-500 hover:underline">Privacy policy</a> for more info.
-                    </p>
+                    <a href="{{ route('contact.index') }}" class="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition">
+                        <span class="text-lg">📱</span> {{ translate('pages.topic.contactUs') }}
+                    </a>
                 </div>
 
                 <!-- Card 2 -->
                 <div class="bg-white shadow-md rounded-lg p-6">
-                    <h3 class="text-lg font-bold text-gray-900">LOREM IPSUM</h3>
+                    <h3 class="text-lg font-bold text-gray-900">{{ translate('pages.topic.joinWhatsApp.heading') }}</h3>
                     <p class="mt-2 text-sm text-gray-600">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dui arcu sodales ullamcorper mauris eget eleifend proin semper odio. Convallis sit imperdiet egestas at sed duis donec at amet.
+                        {{ translate('pages.topic.joinWhatsApp.bodyText') }}
                     </p>
                     <button
                         class="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition">
                         <span class="text-lg">📱</span> +20100xxxxxxx
                     </button>
-                    <p class="mt-2 text-xs text-gray-500">
-                        Your data is in safe hands. Check out our <a href="#" class="text-blue-500 hover:underline">Privacy policy</a> for more info.
-                    </p>
                 </div>
 
                 <!-- Card 3 -->
                 <div class="bg-white shadow-md rounded-lg p-6">
-                    <h3 class="text-lg font-bold text-gray-900">Request correction</h3>
+                    <h3 class="text-lg font-bold text-gray-900">{{ translate('pages.topic.requestCorrection') }}</h3>
                     <p class="mt-2 text-sm text-gray-600">
-                        Fill in the information for article correction.
-                    </p>
-                    <form action="#" method="POST" class="mt-4 space-y-3">
-                    <textarea
-                        name="message"
-                        placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
-                        rows="4" required></textarea>
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Enter your Email"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
-                            required>
-                        <button
-                            type="submit"
-                            class="w-full px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition">
-                            Submit
-                        </button>
-                    </form>
-                    <p class="mt-2 text-xs text-gray-500">
-                        Your data is in safe hands. Check out our <a href="#" class="text-blue-500 hover:underline">Privacy policy</a> for more info.
+                        {{ translate('pages.topic.requestCorrectionText') }}
+                        <a href="{{ route('contact.index') }}" class="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition">
+                            <span class="text-lg">📱</span> {{ translate('pages.topic.contactUs') }}
+                        </a>
                     </p>
                 </div>
             </div>

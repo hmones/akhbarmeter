@@ -48,10 +48,12 @@ class TopicCrudController extends CrudController
             ->type('slug')
             ->label('Slug (used for building links, only in english)')
             ->target('title');
-        CRUD::field('description')->type('ckeditor')->options([
+        CRUD::field('description')
+            ->type('ckeditor')
+            ->options([
             'autoGrow_minHeight' => 200,
             'autoGrow_bottomSpace' => 50,
-            'removePlugins' => 'resize,maximize',
+            'removePlugins' => 'resize,maximize'
         ]);
         CRUD::field('tags');
         CRUD::field('team_member_id')
@@ -60,8 +62,36 @@ class TopicCrudController extends CrudController
             ->entity('teamMember')
             ->model(TeamMember::class)
             ->attribute('first_name');
-        CRUD::field('claim_reference');
-        CRUD::field('fact_check_reference');
+        CRUD::field('claim_reference')
+            ->label('Claim Reference')
+            ->type('repeatable')
+            ->fields([
+                [
+                    'name' => 'name',
+                    'label' => 'Name',
+                    'type' => 'text',
+                ],
+                [
+                    'name' => 'url',
+                    'label' => 'URL',
+                    'type' => 'url',
+                ],
+            ]);
+        CRUD::field('fact_check_reference')
+            ->label('Fact Check Reference')
+            ->type('repeatable')
+            ->fields([
+                [
+                    'name' => 'name',
+                    'label' => 'Name',
+                    'type' => 'text',
+                ],
+                [
+                    'name' => 'url',
+                    'label' => 'URL',
+                    'type' => 'url',
+                ],
+            ]);
         CRUD::field('legal_statement')->type('ckeditor')->options([
             'autoGrow_minHeight' => 200,
             'autoGrow_bottomSpace' => 50,
