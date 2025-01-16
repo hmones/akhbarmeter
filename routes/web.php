@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ArticleStatisticsController;
+use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CheckNewsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
@@ -18,6 +19,11 @@ use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
+Route::resource('careers', CareerController::class)->only('index', 'show')
+->names([
+    'index' => 'careers.index',
+    'show'  => 'careers.show'
+]);
 Route::get('our-team', [TeamMemberController::class, 'index'])->name('team-member.index');
 Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('contact', [ContactController::class, 'store'])->name('contact.store')->middleware(ProtectAgainstSpam::class);
