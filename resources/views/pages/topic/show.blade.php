@@ -21,9 +21,11 @@
                 @if(data_get($topic, 'sub_title'))
                     <p class="text-lg pt-4 pb-4 leading-6 font-normal text-gray-500">{{ data_get($topic, 'sub_title') }}</p>
                 @endif
-                <span class="text-gray-500">{{ translate('pages.topic.publishedAt') }} : {{ data_get($topic, 'published_at')->format('d/m/Y') }}&nbsp; {{ translate('pages.topic.updatedAt') }}: {{ data_get($topic, 'updated_at')->format('d/m/Y') }}&nbsp;</span>
-                <div class="flex flex-wrap gap-4 justify-end text-right">
-                    @include('partials.social-media')
+                <div class="flex flex-wrap justify-between items-center mt-5">
+                    <span class="text-gray-500">{{ translate('pages.topic.publishedAt') }} : {{ data_get($topic, 'published_at')->format('d/m/Y') }}&nbsp; {{ translate('pages.topic.updatedAt') }}: {{ data_get($topic, 'updated_at')->format('d/m/Y') }}&nbsp;</span>
+                    <div class="flex flex-wrap gap-4 justify-end text-right">
+                        @include('partials.social-media')
+                    </div>
                 </div>
                 <div class="text-lg text-gray-500 space-y-4 py-6">
                     {!! data_get($topic, 'description') !!}
@@ -33,10 +35,11 @@
                         <p class="text-gray-800">Check Sources</p>
                         <div class="flex space-x-4">
                             @foreach(data_get($topic, 'claim_reference') as $reference)
-                                <div class="flex items-center justify-center p-2 border rounded-md cursor-pointer">
-                                    <img src="{{asset('images/icons/fact-check.png')}}" alt="Reuters" class="h-6 w-6 mr-2">
-                                    <span class="text-gray-700 font-medium">Reuters</span>
-                                </div>
+                                <a href="{{ data_get($reference, 'url') }}" target="_blank">
+                                    <div class="flex items-center justify-center p-2 border rounded-md cursor-pointer">
+                                        <span class="text-gray-700 font-medium">{{ data_get($reference, 'name') }}</span>
+                                    </div>
+                                </a>
                             @endforeach
                         </div>
                     </div>
@@ -47,29 +50,33 @@
                         <p class="text-gray-800">Fake News Sources</p>
                         <div class="flex space-x-4">
                             @foreach(data_get($topic, 'fact_check_reference') as $reference)
-                                <div class="flex items-center justify-center p-2 border rounded-md cursor-pointer">
-                                    <img src="{{asset('images/icons/fact-check.png')}}" alt="Reuters" class="h-6 w-6 mr-2">
-                                    <span class="text-gray-700 font-medium">Reuters</span>
-                                </div>
+                                <a href="{{ data_get($reference, 'url') }}" target="_blank">
+                                    <div class="flex items-center justify-center p-2 border rounded-md cursor-pointer">
+                                        <span class="text-gray-700 font-medium">{{ data_get($reference, 'name') }}</span>
+                                    </div>
+                                </a>
                             @endforeach
                         </div>
                     </div>
                 @endif
-
-                @if(data_get($topic, 'tags'))
-                    <div class="space-y-4 mt-5">
-                        <p class="text-gray-800">Tags</p>
-                        <div class="flex space-x-1">
-                            @foreach(data_get($topic, 'tags') as $tag)
-                                <div class="flex items-center justify-center p-2 cursor-pointer">
-                                    <span class="px-3 py-1 text-sm font-medium text-gray-700 bg-gray-100 rounded-md cursor-pointer hover:bg-gray-200">#{{ data_get($tag, 'value') }}</span>
+                <div class="flex flex-wrap justify-between items-start gap-4 mt-5">
+                    @if(data_get($topic, 'tags'))
+                        <div class="flex flex-col">
+                            <p class="text-gray-800">Tags</p>
+                            <div class="flex flex-wrap gap-2">
+                                <div class="flex space-x-1">
+                                    @foreach(data_get($topic, 'tags') as $tag)
+                                        <div class="flex items-center justify-center p-2 cursor-pointer">
+                                            <span class="px-3 py-1 text-sm font-medium text-gray-700 bg-gray-100 rounded-md cursor-pointer hover:bg-gray-200">#{{ data_get($tag, 'value') }}</span>
+                                        </div>
+                                    @endforeach
                                 </div>
-                            @endforeach
+                            </div>
                         </div>
+                    @endif
+                    <div class="flex gap-4 items-center pt-6">
+                        @include('partials.social-media')
                     </div>
-                @endif
-                <div class="flex flex-wrap gap-4 justify-end text-right">
-                    @include('partials.social-media')
                 </div>
                 <div class="flex flex-wrap gap-4 bg-[#F9FAFB] p-6 mt-8 rounded-md shadow-md">
                     <h2 class="text-lg font-bold mb-4">Fact Checker</h2>
