@@ -20,18 +20,18 @@
             </a>
         </div>
         <!-- Job Details -->
-        <div class="text-gray-600 space-y-4">
+        <div class="text-gray-600 space-y-1">
             <p>{{ data_get($career, 'location') }}</p>
             <p>{{ data_get($career, 'type') }}</p>
         </div>
 
         <!-- About the Job -->
-        <div class="mt-6 space-y-4">
+        <div class="mt-6 space-y-2 text-gray-600">
             <h2 class="text-xl font-semibold">About the job</h2>
             <p><strong>Department: </strong>{{ data_get($career, 'sub_title') }}</p>
             <p><strong>Location: </strong>{{ data_get($career, 'location') }}</p>
 
-            <p>{!! data_get($career, 'description') !!}</p>
+            <p class="pt-4">{!! data_get($career, 'description') !!}</p>
         </div>
     </div>
 @endsection
