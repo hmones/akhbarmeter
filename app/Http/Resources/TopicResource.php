@@ -11,6 +11,11 @@ class TopicResource extends JsonResource
         $teamMember = $this->whenLoaded('teamMember', function () {
             return (new TeamMemberResource($this->teamMember))->toArray(request());
         });
+
+        $tags = $this->whenLoaded('tags', function () {
+            return (TagResource::collection($this->tags))->toArray(request());
+        });
+
         return [
             'title'                => $this->title,
             'sub_title'            => $this->sub_title,
@@ -21,7 +26,6 @@ class TopicResource extends JsonResource
             'legal_statement'      => $this->legal_statement,
             'correction_statement' => $this->correction_statement,
             'image'                => $this->image,
-            'tags'                 => $this->tags,
             'author_name'          => $this->author_name,
             'author_avatar'        => $this->author_avatar,
             'type'                 => $this->type,
@@ -29,6 +33,7 @@ class TopicResource extends JsonResource
             'active'               => $this->active,
             'updated_at'           => $this->updated_at,
             'teamMember'           => $teamMember,
+            'tags'                 => $tags
         ];
     }
 }

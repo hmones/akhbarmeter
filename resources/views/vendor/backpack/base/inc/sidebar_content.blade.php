@@ -19,5 +19,7 @@
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('media') }}"><i class="nav-icon la la-th-list"></i> Media</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('team-member') }}"><i class="nav-icon la la-th-list"></i> Team Members</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('career') }}"><i class="nav-icon la la-th-list"></i> Careers</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('tag') }}"><i class="nav-icon la la-th-list"></i> Tags</a></li>
 <li class="nav-item nav-link">@include('partials.components.language-switcher')</li>
+
 

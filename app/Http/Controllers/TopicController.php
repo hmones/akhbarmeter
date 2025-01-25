@@ -22,7 +22,7 @@ class TopicController extends Controller
 
     public function show(Topic $topic): View
     {
-        $topic->load('teamMember');
+        $topic->load('teamMember', 'tags:id,name');
         $topic = new TopicResource($topic);
 
         return view('pages.topic.show', [

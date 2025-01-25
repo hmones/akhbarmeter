@@ -11,6 +11,7 @@ use Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Http\Request;
 
 class TagCrudController extends CrudController
 {
@@ -39,5 +40,13 @@ class TagCrudController extends CrudController
     protected function setupUpdateOperation(): void
     {
         $this->setupCreateOperation();
+    }
+
+    public function search(Request $request)
+    {
+        $term = $request->input('q');
+        $tags = Tag::where('name', 'LIKE', '%' . $term . '%')->get(['id', 'name']);
+
+        return response()->json($tags);
     }
 }

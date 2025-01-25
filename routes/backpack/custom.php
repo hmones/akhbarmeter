@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\TagCrudController;
 use Illuminate\Support\Facades\Route;
 
 // --------------------------
@@ -31,4 +32,6 @@ Route::group([
     Route::crud('media', 'MediaCrudController');
     Route::crud('team-member', 'TeamMemberCrudController');
     Route::crud('career', 'CareerCrudController');
+    Route::crud('tag', 'TagCrudController');
+    Route::get('tag/search', [TagCrudController::class, 'search'])->name('tags.search');
 }); // this should be the absolute last line of this file

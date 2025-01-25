@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Facades\Storage;
 
 class Topic extends Model
@@ -46,7 +47,6 @@ class Topic extends Model
         'legal_statement',
         'correction_statement',
         'image',
-        'tags',
         'author_name',
         'author_avatar',
         'type',
@@ -55,7 +55,6 @@ class Topic extends Model
     ];
 
     protected $casts = [
-        'tags'                 => 'array',
         'claim_reference'      => 'array',
         'fact_check_reference' => 'array',
         'published_at'         => 'datetime'
@@ -65,6 +64,12 @@ class Topic extends Model
     {
         return $this->belongsTo(TeamMember::class);
     }
+
+    public function tags(): MorphToMany
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
+    }
+
     public function scopeFilter(Builder $query, $params): void
     {
         if (data_get($params, 'tag', false)) {

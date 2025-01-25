@@ -18,7 +18,6 @@ class TopicRequest extends FormRequest
             'sub_title'            => 'nullable',
             'slug'                 => 'required|regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/i',
             'description'          => 'required',
-            'tags'                 => 'nullable',
             'team_member_id'       => 'required|exists:team_members,id',
             'claim_reference'      => 'nullable',
             'fact_check_reference' => 'nullable',
