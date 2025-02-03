@@ -25,7 +25,9 @@ class TopicRequest extends FormRequest
             'correction_statement' => 'nullable',
             'type'                 => 'required|string',
             'published_at'         => 'nullable',
-            'active'               => 'required|in:0,1'
+            'active'               => 'required|in:0,1',
+            'tags'                 => 'nullable|array|exists:tags,id',
+            'new_tags'             => 'nullable|string'
         ];
     }
 }

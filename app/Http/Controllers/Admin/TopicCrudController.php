@@ -13,7 +13,7 @@ use Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
-use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TopicCrudController extends CrudController
 {
@@ -62,11 +62,20 @@ class TopicCrudController extends CrudController
             ->type('select2_from_ajax_multiple')
             ->label('Tags')
             ->placeholder('Search and select tags')
-            ->data_source(backpack_url('tag/search'))
+            ->data_source(backpack_url('tags/search'))
             ->model(Tag::class)
             ->attribute('name')
             ->minimumInputLength(1)
             ->pivot(true);
+
+        CRUD::addField([
+            'name' => 'new_tags',
+            'label' => 'Create a New Tag',
+            'type' => 'text',
+            'attributes' => [
+                'placeholder' => 'Enter multiple tags, separated by commas...'
+            ],
+        ]);
 
         CRUD::field('team_member_id')
             ->type('select')
@@ -117,5 +126,25 @@ class TopicCrudController extends CrudController
         CRUD::field('type')->type('select_from_array')->options(Topic::TYPES);
         CRUD::field('published_at');
         CRUD::field('active');
+    }
+
+    public function store(TopicRequest $request)
+    {
+        $payload = $request->validated();
+        $topic = Topic::create($payload);
+
+        if (data_get($payload, 'new_tags')) {
+            $tags = explode(',', trim(data_get($payload, 'new_tags')));
+            collect($tags)->each(function ($tag) use ($topic) {
+                $newTag = Tag::firstOrCreate(['name' => Str::of($tag)->trim()->lower()]);
+                $topic->tags()->attach($newTag->id);
+            });
+        }
+
+        if (data_get($payload, 'tags')) {
+            $topic->tags()->sync($request->input('tags'));
+        }
+
+        return redirect()->route('topic.index');
     }
 }

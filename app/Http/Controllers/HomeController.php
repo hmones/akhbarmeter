@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Publication;
 use App\Models\PublisherScore;
+use App\Models\Tag;
 use App\Models\Topic;
 use App\Models\Video;
 use Illuminate\View\View;
@@ -28,7 +29,7 @@ class HomeController extends Controller
         $scores->pop(2);
         $bestThree = $scores->pop(3);
         $best = $scores->pop();
-        $trendingHashtags = cache()->rememberForever('tags', fn () => Topic::select('tags')->pluck('tags')->flatten()->unique());
+        $trendingHashtags = cache()->rememberForever('tags', fn () => Tag::select('name')->pluck('name')->flatten()->unique());
 
         return view(
             'welcome',

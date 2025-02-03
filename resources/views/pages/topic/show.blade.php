@@ -66,7 +66,7 @@
                             <div class="flex flex-wrap gap-2">
                                 <div class="flex space-x-1">
                                     @foreach(data_get($topic, 'tags') as $tag)
-                                        <a href="{{ data_get($tag, 'url') }}" target="_blank">
+                                        <a href="{{ route('tags.index', ['name' => data_get($tag, 'name')]) }}" target="_blank">
                                             <div class="flex items-center justify-center p-2 cursor-pointer">
                                                 <span class="px-3 py-1 text-sm font-medium text-gray-700 bg-gray-100 rounded-md cursor-pointer hover:bg-gray-200">#{{ data_get($tag, 'name') }}</span>
                                             </div>
