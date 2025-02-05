@@ -154,6 +154,14 @@
                         </a>
                     </p>
                 </div>
+
+                <div class="bg-white shadow-md rounded-lg p-1">
+                    @foreach($related as $topic)
+                        <div class="flex flex-col xl:flex-row w-full px-2 mb-4">
+                            <x-cards.topic :topic="$topic" />
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>

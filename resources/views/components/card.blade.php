@@ -26,16 +26,6 @@
                             </a>
                         @endforeach
                     </div>
-                    <div class="flex flex-row space-x-1.5 text-gray-400 rtl:space-x-reverse">
-                        @if($time)
-                            <div class="flex flex-row h-fit pt-1">
-                                <i class="fa fa-clock-o" aria-hidden="true"></i>
-                            </div>
-                            <div class="flex flex-row h-fit">
-                                {{$time}}
-                            </div>
-                        @endif
-                    </div>
                 </div>
             </div>
 
