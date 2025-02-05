@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('seo')
-    @php($image = data_get($topic, 'image') ? Storage::url($topic->image) : '')
+    @php($image = data_get($topic, 'image') ? Storage::url(data_get($topic, 'image')) : '')
     <x-seo :title="data_get($topic, 'title')" :description="str(strip_tags(data_get($topic, 'description')))->limit(250)" :keywords="str(data_get($topic, 'title'))->replace(' ', ' , ')" :image="$image"/>
 @endsection
 

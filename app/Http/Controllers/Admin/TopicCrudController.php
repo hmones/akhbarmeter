@@ -31,6 +31,7 @@ class TopicCrudController extends CrudController
         CRUD::column('title');
         CRUD::column('description');
         CRUD::column('type');
+        CRUD::column('image')->type('image')->disk(config('filesystems.default'));
         CRUD::column('teamMember.first_name')
             ->type('text')
             ->label('Author');
@@ -57,7 +58,18 @@ class TopicCrudController extends CrudController
             'autoGrow_bottomSpace' => 50,
             'removePlugins' => 'resize,maximize'
         ]);
-
+        CRUD::field('summary')
+            ->type('ckeditor')
+            ->options([
+            'autoGrow_minHeight' => 200,
+            'autoGrow_bottomSpace' => 50,
+            'removePlugins' => 'resize,maximize'
+        ]);
+        CRUD::field('image')
+            ->type('upload')
+            ->upload(true)
+            ->path('/')
+            ->disk(config('filesystems.default'));
         CRUD::field('tags')
             ->type('select2_from_ajax_multiple')
             ->label('Tags')

@@ -15,9 +15,9 @@ return new class extends Migration
             $table->json('fact_check_reference')->nullable()->after('description');
             $table->text('legal_statement')->nullable()->after('description');
             $table->text('correction_statement')->nullable()->after('description');
+            $table->text('summary')->nullable()->after('description');
             $table->dropColumn('author_name');
             $table->dropColumn('author_avatar');
-            $table->dropColumn('image');
         });
     }
 
@@ -30,6 +30,7 @@ return new class extends Migration
             $table->dropColumn('legal_statement');
             $table->dropColumn('correction_statement');
             $table->dropColumn('team_member_id');
+            $table->dropColumn('summary');
             $table->string('author_name')->nullable();
             $table->string('author_avatar')->nullable();
             $table->string('image')->nullable();

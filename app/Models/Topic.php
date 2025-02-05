@@ -32,6 +32,7 @@ class Topic extends Model
         'title',
         'sub_title',
         'description',
+        'summary',
         'legal_statement',
         'correction_statement'
     ];
@@ -41,7 +42,9 @@ class Topic extends Model
         'title',
         'sub_title',
         'slug',
+        'summary',
         'description',
+        'image',
         'claim_reference',
         'fact_check_reference',
         'legal_statement',
@@ -51,7 +54,7 @@ class Topic extends Model
         'author_avatar',
         'type',
         'published_at',
-        'active',
+        'active'
     ];
 
     protected $casts = [
