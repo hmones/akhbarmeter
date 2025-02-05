@@ -175,9 +175,8 @@
         </div>
     </div>
     <div class="container mx-auto mb-10 space-y-10">
-        @foreach($related->chunk(3) as $rowTopics)
-            <div
-                class="flex flex-col xl:flex-row w-full items-start items-stretch justify-left mx-auto space-y-10 xl:space-y-0">
+        @foreach($readMore->chunk(3) as $rowTopics)
+            <div class="flex flex-col xl:flex-row w-full items-start items-stretch justify-left mx-auto space-y-10 xl:space-y-0">
                 @foreach($rowTopics as $record)
                     <div class="flex flex-col xl:flex-row w-full xl:w-1/3 px-2">
                         <x-cards.topic :topic="$record" />
