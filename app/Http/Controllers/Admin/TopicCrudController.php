@@ -13,6 +13,8 @@ use Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class TopicCrudController extends CrudController
@@ -145,17 +147,35 @@ class TopicCrudController extends CrudController
         $payload = $request->validated();
         $topic = Topic::create($payload);
 
+        return $this->linkAndCreateTags($payload, $topic);
+    }
+
+    public function update(TopicRequest $request, $id)
+    {
+        $topic = Topic::findOrFail($id);
+        $payload = $request->validated();
+        $topic->update($payload);
+        $topic->tags()->detach();
+
+        return $this->linkAndCreateTags($payload, $topic);
+    }
+
+    private function linkAndCreateTags(mixed $payload, $topic): RedirectResponse
+    {
+        $newTags = [];
         if (data_get($payload, 'new_tags')) {
-            $tags = explode(',', trim(data_get($payload, 'new_tags')));
-            collect($tags)->each(function ($tag) use ($topic) {
-                $newTag = Tag::firstOrCreate(['name' => Str::of($tag)->trim()->lower()]);
-                $topic->tags()->attach($newTag->id);
-            });
+            $newTags = Str::of(data_get($payload, 'new_tags'))
+                ->trim()
+                ->explode(',')
+                ->map(function ($tag) use ($topic) {
+                    $newTag = Tag::firstOrCreate(['name' => Str::of($tag)->trim()->lower()]);
+                    return $newTag->id;
+                })
+                ->toArray();
         }
 
-        if (data_get($payload, 'tags')) {
-            $topic->tags()->sync($request->input('tags'));
-        }
+        $existingTagIds = data_get($payload, 'tags', []);
+        $topic->tags()->sync(array_merge($existingTagIds, $newTags));
 
         return redirect()->route('topic.index');
     }
