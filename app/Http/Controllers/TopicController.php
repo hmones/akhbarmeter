@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TopicSearchRequest;
 use App\Http\Resources\TopicResource;
+use App\Models\Tag;
 use App\Models\Topic;
 use Illuminate\View\View;
 
@@ -15,7 +16,7 @@ class TopicController extends Controller
     {
         $query = $request->safe()->toArray();
         $topics = Topic::filter($query)->where('type', '!=', Topic::FAKE_NEWS)->orderBy('published_at', 'desc')->paginate(self::PAGINATION_ITEMS);
-        $tags = cache()->remember('topics.tags', 86400, fn () => Topic::where('type', '!=', Topic::FAKE_NEWS)->pluck('tags')->flatten()->unique());
+        $tags = cache()->remember('topics.tags', 86400, fn () => Tag::unique()->limit(20)->get());
 
         return view('pages.topic.index', compact('tags', 'topics'));
     }

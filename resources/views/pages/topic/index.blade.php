@@ -16,7 +16,7 @@
                 @endif
                 @foreach($tags as $tag)
                     <div class="flex flex-col min-w-fit">
-                        <a href="{{route('topics.index', compact('tag'))}}"
+                        <a href="{{ route('topics.index', compact('tag')) }}" target="_blank">
                            class="flex flex-row mx-1 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
                             #{{$tag}}
                         </a>
