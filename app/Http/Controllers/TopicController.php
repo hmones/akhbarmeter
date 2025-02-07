@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TopicSearchRequest;
+use App\Http\Resources\TopicResource;
 use App\Models\Topic;
 use Illuminate\View\View;
 
@@ -21,9 +22,13 @@ class TopicController extends Controller
 
     public function show(Topic $topic): View
     {
+        $topic->load('teamMember', 'tags:id,name');
+        $topic = new TopicResource($topic);
+
         return view('pages.topic.show', [
-            'topic' => $topic,
-            'related' => Topic::where('type', $topic->type)->orderBy('created_at', 'desc')->take(9)->get(),
+            'topic'    => $topic->toArray(request()),
+            'related'  => Topic::where('type', $topic->type)->orderBy('created_at', 'desc')->take(3)->get(),
+            'readMore' => Topic::where('type', '!=', $topic->type)->orderBy('created_at', 'desc')->take(6)->get(),
         ]);
     }
 }

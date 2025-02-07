@@ -20,21 +20,11 @@
                     <div class="flex flex-row overflow-hidden items-center">
                         {{$icon}}
                         @foreach(collect($tags)->take(3) as $tag)
-                            @isset($tag['value'])
-                                <a href="{{route($route, ['tag' => data_get($tag, 'value')])}}"
-                                   class="flex flex-row mx-2 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
-                                    #{{data_get($tag, 'value')}}
-                                </a>
-                            @endisset
+                            <a href="{{route('tags.index', ['name' => data_get($tag, 'name')])}}"
+                               class="flex flex-row mx-2 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
+                                #{{ data_get($tag, 'name') }}
+                            </a>
                         @endforeach
-                    </div>
-                    <div class="flex flex-row space-x-1.5 text-gray-400 rtl:space-x-reverse">
-                        <div class="flex flex-row h-fit pt-1">
-                            <i class="fa fa-clock-o" aria-hidden="true"></i>
-                        </div>
-                        <div class="flex flex-row h-fit">
-                            {{$time}}
-                        </div>
                     </div>
                 </div>
             </div>
