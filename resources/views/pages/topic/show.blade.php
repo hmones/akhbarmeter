@@ -92,7 +92,7 @@
                             />
                             <div>
                                 <p class="text-sm font-medium text-blue-600">{{ data_get($topic, 'teamMember.fullName') }}</p>
-                                <p class="text-xs text-gray-500">{{ data_get($topic, 'teamMember.createdAt')->format('d/m/Y') }}</p>
+                                <p class="text-xs text-gray-500">{{ data_get($topic, 'teamMember.created_at')->format('d/m/Y') }}</p>
                             </div>
                         </div>
 
