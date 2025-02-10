@@ -29,7 +29,6 @@
                 </div>
                 @if(data_get($topic, 'brief_description_summary'))
                     <div class="bg-[#F9FAFB] p-4 mt-4 rounded-md shadow mb-3">
-                        <h3>{{ translate('pages.topic.briefDescriptionSummary') }}</h3>
                         <div class="p-4">
                             {!! data_get($topic, 'brief_description_summary') !!}
                         </div>

@@ -181,8 +181,13 @@ class TopicCrudController extends CrudController
                 ->toArray();
         }
 
-        $existingTagIds = data_get($payload, 'tags', []);
-        $topic->tags()->sync(array_merge($existingTagIds, $newTags));
+        if (data_get($payload, 'tags')) {
+            $newTags = array_merge(data_get($payload, 'tags'), $newTags);
+        }
+
+        if (count($newTags) > 0) {
+            $topic->tags()->sync($newTags);
+        }
 
         return redirect()->route('topic.index');
     }
