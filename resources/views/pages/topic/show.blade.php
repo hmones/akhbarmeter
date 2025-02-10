@@ -107,7 +107,7 @@
                         <!-- User Information -->
                         <div class="flex items-center mb-4">
                             <img
-                                src="{{asset('storage/' . data_get($topic, 'teamMember.image'))}}"
+                                src="{{Storage::url(data_get($topic, 'teamMember.image'))}}"
                                 alt="Profile Picture"
                                 class="w-10 h-10 rounded-full mr-4"
                             />

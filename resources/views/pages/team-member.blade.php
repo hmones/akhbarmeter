@@ -22,7 +22,7 @@
                 <!-- Image Section -->
                 <div class="flex-shrink-0">
                     <img class="h-72 w-72 rounded-full object-cover"
-                         src="{{ asset('storage/' . data_get($teamMember, 'image')) }}"
+                         src="{{ Storage::url(data_get($teamMember, 'image')) }}"
                          alt="{{ data_get($teamMember, 'fullName') }}">
                 </div>
                 <div class="pl-6">
