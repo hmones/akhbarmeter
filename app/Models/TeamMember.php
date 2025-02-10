@@ -36,6 +36,6 @@ class TeamMember extends Model
 
     public function setImageAttribute($value): void
     {
-        $this->attributes['image'] = Storage::putFile('teamMember', $value, config('filesystems.default'));
+        $this->attributes['image'] = Storage::putFile('teamMember', $value, config('filesystems.default'), 'public');
     }
 }
