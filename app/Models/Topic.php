@@ -32,6 +32,7 @@ class Topic extends Model
         'title',
         'sub_title',
         'description',
+        'brief_description_summary',
         'summary',
         'legal_statement',
         'correction_statement'
@@ -44,6 +45,7 @@ class Topic extends Model
         'slug',
         'summary',
         'description',
+        'brief_description_summary',
         'image',
         'claim_reference',
         'fact_check_reference',

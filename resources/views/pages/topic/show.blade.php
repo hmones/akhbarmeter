@@ -27,15 +27,37 @@
                         @include('partials.social-media')
                     </div>
                 </div>
-                <div class="text-lg text-gray-500 space-y-4 py-6">
+                @if(data_get($topic, 'brief_description_summary'))
+                    <div class="bg-[#F9FAFB] p-4 mt-4 rounded-md shadow mb-3">
+                        <h3>{{ translate('pages.topic.briefDescriptionSummary') }}</h3>
+                        <div class="p-4">
+                            {!! data_get($topic, 'brief_description_summary') !!}
+                        </div>
+                    </div>
+                @endif
+                <div class="text-lg space-y-4 py-6 editor-content">
+                    <style>
+                        .editor-content a {
+                            color: #1d4ed8;
+                            text-decoration: underline;
+                        }
+                    </style>
                     {!! data_get($topic, 'description') !!}
                 </div>
+                @if(data_get($topic, 'legal_statement'))
+                    <div class="bg-[#F9FAFB] p-4 rounded-md shadow mb-3">
+                        <h3 class="mb-5">{{ translate('pages.topic.legalStatement') }}</h3>
+                        <p class="text-[#000000]">
+                            {!! data_get($topic, 'legal_statement') !!}
+                        </p>
+                    </div>
+                @endif
                 @if(data_get($topic, 'claim_reference'))
                     <div class="space-y-4">
-                        <p class="text-gray-800">Check Sources</p>
+                        <p class="text-gray-800">{{ translate('pages.topic.checkResource') }}</p>
                         <div class="flex space-x-4">
                             @foreach(data_get($topic, 'claim_reference') as $reference)
-                                <a href="{{ data_get($reference, 'url') }}" target="_blank">
+                                <a href="{{ data_get($reference, 'url') }}" target="_blank" class="p-2">
                                     <div class="flex items-center justify-center p-2 border rounded-md cursor-pointer">
                                         <span class="text-gray-700 font-medium">{{ data_get($reference, 'name') }}</span>
                                     </div>
@@ -47,10 +69,10 @@
 
                 @if(data_get($topic, 'fact_check_reference'))
                     <div class="space-y-4 mt-5">
-                        <p class="text-gray-800">Fake News Sources</p>
+                        <p class="text-gray-800">{{ translate('pages.topic.fakeNewsSource') }}</p>
                         <div class="flex space-x-4">
                             @foreach(data_get($topic, 'fact_check_reference') as $reference)
-                                <a href="{{ data_get($reference, 'url') }}" target="_blank">
+                                <a href="{{ data_get($reference, 'url') }}" target="_blank" class="p-2">
                                     <div class="flex items-center justify-center p-2 border rounded-md cursor-pointer">
                                         <span class="text-gray-700 font-medium">{{ data_get($reference, 'name') }}</span>
                                     </div>
@@ -62,7 +84,7 @@
                 <div class="flex flex-wrap justify-between items-start gap-4 mt-5">
                     @if(data_get($topic, 'tags'))
                         <div class="flex flex-col">
-                            <p class="text-gray-800">Tags</p>
+                            <p class="text-gray-800">{{ translate('pages.topic.tags') }}</p>
                             <div class="flex flex-wrap gap-2">
                                 <div class="flex space-x-1">
                                     @foreach(data_get($topic, 'tags') as $tag)
@@ -81,7 +103,7 @@
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-4 bg-[#F9FAFB] p-6 mt-8 rounded-md shadow-md">
-                    <h2 class="text-lg font-bold mb-4">Fact Checker</h2>
+                    <h2 class="text-lg font-bold mb-4">{{ translate('pages.topic.factChecker') }}</h2>
                     <div class="w-full">
                         <!-- User Information -->
                         <div class="flex items-center mb-4">
@@ -102,17 +124,9 @@
                     </div>
                 </div>
                 <div class="flex space-x-8 mt-8">
-                    @if(data_get($topic, 'legal_statement'))
-                        <div class="bg-[#F9FAFB] p-4 rounded-md shadow">
-                            <h3 class="text-[#111827]  mb-5">Legal Statement</h3>
-                            <p class="text-[#6B7280]">
-                                {!! data_get($topic, 'legal_statement') !!}
-                            </p>
-                        </div>
-                    @endif
                     @if(data_get($topic, 'correction_statement'))
                         <div class="bg-[#F9FAFB] p-4 rounded-md shadow">
-                            <h3 class="text-[#111827] mb-5">Correction Statement</h3>
+                            <h3 class="text-[#111827] mb-5">{{ translate('pages.topic.correctionStatement') }}</h3>
                             <p class="text-[#6B7280]">
                                 {!! data_get($topic, 'correction_statement') !!}
                             </p>

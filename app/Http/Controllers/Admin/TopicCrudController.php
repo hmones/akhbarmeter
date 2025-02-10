@@ -60,6 +60,13 @@ class TopicCrudController extends CrudController
             'autoGrow_bottomSpace' => 50,
             'removePlugins' => 'resize,maximize'
         ]);
+        CRUD::field('brief_description_summary')
+            ->type('ckeditor')
+            ->options([
+            'autoGrow_minHeight' => 200,
+            'autoGrow_bottomSpace' => 50,
+            'removePlugins' => 'resize,maximize'
+        ]);
         CRUD::field('summary')
             ->type('ckeditor')
             ->options([
