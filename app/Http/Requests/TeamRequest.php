@@ -20,7 +20,8 @@ class TeamRequest extends FormRequest
             'bio'        => 'required',
             'image'      => 'required|image|max:10000',
             'linked_in'  => 'nullable|url|regex:/^(https?:\/\/)?(www\.)?linkedin\.com\/.*$/',
-            'email'      => 'nullable|email'
+            'email'      => 'nullable|email',
+            'active'     => 'required|boolean'
         ];
     }
 }

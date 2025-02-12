@@ -21,6 +21,7 @@ class TeamMember extends Model
         'image',
         'linked_in',
         'email',
+        'active'
     ];
 
     public $translatable = [

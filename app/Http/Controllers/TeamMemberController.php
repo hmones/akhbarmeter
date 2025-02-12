@@ -10,7 +10,7 @@ class TeamMemberController extends Controller
 {
     public function index(): View
     {
-        $teamMembers = TeamMemberResource::collection(TeamMember::all())->toArray(request());
+        $teamMembers = TeamMemberResource::collection(TeamMember::where('active', true)->get())->toArray(request());
 
         return view('pages.team-member', compact('teamMembers'));
     }

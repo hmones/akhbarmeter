@@ -30,6 +30,7 @@ class TeamMemberCrudController extends CrudController
         CRUD::column('job_title');
         CRUD::column('linked_in');
         CRUD::column('email');
+        CRUD::column('active');
     }
 
     protected function setupCreateOperation(): void
@@ -51,6 +52,7 @@ class TeamMemberCrudController extends CrudController
             ->disk(config('filesystems.default'));
         CRUD::field('linked_in');
         CRUD::field('email');
+        CRUD::field('active');
     }
 
     protected function setupUpdateOperation(): void
