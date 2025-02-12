@@ -18,26 +18,20 @@
 
     <div class="lg:container mx-auto">
         @foreach($teamMembers as $teamMember)
-            <div class="flex items-center bg-white shadow-md rounded-lg p-6 w-full mb-5">
-                <!-- Image Section -->
-                <div class="flex-shrink-0">
+            <div class="flex flex-col lg:flex-row items-center bg-white shadow-md rounded-lg p-6 w-full mb-5">
+                <div class="flex-shrink-0 mb-4 lg:mb-0 lg:mr-6">
                     <img class="h-72 w-72 rounded-full object-cover"
                          src="{{ Storage::url(data_get($teamMember, 'image')) }}"
                          alt="{{ data_get($teamMember, 'fullName') }}">
                 </div>
-                <div class="pl-6">
-                    <!-- Name and Title -->
+                <div class="pl-6 lg:pl-0">
                     <div>
                         <h2 class="text-xl font-semibold text-gray-800">{{ data_get($teamMember, 'fullName') }}</h2>
                         <p class="text-gray-600">{{ data_get($teamMember, 'jobTitle') }}</p>
                     </div>
-
-                    <!-- Description -->
                     <p class="text-gray-700 mt-4">
                         {!! data_get($teamMember, 'bio') !!}
                     </p>
-
-                    <!-- Social Links -->
                     <div class="mt-4 flex space-x-4">
                         @if(data_get($teamMember, 'linkedIn'))
                             <a href="{{ data_get($teamMember, 'linkedIn') }}" target="_blank" class="text-blue-600 hover:text-blue-800">
@@ -47,7 +41,7 @@
                             </a>
                         @endif
                         @if(data_get($teamMember, 'email'))
-                            <a href="{{ data_get($teamMember, 'email') }}" target="_blank" class="text-blue-600 hover:text-blue-800">
+                            <a href="mailto:{{ data_get($teamMember, 'email') }}" class="text-blue-600 hover:text-blue-800">
                                 <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M20 4H4C2.895 4 2 4.895 2 6v12c0 1.105.895 2 2 2h16c1.105 0 2-.895 2-2V6c0-1.105-.895-2-2-2zm-1.4 2L12 10.991 5.4 6h13.2zM4 18V8l7.6 5.409c.26.185.59.185.85 0L20 8v10H4z"/>
                                 </svg>
