@@ -1,7 +1,8 @@
 {{-- CKeditor --}}
 @php
-    $field['extra_plugins'] = isset($field['extra_plugins']) ? implode(',', $field['extra_plugins']) : "embed,widget";
-
+     $field['extra_plugins'] = isset($field['extra_plugins'])
+        ? implode(',', array_merge(explode(',', $field['extra_plugins']), ['justify']))
+        : "embed,widget,justify";
     $defaultOptions = [
         "language" => app()->getLocale(),
         "filebrowserBrowseUrl" => backpack_url('elfinder/ckeditor'),
