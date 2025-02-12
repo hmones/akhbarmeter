@@ -16,6 +16,9 @@
         .greyContent {
             background-color: #D3D3D3;
         }
+        .blueColour {
+            color: #1d4ed8;
+        }
     </style>
     <div class="container mx-auto py-4 px-4">
         <div class="grid grid-cols-1 md:grid-cols-[70%,30%] gap-8 ">
@@ -105,23 +108,30 @@
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-4 greyContent p-6 mt-8 rounded-md shadow-md">
-                    <h2 class="text-lg font-bold mb-4">{{ translate('pages.topic.factChecker') }}</h2>
+                    <h2 class="text-lg font-bold mb-4">{{ translate('pages.topic.factChecker.label') }}</h2>
                     <div class="w-full">
-                        <!-- User Information -->
                         <div class="flex items-center mb-4">
-                            <img
-                                src="{{Storage::url(data_get($topic, 'teamMember.image'))}}"
-                                alt="Profile Picture"
-                                class="w-10 h-10 rounded-full mr-4"
+                            <img src="{{ Storage::url(data_get($topic, 'teamMember.image')) }}"
+                                 alt="Profile Picture"
+                                 class="w-10 h-10 rounded-full mr-4"
                             />
                             <div>
-                                <p class="text-sm font-medium text-blue-600">{{ data_get($topic, 'teamMember.fullName') }}</p>
+                                <p class="text-sm font-medium blueColour">{{ data_get($topic, 'teamMember.fullName') }}</p>
                                 <p class="text-xs text-gray-500">{{ data_get($topic, 'teamMember.created_at')?->format('d/m/Y') }}</p>
                             </div>
                         </div>
-
                         <div class="space-y-4 text-gray-700">
-                            {!! data_get($topic, 'teamMember.bio') !!}
+                            <div id="bio-preview">
+                                {!! Str::limit(data_get($topic, 'teamMember.bio'), 150, '...') !!}
+                            </div>
+                            <div id="bio-full" class="hidden">
+                                {!! data_get($topic, 'teamMember.bio') !!}
+                            </div>
+                            <button id="toggleBio" class="blueColour font-medium text-sm"
+                                    data-read-more="{{ translate('pages.topic.factChecker.readMore') }}"
+                                    data-read-less="{{ translate('pages.topic.factChecker.readLess') }}">
+                                {{ translate('pages.topic.factChecker.readMore') }}
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -211,4 +221,23 @@
     </div>
 
     @include('partials.newsletter')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const bioPreview = document.getElementById("bio-preview");
+            const bioFull = document.getElementById("bio-full");
+            const toggleBtn = document.getElementById("toggleBio");
+
+            toggleBtn.addEventListener("click", function() {
+                if (bioFull.classList.contains("hidden")) {
+                    bioFull.classList.remove("hidden");
+                    bioPreview.classList.add("hidden");
+                    toggleBtn.textContent = toggleBtn.getAttribute("data-read-less");
+                } else {
+                    bioFull.classList.add("hidden");
+                    bioPreview.classList.remove("hidden");
+                    toggleBtn.textContent = toggleBtn.getAttribute("data-read-more");
+                }
+            });
+        });
+    </script>
 @endsection
