@@ -17,7 +17,6 @@
 
     blockquote {
         @apply list-disc;
-        @apply border-l-4 pl-4;
-        @apply bg-[#2563EB] text-white p-4 rounded-md border-[#2563EB];
+        @apply border-l-4 pl-4 ml-4 italic;
     }
 }

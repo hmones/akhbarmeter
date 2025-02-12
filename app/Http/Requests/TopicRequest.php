@@ -25,7 +25,6 @@ class TopicRequest extends FormRequest
             'claim_reference'           => 'nullable',
             'fact_check_reference'      => 'nullable',
             'legal_statement'           => 'nullable',
-            'correction_statement'      => 'nullable',
             'type'                      => 'required|string',
             'published_at'              => 'required',
             'active'                    => 'required|in:0,1',

@@ -28,7 +28,7 @@ class TopicController extends Controller
 
         return view('pages.topic.show', [
             'topic'    => $topic->toArray(request()),
-            'related'  => Topic::where('type', $topic->type)->orderBy('created_at', 'desc')->take(3)->get(),
+            'related'  => Topic::where('type', $topic->type)->where('id', '!=', $topic->id)->orderBy('created_at', 'desc')->take(3)->get(),
             'readMore' => Topic::where('type', '!=', $topic->type)->orderBy('created_at', 'desc')->take(6)->get(),
         ]);
     }

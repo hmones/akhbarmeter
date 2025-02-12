@@ -34,8 +34,7 @@ class Topic extends Model
         'description',
         'brief_description_summary',
         'summary',
-        'legal_statement',
-        'correction_statement'
+        'legal_statement'
     ];
 
     protected $fillable = [
@@ -50,7 +49,6 @@ class Topic extends Model
         'claim_reference',
         'fact_check_reference',
         'legal_statement',
-        'correction_statement',
         'image',
         'author_name',
         'author_avatar',

@@ -13,6 +13,9 @@
         #topic_content a:hover{
             color: gray;
         }
+        .greyContent {
+            background-color: #D3D3D3;
+        }
     </style>
     <div class="container mx-auto py-4 px-4">
         <div class="grid grid-cols-1 md:grid-cols-[70%,30%] gap-8 ">
@@ -28,7 +31,7 @@
                     </div>
                 </div>
                 @if(data_get($topic, 'brief_description_summary'))
-                    <div class="bg-[#F9FAFB] p-4 mt-4 rounded-md shadow mb-3">
+                    <div class="greyContent p-4 mt-4 rounded-md shadow mb-3">
                         <div class="p-4">
                             {!! data_get($topic, 'brief_description_summary') !!}
                         </div>
@@ -44,7 +47,7 @@
                     {!! data_get($topic, 'description') !!}
                 </div>
                 @if(data_get($topic, 'legal_statement'))
-                    <div class="bg-[#F9FAFB] p-4 rounded-md shadow mb-3">
+                    <div class="greyContent p-4 rounded-md shadow mb-3">
                         <h3 class="mb-5">{{ translate('pages.topic.legalStatement') }}</h3>
                         <p class="text-[#000000]">
                             {!! data_get($topic, 'legal_statement') !!}
@@ -101,7 +104,7 @@
                         @include('partials.social-media')
                     </div>
                 </div>
-                <div class="flex flex-wrap gap-4 bg-[#F9FAFB] p-6 mt-8 rounded-md shadow-md">
+                <div class="flex flex-wrap gap-4 greyContent p-6 mt-8 rounded-md shadow-md">
                     <h2 class="text-lg font-bold mb-4">{{ translate('pages.topic.factChecker') }}</h2>
                     <div class="w-full">
                         <!-- User Information -->
@@ -123,14 +126,12 @@
                     </div>
                 </div>
                 <div class="flex space-x-8 mt-8">
-                    @if(data_get($topic, 'correction_statement'))
-                        <div class="bg-[#F9FAFB] p-4 rounded-md shadow">
-                            <h3 class="text-[#111827] mb-5">{{ translate('pages.topic.correctionStatement') }}</h3>
-                            <p class="text-[#6B7280]">
-                                {!! data_get($topic, 'correction_statement') !!}
-                            </p>
-                        </div>
-                    @endif
+                    <div class="greyContent p-4 rounded-md shadow">
+                        <h3 class="text-[#111827] mb-5">{{ translate('pages.topic.correctionStatement.label') }}</h3>
+                        <p class="text-[#6B7280]">
+                            {{ translate('pages.topic.correctionStatement') }}
+                        </p>
+                    </div>
                 </div>
             </div>
             <div class="space-y-6">

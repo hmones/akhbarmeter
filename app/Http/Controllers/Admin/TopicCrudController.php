@@ -14,7 +14,6 @@ use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class TopicCrudController extends CrudController
@@ -135,11 +134,6 @@ class TopicCrudController extends CrudController
                 ],
             ]);
         CRUD::field('legal_statement')->type('ckeditor')->options([
-            'autoGrow_minHeight' => 200,
-            'autoGrow_bottomSpace' => 50,
-            'removePlugins' => 'resize,maximize',
-        ]);
-        CRUD::field('correction_statement')->type('ckeditor')->options([
             'autoGrow_minHeight' => 200,
             'autoGrow_bottomSpace' => 50,
             'removePlugins' => 'resize,maximize',
