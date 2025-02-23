@@ -136,7 +136,8 @@
                                 </div>
                             </div>
 
-                            <button id="toggleBio" class="blueColour font-medium text-sm"
+                            <button id="toggleBio" class="blueColour font-medium text-sm rtl:inline-block"
+                                    dir="auto"
                                     data-read-more="{{ translate('pages.topic.factChecker.readMore') }}"
                                     data-read-less="{{ translate('pages.topic.factChecker.readLess') }}">
                                 {{ translate('pages.topic.factChecker.readMore') }}
