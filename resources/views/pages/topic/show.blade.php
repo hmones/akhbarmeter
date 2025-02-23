@@ -175,7 +175,7 @@
 
                 <!-- Card 3 -->
                 <div class="bg-white shadow-md rounded-lg p-6">
-                    <h3 class="text-lg font-bold text-gray-900">{{ translate('pages.topic.requestCorrection') }}</h3>
+                    <h3 class="text-lg font-bold text-gray-900">{{ translate('pages.topic.requestCorrectionHeader') }}</h3>
                     <p class="mt-2 text-sm text-gray-600">
                         {{ translate('pages.topic.requestCorrectionText') }}
                         <a href="{{ route('contact.index') }}" class="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition">
