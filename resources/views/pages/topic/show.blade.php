@@ -115,7 +115,6 @@
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-4 greyContent p-6 mt-8 rounded-md shadow-md">
-                    <h2 class="text-lg font-bold mb-4">{{ translate('pages.topic.factChecker.label') }}</h2>
                     <div class="w-full">
                         <div class="flex items-center mb-4">
                             <img src="{{ Storage::url(data_get($topic, 'teamMember.image')) }}"
@@ -123,17 +122,20 @@
                                  class="w-10 h-10 rounded-full mr-4"
                             />
                             <div>
-                                <p class="text-sm font-medium blueColour">{{ data_get($topic, 'teamMember.fullName') }}</p>
+                                <p class="text-sm font-medium blueColour">{{ data_get($topic, 'teamMember.fullName') }} ({{ data_get($topic, 'teamMember.jobTitle') }})</p>
                                 <p class="text-xs text-gray-500">{{ data_get($topic, 'teamMember.created_at')?->format('d/m/Y') }}</p>
                             </div>
                         </div>
-                        <div class="space-y-4 text-gray-700">
-                            <div id="bio-preview">
-                                {!! Str::limit(data_get($topic, 'teamMember.bio'), 150, '...') !!}
+                        <div class="flex items-center space-x-2 text-gray-700">
+                            <div id="bio-container">
+                                <div id="bio-preview" class="inline">
+                                    {!! Str::limit(data_get($topic, 'teamMember.bio'), 100, '...') !!}
+                                </div>
+                                <div id="bio-full" class="hidden inline">
+                                    {!! data_get($topic, 'teamMember.bio') !!}
+                                </div>
                             </div>
-                            <div id="bio-full" class="hidden">
-                                {!! data_get($topic, 'teamMember.bio') !!}
-                            </div>
+
                             <button id="toggleBio" class="blueColour font-medium text-sm"
                                     data-read-more="{{ translate('pages.topic.factChecker.readMore') }}"
                                     data-read-less="{{ translate('pages.topic.factChecker.readLess') }}">
