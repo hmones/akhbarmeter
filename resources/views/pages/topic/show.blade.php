@@ -116,13 +116,13 @@
                 </div>
                 <div class="flex flex-wrap gap-4 greyContent p-6 mt-8 rounded-md shadow-md">
                     <div class="w-full">
-                        <div class="flex items-center mb-4">
+                        <div class="flex items-center">
                             <img src="{{ Storage::url(data_get($topic, 'teamMember.image')) }}"
                                  alt="Profile Picture"
                                  class="w-10 h-10 rounded-full mr-4"
                             />
                             <div>
-                                <p class="text-sm font-medium blueColour">{{ data_get($topic, 'teamMember.fullName') }} ({{ data_get($topic, 'teamMember.jobTitle') }})</p>
+                                <p class="text-sm font-medium blueColour p-4">{{ data_get($topic, 'teamMember.fullName') }} ({{ data_get($topic, 'teamMember.jobTitle') }})</p>
                                 <p class="text-xs text-gray-500">{{ data_get($topic, 'teamMember.created_at')?->format('d/m/Y') }}</p>
                             </div>
                         </div>

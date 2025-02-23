@@ -20,11 +20,11 @@
         @foreach($teamMembers as $teamMember)
             <div class="flex flex-col lg:flex-row items-center bg-white shadow-md rounded-lg p-6 w-full mb-5">
                 <div class="flex-shrink-0 mb-4 lg:mb-0 lg:mr-6">
-                    <img class="h-72 w-72 rounded-full object-cover"
+                    <img class="h-60 w-60 rounded-full object-cover"
                          src="{{ Storage::url(data_get($teamMember, 'image')) }}"
                          alt="{{ data_get($teamMember, 'fullName') }}">
                 </div>
-                <div class="pl-6 lg:pl-0">
+                <div class="pl-6 pr-6 lg:pl-0">
                     <div>
                         <h2 class="text-xl font-semibold text-gray-800">{{ data_get($teamMember, 'fullName') }}</h2>
                         <p class="text-gray-600">{{ data_get($teamMember, 'jobTitle') }}</p>
@@ -40,6 +40,7 @@
                                 </svg>
                             </a>
                         @endif
+                        &nbsp;
                         @if(data_get($teamMember, 'email'))
                             <a href="mailto:{{ data_get($teamMember, 'email') }}" class="text-blue-600 hover:text-blue-800">
                                 <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
