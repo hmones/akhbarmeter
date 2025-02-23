@@ -146,7 +146,7 @@
                     <div class="greyContent p-4 rounded-md shadow">
                         <h3 class="text-[#111827] mb-5">{{ translate('pages.topic.correctionStatement.label') }}</h3>
                         <p class="text-[#6B7280]">
-                            {{ translate('pages.topic.correctionStatement') }}
+                            {{ translate('pages.topic.correctionStatement.message') }}
                         </p>
                     </div>
                 </div>
