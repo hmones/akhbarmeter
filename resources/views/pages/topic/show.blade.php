@@ -150,7 +150,7 @@
             <div class="space-y-6">
                 <!-- Card 1 -->
                 <div class="bg-white shadow-md rounded-lg p-6">
-                    <h3 class="text-lg font-bold text-gray-900">{{ translate('pages.topic.requestToFactCheck') }}</h3>
+                    <h3 class="text-lg font-bold text-gray-900">{{ translate('pages.topic.requestToFactCheckHeader') }}</h3>
                     <p class="mt-2 text-sm text-gray-600">
                         {{ translate('pages.topic.requestToFactCheckMessage') }}
                     </p>
