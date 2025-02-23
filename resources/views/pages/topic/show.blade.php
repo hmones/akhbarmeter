@@ -66,7 +66,7 @@
                 @endif
                 @if(data_get($topic, 'claim_reference'))
                     <div class="space-y-4">
-                        <p class="text-gray-800">{{ translate('pages.topic.checkResource') }}</p>
+                        <h3 class="text-gray-800">{{ translate('pages.topic.checkResource') }}</h3>
                         <div class="flex space-x-4">
                             @foreach(data_get($topic, 'claim_reference') as $reference)
                                 <a href="{{ data_get($reference, 'url') }}" target="_blank" class="p-2">
@@ -81,7 +81,7 @@
 
                 @if(data_get($topic, 'fact_check_reference'))
                     <div class="space-y-4 mt-5">
-                        <p class="text-gray-800">{{ translate('pages.topic.fakeNewsSource') }}</p>
+                        <h3 class="text-gray-800">{{ translate('pages.topic.fakeNewsSource') }}</h3>
                         <div class="flex space-x-4">
                             @foreach(data_get($topic, 'fact_check_reference') as $reference)
                                 <a href="{{ data_get($reference, 'url') }}" target="_blank" class="p-2">
