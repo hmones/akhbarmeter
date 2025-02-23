@@ -23,7 +23,10 @@
     <div class="container mx-auto py-4 px-4">
         <div class="grid grid-cols-1 md:grid-cols-[70%,30%] gap-8 ">
             <div>
-                <h1 class="text-4xl font-bold leading-tight">{{ data_get($topic, 'title') }}</h1>
+                <div class="relative w-full h-[250px] overflow-hidden">
+                    <img src="{{ Storage::url(data_get($topic, 'image')) }}" alt="Property Image" class="object-center object-cover w-full h-full filter blur-sm">
+                </div>
+                <h1 class="text-4xl mt-3 font-bold leading-tight">{{ data_get($topic, 'title') }}</h1>
                 @if(data_get($topic, 'sub_title'))
                     <p class="text-lg pt-4 pb-4 leading-6 font-normal text-gray-500">{{ data_get($topic, 'sub_title') }}</p>
                 @endif
