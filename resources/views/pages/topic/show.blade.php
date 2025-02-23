@@ -49,6 +49,10 @@
                             color: #1d4ed8;
                             text-decoration: underline;
                         }
+                        p[style*="text-align:center"] img {
+                            display: block;
+                            margin: 0 auto;
+                        }
                     </style>
                     {!! data_get($topic, 'description') !!}
                 </div>
