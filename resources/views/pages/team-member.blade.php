@@ -20,11 +20,11 @@
         @foreach($teamMembers as $teamMember)
             <div class="flex flex-col lg:flex-row items-center bg-white shadow-md rounded-lg p-6 w-full mb-5">
                 <div class="flex-shrink-0 mb-4 lg:mb-0 lg:mr-6">
-                    <img class="h-60 w-60 rounded-full object-cover"
+                    <img class="h-72 w-72 rounded-full object-cover"
                          src="{{ Storage::url(data_get($teamMember, 'image')) }}"
                          alt="{{ data_get($teamMember, 'fullName') }}">
                 </div>
-                <div class="pl-6 pr-6 lg:pl-0">
+                <div class="p-6 lg:pl-0">
                     <div>
                         <h2 class="text-xl font-semibold text-gray-800">{{ data_get($teamMember, 'fullName') }}</h2>
                         <p class="text-gray-600">{{ data_get($teamMember, 'jobTitle') }}</p>
