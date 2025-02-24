@@ -19,10 +19,8 @@
                     <p class="text-gray-600 mb-4">
                         {{ data_get($career, 'sub_title') }}
                     </p>
-                    <a href="{{route('careers.show', data_get($career, 'id'))}}" class="text-[#4F46E5] font-semibold mb-4 inline-block">View more</a>
-                    <button class="w-full bg-[#4F46E5] text-white font-medium py-2 px-4 rounded hover:bg-blue-700">
-                        Apply on Email
-                    </button>
+                    <a href="{{route('careers.show', data_get($career, 'id'))}}" class="text-[#4F46E5] font-semibold mb-4 inline-block">{{ translate('pages.careers.viewMore') }}</a>
+                    <a href="{{route('career.apply.index', data_get($career, 'id'))}}" class="w-full bg-[#4F46E5] text-white font-medium py-2 px-4 rounded">{{ translate('pages.careers.apply') }}</a>
                 </div>
             @endforeach
     </div>

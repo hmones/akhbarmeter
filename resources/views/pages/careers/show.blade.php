@@ -15,9 +15,7 @@
         <!-- Job Title and Apply Button -->
         <div class="flex justify-between items-center mb-8">
             <h1 class="text-3xl font-bold">{{ data_get($career, 'title') }}</h1>
-            <a href="#" class="bg-[#4F46E5] text-white font-medium py-2 px-4 rounded hover:bg-[#4F46E5]">
-                Apply on Email
-            </a>
+            <a href="{{route('career.apply.index', data_get($career, 'id'))}}" class="bg-[#4F46E5] text-white font-medium py-2 px-4 rounded">{{ translate('pages.careers.apply') }}</a>
         </div>
         <!-- Job Details -->
         <div class="text-gray-600 space-y-1">
