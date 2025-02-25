@@ -8,6 +8,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FakeNewsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JobApplyController;
 use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\PublisherController;
@@ -20,6 +21,11 @@ use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
+Route::resource('careers/{career}/apply-now', JobApplyController::class)
+    ->names([
+        'index' => 'career.apply.index',
+        'store' => 'career.apply.store'
+    ]);
 Route::resource('careers', CareerController::class)->only('index', 'show')
 ->names([
     'index' => 'careers.index',
