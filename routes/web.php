@@ -53,6 +53,7 @@ Route::get('about', fn () => view('pages.about.main'))->name('about');
 Route::redirect('about-us', 'about');
 Route::get('akhbarmeter', fn () => view('pages.about.akhbarmeter'))->name('akhbarmeter');
 Route::get('methodology', fn () => view('pages.about.methodology'))->name('methodology');
+Route::get('fact-checking-methodology', fn () => view('pages.about.fact-checking-methodology'))->name('fact-checking-methodology');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
