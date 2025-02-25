@@ -172,7 +172,9 @@
                         {{ translate('pages.topic.joinWhatsAppChatBot.bodyText') }}
                     </p>
                     <a href="https://web.whatsapp.com/send?phone={{ config('topic-page.whatsapp.chatbot') }}" class="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition">
-                        {{ Str::of(config('topic-page.whatsapp.chatbot'))->substr(0, 6)->append(Str::repeat('x', strlen(config('topic-page.whatsapp.chatbot')) - 6)) }}
+                        <span dir="ltr">
+                            {{ Str::of(config('topic-page.whatsapp.chatbot'))->substr(0, 6)->append(Str::repeat('x', strlen(config('topic-page.whatsapp.chatbot')) - 6)) }}
+                        </span>
                     </a>
                 </div>
 
@@ -182,7 +184,9 @@
                         {{ translate('pages.topic.joinWhatsAppChatChannel.bodyText') }}
                     </p>
                     <a href="https://web.whatsapp.com/send?phone={{ config('topic-page.whatsapp.channel') }}" class="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition">
-                        {{ Str::of(config('topic-page.whatsapp.chatbot'))->substr(0, 6)->append(Str::repeat('x', strlen(config('topic-page.whatsapp.chatbot')) - 6)) }}
+                        <span dir="ltr">
+                            {{ Str::of(config('topic-page.whatsapp.chatbot'))->substr(0, 6)->append(Str::repeat('x', strlen(config('topic-page.whatsapp.chatbot')) - 6)) }}
+                        </span>
                     </a>
                 </div>
 
