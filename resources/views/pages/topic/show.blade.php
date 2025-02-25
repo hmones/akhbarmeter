@@ -165,20 +165,26 @@
                         <span class="text-lg">📱</span> {{ translate('pages.topic.contactUs') }}
                     </a>
                 </div>
+                <!-- Card 2 -->
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <h3 class="text-lg font-bold text-gray-900">{{ translate('pages.topic.joinWhatsAppChatBot.heading') }}</h3>
+                    <p class="mt-2 text-sm text-gray-600">
+                        {{ translate('pages.topic.joinWhatsAppChatBot.bodyText') }}
+                    </p>
+                    <a href="https://web.whatsapp.com/send?phone={{ config('topic-page.whatsapp.chatbot') }}}" class="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition">
+                        {{ Str::of(config('topic-page.whatsapp.chatbot'))->substr(0, 6)->append(Str::repeat('x', strlen(config('topic-page.whatsapp.chatbot')) - 6)) }}
+                    </a>
+                </div>
 
-                @if(config('featureflags.show-chat-bot'))
-                    <!-- Card 2 -->
-                    <div class="bg-white shadow-md rounded-lg p-6">
-                        <h3 class="text-lg font-bold text-gray-900">{{ translate('pages.topic.joinWhatsApp.heading') }}</h3>
-                        <p class="mt-2 text-sm text-gray-600">
-                            {{ translate('pages.topic.joinWhatsApp.bodyText') }}
-                        </p>
-                        <button
-                            class="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition">
-                            <span class="text-lg">📱</span> +20100xxxxxxx
-                        </button>
-                    </div>
-                @endif
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <h3 class="text-lg font-bold text-gray-900">{{ translate('pages.topic.joinWhatsAppChatChannel.heading') }}</h3>
+                    <p class="mt-2 text-sm text-gray-600">
+                        {{ translate('pages.topic.joinWhatsAppChatChannel.bodyText') }}
+                    </p>
+                    <a href="https://web.whatsapp.com/send?phone={{ config('topic-page.whatsapp.channel') }}}" class="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition">
+                        {{ Str::of(config('topic-page.whatsapp.chatbot'))->substr(0, 6)->append(Str::repeat('x', strlen(config('topic-page.whatsapp.chatbot')) - 6)) }}
+                    </a>
+                </div>
 
                 <!-- Card 3 -->
                 <div class="bg-white shadow-md rounded-lg p-6">
