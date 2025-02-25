@@ -1,4 +1,4 @@
-<div class="bg-blue-700 text-white mt-4 py-20 mt-5">
+<div class="bg-blue-700 text-white py-20">
     <div class="container flex flex-col w-full items-center justify-center mx-auto space-y-4">
         <div class="flex flex-col justify-content-center text-center">
             <div class="text-4xl leading-10 font-extrabold tracking-tight">{{translate('components.support.header')}}</div>

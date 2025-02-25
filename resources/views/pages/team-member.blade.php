@@ -52,8 +52,17 @@
                 </div>
             </div>
         @endforeach
+    </div>
+    <div class="bg-gray-100 py-16 flex justify-center">
+        <div class="text-center max-w-2xl">
+            <h2 class="text-2xl font-bold">{{ translate('pages.ourTeam.wantToBePartOfTeam.header') }}</h2>
+            <p class="text-gray-600 mt-4">
+                {{ translate('pages.ourTeam.wantToBePartOfTeam.description') }}
+            </p>
+            <a href="{{ route('careers.index', ) }}" class="mt-6 inline-block bg-[#4F46E5] text-white font-semibold py-3 px-6 rounded-lg">
+                {{ translate('pages.careers.apply') }}
+            </a>
         </div>
     </div>
-
     @include('partials.support')
 @endsection
