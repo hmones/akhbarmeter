@@ -16,7 +16,7 @@ class TopicController extends Controller
     {
         $query = $request->safe()->toArray();
         $topics = Topic::filter($query)->where('type', '!=', Topic::FAKE_NEWS)->orderBy('published_at', 'desc')->paginate(self::PAGINATION_ITEMS);
-        $tags = cache()->remember('topics.tags', 86400, fn () => Tag::unique()->limit(20)->get());
+        $tags = cache()->remember('topics.tags', 86400, fn () => Tag::all()->unique('name')->take(20));
 
         return view('pages.topic.index', compact('tags', 'topics'));
     }
