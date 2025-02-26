@@ -21,11 +21,8 @@ use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
-Route::resource('careers/{career}/apply-now', JobApplyController::class)
-    ->names([
-        'index' => 'career.apply.index',
-        'store' => 'career.apply.store'
-    ]);
+Route::get('apply-now/careers/{career?}', [JobApplyController::class, 'index'])->name('career.apply.index');
+Route::post('apply-now/careers/{career?}', [JobApplyController::class, 'store'])->name('career.apply.store');
 Route::resource('careers', CareerController::class)->only('index', 'show')
 ->names([
     'index' => 'careers.index',

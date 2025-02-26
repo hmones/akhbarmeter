@@ -12,12 +12,12 @@ use Illuminate\View\View;
 
 class JobApplyController extends Controller
 {
-    public function index(Career $career): View
+    public function index(?Career $career): View
     {
         return view('pages.careers.job-apply', compact('career'));
     }
 
-    public function store(Career $career, JobApplyRequest $request): RedirectResponse
+    public function store(JobApplyRequest $request, ?Career $career): RedirectResponse
     {
         $cv = $request->file('uploadCv');
         $cvPath = $cv->store('job_applications', ['disk' => 'local']);
