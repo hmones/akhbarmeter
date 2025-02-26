@@ -20,36 +20,8 @@
         </div>
     </section>
 
-    <!-- Monthly Ranking -->
-    @if(!empty($best) && !empty($worst) && !empty($bestThree) && !empty($worstThree))
-        <x-home.sections.rank :best="$best" :worst="$worst" :bestThree="$bestThree" :worstThree="$worstThree"/>
-    @endif
-
-
-    <!-- Latest News Section -->
-    <section id="latestNews">
-        <x-page-header :headline="translate('pages.home.news.header')"
-                       :description="translate('pages.home.news.description')"/>
-
-        <div class="container mx-auto mb-10 space-y-10">
-            @foreach($articles->chunk(3) as $rowArticles)
-                <div
-                    class="flex flex-col xl:flex-row w-full items-start items-stretch justify-left mx-auto space-y-10 xl:space-y-0">
-                    @foreach($rowArticles as $article)
-                        <div class="flex flex-col xl:flex-row w-full xl:w-1/3 px-2">
-                            <x-cards.article :article="$article" showTotalScore="false"/>
-                        </div>
-                    @endforeach
-                </div>
-            @endforeach
-        </div>
-        <x-view-all href="{{route('articles.index')}}"/>
-    </section>
-
-    @include('partials.check-news')
-
     <!-- Fake News section -->
-    <section class="py-8 lg:py-16">
+    <section>
         <x-page-header :headline="translate('pages.home.fake.header')"
                        :description="translate('pages.home.fake.description')"/>
         <div class="container mx-auto flex flex-col space-y-4">
@@ -62,6 +34,7 @@
         </div>
     </section>
 
+    @include('partials.check-news')
 
     <!--- The weekly summary Section -->
     <section class="py-16 bg-gray-50">
@@ -154,6 +127,32 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Monthly Ranking -->
+    @if(!empty($best) && !empty($worst) && !empty($bestThree) && !empty($worstThree))
+        <x-home.sections.rank :best="$best" :worst="$worst" :bestThree="$bestThree" :worstThree="$worstThree"/>
+    @endif
+
+
+    <!-- Latest News Section -->
+    <section id="latestNews">
+        <x-page-header :headline="translate('pages.home.news.header')"
+                       :description="translate('pages.home.news.description')"/>
+
+        <div class="container mx-auto mb-10 space-y-10">
+            @foreach($articles->chunk(3) as $rowArticles)
+                <div
+                    class="flex flex-col xl:flex-row w-full items-start items-stretch justify-left mx-auto space-y-10 xl:space-y-0">
+                    @foreach($rowArticles as $article)
+                        <div class="flex flex-col xl:flex-row w-full xl:w-1/3 px-2">
+                            <x-cards.article :article="$article" showTotalScore="false"/>
+                        </div>
+                    @endforeach
+                </div>
+            @endforeach
+        </div>
+        <x-view-all href="{{route('articles.index')}}"/>
     </section>
 
     <!-- Latest Publications Section -->

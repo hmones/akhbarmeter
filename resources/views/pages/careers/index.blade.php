@@ -9,7 +9,11 @@
         <div class="text-center mb-8 max-w-2xl mx-auto">
             <h1 class="text-4xl font-bold mb-4">{{ translate('pages.careers.header') }}</h1>
             <p class="text-gray-600">
-                {{ translate('pages.careers.description') }}
+                @if(count($careers) > 0)
+                    {{ translate('pages.careers.description') }}
+                @else
+                    {{ translate('pages.careers.noJobs') }}
+                @endif
             </p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
