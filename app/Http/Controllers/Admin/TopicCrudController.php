@@ -138,7 +138,10 @@ class TopicCrudController extends CrudController
             'autoGrow_bottomSpace' => 50,
             'removePlugins' => 'resize,maximize',
         ]);
+
         CRUD::field('type')->type('select_from_array')->options(Topic::TYPES);
+        CRUD::field('sub_type')->type('select_from_array')->options(Topic::SUB_TYPES);
+
         CRUD::field('published_at');
         CRUD::field('active');
     }

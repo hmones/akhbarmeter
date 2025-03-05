@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Topic;
+use App\Rules\TopicSubTypeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class TopicRequest extends FormRequest
@@ -25,11 +27,24 @@ class TopicRequest extends FormRequest
             'claim_reference'           => 'nullable',
             'fact_check_reference'      => 'nullable',
             'legal_statement'           => 'nullable',
-            'type'                      => 'required|string',
             'published_at'              => 'required',
             'active'                    => 'required|in:0,1',
             'tags'                      => 'nullable|array|exists:tags,id',
-            'new_tags'                  => 'nullable|string'
+            'new_tags'                  => 'nullable|string',
+            'type' => [
+                'required',
+                'string',
+                function ($attribute, $value, $fail) {
+                    if (!array_key_exists($value, Topic::TYPES)) {
+                        $fail('Invalid type selected.');
+                    }
+                }
+            ],
+            'sub_type' => [
+                'nullable',
+                'string',
+                new TopicSubTypeRule($this->input('type'))
+            ]
         ];
     }
 }

@@ -22,11 +22,24 @@ class Topic extends Model
     const FAKE_NEWS = 'fakeNews';
 
     const TYPES = [
-        'violations' => 'Violations',
-        'fakeNews' => 'Fake News',
-        'codeOfEthics' => 'Code of Ethics',
-        'other' => 'Other',
+        'violations'           => 'Violations',
+        'fakeNews'             => 'Fake News',
+        'codeOfEthics'         => 'Code of Ethics',
+        'factSheet'            => 'Factsheet',
+        'explainer'            => 'Explainer',
+        'akhbarMeterWorkshops' => 'AkhbarMeter workshops',
+        'akhbarMeterInMedia'   => 'AkhbarMeter in Media',
+        'mediaAnalysisReports' => 'Media analysis reports',
+        'other'                => 'Other'
     ];
+
+    const SUB_TYPES = [
+        'factSheetOnGender'        => 'Factsheet on Gender',
+        'factSheetOnClimateChange' => 'Factsheet on Climate Change',
+        'explainerOnGender'        => 'Explainer on Gender',
+        'explainerOnClimateChange' => 'Explainer on Climate Change'
+    ];
+
 
     public $translatable = [
         'title',
@@ -53,6 +66,7 @@ class Topic extends Model
         'author_name',
         'author_avatar',
         'type',
+        'sub_type',
         'published_at',
         'active'
     ];
