@@ -5,6 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -87,13 +88,6 @@ class Topic extends Model
         return $this->morphToMany(Tag::class, 'taggable');
     }
 
-    public function scopeFilter(Builder $query, $params): void
-    {
-        if (data_get($params, 'tag', false)) {
-            $query->whereJsonContains('tags', ['value' => data_get($params, 'tag')]);
-        }
-    }
-
     public function scopeFake(Builder $query): void
     {
         $query->whereType(self::FAKE_NEWS);
@@ -112,5 +106,26 @@ class Topic extends Model
     public function resolveRouteBinding($value, $field = null): self
     {
         return $this->where('id', $value)->orWhere('slug', $value)->firstOrFail();
+    }
+
+    public static function getTopTagsByType(string $cacheKey, ?string $topicType = null, int $limit = 20): Collection
+    {
+        return cache()->remember($cacheKey, 86400, function () use ($topicType, $limit) {
+            $query = Tag::query()
+                ->select('tags.name')
+                ->distinct()
+                ->when($topicType, function ($query) use ($topicType) {
+                    $query->whereHas('topics', function ($query) use ($topicType) {
+                        $query->where('type', $topicType);
+                    });
+                }, function ($query) {
+                    $query->whereHas('topics', function ($query) {
+                        $query->where('type', '!=', Topic::FAKE_NEWS);
+                    });
+                })
+                ->limit($limit);
+
+            return $query->get();
+        });
     }
 }

@@ -9,7 +9,8 @@ class TopicSearchRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'tag' => 'sometimes|string',
+            'type'    => ['nullable', 'string'],
+            'subType' => ['nullable', 'string'],
         ];
     }
 }

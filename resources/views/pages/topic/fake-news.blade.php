@@ -9,16 +9,11 @@
         <x-page-header :headline="translate('pages.home.fake.header')" :description="translate('pages.home.fake.description')"/>
         <div class="container">
             <div class="flex flex-row mb-10 overflow-scroll h-fit" style="overflow-y:hidden">
-                @if(request()->has('tag'))
-                    <a href="{{route('fake.news')}}" class="flex flex-row mx-2 px-2 h-fit rounded-5 text-sm mt-1.5">
-                        <i class="fa fa-close"></i>
-                    </a>
-                @endif
                 @foreach($tags as $tag)
                     <div class="flex flex-col min-w-fit">
-                        <a href="{{route('fake.news', compact('tag'))}}"
+                        <a href="{{ route('tags.index', ['name' => data_get($tag, 'name')]) }}" target="_blank"
                            class="flex flex-row mx-1 px-2 bg-gray-100 h-fit rounded-5 text-sm mt-1">
-                            #{{$tag}}
+                            #{{ data_get($tag, 'name') }}
                         </a>
                     </div>
                 @endforeach
