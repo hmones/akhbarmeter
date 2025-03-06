@@ -24,11 +24,29 @@
                 @endforeach
             </div>
         </div>
-
+        <div class="container mb-6 p-6">
+            <form action="{{ route('topics.index') }}" method="GET" class="flex gap-4" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
+                <select name="type" class="rounded-md" id="typeSelect">
+                    <option value="">{{ translate('pages.topics.allTypes') }}</option>
+                    @foreach(\App\Models\Topic::TYPES as $value => $label)
+                        @if($value !== 'fakeNews')
+                            <option value="{{ $value }}" {{ request('type') === $value ? 'selected' : '' }}>
+                                {{ $label }}
+                            </option>
+                        @endif
+                    @endforeach
+                </select>
+                <select name="subType" class="rounded-md {{ !in_array(request('type'), ['factSheet', 'explainer']) ? 'hidden' : '' }}" id="subTypeSelect">
+                    <option value="">{{ translate('pages.topics.allSubTypes') }}</option>
+                </select>
+                <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md">
+                    {{ translate('pages.topics.types.applyFilter') }}
+                </button>
+            </form>
+        </div>
         <div class="container mb-10 space-y-10">
             @foreach($topics->chunk(3) as $rowTopics)
-                <div
-                        class="flex flex-col xl:flex-row w-full items-start items-stretch justify-left mx-auto space-y-10 xl:space-y-0">
+                <div class="flex flex-col xl:flex-row w-full items-start items-stretch justify-left mx-auto space-y-10 xl:space-y-0">
                     @foreach($rowTopics as $record)
                         <div class="flex flex-col xl:flex-row w-full xl:w-1/3 px-2">
                             <x-cards.topic :topic="$record" />
@@ -41,4 +59,42 @@
             {{$topics->appends(request()->except('page'))->links()}}
         </div>
     </div>
+    <script>
+        function updateSubTypes(selectedType) {
+            const subTypeSelect = document.getElementById('subTypeSelect');
+            if (!subTypeSelect) return;
+
+            subTypeSelect.innerHTML = '<option value="">{{ translate("pages.topics.types.applyFilter") }}</option>';
+
+            if (selectedType === 'factSheet') {
+                subTypeSelect.classList.remove('hidden');
+                subTypeSelect.innerHTML += `
+                <option value="factSheetOnGender" {{ request('subType') === 'factSheetOnGender' ? 'selected' : '' }}>
+                    {{ \App\Models\Topic::SUB_TYPES['factSheetOnGender'] }}
+                </option>
+                <option value="factSheetOnClimateChange" {{ request('subType') === 'factSheetOnClimateChange' ? 'selected' : '' }}>
+                    {{ \App\Models\Topic::SUB_TYPES['factSheetOnClimateChange'] }}
+                </option>
+            `;
+            } else if (selectedType === 'explainer') {
+                subTypeSelect.classList.remove('hidden');
+                subTypeSelect.innerHTML += `
+                <option value="explainerOnGender" {{ request('subType') === 'explainerOnGender' ? 'selected' : '' }}>
+                    {{ \App\Models\Topic::SUB_TYPES['explainerOnGender'] }}
+                </option>
+                <option value="explainerOnClimateChange" {{ request('subType') === 'explainerOnClimateChange' ? 'selected' : '' }}>
+                    {{ \App\Models\Topic::SUB_TYPES['explainerOnClimateChange'] }}
+                </option>
+            `;
+            } else {
+                subTypeSelect.classList.add('hidden');
+                subTypeSelect.value = '';
+            }
+        }
+
+        updateSubTypes(document.getElementById('typeSelect').value);
+        document.getElementById('typeSelect').addEventListener('change', function() {
+            updateSubTypes(this.value);
+        });
+    </script>
 @endsection

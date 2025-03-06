@@ -13,7 +13,15 @@ class TopicController extends Controller
 
     public function index(TopicSearchRequest $request): View
     {
-        $topics = Topic::where('type', '!=', Topic::FAKE_NEWS)->orderBy('published_at', 'desc')->paginate(self::PAGINATION_ITEMS);
+        $topics = Topic::where('type', '!=', Topic::FAKE_NEWS)
+            ->when($request->type, function($query) use ($request) {
+                $query->where('type', $request->type);
+            })
+            ->when($request->subType, function($query) use ($request) {
+                $query->where('sub_type', $request->subType);
+            })
+            ->orderBy('published_at', 'desc')
+            ->paginate(self::PAGINATION_ITEMS);
         $tags = Topic::getTopTagsByType('topics.all.tags');
 
         return view('pages.topic.index', compact('tags', 'topics'));
