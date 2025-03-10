@@ -35,7 +35,7 @@
     </section>
 
     <!--- The weekly summary Section -->
-    <section class="py-16 bg-gray-50">
+    <section class="py-5 bg-gray-50">
         <x-page-header :headline="translate('pages.home.video.header')"
                        :description="translate('pages.home.video.description')"/>
         <div class="container mx-auto">
@@ -48,7 +48,7 @@
     </section>
 
     <!-- Latest Topics Section -->
-    <section class="py-16">
+    <section class="py-5">
         <x-page-header :headline="translate('pages.topics.header')"
                        :description="translate('pages.topics.description')"/>
         <div class="container mx-auto mb-10 space-y-10">
@@ -65,7 +65,7 @@
     </section>
 
     <!-- Insights and Partners Section -->
-    <section class="py-16">
+    <section class="py-5">
         <x-page-header :headline="translate('pages.home.insights.header')"
                        :description="translate('pages.home.insights.description')"/>
         <div class="container mx-auto">
@@ -109,7 +109,7 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col lg:space-y-16 px-8 lg:px-24 py-16">
+            <div class="flex flex-col lg:space-y-16 px-8 lg:px-24 py-5">
                 <div class="flex flex-row justify-between items-center">
                     <img src="{{asset('images/partners/1.png')}}" class="w-20 lg:w-32" alt="Partner 1"/>
                     <img src="{{asset('images/partners/2.png')}}" class="w-20 lg:w-32" alt="Partner 2"/>
