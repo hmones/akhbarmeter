@@ -48,4 +48,9 @@ class Publisher extends Model
     {
         $this->attributes['image'] = Storage::putFile('v3.0/publisher/image', $value, 'public');
     }
+
+    public function scopeActivePublishers($query)
+    {
+        return $query->where('active', true);
+    }
 }
