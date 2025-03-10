@@ -64,69 +64,6 @@
         </div>
     </section>
 
-    <!-- Insights and Partners Section -->
-    <section class="py-5">
-        <x-page-header :headline="translate('pages.home.insights.header')"
-                       :description="translate('pages.home.insights.description')"/>
-        <div class="container mx-auto">
-            <div class="shadow-lg bg-white border-1 border-solid border-gray-200 py-8 px-8 lg:px-24 rounded-4">
-                <div class="flex flex-row justify-between mx-auto text-center">
-                    <div class="flex flex-col space-y-4">
-                        <div
-                            class="text-xl leading-7 font-bold lg:text-5xl lg:leading-none lg:font-extrabold text-blue-500">
-                            10
-                        </div>
-                        <div class="text-sm lg:text-lg leading-6 font-medium text-gray-400">
-                            {{translate('pages.home.insights.publishers')}}
-                        </div>
-                    </div>
-                    <div class="flex flex-col space-y-4">
-                        <div
-                            class="text-xl leading-7 font-bold lg:text-5xl lg:leading-none lg:font-extrabold text-blue-500">
-                            1000+
-                        </div>
-                        <div class="text-sm lg:text-lg leading-6 font-medium text-gray-400">
-                            {{translate('pages.home.insights.topics')}}
-                        </div>
-                    </div>
-                    <div class="flex flex-col space-y-4">
-                        <div
-                            class="text-xl leading-7 font-bold lg:text-5xl lg:leading-none lg:font-extrabold text-blue-500">
-                            20k+
-                        </div>
-                        <div class="text-sm lg:text-lg leading-6 font-medium text-gray-400">
-                            {{translate('pages.home.insights.review')}}
-                        </div>
-                    </div>
-                    <div class="flex flex-col space-y-4">
-                        <div
-                            class="text-xl leading-7 font-bold lg:text-5xl lg:leading-none lg:font-extrabold text-blue-500">
-                            3
-                        </div>
-                        <div class="text-sm lg:text-lg leading-6 font-medium text-gray-400">
-                            {{translate('pages.home.insights.employees')}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="flex flex-col lg:space-y-16 px-8 lg:px-24 py-5">
-                <div class="flex flex-row justify-between items-center">
-                    <img src="{{asset('images/partners/1.png')}}" class="w-20 lg:w-32" alt="Partner 1"/>
-                    <img src="{{asset('images/partners/2.png')}}" class="w-20 lg:w-32" alt="Partner 2"/>
-                    <img src="{{asset('images/partners/3.png')}}" class="w-20 lg:w-32" alt="Partner 3"/>
-                </div>
-                <div class="flex flex-row justify-between items-center">
-                    <img src="{{asset('images/partners/4.png')}}" class="w-20 lg:w-32" alt="Partner 4"/>
-                    <img src="{{asset('images/partners/5.png')}}" class="w-20 lg:w-32" alt="Partner 5"/>
-                    <img src="{{asset('images/partners/6.png')}}" class="w-20 lg:w-32" alt="Partner 6"/>
-                </div>
-                <div class="flex flex-row justify-center items-center">
-                    <img src="{{asset('images/partners/7.png')}}" class="w-20 lg:w-32" alt="Partner 7"/>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Monthly Ranking -->
     @if(!empty($best) && !empty($worst) && !empty($bestThree) && !empty($worstThree))
         <x-home.sections.rank :best="$best" :worst="$worst" :bestThree="$bestThree" :worstThree="$worstThree"/>
@@ -192,5 +129,69 @@
             </a>
         </div>
     </div>
+
+    <!-- Insights and Partners Section -->
+    <section class="py-5">
+        <x-page-header :headline="translate('pages.home.insights.header')"
+                       :description="translate('pages.home.insights.description')"/>
+        <div class="container mx-auto">
+            <div class="shadow-lg bg-white border-1 border-solid border-gray-200 py-8 px-8 lg:px-24 rounded-4">
+                <div class="flex flex-row justify-between mx-auto text-center">
+                    <div class="flex flex-col space-y-4">
+                        <div
+                            class="text-xl leading-7 font-bold lg:text-5xl lg:leading-none lg:font-extrabold text-blue-500">
+                            10
+                        </div>
+                        <div class="text-sm lg:text-lg leading-6 font-medium text-gray-400">
+                            {{translate('pages.home.insights.publishers')}}
+                        </div>
+                    </div>
+                    <div class="flex flex-col space-y-4">
+                        <div
+                            class="text-xl leading-7 font-bold lg:text-5xl lg:leading-none lg:font-extrabold text-blue-500">
+                            1000+
+                        </div>
+                        <div class="text-sm lg:text-lg leading-6 font-medium text-gray-400">
+                            {{translate('pages.home.insights.topics')}}
+                        </div>
+                    </div>
+                    <div class="flex flex-col space-y-4">
+                        <div
+                            class="text-xl leading-7 font-bold lg:text-5xl lg:leading-none lg:font-extrabold text-blue-500">
+                            20k+
+                        </div>
+                        <div class="text-sm lg:text-lg leading-6 font-medium text-gray-400">
+                            {{translate('pages.home.insights.review')}}
+                        </div>
+                    </div>
+                    <div class="flex flex-col space-y-4">
+                        <div
+                            class="text-xl leading-7 font-bold lg:text-5xl lg:leading-none lg:font-extrabold text-blue-500">
+                            3
+                        </div>
+                        <div class="text-sm lg:text-lg leading-6 font-medium text-gray-400">
+                            {{translate('pages.home.insights.employees')}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col lg:space-y-16 px-8 lg:px-24 py-5">
+                <div class="flex flex-row justify-between items-center">
+                    <img src="{{asset('images/partners/1.png')}}" class="w-20 lg:w-32" alt="Partner 1"/>
+                    <img src="{{asset('images/partners/2.png')}}" class="w-20 lg:w-32" alt="Partner 2"/>
+                    <img src="{{asset('images/partners/3.png')}}" class="w-20 lg:w-32" alt="Partner 3"/>
+                </div>
+                <div class="flex flex-row justify-between items-center">
+                    <img src="{{asset('images/partners/4.png')}}" class="w-20 lg:w-32" alt="Partner 4"/>
+                    <img src="{{asset('images/partners/5.png')}}" class="w-20 lg:w-32" alt="Partner 5"/>
+                    <img src="{{asset('images/partners/6.png')}}" class="w-20 lg:w-32" alt="Partner 6"/>
+                </div>
+                <div class="flex flex-row justify-center items-center">
+                    <img src="{{asset('images/partners/7.png')}}" class="w-20 lg:w-32" alt="Partner 7"/>
+                </div>
+            </div>
+        </div>
+    </section>
+
     @include('partials.newsletter')
 @endsection
