@@ -34,8 +34,6 @@
         </div>
     </section>
 
-    @include('partials.check-news')
-
     <!--- The weekly summary Section -->
     <section class="py-16 bg-gray-50">
         <x-page-header :headline="translate('pages.home.video.header')"
@@ -154,6 +152,8 @@
         </div>
         <x-view-all href="{{route('articles.index')}}"/>
     </section>
+
+    @include('partials.check-news')
 
     <!-- Latest Publications Section -->
     <x-page-header :headline="translate('pages.home.publications.header')"
