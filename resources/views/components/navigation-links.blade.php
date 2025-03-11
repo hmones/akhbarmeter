@@ -37,6 +37,11 @@
         min-width: 12rem;
     }
 
+    .child-menu {
+        display: block;
+        padding: 0.5rem 1rem;
+        color: #000000;
+    }
     .group:hover .hidden {
         display: block !important;
     }
@@ -60,8 +65,7 @@
             </a>
             <div class="absolute top-full left-0 hidden group-hover:block bg-white border shadow-lg px-4 py-1 mt-0 z-50 w-48">
                 @foreach ($publishers as $publisher)
-                    <a href="{{ route('publishers.show', data_get($publisher, 'id')) }}"
-                       class="block py-2 hover:bg-gray-100 transition-colors duration-200">
+                    <a href="{{ route('publishers.show', data_get($publisher, 'id')) }}" class="block py-1 hover:bg-gray-200 transition-colors duration-200 child-menu">
                         {{ data_get($publisher, 'name.' . app()->getLocale(), 'no-lang-key') }}
                     </a>
                 @endforeach
