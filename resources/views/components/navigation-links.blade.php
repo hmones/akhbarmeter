@@ -6,6 +6,7 @@
         align-items: center;
         position: relative;
         margin-left: 0px !important;
+        margin-right: 0px !important;
         /*margin: 0;*/
     }
 
@@ -52,7 +53,7 @@
                 return \App\Models\Publisher::activePublishers()->select('name', 'id')->get()->toArray();
             });
         @endphp
-        <div class="relative group inline-flex items-center ml-0">
+        <div class="relative group inline-flex items-center ml-0 mr-0">
             <a href="#"
                class="px-4 py-2 focus:outline-none {{$isColoredNavigation ? 'hover:text-gray-200' : 'hover:text-blue-600'}}" style="margin: 0;">
                 {{ data_get($item, 'text') }}
