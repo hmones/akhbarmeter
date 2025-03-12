@@ -56,22 +56,19 @@ class TopicCrudController extends CrudController
             ->type('ckeditor')
             ->options([
             'autoGrow_minHeight' => 200,
-            'autoGrow_bottomSpace' => 50,
-            'removePlugins' => 'resize,maximize'
+            'autoGrow_bottomSpace' => 50
         ]);
         CRUD::field('brief_description_summary')
             ->type('ckeditor')
             ->options([
             'autoGrow_minHeight' => 200,
-            'autoGrow_bottomSpace' => 50,
-            'removePlugins' => 'resize,maximize'
+            'autoGrow_bottomSpace' => 50
         ]);
         CRUD::field('summary')
             ->type('ckeditor')
             ->options([
             'autoGrow_minHeight' => 200,
-            'autoGrow_bottomSpace' => 50,
-            'removePlugins' => 'resize,maximize'
+            'autoGrow_bottomSpace' => 50
         ]);
         CRUD::field('image')
             ->type('upload')

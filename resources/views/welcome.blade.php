@@ -113,23 +113,6 @@
     <!-- Testimonials Section -->
     <x-home.sections.testimonials/>
 
-    <!-- Download Report Now Section -->
-    <div class="bg-gray-50 p-10 lg:p-16">
-        <div class="container mx-auto flex flex-col space-y-6 lg:space-y-0 lg:flex-row justify-between items-center">
-            <div class="flex flex-col text-xl text-center lg:text-4xl leading-10 font-extrabold">
-                <div class="ltr:lg:text-left rtl:lg:text-right">
-                    {{translate('pages.home.download.header')}}
-                </div>
-                <div class="text-blue-600 ltr:lg:text-left rtl:lg:text-right">
-                    {{translate('pages.home.download.description')}}
-                </div>
-            </div>
-            <a href="{{translate('pages.home.download.link')}}" class="text-white bg-blue-600 py-2 px-4 rounded hover:bg-blue-700">
-                {{translate('pages.home.download.button')}}
-            </a>
-        </div>
-    </div>
-
     <!-- Insights and Partners Section -->
     <section class="py-5">
         <x-page-header :headline="translate('pages.home.insights.header')"
