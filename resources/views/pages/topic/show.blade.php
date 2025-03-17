@@ -67,10 +67,10 @@
                 @if(data_get($topic, 'claim_reference'))
                     <div class="space-y-4">
                         <h3 class="text-lg font-bold">{{ translate('pages.topic.checkResource') }}</h3>
-                        <div class="flex space-x-4">
+                        <div class="flex space-x-4 flex-wrap">
                             @foreach(data_get($topic, 'claim_reference') as $reference)
                                 <a href="{{ data_get($reference, 'url') }}" target="_blank" class="p-2">
-                                    <div class="flex items-center justify-center p-2 border rounded-md cursor-pointer">
+                                    <div class="flex items-center justify-center p-2 border rounded-md cursor-pointer max-w-xs">
                                         <span class="text-gray-700 font-medium">{{ data_get($reference, 'name') }}</span>
                                     </div>
                                 </a>
@@ -82,10 +82,10 @@
                 @if(data_get($topic, 'fact_check_reference'))
                     <div class="space-y-4 mt-5">
                         <h3 class="text-lg font-bold">{{ translate('pages.topic.fakeNewsSource') }}</h3>
-                        <div class="flex space-x-4">
+                        <div class="flex space-x-4 flex-wra">
                             @foreach(data_get($topic, 'fact_check_reference') as $reference)
                                 <a href="{{ data_get($reference, 'url') }}" target="_blank" class="p-2">
-                                    <div class="flex items-center justify-center p-2 border rounded-md cursor-pointer">
+                                    <div class="flex items-center justify-center p-2 border rounded-md cursor-pointer max-w-xs">
                                         <span class="text-gray-700 font-medium">{{ data_get($reference, 'name') }}</span>
                                     </div>
                                 </a>
