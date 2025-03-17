@@ -20,10 +20,25 @@
             </div>
         </div>
 
+        <div class="container mb-6 p-6">
+            <form action="{{ route('fake.news') }}" method="GET" class="flex gap-4" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
+                <select name="subType" class="rounded-md" id="typeSelect">
+                    <option value="">{{ translate('pages.topics.allTypes') }}</option>
+                    @foreach(\App\Models\Topic::FAKE_NEWS_SUB_TYPES as $value => $label)
+                        <option value="{{ $value }}" {{ request('subType') === $value ? 'selected' : '' }}>
+                            {{ translate("pages.topics.fakeNews.subType.$value") }}
+                        </option>
+                    @endforeach
+                </select>
+                <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md">
+                    {{ translate('pages.topics.types.applyFilter') }}
+                </button>
+            </form>
+        </div>
+
         <div class="container mb-10 space-y-10">
             @foreach($topics->chunk(3) as $rowTopics)
-                <div
-                        class="flex flex-col xl:flex-row w-full items-start items-stretch justify-left mx-auto space-y-10 xl:space-y-0">
+                <div class="flex flex-col xl:flex-row w-full items-start items-stretch justify-left mx-auto space-y-10 xl:space-y-0">
                     @foreach($rowTopics as $record)
                         <div class="flex flex-col xl:flex-row w-full xl:w-1/3 px-2">
                             <x-cards.topic :topic="$record" />

@@ -43,6 +43,11 @@ class Topic extends Model
         'fakeNewsOnClimateChange'  => 'Fake News on Climate Change'
     ];
 
+    const FAKE_NEWS_SUB_TYPES = [
+        'fakeNewsOnGender'        => 'Fake News on Gender',
+        'fakeNewsOnClimateChange' => 'Fake News on Climate Change'
+    ];
+
 
     public $translatable = [
         'title',
