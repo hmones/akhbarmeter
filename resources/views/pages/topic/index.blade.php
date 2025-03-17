@@ -31,7 +31,7 @@
                     @foreach(\App\Models\Topic::TYPES as $value => $label)
                         @if($value !== 'fakeNews')
                             <option value="{{ $value }}" {{ request('type') === $value ? 'selected' : '' }}>
-                                {{ $label }}
+                                {{ translate("pages.topics.type.$value") }}
                             </option>
                         @endif
                     @endforeach
@@ -70,20 +70,20 @@
                 subTypeSelect.classList.remove('hidden');
                 subTypeSelect.innerHTML += `
                 <option value="factSheetOnGender" {{ request('subType') === 'factSheetOnGender' ? 'selected' : '' }}>
-                    {{ \App\Models\Topic::SUB_TYPES['factSheetOnGender'] }}
+                    {{ translate("pages.topics.subType.factSheetOnGender") }}
                 </option>
                 <option value="factSheetOnClimateChange" {{ request('subType') === 'factSheetOnClimateChange' ? 'selected' : '' }}>
-                    {{ \App\Models\Topic::SUB_TYPES['factSheetOnClimateChange'] }}
+                    {{ translate("pages.topics.subType.factSheetOnClimateChange") }}
                 </option>
             `;
             } else if (selectedType === 'explainer') {
                 subTypeSelect.classList.remove('hidden');
                 subTypeSelect.innerHTML += `
                 <option value="explainerOnGender" {{ request('subType') === 'explainerOnGender' ? 'selected' : '' }}>
-                    {{ \App\Models\Topic::SUB_TYPES['explainerOnGender'] }}
+                    {{ translate("pages.topics.subType.explainerOnGender") }}
                 </option>
                 <option value="explainerOnClimateChange" {{ request('subType') === 'explainerOnClimateChange' ? 'selected' : '' }}>
-                    {{ \App\Models\Topic::SUB_TYPES['explainerOnClimateChange'] }}
+                    {{ translate("pages.topics.subType.explainerOnClimateChange") }}
                 </option>
             `;
             } else {
