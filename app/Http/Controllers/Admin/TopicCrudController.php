@@ -167,6 +167,7 @@ class TopicCrudController extends CrudController
         if (data_get($payload, 'new_tags')) {
             $newTags = Str::of(data_get($payload, 'new_tags'))
                 ->trim()
+                ->replace('،', ',')
                 ->explode(',')
                 ->map(function ($tag) use ($topic) {
                     $newTag = Tag::firstOrCreate(['name' => Str::of($tag)->trim()->lower()]);

@@ -38,7 +38,9 @@ class Topic extends Model
         'factSheetOnGender'        => 'Factsheet on Gender',
         'factSheetOnClimateChange' => 'Factsheet on Climate Change',
         'explainerOnGender'        => 'Explainer on Gender',
-        'explainerOnClimateChange' => 'Explainer on Climate Change'
+        'explainerOnClimateChange' => 'Explainer on Climate Change',
+        'fakeNewsOnGender'         => 'Fake News on Gender',
+        'fakeNewsOnClimateChange'  => 'Fake News on Climate Change'
     ];
 
 
