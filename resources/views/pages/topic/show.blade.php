@@ -37,13 +37,13 @@
                     </div>
                 </div>
                 @if(data_get($topic, 'brief_description_summary'))
-                    <div class="greyContent p-4 mt-4 rounded-md shadow mb-3">
+                    <div class="greyContent p-4 mt-4 rounded-md shadow">
                         <div class="p-4">
                             {!! data_get($topic, 'brief_description_summary') !!}
                         </div>
                     </div>
                 @endif
-                <div class="text-lg space-y-4 py-6 editor-content">
+                <div class="text-lg space-y-4 pt-2 pb-6 editor-content">
                     <style>
                         .editor-content a {
                             color: #1d4ed8;
@@ -65,7 +65,7 @@
                     </div>
                 @endif
                 @if(data_get($topic, 'claim_reference'))
-                    <div class="space-y-4">
+                    <div class="space-y-4 py-2">
                         <h3 class="text-lg font-bold">{{ translate('pages.topic.checkResource') }}</h3>
                         <div class="flex space-x-4 flex-wrap">
                             @foreach(data_get($topic, 'claim_reference') as $reference)
