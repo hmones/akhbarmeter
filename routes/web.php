@@ -9,6 +9,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FactCheckingMethodologyController;
 use App\Http\Controllers\FakeNewsController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobApplyController;
 use App\Http\Controllers\PolicyController;
@@ -27,6 +28,8 @@ use Spatie\Honeypot\ProtectAgainstSpam;
 Route::get('apply-now/careers/{career?}', [JobApplyController::class, 'index'])->name('career.apply.index');
 Route::get('policies', [PolicyController::class, 'index'])->name('policy.index');
 Route::get('awards', [AwardController::class, 'index'])->name('awards.index');
+Route::get('gallery-images/{topicId}', [GalleryController::class, 'show'])->name('gallery.show');
+Route::get('gallery', [GalleryController::class, 'index'])->name('gallery.index');
 Route::post('apply-now/careers/{career?}', [JobApplyController::class, 'store'])->name('career.apply.store');
 Route::resource('careers', CareerController::class)->only('index', 'show')
 ->names([
