@@ -2,13 +2,16 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ArticleStatisticsController;
+use App\Http\Controllers\AwardController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CheckNewsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FactCheckingMethodologyController;
 use App\Http\Controllers\FakeNewsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobApplyController;
+use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\PublisherController;
@@ -22,6 +25,8 @@ use Illuminate\Support\Facades\Route;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
 Route::get('apply-now/careers/{career?}', [JobApplyController::class, 'index'])->name('career.apply.index');
+Route::get('policies', [PolicyController::class, 'index'])->name('policy.index');
+Route::get('awards', [AwardController::class, 'index'])->name('awards.index');
 Route::post('apply-now/careers/{career?}', [JobApplyController::class, 'store'])->name('career.apply.store');
 Route::resource('careers', CareerController::class)->only('index', 'show')
 ->names([
@@ -50,7 +55,8 @@ Route::get('about', fn () => view('pages.about.main'))->name('about');
 Route::redirect('about-us', 'about');
 Route::get('akhbarmeter', fn () => view('pages.about.akhbarmeter'))->name('akhbarmeter');
 Route::get('methodology', fn () => view('pages.about.methodology'))->name('methodology');
-Route::get('fact-checking-methodology', fn () => view('pages.about.fact-checking-methodology'))->name('fact-checking-methodology');
+Route::get('media-monitoring-methodology', fn () => view('pages.about.methodology'))->name('methodology');
+Route::get('fact-checking-methodology', [FactCheckingMethodologyController::class, 'index'])->name('fact-checking-methodology.index');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

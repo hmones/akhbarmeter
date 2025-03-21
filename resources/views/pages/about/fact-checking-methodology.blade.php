@@ -9,12 +9,8 @@
                    :description="translate('pages.factCheckingMethodology.description')"/>
 
     <div class="container mx-auto flex flex-col space-y-2 md:space-y-10 px-2 py-10">
-        <div id="fact_checking" class="flex flex-col text-lg leading-6 font-semibold md:text-3xl md:leading-9 md:font-bold">
-            {{translate('pages.methodology.fact-checking.header')}}
-        </div>
-        <div
-            class="flex flex-col leading-5 font-normal text-gray-500 md:leading-6 space-y-6">
-            {!! translate('pages.methodology.fact-checking.details') !!}
+        <div class="text-lg space-y-4 pt-2 pb-6 editor-content">
+            {!! $description !!}
         </div>
     </div>
 @endsection
