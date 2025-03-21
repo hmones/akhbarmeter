@@ -109,8 +109,12 @@
                                 @if($errors->first('subject'))
                                     <small class="text-red-700">{{$errors->first('subject')}}</small>
                                 @endif
-                                <input type="text" id="subject" name="subject"
-                                       class="p-3 h-12 border border-gray-300 rounded mt-1"/>
+                                <select id="subject" name="subject" class="p-3 h-12 border border-gray-300 rounded mt-1">
+                                    <option value="{{ translate('pages.contact.form.generalInquiry') }}">{{ translate('pages.contact.form.selectSubject.generalInquiry') }}</option>
+                                    <option value="{{ translate('pages.contact.form.suggestion') }}">{{ translate('pages.contact.form.suggestion') }}</option>
+                                    <option value="{{ translate('pages.contact.form.correction') }}">{{ translate('pages.contact.form.correction') }}</option>
+                                    <option value="{{ translate('pages.contact.form.complaint') }}">{{ translate('pages.contact.form.complaint') }}</option>
+                                </select>
                             </div>
                         </div>
                         <div class="flex flex-row w-auto mt-4 space-x-8">
