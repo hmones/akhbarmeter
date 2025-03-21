@@ -138,6 +138,7 @@ class TopicCrudController extends CrudController
 
         CRUD::field('type')->type('select_from_array')->options(Topic::TYPES);
         CRUD::field('sub_type')->type('select_from_array')->options(Topic::SUB_TYPES);
+        CRUD::field('fake_news_badge')->type('select_from_array')->options(Topic::FAKE_NEWS_BADGES);
 
         CRUD::field('published_at');
         CRUD::field('active');

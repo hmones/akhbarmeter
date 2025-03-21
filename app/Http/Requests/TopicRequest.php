@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\Topic;
+use App\Rules\FakeNewsBadgeRule;
 use App\Rules\TopicSubTypeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -44,6 +45,11 @@ class TopicRequest extends FormRequest
                 'nullable',
                 'string',
                 new TopicSubTypeRule($this->input('type'))
+            ],
+            'fake_news_badge' => [
+                'nullable',
+                'string',
+                new FakeNewsBadgeRule($this->input('type'))
             ]
         ];
     }

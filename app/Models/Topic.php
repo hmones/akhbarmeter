@@ -48,6 +48,14 @@ class Topic extends Model
         'fakeNewsOnClimateChange' => 'Fake News on Climate Change'
     ];
 
+    const FAKE_NEWS_BADGES = [
+        'notTrue'           => 'Not Ture',
+        'halfTrue'          => 'Half True',
+        'misleadingContext' => 'Misleading Context',
+        'unproven'          => 'Unproven',
+        'true'              => 'True'
+    ];
+
 
     public $translatable = [
         'title',
@@ -75,6 +83,7 @@ class Topic extends Model
         'author_avatar',
         'type',
         'sub_type',
+        'fake_news_badge',
         'published_at',
         'active'
     ];
