@@ -71,19 +71,35 @@
                     <div class="flex flex-row bg-gray-100 text-black rounded p-4">
                         <div class="flex flex-col space-y-2 md:space-y-12">
                             <div class="flex flex-row text-lg leading-8 font-semibold md:text-4xl md:leading-10 md:font-extrabold">
-                                {{translate('pages.about.partners')}}
+                                {{ translate('pages.about.policy') }}
                             </div>
-                            <x-learn-more href="{{route('akhbarmeter')}}#partners" />
+                            <x-learn-more href="{{ route('policy.index') }}" />
                         </div>
                     </div>
                     <div class="flex flex-row bg-gray-100 text-black rounded p-4">
                         <div class="flex flex-col space-y-2 md:space-y-12">
                             <div class="flex flex-row text-lg leading-8 font-semibold md:text-4xl md:leading-10 md:font-extrabold">
-                                {{translate('pages.about.contact')}}
+                                {{ translate('pages.about.awards') }}
                             </div>
-                            <x-learn-more href="{{route('contact.index')}}" />
+                            <x-learn-more href="{{ route('awards.index') }}" />
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="flex flex-col bg-gray-100 mt-4 text-black rounded p-4 space-y-2 md:space-y-4 text-center">
+                <div class="flex flex-row text-lg leading-8 font-semibold md:text-4xl md:leading-10 md:font-extrabold">
+                    {{ translate('pages.about.ownerShipAndFinance.header') }}
+                </div>
+                <div class="flex flex-row text-sm md:text-xl font-normal text-gray-500">
+                    {{translate('pages.about.ownerShipAndFinance.description')}}
+                </div>
+            </div>
+            <div class="flex flex-col bg-gray-100 mt-4 text-black rounded p-4 space-y-2 md:space-y-4 text-center">
+                <div class="flex flex-row text-lg leading-8 font-semibold md:text-4xl md:leading-10 md:font-extrabold">
+                    {{ translate('pages.about.intellectualPropertyRights.header') }}
+                </div>
+                <div class="flex flex-row text-sm md:text-xl font-normal text-gray-500">
+                    {{translate('pages.about.intellectualPropertyRights.description')}}
                 </div>
             </div>
         </div>
