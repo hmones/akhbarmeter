@@ -55,7 +55,7 @@ Route::get('about', fn () => view('pages.about.main'))->name('about');
 Route::redirect('about-us', 'about');
 Route::get('akhbarmeter', fn () => view('pages.about.akhbarmeter'))->name('akhbarmeter');
 Route::get('methodology', fn () => view('pages.about.methodology'))->name('methodology');
-Route::get('media-monitoring-methodology', fn () => view('pages.about.methodology'))->name('methodology');
+Route::get('media-monitoring-methodology', fn () => view('pages.about.methodology'))->name('media-monitoring-methodology');
 Route::get('fact-checking-methodology', [FactCheckingMethodologyController::class, 'index'])->name('fact-checking-methodology.index');
 
 Route::middleware(['auth', 'verified'])->group(function () {

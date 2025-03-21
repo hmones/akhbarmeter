@@ -152,12 +152,5 @@
             class="flex flex-col leading-5 font-normal text-gray-500 md:leading-6 space-y-6">
             {!! translate('pages.methodology.how.details') !!}
         </div>
-        <div id="fact_checking" class="flex flex-col text-lg leading-6 font-semibold md:text-3xl md:leading-9 md:font-bold">
-            {{translate('pages.methodology.fact-checking.header')}}
-        </div>
-        <div
-            class="flex flex-col leading-5 font-normal text-gray-500 md:leading-6 space-y-6">
-            {!! translate('pages.methodology.fact-checking.details') !!}
-        </div>
     </div>
 @endsection

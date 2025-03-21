@@ -71,6 +71,20 @@
                 @endforeach
             </div>
         </div>
+    @elseif (data_get($item, 'link') === '/methodology')
+        <div class="relative group inline-flex items-center ml-0 mr-0">
+            <a href="#" class="px-4 py-2 focus:outline-none {{$isColoredNavigation ? 'hover:text-gray-200' : 'hover:text-blue-600'}}" style="margin: 0;">
+                {{ data_get($item, 'text') }}
+            </a>
+            <div class="absolute top-full left-0 hidden group-hover:block bg-white border shadow-lg px-4 py-1 mt-0 z-50 w-48">
+                <a href="{{ route('media-monitoring-methodology') }}" class="block py-1 hover:bg-gray-200 transition-colors duration-200 child-menu">
+                    {{ translate('pages.methodology.navBar.description') }}
+                </a>
+                <a href="{{ route('fact-checking-methodology.index') }}" class="block py-1 hover:bg-gray-200 transition-colors duration-200 child-menu">
+                    {{ translate('pages.factCheckingMethodology.navBar.description') }}
+                </a>
+            </div>
+        </div>
     @else
         <a href="{{ data_get($item, 'link') }}" class="px-4 py-2 focus:outline-none {{$isColoredNavigation ? 'hover:text-gray-200' : 'hover:text-blue-600'}}" style="margin: 0;">
             {{ data_get($item, 'text') }}
