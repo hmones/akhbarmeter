@@ -37,48 +37,72 @@
         </div>
     </div>
 
-    <!-- Full-screen slider container -->
     <div id="fullscreen-slider" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center">
-        <div id="slider-content" class="w-full h-full"></div>
-        <button id="close-slider" class="absolute top-4 right-4 text-white text-2xl">&times;</button>
+        <div id="slider-content" class="w-full h-full relative flex items-center justify-center">
+            <img id="slider-image" src="" class="max-w-full max-h-full object-contain" alt="Slider Image">
+            <button id="prev-slide" class="absolute left-4 text-white text-4xl p-2 hover:bg-gray-800 rounded-full" aria-label="Previous Image">&larr;</button>
+            <button id="next-slide" class="absolute right-4 text-white text-4xl p-2 hover:bg-gray-800 rounded-full" aria-label="Next Image">&rarr;</button>
+        </div>
+        <button id="close-slider" class="absolute top-4 right-4 text-white text-2xl p-2 hover:bg-gray-800 rounded-full">×</button>
     </div>
 @endsection
 
 @push('scripts')
     <script>
+        let images = [];
+        let currentIndex = 0;
+
         async function loadImages(topicId) {
             try {
-                // Fetch images from the API
                 const url = '{{ url("gallery-images") }}/' + topicId;
                 const response = await fetch(url);
-                const images = await response.json();
-                // const images = data;
+                const data = await response.json();
+                images = data;
 
                 if (images.length === 0) {
                     alert('No images found for this topic.');
                     return;
                 }
 
-                // Show the slider
                 const sliderContainer = document.getElementById('fullscreen-slider');
-                const sliderContent = document.getElementById('slider-content');
+                const sliderImage = document.getElementById('slider-image');
                 sliderContainer.classList.remove('hidden');
 
-                // Simple slider implementation (you can enhance this with fullpage-image-slider)
-                let currentIndex = 0;
-                sliderContent.innerHTML = `<img src="${images[currentIndex]}" class="w-full h-full object-contain">`;
+                currentIndex = 0;
+                sliderImage.src = images[currentIndex];
 
-                // Basic navigation (optional: enhance with fullpage-image-slider)
-                sliderContent.addEventListener('click', () => {
+                const updateImage = () => {
+                    sliderImage.src = images[currentIndex];
+                };
+
+                const prevSlide = () => {
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    updateImage();
+                };
+
+                const nextSlide = () => {
                     currentIndex = (currentIndex + 1) % images.length;
-                    sliderContent.innerHTML = `<img src="${images[currentIndex]}" class="w-full h-full object-contain">`;
+                    updateImage();
+                };
+
+                document.getElementById('prev-slide').addEventListener('click', prevSlide);
+                document.getElementById('next-slide').addEventListener('click', nextSlide);
+
+                document.addEventListener('keydown', (e) => {
+                    if (!sliderContainer.classList.contains('hidden')) {
+                        if (e.key === 'ArrowLeft') prevSlide();
+                        if (e.key === 'ArrowRight') nextSlide();
+                        if (e.key === 'Escape') closeSlider();
+                    }
                 });
 
-                // Close slider
-                document.getElementById('close-slider').addEventListener('click', () => {
+                document.getElementById('close-slider').addEventListener('click', closeSlider);
+
+                function closeSlider() {
                     sliderContainer.classList.add('hidden');
-                    sliderContent.innerHTML = ''; // Clear content
-                });
+                    sliderImage.src = '';
+                    images = [];
+                }
             } catch (error) {
                 console.error('Error loading images:', error);
                 alert('Failed to load images.');
