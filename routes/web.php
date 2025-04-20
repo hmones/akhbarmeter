@@ -3,7 +3,6 @@
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ArticleStatisticsController;
-use App\Http\Controllers\AwardController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CheckNewsController;
 use App\Http\Controllers\ContactController;

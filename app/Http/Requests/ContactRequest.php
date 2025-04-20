@@ -9,12 +9,13 @@ class ContactRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'firstName' => 'required|string',
+            'firstName'  => 'required|string',
             'secondName' => 'required|string',
-            'email' => 'required|email',
-            'phone' => 'nullable|numeric',
-            'subject' => 'required|string',
-            'message' => 'required|string',
+            'email'      => 'required|email',
+            'phone'      => 'nullable|numeric',
+            'pageUrl'    => 'nullable|url',
+            'subject'    => 'required|string',
+            'message'    => 'required|string',
         ];
     }
 }
