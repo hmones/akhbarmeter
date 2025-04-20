@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="flex flex-wrap justify-between items-center mt-5">
-                    <span class="text-gray-500">{{ translate('pages.topic.publishedAt') }} : {{ data_get($topic, 'published_at')?->format('d/m/Y') }}&nbsp; {{ translate('pages.topic.updatedAt') }}: {{ data_get($topic, 'updated_at')?->format('d/m/Y') }}&nbsp;</span>
+                    <span class="text-gray-500">{{ translate('pages.topic.publishedAt') }} : {{ data_get($topic, 'published_at')?->format('d/m/Y') }}&nbsp; {{ translate('pages.topic.updatedAt') }}: {{ data_get($topic, 'updated_at')?->format('d/m/Y H:m:s') }}&nbsp;</span>
                     <div class="flex flex-wrap gap-4 justify-end text-right">
                         @include('partials.social-media')
                     </div>

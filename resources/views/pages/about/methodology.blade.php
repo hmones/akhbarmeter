@@ -12,30 +12,6 @@
             {!! translate('pages.methodology.how.details') !!}
         </div>
     </div>
-    <div class="p-4 bg-indigo-50 md:container md:mx-auto md:rounded-xl md:flex items-center justify-between">
-        <div class="flex flex-col space-y-4 md:space-y-0 md:p-10">
-            <div class="flex flex-col">
-                <div class="text-xl leading-10 font-extrabold md:text-4xl">
-                    {{translate('pages.methodology.top.header1')}}
-                </div>
-            </div>
-            <div class="flex flex-col">
-                <div class="text-blue-600 text-xl font-extrabold leading-10 md:text-4xl">
-                    {{translate('pages.methodology.top.header2')}}
-                </div>
-            </div>
-            <div class="flex flex-col">
-                <div class="text-sm leading-5 font-normal text-gray-500 md:text-xl md:leading-7">
-                    {{translate('pages.methodology.top.description')}}
-                </div>
-            </div>
-        </div>
-        <div class="flex flex-col mt-4">
-            <a href="{{translate('pages.methodology.top.button.link')}}" class="bg-blue-600 shadow-sm py-2 px-4 rounded text-white w-fit mt-2">
-                {{translate('pages.methodology.top.button.text')}}
-            </a>
-        </div>
-    </div>
 
     <div
         class="flex flex-col md:flex-row items-center justify-center text-center px-8 my-6 space-y-6 md:space-y-0 md:container md:mx-auto md:items-start md:mt-20">
@@ -145,5 +121,30 @@
                 $(this).parent().siblings('.content').toggle('hidden')
             })
         </script>
+    </div>
+
+    <div class="p-4 bg-indigo-50 md:container md:mx-auto md:rounded-xl md:flex items-center justify-between">
+        <div class="flex flex-col space-y-4 md:space-y-0 md:p-10">
+            <div class="flex flex-col">
+                <div class="text-xl leading-10 font-extrabold md:text-4xl">
+                    {{translate('pages.methodology.top.header1')}}
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <div class="text-blue-600 text-xl font-extrabold leading-10 md:text-4xl">
+                    {{translate('pages.methodology.top.header2')}}
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <div class="text-sm leading-5 font-normal text-gray-500 md:text-xl md:leading-7">
+                    {{translate('pages.methodology.top.description')}}
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col mt-4">
+            <a href="{{translate('pages.methodology.top.button.link')}}" class="bg-blue-600 shadow-sm py-2 px-4 rounded text-white w-fit mt-2">
+                {{translate('pages.methodology.top.button.text')}}
+            </a>
+        </div>
     </div>
 @endsection
