@@ -20,8 +20,10 @@
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('team-member') }}"><i class="nav-icon la la-th-list"></i> Team Members</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('career') }}"><i class="nav-icon la la-th-list"></i> Careers</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('tag') }}"><i class="nav-icon la la-th-list"></i> Tags</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('about-us') }}"><i class="nav-icon la la-th-list"></i> About uses</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('policy') }}"><i class="nav-icon la la-th-list"></i> Policies</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('fact-checking-methodology') }}"><i class="nav-icon la la-th-list"></i> Fact Check Methodology</a></li>
 <li class="nav-item nav-link">@include('partials.components.language-switcher')</li>
+
 
 

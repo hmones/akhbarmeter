@@ -36,4 +36,5 @@ Route::group([
     Route::crud('policy', 'PolicyCrudController');
     Route::crud('fact-checking-methodology', 'FactCheckingMethodologyCrudController');
     Route::get('tags/search', [TagCrudController::class, 'search']);
+    Route::crud('about-us', 'AboutUsCrudController');
 }); // this should be the absolute last line of this file
