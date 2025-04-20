@@ -21,7 +21,8 @@ class TopicSubTypeRule implements Rule
 
         $validSubTypes = [
             'factSheet' => array_filter(array_keys(Topic::SUB_TYPES), fn($key) => str_starts_with($key, 'factSheet')),
-            'explainer' => array_filter(array_keys(Topic::SUB_TYPES), fn($key) => str_starts_with($key, 'explainer'))
+            'explainer' => array_filter(array_keys(Topic::SUB_TYPES), fn($key) => str_starts_with($key, 'explainer')),
+            'fakeNews'  => array_filter(array_keys(Topic::SUB_TYPES), fn($key) => str_starts_with($key, 'fakeNews'))
         ];
 
         if (!isset($validSubTypes[$this->type])) {
