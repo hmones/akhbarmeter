@@ -12,7 +12,7 @@
                 @if(count($careers) > 0)
                     {{ translate('pages.careers.description') }}
                 @else
-                    {{ translate('pages.careers.noJobs') }}
+                    {!! translate('pages.careers.noJobs') !!}
                 @endif
             </p>
         </div>
