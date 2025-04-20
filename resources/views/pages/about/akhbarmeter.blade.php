@@ -10,10 +10,6 @@
 
     <div class="container mx-auto">
         <div class="flex flex-col-reverse md:flex-row justify-center items-center align-content-center">
-            <div class="flex flex-col rounded-lg z-10 md:align-middle -mt-48 md:m-0 shadow-2xl">
-                <img class="my-auto h-[177px] md:h-[405px] w-full" src="{{asset('images/about.png')}}"
-                     alt="AkhbarMeter Team"/>
-            </div>
             <div
                 class="flex flex-col p-10 pb-60 md:p-32 ltr:md:pl-[285px] rtl:md:pr-[285px] ltr:md:-ml-48 rtl:md:-mr-48 bg-blue-600 rounded-lg w-full text-white space-y-6">
                 <div class="text-xl leading-8 font-semibold md:text-4xl md:leading-10 md:font-extrabold">

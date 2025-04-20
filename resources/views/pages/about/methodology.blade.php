@@ -8,6 +8,13 @@
     <x-page-header :headline="translate('pages.methodology.header')"
                    :description="translate('pages.methodology.description')"/>
 
+    <div class="container mx-auto flex flex-col space-y-2 4 md:space-y-10 px-2">
+        <div
+            class="flex flex-col leading-5 font-normal text-gray-500 md:leading-6 space-y-6">
+            {!! translate('pages.methodology.how.details') !!}
+        </div>
+    </div>
+
     <div class="p-4 bg-indigo-50 md:container md:mx-auto md:rounded-xl md:flex items-center justify-between">
         <div class="flex flex-col space-y-4 md:space-y-0 md:p-10">
             <div class="flex flex-col">
@@ -129,7 +136,6 @@
             </div>
         </div>
     </div>
-
     <div class="bg-gray-50 p-4 my-6 space-y-4 md:space-y-8 md:container md:rounded-xl md:mx-auto">
         <div class="text-xl font-extrabold leading-10 mb-8 md:p-8 md:text-3xl md:leading-8 md:tracking-tight">
             {{translate('pages.methodology.questions.header')}}
@@ -142,15 +148,5 @@
                 $(this).parent().siblings('.content').toggle('hidden')
             })
         </script>
-    </div>
-
-    <div class="container mx-auto flex flex-col space-y-2 my-4 md:space-y-10 md:py-20 px-2">
-        <div id="methodology_explanation" class="flex flex-col text-lg leading-6 font-semibold md:text-3xl md:leading-9 md:font-bold">
-            {{translate('pages.methodology.how.header')}}
-        </div>
-        <div
-            class="flex flex-col leading-5 font-normal text-gray-500 md:leading-6 space-y-6">
-            {!! translate('pages.methodology.how.details') !!}
-        </div>
     </div>
 @endsection

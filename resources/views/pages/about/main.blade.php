@@ -13,19 +13,6 @@
     </style>
     <div class="h-fit bg-blue-900 px-2 py-10 md:py-20 radial-blue-background text-white">
         <div class="container mx-auto">
-            <div class="flex flex-col space-y-4">
-                <div class="flex flex-row">
-                    <div class="text-lg leading-7 font-bold md:text-4xl md:leading-10 md:font-extrabold">
-                        {{translate('pages.about.header')}}
-                    </div>
-                </div>
-                <div class="flex flex-row text-sm leading-8 font-normal md:text-xl">
-                    {{translate('pages.about.description')}}
-                </div>
-            </div>
-        </div>
-
-        <div class="container mx-auto my-10 md:my-20">
             <div class="flex flex-col md:flex-row justify-between space-y-6 md:space-y-0 md:space-x-6 rtl:space-x-reverse">
                 <div class="flex flex-col md:w-1/3 bg-gray-100 text-black rounded p-4 space-y-2 md:space-y-4">
                     <div class="flex flex-row">
