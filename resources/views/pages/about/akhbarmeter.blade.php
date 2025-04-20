@@ -143,38 +143,40 @@
         </div>
     </div>
 
-    <div class="container mx-auto">
-        <div class="flex flex-col md:flex-row items-center space-y-10 md:space-y-0 py-20 space-x-16 rtl:space-x-reverse">
-            <div class="flex flex-col text-4xl leading-10 font-extrabold w-full md:w-1/5 text-center md:text-left">
-                {{translate('pages.akhbarmeter.featured')}}
-            </div>
-            <div class="flex flex-col items center space-y-20">
-                <div class="flex flex-row items-center space-x-16 rtl:space-x-reverse">
-                    <div class="flex flex-col w-1/4">
-                        <img src="{{asset('images/portfolio/mag1.gif')}}" alt="Ich mag meine uni"
-                             class="text-center h-auto w-48"/>
-                    </div>
-                    <div class="flex flex-col w-1/4">
-                        <img src="{{asset('images/portfolio/wbs.jpg')}}" alt="Willy Brandt School"
-                             class="text-center h-auto w-48"/>
-                    </div>
-                    <div class="flex flex-col w-1/4">
-                        <img src="{{asset('images/portfolio/ca.jpg')}}" alt="Commitment Award"
-                             class="text-center h-auto w-48"/>
-                    </div>
+    @if(config('feature-flags.akhbarmeter-in-media'))
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row items-center space-y-10 md:space-y-0 py-20 space-x-16 rtl:space-x-reverse">
+                <div class="flex flex-col text-4xl leading-10 font-extrabold w-full md:w-1/5 text-center md:text-left">
+                    {{translate('pages.akhbarmeter.featured')}}
                 </div>
-                <div class="flex flex-row space-x-16 items-center rtl:space-x-reverse">
-                    <div class="flex flex-col w-1/4">
-                        <img src="{{asset('images/portfolio/mag2.png')}}" alt="Daily News Egypt"
-                             class="text-center h-auto w-auto"/>
+                <div class="flex flex-col items center space-y-20">
+                    <div class="flex flex-row items-center space-x-16 rtl:space-x-reverse">
+                        <div class="flex flex-col w-1/4">
+                            <img src="{{asset('images/portfolio/mag1.gif')}}" alt="Ich mag meine uni"
+                                 class="text-center h-auto w-48"/>
+                        </div>
+                        <div class="flex flex-col w-1/4">
+                            <img src="{{asset('images/portfolio/wbs.jpg')}}" alt="Willy Brandt School"
+                                 class="text-center h-auto w-48"/>
+                        </div>
+                        <div class="flex flex-col w-1/4">
+                            <img src="{{asset('images/portfolio/ca.jpg')}}" alt="Commitment Award"
+                                 class="text-center h-auto w-48"/>
+                        </div>
                     </div>
-                    <div class="flex flex-col w-1/4">
-                        <img src="{{asset('images/portfolio/mk.png')}}" alt="Macedonia Media Fact Checking"
-                             class="text-center h-auto w-48"/>
+                    <div class="flex flex-row space-x-16 items-center rtl:space-x-reverse">
+                        <div class="flex flex-col w-1/4">
+                            <img src="{{asset('images/portfolio/mag2.png')}}" alt="Daily News Egypt"
+                                 class="text-center h-auto w-auto"/>
+                        </div>
+                        <div class="flex flex-col w-1/4">
+                            <img src="{{asset('images/portfolio/mk.png')}}" alt="Macedonia Media Fact Checking"
+                                 class="text-center h-auto w-48"/>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    @include('partials.support')
+        @include('partials.support')
+    @endif
 @endsection
