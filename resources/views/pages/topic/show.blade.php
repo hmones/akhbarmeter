@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 @if(data_get($topic, 'brief_description_summary'))
-                    <div class="greyContent p-4 mt-4 rounded-md shadow">
+                    <div class="greyContent pl-4 pr-4 mt-4 rounded-md shadow">
                         <div class="p-4">
                             {!! data_get($topic, 'brief_description_summary') !!}
                         </div>

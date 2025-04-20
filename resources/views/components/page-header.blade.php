@@ -1,6 +1,6 @@
 @props(['headline' => '', 'description' => '', 'hideOnMobile' => false])
 
-<div class="container {{$hideOnMobile ? 'hidden md:flex' : 'flex'}} flex-col w-full items-center justify-center mx-auto space-y-4 my-8 md:my-16">
+<div class="container {{$hideOnMobile ? 'hidden md:flex' : 'flex'}} flex-col w-full items-center justify-center mx-auto space-y-4 my-4 md:my-8">
     <div class="flex flex-col">
         <h1 class="text-xl font-extrabold leading-10 md:text-5xl md:tracking-tight">{{$headline}}</h1>
     </div>
