@@ -62,8 +62,8 @@ class Topic extends Model
         'sub_title',
         'description',
         'brief_description_summary',
-        'summary',
-        'legal_statement'
+        'chatbot_summary',
+        'conclusion'
     ];
 
     protected $fillable = [
@@ -71,13 +71,13 @@ class Topic extends Model
         'title',
         'sub_title',
         'slug',
-        'summary',
+        'chatbot_summary',
         'description',
         'brief_description_summary',
         'image',
         'claim_reference',
         'fact_check_reference',
-        'legal_statement',
+        'conclusion',
         'image',
         'author_name',
         'author_avatar',
