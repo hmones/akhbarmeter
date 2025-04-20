@@ -262,5 +262,13 @@
                 }
             });
         });
+        document.addEventListener('DOMContentLoaded', function() {
+            const editorContent = document.querySelector('.editor-content');
+            const links = editorContent.querySelectorAll('a');
+            links.forEach(link => {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+            });
+        });
     </script>
 @endsection
