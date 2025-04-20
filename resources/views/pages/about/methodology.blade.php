@@ -5,8 +5,7 @@
 @endsection
 
 @section('content')
-    <x-page-header :headline="translate('pages.methodology.header')"
-                   :description="translate('pages.methodology.description')"/>
+    <x-page-header :headline="translate('pages.methodology.header')"/>
     <div class="container mx-auto flex flex-col px-2">
         <div class="flex flex-col leading-5 font-normal text-gray-500 md:leading-6">
             {!! translate('pages.methodology.how.details') !!}
