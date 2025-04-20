@@ -70,7 +70,7 @@
                     {{ translate('pages.about.ownerShipAndFinance.header') }}
                 </div>
                 <div class="flex flex-row text-sm md:text-xl font-normal text-gray-500">
-                    {{translate('pages.about.ownerShipAndFinance.description')}}
+                    {!! $description !!}
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ArticleStatisticsController;
 use App\Http\Controllers\AwardController;
@@ -53,7 +54,7 @@ Route::resource('publishers', PublisherController::class)->only('index', 'show')
 Route::post('check-news-article', [CheckNewsController::class, 'store'])->name('check.news.store');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('about', fn () => view('pages.about.main'))->name('about');
+Route::get('about', [AboutUsController::class, 'index'])->name('about');
 Route::redirect('about-us', 'about');
 Route::get('akhbarmeter', fn () => view('pages.about.akhbarmeter'))->name('akhbarmeter');
 Route::get('methodology', fn () => view('pages.about.methodology'))->name('methodology');
