@@ -27,7 +27,6 @@ use Spatie\Honeypot\ProtectAgainstSpam;
 
 Route::get('apply-now/careers/{career?}', [JobApplyController::class, 'index'])->name('career.apply.index');
 Route::get('policies', [PolicyController::class, 'index'])->name('policy.index');
-Route::get('awards', [AwardController::class, 'index'])->name('awards.index');
 Route::get('gallery-images/{topicId}', [GalleryController::class, 'show'])->name('gallery.show');
 Route::get('gallery', [GalleryController::class, 'index'])->name('gallery.index');
 Route::post('apply-now/careers/{career?}', [JobApplyController::class, 'store'])->name('career.apply.store');
