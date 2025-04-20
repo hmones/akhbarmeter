@@ -110,10 +110,10 @@
                                     <small class="text-red-700">{{$errors->first('subject')}}</small>
                                 @endif
                                 <select id="subject" name="subject" class="p-3 h-12 border border-gray-300 rounded mt-1 appearance-none bg-no-repeat bg-[length:1rem] ltr:bg-[center_right_0.5rem] rtl:bg-[center_left_0.5rem] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwb2x5bGluZSBwb2ludHM9IjYgOSAxMiAxNSAxOCA5Ij48L3BvbHlsaW5lPjwvc3ZnPgo=')]">
-                                    <option value="{{ translate('pages.contact.form.generalInquiry') }}">{{ translate('pages.contact.form.selectSubject.generalInquiry') }}</option>
-                                    <option value="{{ translate('pages.contact.form.suggestion') }}">{{ translate('pages.contact.form.suggestion') }}</option>
-                                    <option value="{{ translate('pages.contact.form.correction') }}">{{ translate('pages.contact.form.correction') }}</option>
-                                    <option value="{{ translate('pages.contact.form.complaint') }}">{{ translate('pages.contact.form.complaint') }}</option>
+                                    <option value="{{ translate('pages.contact.form.generalInquiry') }}" {{ old('subject') == translate('pages.contact.form.generalInquiry') ? 'selected' : '' }}>{{ translate('pages.contact.form.selectSubject.generalInquiry') }}</option>
+                                    <option value="{{ translate('pages.contact.form.suggestion') }}" {{ old('subject') == translate('pages.contact.form.suggestion') ? 'selected' : '' }}>{{ translate('pages.contact.form.suggestion') }}</option>
+                                    <option value="{{ translate('pages.contact.form.correction') }}" {{ old('subject') == translate('pages.contact.form.correction') ? 'selected' : '' }}>{{ translate('pages.contact.form.correction') }}</option>
+                                    <option value="{{ translate('pages.contact.form.complaint') }}" {{ old('subject') == translate('pages.contact.form.complaint') ? 'selected' : '' }}>{{ translate('pages.contact.form.complaint') }}</option>
                                 </select>
                             </div>
                         </div>
@@ -123,7 +123,7 @@
                                 @if($errors->first('pageUrl'))
                                     <small class="text-red-700">{{$errors->first('pageUrl')}}</small>
                                 @endif
-                                <input type="text" id="pageUrl" name="pageUrl" class="p-3 h-12 border border-gray-300 rounded mt-1"/>
+                                <input type="url" id="pageUrl" name="pageUrl" value="{{ old('pageUrl') }}" class="p-3 h-12 border border-gray-300 rounded mt-1"/>
                             </div>
                         </div>
                         <div class="flex flex-row w-auto mt-4 space-x-8">
@@ -136,7 +136,7 @@
                                     <small class="text-red-700">{{$errors->first('message')}}</small>
                                 @endif
                                 <textarea rows="5" id="message" name="message"
-                                          class="p-3 border border-gray-300 rounded mt-1"> </textarea>
+                                          class="p-3 border border-gray-300 rounded mt-1">{{ old('message') }}</textarea>
                             </div>
                         </div>
                         <div class="flex flex-row justify-content-end mt-4">
@@ -151,15 +151,25 @@
     </div>
 
     @include('partials.support')
+
     <script>
-        document.getElementById('subject').addEventListener('change', function() {
+        function toggleUrlField() {
             const urlField = document.getElementById('urlField');
-            const selectedOption = this.options[this.selectedIndex].index;
-            if (selectedOption === 1 || selectedOption === 2) {
+            const urlInput = document.getElementById('pageUrl');
+            const subjectSelect = document.getElementById('subject');
+            const selectedOption = subjectSelect.options[subjectSelect.selectedIndex].index;
+            const hasValidationError = @json($errors->has('pageUrl'));
+
+            if (hasValidationError || selectedOption === 1 || selectedOption === 2) {
                 urlField.classList.remove('hidden');
+                urlInput.setAttribute('required', 'required');
             } else {
                 urlField.classList.add('hidden');
+                urlInput.removeAttribute('required');
             }
-        });
+        }
+
+        document.addEventListener('DOMContentLoaded', toggleUrlField);
+        document.getElementById('subject').addEventListener('change', toggleUrlField);
     </script>
 @endsection
