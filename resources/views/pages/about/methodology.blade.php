@@ -7,14 +7,11 @@
 @section('content')
     <x-page-header :headline="translate('pages.methodology.header')"
                    :description="translate('pages.methodology.description')"/>
-
-    <div class="container mx-auto flex flex-col space-y-2 4 md:space-y-10 px-2">
-        <div
-            class="flex flex-col leading-5 font-normal text-gray-500 md:leading-6 space-y-6">
+    <div class="container mx-auto flex flex-col px-2">
+        <div class="flex flex-col leading-5 font-normal text-gray-500 md:leading-6 space-y-6">
             {!! translate('pages.methodology.how.details') !!}
         </div>
     </div>
-
     <div class="p-4 bg-indigo-50 md:container md:mx-auto md:rounded-xl md:flex items-center justify-between">
         <div class="flex flex-col space-y-4 md:space-y-0 md:p-10">
             <div class="flex flex-col">
