@@ -55,6 +55,24 @@
                     <x-learn-more href="{{route('team-member.index')}}" />
                 </div>
                 <div class="flex flex-col md:w-1/3 space-y-6">
+                    <div class="flex flex-row bg-gray-100 text-black rounded p-4 items-center space-x-4">
+                        <div class="flex-shrink-0">
+                            <svg class="w-12 h-12 md:w-16 md:h-16" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="20" y="25" width="60" height="50" rx="10" fill="#DBEAFE"/>
+                                <path d="M35 50h30" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M35 60h30" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+                                <circle cx="50" cy="40" r="5" fill="#2563EB"/>
+                                <path d="M40 75h20" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M45 80h10" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="flex flex-col justify-center space-y-2">
+                            <div class="text-lg font-semibold md:text-2xl md:font-bold">
+                                {{ translate('pages.about.careers.header') }}
+                            </div>
+                            <x-learn-more href="{{ route('careers.index') }}" />
+                        </div>
+                    </div>
                     <div class="flex flex-row bg-gray-100 text-black rounded p-4">
                         <div class="flex flex-col space-y-2 md:space-y-12">
                             <div class="flex flex-row text-lg leading-8 font-semibold md:text-4xl md:leading-10 md:font-extrabold">
@@ -66,9 +84,6 @@
                 </div>
             </div>
             <div class="flex flex-col bg-gray-100 mt-4 text-black rounded p-4 space-y-2 md:space-y-4 text-center">
-                <div class="flex flex-row text-lg leading-8 font-semibold md:text-4xl md:leading-10 md:font-extrabold">
-                    {{ translate('pages.about.ownerShipAndFinance.header') }}
-                </div>
                 <div class="flex flex-row text-sm md:text-xl font-normal text-gray-500">
                     {!! $description !!}
                 </div>
