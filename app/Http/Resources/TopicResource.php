@@ -24,7 +24,7 @@ class TopicResource extends JsonResource
             'brief_description_summary' => $this->brief_description_summary,
             'claim_reference'           => $this->claim_reference,
             'fact_check_reference'      => $this->fact_check_reference,
-            'legal_statement'           => $this->legal_statement,
+            'conclusion'                => $this->conclusion,
             'image'                     => $this->image,
             'author_name'               => $this->author_name,
             'author_avatar'             => $this->author_avatar,

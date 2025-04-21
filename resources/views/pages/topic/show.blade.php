@@ -59,11 +59,11 @@
                     </style>
                     {!! data_get($topic, 'description') !!}
                 </div>
-                @if(data_get($topic, 'legal_statement'))
+                @if(data_get($topic, 'conclusion'))
                     <div class="greyContent p-4 rounded-md shadow mb-3">
                         <h3 class="mb-5">{{ translate('pages.topic.legalStatement') }}</h3>
                         <p class="text-[#000000]">
-                            {!! data_get($topic, 'legal_statement') !!}
+                            {!! data_get($topic, 'conclusion') !!}
                         </p>
                     </div>
                 @endif
