@@ -12,12 +12,12 @@ class TopicObserver
 {
     public function created(Topic $topic): void
     {
-        if ($topic->type === data_get(Topic::TYPES, 'fakeNews')) {
+        if ($topic->type === 'fakeNews') {
             $claimDescriptionId = $this->createClaimDescription($topic);
             $this->createClaimFactCheck($claimDescriptionId, $topic);
         }
 
-        if (in_array($topic->type, [data_get(Topic::TYPES, 'explainer'), data_get(Topic::TYPES, 'factSheet')])) {
+        if (in_array($topic->type, ['explainer', 'factSheet'])) {
             $this->createExplainerAndFactSheet($topic);
         }
     }
