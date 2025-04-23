@@ -160,10 +160,10 @@
             <div class="space-y-6">
                 <!-- Card 1 -->
                 <div class="bg-white shadow-md rounded-lg p-6">
+                    <h2 class="text-lg text-center pt-2 font-bold text-gray-900">{{ translate('pages.topic.requestToFactCheckHeader') }}</h2>
                     <div class="flex justify-center">
                         <img src="{{ asset('images/topic/Factchecking_request.png') }}" class="w-20 lg:w-32 object-contain" alt="Factchecking Request" />
                     </div>
-                    <h3 class="text-lg pt-2 font-bold text-gray-900">{{ translate('pages.topic.requestToFactCheckHeader') }}</h3>
                     <p class="mt-2 text-sm text-gray-600">
                         {{ translate('pages.topic.requestToFactCheckMessage') }}
                     </p>
@@ -173,10 +173,10 @@
                 </div>
                 <!-- Card 2 -->
                 <div class="bg-white shadow-md rounded-lg p-6">
+                    <h2 class="text-lg text-center pt-2 font-bold text-gray-900">{{ translate('pages.topic.joinWhatsAppChatBot.heading') }}</h2>
                     <div class="flex justify-center">
                         <img src="{{ asset('images/topic/WhatsApp_chatbot.png') }}" class="w-20 lg:w-32 object-contain" alt="Factchecking Request" />
                     </div>
-                    <h3 class="text-lg pt-2 font-bold text-gray-900">{{ translate('pages.topic.joinWhatsAppChatBot.heading') }}</h3>
                     <p class="mt-2 text-sm text-gray-600">
                         {{ translate('pages.topic.joinWhatsAppChatBot.bodyText') }}
                     </p>
@@ -188,10 +188,10 @@
                 </div>
 
                 <div class="bg-white shadow-md rounded-lg p-6">
+                    <h2 class="text-lg text-center pt-2 font-bold text-gray-900">{{ translate('pages.topic.joinWhatsAppChatChannel.heading') }}</h2>
                     <div class="flex justify-center">
                         <img src="{{ asset('images/topic/WhatsApp_Channel.png') }}" class="w-20 lg:w-32 object-contain" alt="Factchecking Request" />
                     </div>
-                    <h3 class="text-lg pt-2 font-bold text-gray-900">{{ translate('pages.topic.joinWhatsAppChatChannel.heading') }}</h3>
                     <p class="mt-2 text-sm text-gray-600">
                         {{ translate('pages.topic.joinWhatsAppChatChannel.bodyText') }}
                     </p>
@@ -204,10 +204,10 @@
 
                 <!-- Card 3 -->
                 <div class="bg-white shadow-md rounded-lg p-6">
+                    <h2 class="text-lg text-center pt-2 font-bold text-gray-900">{{ translate('pages.topic.requestCorrectionHeader') }}</h2>
                     <div class="flex justify-center">
                         <img src="{{ asset('images/topic/Correction_request.png') }}" class="w-20 lg:w-32 object-contain" alt="Factchecking Request" />
                     </div>
-                    <h3 class="text-lg pt-2 font-bold text-gray-900">{{ translate('pages.topic.requestCorrectionHeader') }}</h3>
                     <p class="mt-2 text-sm text-gray-600">
                         {{ translate('pages.topic.requestCorrectionText') }}
                         <a href="{{ route('contact.index') }}" class="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition">
