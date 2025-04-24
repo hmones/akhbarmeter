@@ -5,17 +5,6 @@
 @endsection
 
 @section('content')
-    <div class="container hidden lg:flex flex-col w-full items-center justify-center mx-auto space-y-4 my-16">
-        <div class="flex flex-col">
-            <h1 class="text-5xl leading-10 font-extrabold tracking-tight">{{translate('pages.careers.header')}}</h1>
-        </div>
-        <div class="flex-initial w-1/3 flex-col">
-            <p class="text-lg text-center leading-6 font-normal text-gray-500">
-                {{translate('pages.careers.description')}}
-            </p>
-        </div>
-    </div>
-
     <div class="lg:container mx-auto">
         <div class="flex flex-col lg:flex-row justify-center lg:mx-20 space-y4 lg:my-10 lg:shadow-lg">
             <div class="flex-col lg:flex-row lg:w-1/3 text-white bg-gradient-to-r from-blue-700 to-cyan-700 lg:to-blue-700">
