@@ -7,11 +7,7 @@
 @section('content')
     <div class="container mx-auto px-4 py-10">
         <div class="text-center mb-8 max-w-2xl mx-auto">
-            @if(count($careers) > 0)
-                <h1 class="text-4xl font-bold mb-4">{{ translate('pages.careers.jobs.header') }}</h1>
-            @else
-                <h1 class="text-4xl font-bold mb-4">{{ translate('pages.careers.noJobs.header') }}</h1>
-            @endif
+            <h1 class="text-4xl font-bold mb-4">{{ translate('pages.careers.jobs.header') }}</h1>
             <p class="text-gray-600">
                 @if(count($careers) > 0)
                     {{ translate('pages.careers.description') }}
