@@ -7,7 +7,7 @@
                 <!-- Even Larger Badge Image -->
                 @if($topic->type === 'fakeNews')
                     @if($topic->fake_news_badge === 'notTrue')
-                        <img src="{{ asset('images/topic/badges/fake-news/Untrue.png') }}" alt="Badge" class="absolute top-4 left-4 w-21 h-18">
+                        <img src="{{ asset('images/topic/badges/fake-news/Untrue.png') }}" alt="Badge" class="absolute top-4 left-4 w-20 h-18">
                     @elseif($topic->fake_news_badge === 'halfTrue')
                         <img src="{{ asset('images/topic/badges/fake-news/Half-ture.png') }}" alt="Badge" class="absolute top-4 left-4 w-20 h-18">
                     @elseif($topic->fake_news_badge === 'misleadingContext')
