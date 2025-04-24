@@ -171,7 +171,7 @@
                 </div>
                 <div class="flex flex-row justify-between items-center">
                     <img src="{{asset('images/partners/7.png')}}" class="w-20 lg:w-32" alt="Partner 8"/>
-                    <img src="{{asset('images/partners/AFCN-AR.png')}}" class="w-20 lg:w-32" alt="Partner 7"/>
+                    <img src="{{asset('images/partners/AFCN_Logo.png')}}" class="w-20 lg:w-32" alt="Partner 7"/>
                     <img src="{{asset('images/partners/IFCN.png')}}" class="w-20 lg:w-32" alt="Partner 9"/>
                 </div>
             </div>
