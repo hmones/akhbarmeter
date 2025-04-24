@@ -175,7 +175,7 @@
                 <div class="bg-white shadow-md rounded-lg p-6">
                     <h2 class="text-lg text-center pt-2 font-bold text-gray-900">{{ translate('pages.topic.joinWhatsAppChatBot.heading') }}</h2>
                     <div class="flex justify-center">
-                        <img src="{{ asset('images/topic/WhatsApp_chatbot.png') }}" class="w-20 lg:w-32 object-contain" alt="Factchecking Request" />
+                        <img src="{{ asset('images/topic/WhatsApp_chatbot.png') }}" class="w-22 lg:w-32 object-contain" alt="Factchecking Request" />
                     </div>
                     <p class="mt-2 text-sm text-gray-600">
                         {{ translate('pages.topic.joinWhatsAppChatBot.bodyText') }}
