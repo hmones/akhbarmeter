@@ -4,9 +4,9 @@
     <div class="container mx-auto">
         <div class="flex flex-row justify-between">
             <div class="flex flex-row space-x-9 rtl:space-x-reverse">
-                @foreach(translate('navigation.top') as $item)
+                {{--@foreach(translate('navigation.top') as $item)
                     <a href="{{data_get($item, 'link')}}">{{data_get($item, 'text')}}</a>
-                @endforeach
+                @endforeach--}}
             </div>
             <div class="flex flex-row space-x-4 rtl:space-x-reverse items-center">
                 @include('partials.components.social-media-links')
