@@ -16,7 +16,7 @@ class GalleryRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'thumbnail' => 'file|mimes:jpeg,png,jpg|max:2048',
+            'thumbnail' => 'required|file|mimes:jpeg,png,jpg|max:2048',
             'images' => 'required|array',
             'images.*' => 'file|mimes:jpeg,png,jpg|max:2048',
         ];
