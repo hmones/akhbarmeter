@@ -18,6 +18,7 @@
     },
     "dependencies": {
         "bootstrap": "^5.2.2",
-        "fullpage-image-slider": "^1.15.0"
+        "fullpage-image-slider": "^1.15.0",
+        "swiper": "^11.2.6"
     }
 }
