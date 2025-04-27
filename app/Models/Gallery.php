@@ -44,7 +44,7 @@ class Gallery extends Model
         foreach ($images as $image) {
             if (is_file($image)) {
                 $filename = uniqid() . '_' . $image->getClientOriginalName();
-                $path = Storage::disk('public')->putFileAs('v3.0/gallery/images', $image, $filename);
+                $path = Storage::putFileAs('v3.0/gallery/images', $image, $filename, 'public');
                 $imagePaths[] = $path;
             }
         }

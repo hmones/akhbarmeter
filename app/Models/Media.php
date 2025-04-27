@@ -23,6 +23,6 @@ class Media extends Model
 
     public function setImageAttribute($value): void
     {
-        $this->attributes['image'] = Storage::putFile('media', $value, config('filesystems.default'), 'public');
+        $this->attributes['image'] = Storage::putFile('media', $value, 'public');
     }
 }
