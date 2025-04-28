@@ -19,7 +19,7 @@ class HomeController extends Controller
         $publications = Publication::orderBy('created_at', 'desc')->limit(3)->get();
         $video = Video::latest()->first();
         $fakeNews = Topic::fake()->latest()->limit(3)->get();
-        $scores = PublisherScore::with('publisher')->wherePeriod(PublisherScore::PERIOD_MONTH)
+        /*$scores = PublisherScore::with('publisher')->wherePeriod(PublisherScore::PERIOD_MONTH)
             ->orderBy('to', 'desc')
             ->limit(10)
             ->get()
@@ -28,7 +28,7 @@ class HomeController extends Controller
         $worstThree = $scores->pop(3);
         $scores->pop(2);
         $bestThree = $scores->pop(3);
-        $best = $scores->pop();
+        $best = $scores->pop();*/
         $trendingHashtags = cache()->rememberForever('tags', fn () => Tag::select('name')->pluck('name')->flatten()->unique());
 
         return view(
@@ -39,10 +39,6 @@ class HomeController extends Controller
                 'publications',
                 'video',
                 'fakeNews',
-                'best',
-                'bestThree',
-                'worst',
-                'worstThree',
                 'trendingHashtags',
             ])
         );

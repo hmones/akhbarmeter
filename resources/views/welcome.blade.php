@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <x-home.sections.top :best="$best" :worst="$worst" :fakeNews="$fakeNews" :articles="$articles"/>
+    <x-home.sections.new-top :fakeNews="$fakeNews" :articles="$articles"/>
 
     <!-- Trending hashtags -->
     <section id="trends" class="border-b-2 border-solid border-gray-200">
