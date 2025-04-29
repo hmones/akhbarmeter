@@ -4,15 +4,14 @@
         <div class="flex flex-col-reverse lg:flex-row w-full lg:space-x-6 rtl:space-x-reverse">
             <div class="flex flex-col space-y-4 lg:w-1/3">
                 <div class="text-white text-xl leading-7 font-bold lg:text-4xl lg:leading-10 lg:font-extrabold mt-6 lg:mt-0">
-                    {{translate('pages.home.top-section.ranking.header')}}
+                    {{ translate('pages.home.top-section.ranking.header') }}
                 </div>
-                <div class="flex flex-row space-x-4 w-full rtl:space-x-reverse">
-                    <div class="flex flex-col w-1/2 bg-white rounded-lg p-6">
-                        <x-home.sections.topic-card :title="translate('components.home.top.explainer')" :type="'explainer'"/>
+                <div class="flex flex-col space-y-4 w-full">
+                    <div class="flex flex-col bg-white rounded-lg p-3 w-full">
+                        <x-home.sections.topic-card :title="translate('components.home.top.factSheet')" :type="'factSheet'" />
                     </div>
-                    <div class="flex flex-col w-1/2 bg-white rounded-lg p-6">
-                        <x-home.sections.topic-card :title="translate('components.home.top.factSheet')"  :type="'factSheet'"/>
-                        {{--                        <x-home.rank :score="$worst" :title="translate('components.home.rank.worst')"/>--}}
+                    <div class="flex flex-col bg-white rounded-lg p-3 w-full">
+                        <x-home.sections.topic-card :title="translate('components.home.top.explainer')" :type="'explainer'" />
                     </div>
                 </div>
             </div>
