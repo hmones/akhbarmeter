@@ -48,6 +48,10 @@
                 border-radius: 8px;
                 cursor: pointer;
             }
+
+            .thumbnail {
+                padding: 5px;
+            }
             /* Responsive adjustments */
             @media (max-width: 1024px) {
                 .gallery-grid {
