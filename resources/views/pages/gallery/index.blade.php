@@ -76,14 +76,14 @@
                                 <div class="mb-4 text-black">
                                     <h2 class="text-2xl font-bold">{{ $record->title }}</h2>
                                 </div>
-                                <div class="mb-4 text-black editor-content">
-                                    {!! $record->description !!}
-                                </div>
                                 <!-- Image Grid -->
                                 <div class="gallery-grid">
                                     @foreach($record->images ?? [] as $key => $image)
                                         <img src="{{ Storage::url($image) }}" alt="{{ $record->title }}" data-gallery-id="{{ $loop->index }}" data-image-index="{{ $key }}">
                                     @endforeach
+                                </div>
+                                <div class="mb-4 text-black editor-content pt-2">
+                                    {!! $record->description !!}
                                 </div>
                             </div>
                         </div>
