@@ -17,8 +17,8 @@ class GalleryRequest extends FormRequest
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'thumbnail' => 'required|file|mimes:jpeg,png,jpg|max:2048',
-            'images' => 'required|array',
-            'images.*' => 'file|mimes:jpeg,png,jpg|max:2048',
+            'images' => 'required|array|min:1',
+            'images.*.image' => 'file|mimes:jpeg,png,jpg|max:2048',
         ];
     }
 }

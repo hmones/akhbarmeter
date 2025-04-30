@@ -42,6 +42,7 @@ class Gallery extends Model
 
         $imagePaths = [];
         foreach ($images as $image) {
+            $image = data_get($image, 'image');
             if (is_file($image)) {
                 $filename = uniqid() . '_' . $image->getClientOriginalName();
                 $path = Storage::putFileAs('v3.0/gallery/images', $image, $filename, 'public');

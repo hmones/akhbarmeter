@@ -46,10 +46,17 @@ class GalleryCrudController extends CrudController
             ->type('upload')
             ->upload(true);
 
-        CRUD::field('images')
-            ->type('upload_multiple')
+        $this->crud->field('images')
+            ->type('repeatable')
             ->label('Images')
-            ->upload(true);
+            ->fields([
+                [
+                    'name' => 'image',
+                    'label' => 'Image File',
+                    'type' => 'upload',
+                    'upload' => true
+                ],
+            ]);
     }
 
     protected function setupUpdateOperation(): void
