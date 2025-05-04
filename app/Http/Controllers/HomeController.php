@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Gallery;
 use App\Models\Publication;
 use App\Models\PublisherScore;
 use App\Models\Tag;
@@ -18,17 +19,8 @@ class HomeController extends Controller
         $topics = Topic::whereNot('type', Topic::FAKE_NEWS)->orderBy('created_at', 'desc')->limit(3)->get();
         $publications = Publication::orderBy('created_at', 'desc')->limit(3)->get();
         $video = Video::latest()->first();
-        $fakeNews = Topic::fake()->latest()->limit(3)->get();
-        /*$scores = PublisherScore::with('publisher')->wherePeriod(PublisherScore::PERIOD_MONTH)
-            ->orderBy('to', 'desc')
-            ->limit(10)
-            ->get()
-            ->sortBy('rank');
-        $worst = $scores->pop();
-        $worstThree = $scores->pop(3);
-        $scores->pop(2);
-        $bestThree = $scores->pop(3);
-        $best = $scores->pop();*/
+        $fakeNews = Topic::fake()->orderBy('id', 'DESC')->limit(3)->get();
+        $gallery = Gallery::orderBy('id', 'DESC')->limit(3)->get();
         $trendingHashtags = cache()->rememberForever('tags', fn () => Tag::select('name')->pluck('name')->flatten()->unique());
 
         return view(
@@ -36,6 +28,7 @@ class HomeController extends Controller
             compact([
                 'articles',
                 'topics',
+                'gallery',
                 'publications',
                 'video',
                 'fakeNews',

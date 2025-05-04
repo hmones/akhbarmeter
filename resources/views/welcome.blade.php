@@ -52,8 +52,7 @@
         <x-page-header :headline="translate('pages.topics.header')"
                        :description="translate('pages.topics.description')"/>
         <div class="container mx-auto mb-10 space-y-10">
-            <div
-                class="flex flex-col xl:flex-row w-full items-start items-stretch justify-left mx-auto space-y-10 xl:space-y-0">
+            <div class="flex flex-col xl:flex-row w-full items-start items-stretch justify-left mx-auto space-y-10 xl:space-y-0">
                 @foreach($topics as $record)
                     <div class="flex flex-col xl:flex-row w-full xl:w-1/3 px-2">
                         <x-cards.topic :topic="$record"/>
@@ -61,6 +60,21 @@
                 @endforeach
             </div>
             <x-view-all href="{{route('topics.index')}}"/>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <x-page-header :headline="translate('pages.gallery.header')"
+                       :description="translate('pages.gallery.description')"/>
+        <div class="container mx-auto mb-10 space-y-10">
+            <div class="flex flex-col xl:flex-row w-full items-start items-stretch justify-left mx-auto space-y-10 xl:space-y-0">
+                @foreach($gallery as $record)
+                    <div class="flex flex-col xl:flex-row w-full xl:w-1/3 px-2">
+                        <x-cards.gallery :record="$record" :index="$loop->index" />
+                    </div>
+                @endforeach
+            </div>
+            <x-view-all href="{{route('gallery.index')}}"/>
         </div>
     </section>
 
