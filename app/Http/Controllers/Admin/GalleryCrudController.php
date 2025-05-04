@@ -8,13 +8,11 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
-use Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 class GalleryCrudController extends CrudController
 {
-    use ListOperation, CreateOperation, UpdateOperation, DeleteOperation;
+    use ListOperation, CreateOperation, DeleteOperation;
 
     public function setup(): void
     {
@@ -46,7 +44,7 @@ class GalleryCrudController extends CrudController
             ->type('upload')
             ->upload(true);
 
-        $this->crud->field('images')
+        CRUD::field('images')
             ->type('repeatable')
             ->label('Images')
             ->fields([

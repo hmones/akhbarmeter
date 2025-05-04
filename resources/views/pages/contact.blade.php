@@ -150,8 +150,6 @@
         </div>
     </div>
 
-    @include('partials.support')
-
     <script>
         function toggleUrlField() {
             const urlField = document.getElementById('urlField');
