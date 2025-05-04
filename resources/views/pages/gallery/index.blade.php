@@ -123,7 +123,7 @@
                         <button id="close-gallery-{{ $loop->index }}" class="close-gallery-modal absolute top-4 right-4 text-black text-3xl z-1000">×</button>
                         <div class="gallery-grid-container pt-5">
                             <div class="mb-4 text-black">
-                                <h2 class="text-2xl font-bold">{{ $record->title }}</h2>
+                                <h2 class="text-2xl text-center font-bold">{{ $record->title }}</h2>
                             </div>
                             <div class="gallery-grid">
                                 <img src="{{ Storage::url($record->thumbnail) }}" alt="{{ $record->title }}" data-gallery-id="{{ $loop->index }}" data-image-index="0">
