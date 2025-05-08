@@ -94,7 +94,13 @@
                 </div>
             </div>
             <div class="flex flex-col bg-gray-100 mt-4 text-black rounded p-4 space-y-2 md:space-y-4">
-                <div class="editor-content text-sm md:text-xl font-normal text-gray-500">
+                <div class="editor-content text-sm md:text-xl font-normal">
+                    <style>
+                        .editor-content ul {
+                            padding-left: 30px;
+                            padding-right: 30px;
+                        }
+                    </style>
                     {!! $description !!}
                 </div>
             </div>
