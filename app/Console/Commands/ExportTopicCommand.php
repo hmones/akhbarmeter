@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\TeamMember;
 use App\Models\Topic;
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
@@ -13,18 +14,15 @@ class ExportTopicCommand extends Command
     protected $signature = 'email:topic-export';
     protected $description = 'temp command to export topic data';
 
-    public function handle()
+    public function handle(): void
     {
         $filename = 'topics_export_' . now()->format('Ymd_His') . '.csv';
         $path = 'exports/' . $filename;
-
-        $csvData = "id,team_member_id\n";
-
-        // Fetch topics and append to CSV data
-        Topic::select('id', 'team_member_id')
+        $csvData = "id,team_member_id,title\n";
+        Topic::select('id', 'team_member_id', 'title')
             ->chunk(100, function ($topics) use (&$csvData) {
                 foreach ($topics as $topic) {
-                    $csvData .= "{$topic->id},{$topic->team_member_id}\n";
+                    $csvData .= "{$topic->id},{$topic->team_member_id}, {$topic->title}\n";
                 }
             });
 
@@ -42,9 +40,8 @@ class ExportTopicCommand extends Command
 
             $this->info('CSV file has been exported and emailed successfully.');
             Storage::delete($path);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->error('Failed to send email: ' . $e->getMessage());
-            // Clean up in case of failure
             Storage::delete($path);
         }
     }
