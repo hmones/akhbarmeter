@@ -31,8 +31,8 @@ class ExportTopicCommand extends Command
         Storage::disk(config('filesystems.default'))->put($path, $csvData);
         try {
             Mail::raw('Please find the exported topics data attached.', function ($message) use ($path, $filename) {
-                $message->to(TeamMember::find(1))
-                    ->bcc(TeamMember::find(12))
+                $message->to(TeamMember::find(1)->email)
+                    ->bcc(TeamMember::find(12)->email)
                     ->subject('Topics Data Export')
                     ->attach(Storage::disk(config('filesystems.default'))->path($path), [
                         'as' => $filename,
