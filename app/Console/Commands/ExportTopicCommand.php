@@ -17,7 +17,7 @@ class ExportTopicCommand extends Command
     public function handle(): void
     {
         $filename = 'topics_export_' . now()->format('Ymd_His') . '.csv';
-        $path = 'exports/' . $filename;
+        $path = 'uploades/' . $filename;
         $csvData = "id,team_member_id,title\n";
         Topic::select('id', 'team_member_id','title')
             ->chunk(100, function ($topics) use (&$csvData) {
