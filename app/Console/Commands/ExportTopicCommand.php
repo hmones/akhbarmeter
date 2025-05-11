@@ -27,15 +27,16 @@ class ExportTopicCommand extends Command
             });
         Storage::put($path, $csvData, 'public');
         try {
-            Mail::raw('Please find the exported topics data attached.', function ($message) use ($path, $filename) {
-                $message->to(TeamMember::find(1)->email)
-                    ->bcc(TeamMember::find(12)->email)
-                    ->subject('Topics Data Export')
-                    ->attach(Storage::path($path), [
-                        'as' => $filename,
-                        'mime' => 'text/csv',
-                    ]);
-            });
+//            Mail::raw('Please find the exported topics data attached.', function ($message) use ($path, $filename) {
+//                $message->to(TeamMember::find(1)->email)
+//                    ->bcc(TeamMember::find(12)->email)
+//                    ->subject('Topics Data Export')
+//                    ->attachData(Storage::get($path), [
+//                        'as' => $filename,
+//                        'mime' => 'text/csv',
+//                    ]);
+//            });
+//            Mail::raw('Please find the exported topics data attached.', function ($message) use ($path, $filename) {$message->to(TeamMember::find(1)->email)->bcc(TeamMember::find(12)->email)->subject('Topics Data Export')->attachData(Storage::get('uploades/topics_export_20250511_183623.csv'), $filename, ['mime' => 'text/csv']);});
 
             $this->info('CSV file has been exported and emailed successfully.');
             Storage::delete($path);
