@@ -5,9 +5,7 @@
 @endsection
 
 @section('content')
-    <x-page-header :headline="translate('pages.policies.header')"
-                   :description="translate('pages.policies.description')"/>
-
+    <x-page-header :headline="translate('pages.policies.header')"/>
     <div class="container mx-auto flex flex-col space-y-2 md:space-y-10 px-2 py-10">
         <div class="text-lg space-y-4 pt-2 pb-6 editor-content">
             {!! $description !!}

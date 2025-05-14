@@ -11,7 +11,9 @@ class GalleryController extends Controller
 {
     public function index(): View
     {
-        $gallery = Gallery::select('title', 'description', 'thumbnail', 'images')->orderBy('id', 'desc')->paginate(9);
+        $gallery = Gallery::select('title', 'description', 'thumbnail', 'images', 'published_date')
+            ->orderBy('id', 'desc')
+            ->paginate(9);
 
         return view('pages.gallery.index', compact('gallery'));
     }
