@@ -25,6 +25,7 @@ class GalleryCrudController extends CrudController
     {
         CRUD::column('title');
         CRUD::column('description');
+        CRUD::column('published_date');
         CRUD::column('thumbnail');
     }
 
@@ -55,6 +56,11 @@ class GalleryCrudController extends CrudController
                     'upload' => true
                 ],
             ]);
+
+        Crud::field('published_date')
+            ->type('date')
+            ->label('Published Date')
+            ->default(today());
     }
 
     protected function setupUpdateOperation(): void

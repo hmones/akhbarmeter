@@ -17,6 +17,7 @@ class GalleryRequest extends FormRequest
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'thumbnail' => 'required|file|mimes:jpeg,png,jpg|max:2048',
+            'published_date' => 'required|date|date_format:Y-m-d',
             'images' => 'required|array|min:1',
             'images.*.image' => 'required|file|mimes:jpeg,png,jpg|max:2048',
         ];

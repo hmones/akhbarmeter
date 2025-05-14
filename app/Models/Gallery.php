@@ -20,7 +20,8 @@ class Gallery extends Model
         'title',
         'description',
         'thumbnail',
-        'images'
+        'images',
+        'published_date'
     ];
 
     protected $casts = [
