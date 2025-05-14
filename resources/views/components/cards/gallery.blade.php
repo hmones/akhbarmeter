@@ -20,6 +20,9 @@
             <img src="{{ Storage::url($record->thumbnail) }}" alt="{{ $record->title }}" data-gallery-id="{{ $index }}" data-image-index="0" class="w-[520px] object-cover rounded-lg cursor-pointer">
         </div>
         <div class="mb-4 text-black pt-2">
+            {{ $record->published_date }}
+        </div>
+        <div class="mb-4 text-black pt-2">
             {!! $record->description !!}
         </div>
     </div>
