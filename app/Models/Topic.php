@@ -56,6 +56,13 @@ class Topic extends Model
         'true'              => 'True'
     ];
 
+    const FAKE_NEWS_BADGES_MAPPING = [
+        'false'          => 'notTrue',
+        'in_progress'    => 'halfTrue',
+        'not_applicable' => 'misleadingContext',
+        'undetermined'   => 'unproven',
+        'verified'       => 'true'
+    ];
 
     public $translatable = [
         'title',
