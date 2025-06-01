@@ -6,7 +6,7 @@ use App\Models\Topic;
 use Exception;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class TopicObserver
 {
@@ -59,40 +59,38 @@ class TopicObserver
     private function createProjectMedia(Topic $topic): void
     {
         $query = <<<'GRAPHQL'
-            mutation CreateProjectMedia($input: CreateProjectMediaInput!) {
-                createProjectMedia(input: $input) {
-                    project_media {
-                        id
-                        dbid
-                        title
-                        annotation(annotation_type: "fact_check") {
-                            data
-                        }
-                        tags(first: 10) {
-                            edges {
-                                node {
-                                    tag
+                mutation CreateProjectMedia($input: CreateProjectMediaInput!) {
+                    createProjectMedia(input: $input) {
+                        project_media {
+                            id
+                            full_url
+                            claim_description {
+                                fact_check {
+                                    id
+                                    title
+                                    summary
+                                    url
+                                    language
                                 }
                             }
                         }
                     }
                 }
-            }
             GRAPHQL;
 
         $variables = [
             'input' => [
-                'url'                   => route('topics.show', $topic->id),
+                'media_type'            => 'Blank',
                 'set_claim_description' => $topic->title,
-                'set_fact_check'        => json_encode([
-                    'title'   => $topic->title,
-                    'summary' => $topic->chatbot_summary,
-                    'url'     => route('topics.show', $topic->id),
-                    'status'  => data_get(Topic::FAKE_NEWS_BADGES_MAPPING, $topic->fake_news_badge),
-                ]),
-                'set_tags'              => json_encode($topic->tags->pluck('name')->toArray()),
-                'set_status'            => 'not_applicable',
-            ]
+                'set_status'            => data_get(Topic::FAKE_NEWS_BADGES_MAPPING, $topic->fake_news_badge),
+                'set_tags'              => $topic->tags->pluck('name')->toArray(),
+                'set_fact_check'        => [
+                    'title'          => $topic->title,
+                    'summary'        => Str::of($topic->chatbot_summary)->stripTags()->toString(),
+                    'publish_report' => true,
+                    'url'            => route('topics.show', $topic->id)
+                ],
+            ],
         ];
 
         $response = $this->makeRequest($query, $variables);
