@@ -17,30 +17,39 @@ class CheckMediaCommand extends Command
 
     public function handle(): void
     {
-        $exportedIds = Cache::get('exported_topic_ids');
-        $exportedIds = $exportedIds ?: [];
+        $exportedIds = Cache::get('exported_topic_ids', []);
+        $failedIds = Cache::get('failed_topic_ids', []);
+
         Topic::where('type', 'fakeNews')
             ->whereNotIn('id', $exportedIds)
-            ->chunk(100, function ($topics) use ($exportedIds) {
+            ->chunk(100, function ($topics) use (&$exportedIds, &$failedIds) {
                 foreach ($topics as $topic) {
-                    $this->createProjectMedia($topic);
-                    $exportedIds = array_merge($exportedIds, [$topic->id]);
-                    Cache::forever('exported_topic_ids', $exportedIds);
+                    if ($this->createProjectMedia($topic)) {
+                        $exportedIds[] = $topic->id;
+                        Cache::forever('exported_topic_ids', $exportedIds);
+                    } else {
+                        $failedIds[] = $topic->id;
+                        Cache::forever('failed_topic_ids', $failedIds);
+                    }
                 }
             });
 
         Topic::whereIn('type', ['explainer', 'factSheet'])
             ->whereNotIn('id', $exportedIds)
-            ->chunk(100, function ($topics) use ($exportedIds) {
+            ->chunk(100, function ($topics) use (&$exportedIds, &$failedIds) {
                 foreach ($topics as $topic) {
-                    $this->createExplainerAndFactSheet($topic);
-                    $exportedIds = array_merge($exportedIds, [$topic->id]);
-                    Cache::forever('exported_topic_ids', $exportedIds);
+                    if ($this->createExplainerAndFactSheet($topic)) {
+                        $exportedIds[] = $topic->id;
+                        Cache::forever('exported_topic_ids', $exportedIds);
+                    } else {
+                        $failedIds[] = $topic->id;
+                        Cache::forever('failed_topic_ids', $failedIds);
+                    }
                 }
             });
     }
 
-    private function createProjectMedia(Topic $topic): void
+    private function createProjectMedia(Topic $topic): bool
     {
         $query = <<<'GRAPHQL'
                 mutation CreateProjectMedia($input: CreateProjectMediaInput!) {
@@ -78,10 +87,14 @@ class CheckMediaCommand extends Command
         ];
 
         $response = $this->makeRequest($query, $variables);
-        Log::notice('Topic: ' . $topic->id . 'response: ' . $response->body());
+        $success = $response->successful();
+
+        Log::notice('Topic: ' . $topic->id . ' Status: ' . ($success ? 'SUCCESS' : 'FAILED') . ' Response: ' . $response->body());
+
+        return $success;
     }
 
-    private function createExplainerAndFactSheet(Topic $topic): void
+    private function createExplainerAndFactSheet(Topic $topic): bool
     {
         $query = <<<'GRAPHQL'
         mutation CreateExplainer($input: CreateExplainerInput!) {
@@ -107,7 +120,11 @@ class CheckMediaCommand extends Command
         ];
 
         $response = $this->makeRequest($query, $variables);
-        Log::notice('Topic: ' . $topic->id . 'response: ' . $response->body());
+        $success = $response->successful();
+
+        Log::notice('Topic: ' . $topic->id . ' Status: ' . ($success ? 'SUCCESS' : 'FAILED') . ' Response: ' . $response->body());
+
+        return $success;
     }
 
     private function makeRequest($query, $variables): Response
