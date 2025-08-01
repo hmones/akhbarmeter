@@ -3,12 +3,12 @@
 namespace App\Console\Commands;
 
 use App\Models\Topic;
-use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class CheckMediaCommand extends Command
 {
@@ -21,9 +21,9 @@ class CheckMediaCommand extends Command
         $exportedIds = $exportedIds ?: [];
         Topic::where('type', 'fakeNews')
             ->whereNotIn('id', $exportedIds)
-            ->chunk(20, function ($topics) use ($exportedIds) {
+            ->chunk(100, function ($topics) use ($exportedIds) {
                 foreach ($topics as $topic) {
-                    $this->exportFakeNews($topic);
+                    $this->createProjectMedia($topic);
                     $exportedIds = array_merge($exportedIds, [$topic->id]);
                     Cache::forever('exported_topic_ids', $exportedIds);
                 }
@@ -33,33 +33,65 @@ class CheckMediaCommand extends Command
             ->whereNotIn('id', $exportedIds)
             ->chunk(100, function ($topics) use ($exportedIds) {
                 foreach ($topics as $topic) {
-                    $this->exportExplainerOrFactSheet($topic);
+                    $this->createExplainerAndFactSheet($topic);
                     $exportedIds = array_merge($exportedIds, [$topic->id]);
                     Cache::forever('exported_topic_ids', $exportedIds);
                 }
             });
     }
 
-    private function exportFakeNews(Topic $topic): void
-    {
-        $claimDescriptionId = $this->createClaimDescription($topic);
-        $this->createClaimFactCheck($claimDescriptionId, $topic);
-    }
-
-    private function exportExplainerOrFactSheet(Topic $topic): void
-    {
-        $claimDescriptionId = $this->createClaimDescription($topic);
-        $this->createClaimFactCheck($claimDescriptionId, $topic);
-    }
-
-    private function createClaimDescription(Topic $topic): int
+    private function createProjectMedia(Topic $topic): void
     {
         $query = <<<'GRAPHQL'
-        mutation CreateClaimDescription($input: CreateClaimDescriptionInput!) {
-            createClaimDescription(input: $input) {
-                claim_description {
+                mutation CreateProjectMedia($input: CreateProjectMediaInput!) {
+                    createProjectMedia(input: $input) {
+                        project_media {
+                            id
+                            full_url
+                            claim_description {
+                                fact_check {
+                                    id
+                                    title
+                                    summary
+                                    url
+                                    language
+                                }
+                            }
+                        }
+                    }
+                }
+            GRAPHQL;
+
+        $variables = [
+            'input' => [
+                'media_type'            => 'Blank',
+                'set_claim_description' => $topic->title,
+                'set_status'            => data_get(Topic::FAKE_NEWS_BADGES_MAPPING, $topic->fake_news_badge),
+                'set_tags'              => $topic->tags->pluck('name')->toArray(),
+                'set_fact_check'        => [
+                    'title'          => $topic->title,
+                    'summary'        => Str::of($topic->chatbot_summary)->stripTags()->toString(),
+                    'publish_report' => true,
+                    'url'            => route('topics.show', $topic->id)
+                ],
+            ],
+        ];
+
+        $response = $this->makeRequest($query, $variables);
+        Log::notice('Topic: ' . $topic->id . 'response: ' . $response->body());
+    }
+
+    private function createExplainerAndFactSheet(Topic $topic): void
+    {
+        $query = <<<'GRAPHQL'
+        mutation CreateExplainer($input: CreateExplainerInput!) {
+            createExplainer(input: $input) {
+                explainer {
                     id
+                    dbid
+                    title
                     description
+                    url
                 }
             }
         }
@@ -67,21 +99,15 @@ class CheckMediaCommand extends Command
 
         $variables = [
             'input' => [
-                'description' => $topic->title
+                'title'       => $topic->title,
+                'tags'        => $topic->tags->pluck('name')->toArray(),
+                'description' => $topic->chatbot_summary,
+                'url'         => route('topics.show', $topic->id)
             ],
         ];
 
         $response = $this->makeRequest($query, $variables);
-        if (!$response->successful()) {
-            throw new Exception('Failed to create claim description: ' . $response->body());
-        }
-        $payload = $response->json();
-        if (isset($payload['errors'])) {
-            throw new Exception('GraphQL errors: ' . json_encode($payload['errors']));
-        }
-
-        return $this->decodeAndGetId(data_get($payload, 'data.createClaimDescription.claim_description.id'));
-
+        Log::notice('Topic: ' . $topic->id . 'response: ' . $response->body());
     }
 
     private function makeRequest($query, $variables): Response
@@ -92,68 +118,6 @@ class CheckMediaCommand extends Command
         ])->post('https://check-api.checkmedia.org/api/graphql', [
             'query'     => $query,
             'variables' => $variables,
-        ]);
-    }
-
-    private function decodeAndGetId(string $claimDescriptionId): int
-    {
-        $claimDescriptionId = str_replace(["\n", "\r", "\t"], '', trim($claimDescriptionId));
-        $decodedClaimDescriptionId = base64_decode($claimDescriptionId, true);
-        if ($decodedClaimDescriptionId === false) {
-            Log::error('Base64 decode failed', ['claimDescriptionId' => false]);
-            throw new Exception('Failed to decode claimDescriptionId ID: ' . $claimDescriptionId);
-        }
-
-        $parts = explode('/', $decodedClaimDescriptionId);
-        if (count($parts) !== 2 || $parts[0] !== 'ClaimDescription') {
-            throw new Exception('Invalid global ID format: ' . $decodedClaimDescriptionId);
-        }
-
-        $claimDescriptionId = (int) $parts[1];
-        if ($claimDescriptionId <= 0) {
-            throw new Exception('Invalid ID extracted from global ID: ' . $parts[1]);
-        }
-
-        return $claimDescriptionId;
-    }
-
-    private function createClaimFactCheck(int $claimDescriptionId, Topic $topic): void
-    {
-        $variables = [
-            'input' => [
-                'claim_description_id' => $claimDescriptionId,
-                'title'   => $topic->title,
-                'tags'    => $topic->tags->pluck('name')->toArray(),
-                'summary' => $topic->chatbot_summary,
-                'url'     => route('topics.show', $topic->id)
-            ],
-        ];
-
-        $query = <<<'GRAPHQL'
-        mutation CreateFactCheck($input: CreateFactCheckInput!) {
-            createFactCheck(input: $input) {
-                fact_check {
-                    id
-                    title
-                    summary
-                    url
-                }
-            }
-        }
-        GRAPHQL;
-
-        $response = $this->makeRequest($query, $variables);
-        if ($response->failed()) {
-            Log::error('Check API error', [
-                'response' => $response->body(),
-                'status'   => $response->status(),
-                'topic_id' => $topic->id
-            ]);
-        }
-
-        Log::notice('Claim fact check created', [
-            'topic_id' => $topic->id,
-            'response' => $response->body()
         ]);
     }
 }
