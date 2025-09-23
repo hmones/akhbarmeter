@@ -21,7 +21,7 @@
         <div class="container mx-auto flex flex-col w-full items-center justify-center mx-auto space-y-4 py-16 text-white">
             <div class="flex flex-col">
                 <div class="flex flex-row items-center space-x-3 rtl:space-x-reverse">
-                    <img src="{{empty($article->publisher->image) ? asset("images/placeholders/publisher.png") : Storage::url($article->publisher->image)}}" alt="{{$article->publisher->name}}" class="h-[52px] rounded"/>
+                    <img src="{{empty($article->publisher?->image) ? asset("images/placeholders/publisher.png") : Storage::url($article->publisher?->image)}}" alt="{{$article->publisher?->name}}" class="h-[52px] rounded"/>
                     <div class="flex flex-col space-y-1">
                         <div class="flex flex-row items-center space-x-1.5 rtl:space-x-reverse">
                             <span class="text-white text-xl leading-7 font-semibold rounded-2 bg-{{getColorForScore($article->review->score ?? 100)}} px-2 py-1">
