@@ -55,7 +55,7 @@
             <div class="lg:w-2/3 flex flex-col space-y-4">
                 <!-- Article Content -->
                 <div class="px-3 lg:px-0 mb-5" id="article_content">
-                    @if($article->image)
+                    @if(!empty($article->image))
                         <img src="{{Storage::url($article->image)}}" alt="{{$article->title}}" class="w-full lg:w-1/2 rounded float-left" />
                     @endif
                     {!! $article->content !!}
@@ -124,9 +124,9 @@
                     <div>{{translate('pages.article.side.header')}}</div>
                     <div class="text-gray-700">
                         {{translate('pages.article.side.description')}}
-                        <a class="text-blue-700" href="{{$article->publisher->url}}">{{$article->publisher->name}}</a>
+                        <a class="text-blue-700" href="{{$article->publisher?->url}}">{{$article->publisher?->name}}</a>
                         {{$article->fetched_at}}
-                        <a class="text-blue-700" href="{{$article->url}}">{{translate('pages.article.side.link')}}</a>
+                        <a class="text-blue-700" href="{{$article?->url}}">{{translate('pages.article.side.link')}}</a>
                     </div>
                 </div>
                 <x-cards.article-footer :article="$article" showTotalScore="false" />
