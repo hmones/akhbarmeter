@@ -1,7 +1,8 @@
 @extends('layouts.default')
 
+@php($image = data_get($topic, 'image') ? Storage::url(data_get($topic, 'image')) : asset("images/placeholders/publisher.png"))
+
 @section('seo')
-    @php($image = data_get($topic, 'image') ? Storage::url(data_get($topic, 'image')) : '')
     <x-seo :title="data_get($topic, 'title')" :description="str(strip_tags(data_get($topic, 'description')))->limit(250)" :keywords="str(data_get($topic, 'title'))->replace(' ', ' , ')" :image="$image"/>
 @endsection
 
@@ -24,7 +25,7 @@
         <div class="grid grid-cols-1 md:grid-cols-[70%,30%] gap-8 ">
             <div>
                 <div class="relative w-full h-[250px] overflow-hidden">
-                    <img src="{{ Storage::url(data_get($topic, 'image')) }}" alt="Property Image" class="object-center object-cover w-full h-full filter blur-sm">
+                    <img src="{{ $image }}" alt="{{data_get($topic, 'title')}}" class="object-center object-cover w-full h-full filter blur-sm">
                     <div class="absolute inset-0 bg-black bg-opacity-50"></div>
                     <div class="absolute inset-0 flex flex-col justify-center items-center text-white">
                         <h1 class="text-4xl font-bold leading-tight p-4">{{ data_get($topic, 'title') }}</h1>
